@@ -1,0 +1,33 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: 
+
+VAL_TABLE_ Status_val 0 "R" 1 "B" 2 "E";
+
+BO_ 1792 Flow_extCAN: 6 Vector__XXX
+ SG_ status : 36|2@1+ (1,0) [0|3] "" Vector__XXX
+
+
+
+
+
+BA_DEF_ BO_ "Receivable" STRING;
+BA_DEF_ BO_ "Sendable" STRING;
+BA_DEF_ SG_ "DisplayDecimalPlaces" INT 0 65535;
+BA_DEF_ SG_ "HexadecimalOutput" STRING;
+BA_DEF_ SG_ "LongName" STRING;
+BA_DEF_  "Title" STRING;
+BA_DEF_DEF_ "Title" "canmatrix-Export";
+
+BA_ "Title"   "Test-CAN";
+
+BA_ "Receivable" BO_ 1792 "True";
+BA_ "Sendable" BO_ 1792 "True";
+
+
+VAL_ 1792 status 0 "R" 1 "B" 2 "E";
