@@ -26,6 +26,7 @@
 from __future__ import absolute_import, division, print_function
 
 import decimal
+from decimal import *
 import logging
 import typing
 from builtins import *
@@ -114,7 +115,7 @@ def dump(db, file, **options):
     head_top = ['ID', 'Frame Name', 'Cycle Time [ms]', 'Launch Type', 'Launch Parameter', 'Signal Byte No.',
                 'Signal Bit No.', 'Signal Name', 'Signal Function', 'Signal Length [Bit]', 'Signal Default',
                 ' Signal Not Available', 'Byteorder']
-    head_tail = ['Value',   'Name / Phys. Range', 'Function / Increment Unit']
+    head_tail = ['Value', 'Name / Phys. Range', 'Function / Increment Unit']
 
     if len(options.get("additionalSignalAttributes", "")) > 0:
         additional_signal_columns = options.get("additionalSignalAttributes").split(",")  # type: typing.List[str]
@@ -129,8 +130,8 @@ def dump(db, file, **options):
     motorola_bit_format = options.get("xlsMotorolaBitFormat", "msbreverse")
 
     workbook = xlwt.Workbook(encoding='utf8')
-#    ws_name = os.path.basename(filename).replace('.xls', '')
-#    worksheet = workbook.add_sheet('K-Matrix ' + ws_name[0:22])
+    #    ws_name = os.path.basename(filename).replace('.xls', '')
+    #    worksheet = workbook.add_sheet('K-Matrix ' + ws_name[0:22])
     worksheet = workbook.add_sheet('K-Matrix ')
 
     row_array = []  # type: typing.List[str]
@@ -180,13 +181,10 @@ def dump(db, file, **options):
                 continue
             frame_hash[int(frame.arbitration_id.id)] = frame
     else:
-        frame_hash = {a.name:a for a in db.frames}
-
+        frame_hash = {a.name: a for a in db.frames}
 
     # set row to first Frame (row = 0 is header)
     row = 1
-
-
 
     # iterate over the frames
     for idx in sorted(frame_hash.keys()):
@@ -341,69 +339,71 @@ def read_additional_signal_attributes(signal, attribute_name, attribute_value):
 
 def load(file, **options):
     # type: (typing.IO, **typing.Any) -> canmatrix.CanMatrix
-    motorola_bit_format = options.get("xlsMotorolaBitFormat", "msbreverse")
-    float_factory = options.get("float_factory", default_float_factory)
-
-    additional_inputs = dict()
     wb = xlrd.open_workbook(file_contents=file.read())
     sh = wb.sheet_by_index(0)
     db = canmatrix.CanMatrix()
 
-    # Defines not imported...
-    # db.add_ecu_defines("NWM-Stationsadresse", 'HEX 0 63')
-    # db.add_ecu_defines("NWM-Knoten", 'ENUM  "nein","ja"')
+    # Defines not imported... add by users
+    # add_ecu_defines BA_DEF_ BU_
+    db.add_ecu_defines("NWM-Stationsadresse", 'HEX 0 63')
+    db.add_ecu_defines("NWM-Knoten", 'ENUM  "nein","ja"')
+
+    # add_frame_defines BA_DEF_ BO_
     db.add_frame_defines("GenMsgDelayTime", 'INT 0 65535')
     db.add_frame_defines("GenMsgCycleTimeActive", 'INT 0 65535')
     db.add_frame_defines("GenMsgNrOfRepetitions", 'INT 0 65535')
-    # db.addFrameDefines("GenMsgStartValue",  'STRING')
-    launch_types = []  # type: typing.List[str]
+    db.add_frame_defines("GenMsgStartValue", 'STRING')
+
+    # add_signal_defines BA_DEF_ SG_
     db.add_signal_defines("GenSigSNA", 'STRING')
 
     # eval search for correct columns:
     index = {}
     for i in range(sh.ncols):
         value = sh.cell(0, i).value
-        if value == "ID":
-            index['ID'] = i
-        elif "Frame Name" in value:
-            index['frameName'] = i
-        elif "Cycle" in value:
-            index['cycle'] = i
-        elif "Launch Type" in value:
-            index['launchType'] = i
-        elif "Launch Parameter" in value:
-            index['launchParam'] = i
-        elif "Signal Byte No." in value:
-            index['startbyte'] = i
-        elif "Signal Bit No." in value:
-            index['startbit'] = i
+        if value == "Transmitter":
+            index['Transmitter'] = i
+        elif "Receiver" in value:
+            index['Receiver'] = i
         elif "Signal Name" in value:
-            index['signalName'] = i
-        elif "Signal Function" in value:
-            index['signalComment'] = i
-        elif "Signal Length" in value:
-            index['signalLength'] = i
-        elif "Signal Default" in value:
-            index['signalDefault'] = i
-        elif "Signal Not Ava" in value:
-            index['signalSNA'] = i
-        elif "Value" in value:
-            index['Value'] = i
-        elif "Name / Phys" in value:
-            index['ValueName'] = i
-        elif "Function /" in value:
-            index['function'] = i
-        elif "Byteorder" in value:
-            index['byteorder'] = i
-        else:
-            if 'Value' in index and i > index['Value']:
-                additional_inputs[i] = value
+            index['SignalName'] = i
+        elif "Message Name" in value:
+            index['MessageName'] = i
+        elif "Message ID" in value:
+            index['MessageID'] = i
+        elif "Period [ms]" in value:
+            index['Period'] = i
+        elif "DLC [Byte]" in value:
+            index['DLC'] = i
+        elif "MSB" in value:
+            index['MSB'] = i
+        elif "LSB" in value:
+            index['LSB'] = i
+        elif "Size [Bit]" in value:
+            index['Size'] = i
+        elif "Byte Order" in value:
+            index['ByteOrder'] = i
+        elif "Datatype" in value:
+            index['DataType'] = i
+        elif "Default Initialized Value" in value:
+            index['DefaultInitializedValue'] = i
+        elif "Factor" in value:
+            index['Factor'] = i
+        elif "Offset" in value:
+            index['Offset'] = i
+        elif "P-Minimum" in value:
+            index['Minimum'] = i
+        elif "P-Maximum" in value:
+            index['Maximum'] = i
+        elif "Unit" in value:
+            index['Unit'] = i
+        elif "Coding" in value:
+            index['Coding'] = i
+        elif "Comment" in value:
+            index['Comment'] = i
 
-    if "byteorder" in index:
-        index['ECUstart'] = index['byteorder'] + 1
-    else:
-        index['ECUstart'] = index['signalSNA'] + 1
-    index['ECUend'] = index['Value']
+    index['ECUstart'] = index['Comment'] + 1
+    index['ECUend'] = sh.ncols
 
     # ECUs:
     for x in range(index['ECUstart'], index['ECUend']):
@@ -411,172 +411,138 @@ def load(file, **options):
 
     # initialize:
     frame_id = None
-    signal_name = ""
-    new_frame = None
+    signal_name = None
 
+    # read xls/xlsx row by row
     for row_num in range(1, sh.nrows):
-        # ignore empty row
-        if len(sh.cell(row_num, index['ID']).value) == 0:
-            break
-        # new frame detected
-        if sh.cell(row_num, index['ID']).value != frame_id:
-            # new Frame
-            frame_id = sh.cell(row_num, index['ID']).value
-            frame_name = sh.cell(row_num, index['frameName']).value
-            cycle_time = sh.cell(row_num, index['cycle']).value
-            launch_type = sh.cell(row_num, index['launchType']).value
-            dlc = 8
-            launch_param = sh.cell(row_num, index['launchParam']).value
-            try:
-                launch_param = str(int(launch_param))
-            except:
-                launch_param = "0"
-
-            new_frame = canmatrix.Frame(frame_name, size=dlc)
-            if frame_id.endswith("xh"):
-                new_frame.arbitration_id = canmatrix.ArbitrationId(int(frame_id[:-2], 16), extended=True)
-            else:
-                new_frame.arbitration_id = canmatrix.ArbitrationId(int(frame_id[:-1], 16), extended=False)
-            db.add_frame(new_frame)
-
-            # eval launch_type
-            if launch_type is not None:
-                if len(launch_type) > 0:
-                    new_frame.add_attribute("GenMsgSendType", launch_type)
-                    if launch_type not in launch_types:
-                        launch_types.append(launch_type)
-
-            # eval cycle time
-            try:
-                cycle_time = int(cycle_time)
-            except:
-                cycle_time = 0
-            new_frame.cycle_time = cycle_time
-
-            for additional_index in additional_inputs:
-                if "frame" in additional_inputs[additional_index]:
-                    command_str = additional_inputs[additional_index].replace("frame", "new_frame")
-                    command_str += "="
-                    command_str += str(sh.cell(row_num, additional_index).value)
-                    exec(command_str)
-
         # new signal detected
-        if sh.cell(row_num, index['signalName']).value != signal_name \
-                and len(sh.cell(row_num, index['signalName']).value) > 0:
-            # new Signal
-            receiver = []
-            start_byte = int(sh.cell(row_num, index['startbyte']).value)
-            start_bit = int(sh.cell(row_num, index['startbit']).value)
-            signal_name = sh.cell(row_num, index['signalName']).value.strip()
-            signal_comment = sh.cell(
-                row_num, index['signalComment']).value.strip()
-            signal_length = int(sh.cell(row_num, index['signalLength']).value)
-            signal_default = sh.cell(row_num, index['signalDefault']).value
-            signal_sna = sh.cell(row_num, index['signalSNA']).value
-            multiplex = None  # type: typing.Union[str, int, None]
-            if signal_comment.startswith('Mode Signal:'):
-                multiplex = 'Multiplexor'
-                signal_comment = signal_comment[12:]
-            elif signal_comment.startswith('Mode '):
-                mux, signal_comment = signal_comment[4:].split(':', 1)
-                multiplex = int(mux.strip())
+        if sh.cell(row_num, index['SignalName']).value.strip() != signal_name or \
+                sh.cell(row_num, index['MessageID']).value.strip() != frame_id:
 
-            if index.get("byteorder", False):
-                signal_byte_order = sh.cell(row_num, index['byteorder']).value
+            # receiver
+            receiver = [sh.cell(row_num, index['Receiver']).value]
 
-                if 'i' in signal_byte_order:
+            # signal name
+            signal_name = sh.cell(row_num, index['SignalName']).value.strip()
+
+            # MSB
+            msb = int(sh.cell(row_num, index['MSB']).value)
+
+            # LSB
+            lsb = int(sh.cell(row_num, index['LSB']).value)
+
+            # size
+            signal_length = int(sh.cell(row_num, index['Size']).value)
+
+            # cycle_time
+            cycle_time = int(sh.cell(row_num, index['Period']).value)
+
+            # byte order
+            if index.get("ByteOrder", False):
+                signal_byte_order = sh.cell(row_num, index['ByteOrder']).value
+
+                if 'intel' in signal_byte_order:
                     is_little_endian = True
                 else:
                     is_little_endian = False
             else:
                 is_little_endian = True  # Default Intel
 
-            is_signed = False
+            # datatype
+            is_signed = sh.cell(row_num, index['DataType']).value
 
-            if signal_name != "-":
-                for x in range(index['ECUstart'], index['ECUend']):
-                    if 's' in sh.cell(row_num, x).value:
-                        new_frame.add_transmitter(sh.cell(0, x).value.strip())
-                    if 'r' in sh.cell(row_num, x).value:
-                        receiver.append(sh.cell(0, x).value.strip())
-                new_signal = canmatrix.Signal(
-                    signal_name,
-                    start_bit=(start_byte - 1) * 8 + start_bit,
-                    size=int(signal_length),
-                    is_little_endian=is_little_endian,
-                    is_signed=is_signed,
-                    receivers=receiver,
-                    multiplex=multiplex)
+            # default initialized value (not use in dbc file)
+            signal_default = sh.cell(row_num, index['DefaultInitializedValue']).value
 
-                if not is_little_endian:
-                    # motorola
-                    if motorola_bit_format == "msb":
-                        new_signal.set_startbit((start_byte - 1) * 8 + start_bit, bitNumbering=1)
-                    elif motorola_bit_format == "msbreverse":
-                        new_signal.set_startbit((start_byte - 1) * 8 + start_bit)
-                    else:  # motorola_bit_format == "lsb"
-                        new_signal.set_startbit(
-                            (start_byte - 1) * 8 + start_bit,
-                            bitNumbering=1,
-                            startLittle=True)
+            # factor
+            factor = str(sh.cell(row_num, index['Factor']).value)
+            factor = decimal.Decimal(factor)
 
-                for additional_index in additional_inputs:  # todo explain this possibly dangerous code with eval
-                    if "signal" in additional_inputs[additional_index]:
-                        read_additional_signal_attributes(new_signal, additional_inputs[additional_index], sh.cell(row_num, additional_index).value)
+            # offset
+            offset = str(sh.cell(row_num, index['Offset']).value)
+            offset = decimal.Decimal(offset)
 
-                new_frame.add_signal(new_signal)
-                new_signal.add_comment(signal_comment)
-                function = sh.cell(row_num, index['function']).value
+            # p-minimum
+            pminimum = str(sh.cell(row_num, index['Minimum']).value)
+            pminimum = decimal.Decimal(pminimum)
 
-        value = str(sh.cell(row_num, index['Value']).value)
-        value_name = sh.cell(row_num, index['ValueName']).value
+            # p-maximum
+            pmaximum = str(sh.cell(row_num, index['Maximum']).value)
+            pmaximum = decimal.Decimal(pmaximum)
 
-        if value_name == 0:
-            value_name = "0"
-        elif value_name == 1:
-            value_name = "1"
-        # .encode('utf-8')
+            # unit
+            unit = sh.cell(row_num, index['Unit']).value
 
-        unit = ""
+            # coding
+            coding = sh.cell(row_num, index['Coding']).value
+            # eval coding (value table)
+            value_table = dict()
+            coding = coding.replace('\n', ':').split(':')
 
-        factor = sh.cell(row_num, index['function']).value
-        if isinstance(factor, past.builtins.basestring):
-            factor = factor.strip()
-            if " " in factor and factor[0].isdigit():
-                (factor, unit) = factor.strip().split(" ", 1)
-                factor = factor.strip()
-                unit = unit.strip()
-                new_signal.unit = unit
-                try:
-                    new_signal.factor = float_factory(factor)
-                except:
-                    logger.warning(
-                        "Some error occurred while decoding scale of Signal %s: '%s'",
-                        signal_name,
-                        sh.cell(row_num, index['function']).value)
+            for i in range(len(coding)):
+                if coding[i].isdigit():
+                    value_table[coding[i]] = coding[i + 1]
+                else:
+                    pass
+
+            # comment
+            signal_comment = sh.cell(row_num, index['Comment']).value.strip()
+
+            # create Canmatrix signal and add to db
+            new_signal = canmatrix.Signal(
+                name=signal_name,
+                msb=msb,
+                lsb=lsb,
+                size=int(signal_length),
+                cycle_time=cycle_time,
+                is_little_endian=is_little_endian,
+                is_signed=is_signed,
+                offset=offset,
+                factor=factor,
+                receivers=receiver,
+                unit=unit,
+                min=pminimum,
+                max=pmaximum,
+                values=value_table)
+            new_signal.add_comment(signal_comment)
+            db.add_signal(new_signal)
+
+            # Frame information for new signal
+
+            # message name
+            frame_name = sh.cell(row_num, index['MessageName']).value
+
+            # message id
+            frame_id = sh.cell(row_num, index['MessageID']).value
+
+            # period (follow signal period)
+            # cycle_time = int(sh.cell(row_num, index['Period']).value)
+
+            # dlc
+            dlc = int(sh.cell(row_num, index['DLC']).value)
+
+            # transmitter
+            transmitter = [sh.cell(row_num, index['Transmitter']).value]
+
+            # create Canmatrix frame
+            new_frame: object = canmatrix.Frame(frame_name, size=dlc)
+
+            # eval transmitter
+            new_frame.transmitters = transmitter
+
+            # eval message ID
+            if frame_id.endswith("xh"):
+                new_frame.arbitration_id = canmatrix.ArbitrationId(int(frame_id[:-2], 16), extended=True)
             else:
-                unit = factor.strip()
-                new_signal.unit = unit
-                new_signal.factor = 1
+                new_frame.arbitration_id = canmatrix.ArbitrationId(int(frame_id[2:], 16), extended=False)
 
-        (mini, maxi, offset, value_table) = parse_value_name_column(value_name, value, new_signal.size, float_factory)
-        if new_signal.min is None:
-            new_signal.min = mini
-        if new_signal.max is None:
-            new_signal.max = maxi
-        if new_signal.offset is None:
-            new_signal.offset = offset
-        if value_table is not None:
-            for value, name in value_table.items():
-                new_signal.add_values(value, name)
+            # add frame information to signal
+            new_signal.frames = new_frame
 
-    for frame in db.frames:
-        frame.update_receiver()
-        frame.calc_dlc()
+    # read rows values loop end
 
-    launch_type_enum = "ENUM"
-    launch_type_enum += ",".join([' "{}"'.format(launch_type) for launch_type in launch_types if launch_type])
-    db.add_frame_defines("GenMsgSendType", launch_type_enum)
+    # add vframeformat
+    for signal in db.signals:
+        signal.frames.set_fd_type()
 
-    db.set_fd_type()
     return db

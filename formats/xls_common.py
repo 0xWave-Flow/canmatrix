@@ -47,88 +47,157 @@ def get_frame_info(db, frame):
 
     ret_array.append(frame.effective_cycle_time)
 
-    # determine send-type
-    if "GenMsgSendType" in db.frame_defines:
-        ret_array.append(frame.attribute("GenMsgSendType", db=db))
-        if "GenMsgDelayTime" in db.frame_defines:
-            ret_array.append(frame.attribute("GenMsgDelayTime", db=db))
-        else:
-            ret_array.append("")
-    else:
-        ret_array.append("")
-        ret_array.append("")
     return ret_array
 
 
 def get_signal(db, frame, sig, motorola_bit_format):
     # type: (canmatrix.CanMatrix, canmatrix.Frame, canmatrix.Signal, str) -> typing.Tuple[typing.List, typing.List]
     front_array = []  # type: typing.List[typing.Union[str, float]]
-    back_array = []
-    if motorola_bit_format == "msb":
-        start_bit = sig.get_startbit(bit_numbering=1)
-    elif motorola_bit_format == "msbreverse":
-        start_bit = sig.get_startbit()
-    else:  # motorolaBitFormat == "lsb"
-        start_bit = sig.get_startbit(bit_numbering=1, start_little=True)
 
-    # start byte
-    front_array.append(int(start_bit / 8) + 1)
-    # start bit
-    front_array.append(start_bit % 8)
+    # Result
+    front_array.append('/')
+    # No.
+    front_array.append('/')
+    try:
+        front_array.append(frame.transmitters[0])
+    except:
+        front_array.append('None')
+        # print('No transmitter!')
+    try:
+        front_array.append(sig.receivers[0])
+    except:
+        front_array.append('None')
+        # print('No receiver!')
+
     # signal name
     front_array.append(sig.name)
+
+    # ASIL level
+    front_array.append('/')
+    # Signal Description
+    front_array.append('/')
+    # Used by function
+    front_array.append('/')
+
+    # frame-Name
+    front_array.append(frame.name)
+
+    # frame-ID
+    if db.type == canmatrix.matrix_class.CAN:
+        # frame-id
+        if frame.arbitration_id.extended:
+            front_array.append("0x%3X" % frame.arbitration_id.id)
+        else:
+            front_array.append("0x%3X" % frame.arbitration_id.id)
+    elif db.type == canmatrix.matrix_class.FLEXRAY:
+        front_array.append("TODO")
+    elif db.type == canmatrix.matrix_class.SOMEIP:
+        front_array.append("0x%3X" % frame.header_id)
+
+    # Message Type
+    front_array.append('/')
+    # Signal Type
+    front_array.append('/')
+    # Detailed description of E/M Message sending behavior Tx
+    front_array.append('/')
+
+    # Detailed description of E/M Message sending behavior Rx
+    front_array.append('/')
+
+    # cycle time
+    front_array.append(frame.cycle_time)
+
+    # Signal latency budget Tx(ms)
+    front_array.append('/')
+
+    # Signal latency budget Rx(ms)
+    front_array.append('/')
+
+    # DLC
+    front_array.append(int(frame.size))
+
+    # MSB
+    front_array.append(sig.msb)
+
+    # LSB
+    temp = sig.msb - (sig.msb % 8) + 7 - (sig.msb % 8) + sig.size - 1
+    # startBitInternal = startBitInternal + self.size - 1
+    lsb = temp - (temp % 8) + 7 - (temp % 8)
+    front_array.append(lsb)
+
+    # signal size
+    front_array.append(sig.size)
+
+    # eval byteorder (little_endian: intel == True / motorola == 0)
+    if sig.is_little_endian:
+        front_array.append("intel")
+    else:
+        front_array.append("motorola")
+
+    # data type
+    if not sig.is_signed:
+        front_array.append('Unsigned')
+    else:
+        if sig.size == 32:
+            front_array.append('IEEE Float')
+        elif sig.size == 62:
+            front_array.append('IEEE Double')
+        else:
+            front_array.append('Signed')
+    # First valid signal duration Tx(ms)
+    front_array.append('/')
+
+    # First valid signal duration Rx(ms)
+    front_array.append('/')
+
+    # start-value of signal available
+    front_array.append(sig.initial_value)
+    # Alternative value
+    front_array.append('/')
+
+    # factor
+    front_array.append(float(sig.factor))
+    # Measured Resolution Tx
+    front_array.append('/')
+
+    # Measured Resolution Rx
+    front_array.append('/')
+
+    # Accuracy Tx
+    front_array.append('/')
+
+    # offset
+    front_array.append(float(sig.offset))
+
+    # p-min
+    front_array.append(float(sig.min))
+
+    # p-max
+    front_array.append(float(sig.max))
+
+    # unit
+    front_array.append(sig.unit)
+    # Coding
+    coding = str()
+    for val in sorted(sig.values.keys()):
+        coding += str(val) + ':' + sig.values[val] + '\n'
+    coding = coding.removesuffix('\n')
+    front_array.append(coding)
+
+    # Signal Group
+    front_array.append('/')
+
+    # Message Segment
+    front_array.append('/')
+
+    # Variant and options
+    front_array.append('/')
 
     # eval comment:
     comment = sig.comment if sig.comment else ""
 
-    # eval multiplex-info
-    if frame.is_complex_multiplexed:
-        for signal in frame.signals:
-            if signal.muxer_for_signal is not None:
-                comment = "Mode {} = {}".format(sig.muxer_for_signal, sig.multiplex)
-    else:
-        if sig.multiplex == 'Multiplexor':
-            comment = "Mode Signal: " + comment
-        elif sig.multiplex is not None:
-            comment = "Mode " + str(sig.multiplex) + ":" + comment
-
     # write comment and size of signal in sheet
     front_array.append(comment)
-    front_array.append(sig.size)
+    # Receiver ECU list
 
-    # start-value of signal available
-    front_array.append(sig.initial_value)
-
-    # SNA-value of signal available
-    if "GenSigSNA" in db.signal_defines:
-        sna = sig.attribute("GenSigSNA", db=db)
-        if sna is not None:
-            sna = sna[1:-1]
-        front_array.append(sna)
-    # no SNA-value of signal available / just for correct style:
-    else:
-        front_array.append(" ")
-
-    # eval byteorder (little_endian: intel == True / motorola == 0)
-    if sig.is_little_endian:
-        front_array.append("i")
-    else:
-        front_array.append("m")
-
-    # is a unit defined for signal?
-    if sig.unit.strip():
-        # factor not 1.0 ?
-        if float(sig.factor) != 1:
-            back_array.append("%g" % float(sig.factor) + "  " + sig.unit)
-        # factor == 1.0
-        else:
-            back_array.append(sig.unit)
-    # no unit defined
-    else:
-        # factor not 1.0 ?
-        if float(sig.factor) != 1:
-            back_array.append("%g -" % float(sig.factor))
-        # factor == 1.0
-        else:
-            back_array.append("")
-    return front_array, back_array
+    return front_array

@@ -66,7 +66,6 @@ def loadp(path, import_type=None, key="", **options):
                 if path.lower().endswith(extension) and "load" in supportedFormats[supportedImportType]:
                     import_type = supportedImportType
                     break
-
         if import_type:
             return load(fileObject, import_type, key, **options)
         else:

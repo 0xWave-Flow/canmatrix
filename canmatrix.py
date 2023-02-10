@@ -58,19 +58,37 @@ class ExceptionTemplate(Exception):
 
 
 class StartbitLowerZero(ExceptionTemplate): pass
+
+
 class EncodingComplexMultiplexed(ExceptionTemplate): pass
+
+
 class MissingMuxSignal(ExceptionTemplate): pass
+
+
 class DecodingComplexMultiplexed(ExceptionTemplate): pass
+
+
 class DecodingFrameLength(ExceptionTemplate): pass
+
+
 class ArbitrationIdOutOfRange(ExceptionTemplate): pass
+
+
 class J1939needsExtendedIdetifier(ExceptionTemplate): pass
+
+
 class DecodingConatainerPdu(ExceptionTemplate): pass
+
+
 class EncodingConatainerPdu(ExceptionTemplate): pass
 
 
 def arbitration_id_converter(source):  # type: (typing.Union[int, ArbitrationId]) -> ArbitrationId
     """Converter for attrs which accepts ArbitrationId itself or int."""
-    return source if isinstance(source, ArbitrationId) else  ArbitrationId.from_compound_integer(source)
+    # print(isinstance(source,ArbitrationId))
+    # print(type(ArbitrationId.from_compound_integer(source)))
+    return source if isinstance(source, ArbitrationId) else ArbitrationId.from_compound_integer(source)
 
 
 @attr.s
@@ -146,7 +164,9 @@ class Signal(object):
     name = attr.ib(default="")  # type: str
     # float_factory = attr.ib(default=defaultFloatFactory)
     float_factory = defaultFloatFactory  # type: typing.Callable[[typing.Any], canmatrix.types.PhysicalValue]
-    start_bit = attr.ib(default=0)  # type: int
+    # start_bit = attr.ib(default=0)  # type: int
+    msb = attr.ib(default=0)
+    lsb = attr.ib(default=0)
     size = attr.ib(default=0)  # type: int
     is_little_endian = attr.ib(default=True)  # type: bool
     is_signed = attr.ib(default=True)  # type: bool
@@ -175,6 +195,7 @@ class Signal(object):
 
     cycle_time = attr.ib(default=0)  # type: int
     initial_value = attr.ib(converter=float_factory, default=float_factory(0.0))  # type: canmatrix.types.PhysicalValue
+    frames = attr.ib(default=list)  # type: typing.MutableSequence[Frame]
 
     min = attr.ib(
         converter=lambda value, float_factory=float_factory: (
@@ -183,6 +204,7 @@ class Signal(object):
             else value
         )
     )  # type: typing.Union[int, decimal.Decimal, None]
+
     @min.default
     def set_default_min(self):  # type: () -> canmatrix.types.OptionalPhysicalValue
         return self.set_min()
@@ -194,6 +216,7 @@ class Signal(object):
             else value
         )
     )  # type: canmatrix.types.OptionalPhysicalValue
+
     @max.default
     def set_default_max(self):
         return self.set_max()
@@ -201,6 +224,17 @@ class Signal(object):
     def __attrs_post_init__(self):
         self.multiplex = self.multiplex_setter(self.multiplex)
 
+    def add_frame(self, frame):
+        # type: (Frame) -> Frame
+        """
+        Add Frame to Signal.
+
+        :param frame:
+        :return: the frame added.
+        """
+        self.frames.append(frame)
+
+        return self.frames[len(self.frames) - 1]
 
     @property
     def spn(self):  # type: () -> typing.Optional[int]
@@ -305,44 +339,6 @@ class Signal(object):
         else:
             self.values[int(str(value), 0)] = valueName
 
-    def set_startbit(self, start_bit, bitNumbering=None, startLittle=None):
-        """
-        Set start_bit.
-
-        bitNumbering is 1 for LSB0/LSBFirst, 0 for MSB0/MSBFirst.
-        If bit numbering is consistent with byte order (little=LSB0, big=MSB0)
-        (KCD, SYM), start bit unmodified.
-        Otherwise reverse bit numbering. For DBC, ArXML (OSEK),
-        both little endian and big endian use LSB0.
-        If bitNumbering is None, assume consistent with byte order.
-        If startLittle is set, given start_bit is assumed start from lsb bit
-        rather than the start of the signal data in the message data.
-        """
-        # bit numbering not consistent with byte order. reverse
-        if bitNumbering is not None and bitNumbering != self.is_little_endian:
-            start_bit = start_bit - (start_bit % 8) + 7 - (start_bit % 8)
-        # if given start_bit is for the end of signal data (lsbit),
-        # convert to start of signal data (msbit)
-        if startLittle is True and self.is_little_endian is False:
-            start_bit = start_bit + 1 - self.size
-        if start_bit < 0:
-            raise StartbitLowerZero(
-                "wrong start_bit found Signal: %s Startbit: %d" % (self.name, start_bit)
-            )
-        self.start_bit = start_bit
-
-    def get_startbit(self, bit_numbering=None, start_little=None):
-        """Get signal start bit. Handle byte and bit order."""
-        startBitInternal = self.start_bit
-        # convert from big endian start bit at
-        # start bit(msbit) to end bit(lsbit)
-        if start_little is True and self.is_little_endian is False:
-            startBitInternal = startBitInternal + self.size - 1
-        # bit numbering not consistent with byte order. reverse
-        if bit_numbering is not None and bit_numbering != self.is_little_endian:
-            startBitInternal = startBitInternal - (startBitInternal % 8) + 7 - (startBitInternal % 8)
-        return int(startBitInternal)
-
     def calculate_raw_range(self):
         """Compute raw signal range based on Signal bit width and whether the Signal is signed or not.
 
@@ -413,7 +409,6 @@ class Signal(object):
             value = self.initial_value
             if not (self.min <= value <= self.max):
                 value = self.min
-
         if isinstance(value, basestring):
             for value_key, value_string in self.values.items():
                 if value_string == value:
@@ -421,14 +416,15 @@ class Signal(object):
                     break
             else:
                 raise ValueError(
-                        "{} is invalid value choice for {}".format(value, self)
+                    "{} is invalid value choice for {}".format(value, self)
                 )
 
         if not (self.min <= value <= self.max):
             logger.info(
                 "Value {} is not valid for {}. Min={} and Max={}".format(
                     value, self, self.min, self.max)
-                )
+            )
+
         raw_value = (value - self.offset) / self.factor
 
         if not self.is_float:
@@ -563,7 +559,7 @@ def unpack_bitstring(length, is_float, is_signed, bits):
         }
 
         float_type = types[length]
-        value, = struct.unpack(float_type, bytearray(int(''.join(b), 2)  for b in grouper(bits, 8)))
+        value, = struct.unpack(float_type, bytearray(int(''.join(b), 2) for b in grouper(bits, 8)))
     else:
         value = int(bits, 2)
 
@@ -621,8 +617,8 @@ class ArbitrationId(object):
         else:
             mask = self.standard_id_mask
 
-        if self.id != self.id & mask:
-            raise ArbitrationIdOutOfRange('ID out of range')
+        # if self.id != self.id & mask:
+        #    raise ArbitrationIdOutOfRange('ID out of range')
 
     @property
     def j1939_pgn(self):
@@ -651,8 +647,6 @@ class ArbitrationId(object):
         _pgn = value & 0x3FFFF
         self.id &= 0xfc0000ff
         self.id |= (_pgn << 8 & 0x3FFFF00)  # default pgn is None -> mypy reports error
-
-
 
     @property
     def j1939_tuple(self):  # type: () -> typing.Tuple[int, int, int]
@@ -727,7 +721,6 @@ class ArbitrationId(object):
         return "DA:0x{da:02X} PGN:0x{pgn:04X} SA:0x{sa:02X}".format(
             da=self.j1939_destination, pgn=self.pgn, sa=self.j1939_source)
 
-
     @classmethod
     def from_compound_integer(cls, i):  # type: (typing.Any) -> ArbitrationId
         return cls(
@@ -738,7 +731,7 @@ class ArbitrationId(object):
     @classmethod
     def from_pgn(cls, pgn):  # type: (int) -> ArbitrationId
         return cls(
-            id = (pgn << 8), extended = True
+            id=(pgn << 8), extended=True
         )
 
     def to_compound_integer(self):
@@ -749,12 +742,12 @@ class ArbitrationId(object):
 
     def __eq__(self, other):
         return (
-            self.id == other.id
-            and (
-                self.extended is None
-                or other.extended is None
-                or self.extended == other.extended
-            )
+                self.id == other.id
+                and (
+                        self.extended is None
+                        or other.extended is None
+                        or self.extended == other.extended
+                )
         )
 
 
@@ -789,6 +782,7 @@ class Pdu(object):
         """
         self.signals.append(signal)
         return self.signals[len(self.signals) - 1]
+
     def add_signal_group(self, Name, Id, signalNames, e2e_trans=None):
         # type: (str, int, typing.Sequence[str]) -> None
         """Add new SignalGroup to the Frame. Add given signals to the group.
@@ -858,7 +852,7 @@ class Frame(object):
     is_complex_multiplexed = attr.ib(default=False)  # type: bool
     is_fd = attr.ib(default=False)  # type: bool
     comment = attr.ib(default="")  # type: str
-    signals = attr.ib(factory=list)  # type: typing.MutableSequence[Signal]
+    # signals = attr.ib(factory=list)  # type: typing.MutableSequence[Signal]
     mux_names = attr.ib(factory=dict)  # type: typing.MutableMapping[int, str]
     attributes = attr.ib(factory=dict)  # type: typing.MutableMapping[str, typing.Any]
     receivers = attr.ib(factory=list)  # type: typing.MutableSequence[str]
@@ -871,7 +865,8 @@ class Frame(object):
     # ('sendType', '_sendType', str, None),
 
     pdus = attr.ib(factory=list)  # type: typing.MutableSequence[Pdu]
-    header_id = attr.ib(default=None)  #type: int
+    header_id = attr.ib(default=None)  # type: int
+
     # header_id
 
     @property
@@ -942,7 +937,7 @@ class Frame(object):
     @property
     def source(self):  # type: () -> int
         """Get J1939 source."""
-        return  self.arbitration_id.j1939_source
+        return self.arbitration_id.j1939_source
 
     @source.setter
     def source(self, value):  # type: (int) -> None
@@ -991,11 +986,6 @@ class Frame(object):
             define = db.frame_defines[attribute_name]
             return define.defaultValue
         return default
-
-    def __iter__(self):  # type: () -> typing.Iterator[Signal]
-        """Iterator over all signals."""
-
-        return iter(self.signals)
 
     def add_signal_group(self, Name, Id, signalNames, e2e_trans=None):
         # type: (str, int, typing.Sequence[str]) -> None
@@ -1231,6 +1221,15 @@ class Frame(object):
 
         return return_list
 
+    def set_fd_type(self):  # type: () -> None
+        """Try to guess and set the CAN type for every frame.
+
+        If a Frame is longer than 8 bytes, it must be Flexible Data Rate frame (CAN-FD).
+        If not, the Frame type stays unchanged.
+        """
+        if self.size > 8:
+            self.is_fd = True
+
     def create_dummy_signals(self):  # type: () -> None
         """Create big-endian dummy signals for unused bits.
 
@@ -1242,20 +1241,14 @@ class Frame(object):
         for index, bit_signals in enumerate(bitfield):
             if bit_signals == [] and startBit == -1:
                 startBit = index
-            if (index == (len(bitfield)-1) or bit_signals != []) and startBit != -1:
-                if index == (len(bitfield)-1):
+            if (index == (len(bitfield) - 1) or bit_signals != []) and startBit != -1:
+                if index == (len(bitfield) - 1):
                     index = len(bitfield)
-                self.add_signal(Signal("_Dummy_%s_%d" % (self.name, sigCount), size=index - startBit, start_bit=startBit, is_little_endian = False))
+                self.add_signal(
+                    Signal("_Dummy_%s_%d" % (self.name, sigCount), size=index - startBit, start_bit=startBit,
+                           is_little_endian=False))
                 startBit = -1
                 sigCount += 1
-
-    def update_receiver(self):  # type: () -> None
-        """
-        Collect Frame receivers out of receiver given in each signal. Add them to `self.receiver` list.
-        """
-        for sig in self.signals:
-            for receiver in sig.receivers:
-                self.add_receiver(receiver)
 
     def signals_to_bytes(self, data):
         # type: (typing.Mapping[str, canmatrix.types.RawValue]) -> bytes
@@ -1465,7 +1458,8 @@ class Frame(object):
         :return: muxer signal or None
         """
         for signal in self.signals:
-            if signal.is_multiplexer and signal.muxer_for_signal == parent_multiplexer_name and signal.multiplexer_value_in_range(parent_multiplexer_value):
+            if signal.is_multiplexer and signal.muxer_for_signal == parent_multiplexer_name and signal.multiplexer_value_in_range(
+                    parent_multiplexer_value):
                 return signal
 
     def _filter_signals_for_multiplexer(self, multiplexer_name, multiplexer_value):
@@ -1480,7 +1474,8 @@ class Frame(object):
         """
         filtered_signals = []
         for signal in self.signals:
-            if signal.multiplexer_value_in_range(multiplexer_value) and signal.muxer_for_signal == multiplexer_name and not signal.is_multiplexer:
+            if signal.multiplexer_value_in_range(
+                    multiplexer_value) and signal.muxer_for_signal == multiplexer_name and not signal.is_multiplexer:
                 filtered_signals.append(signal)
             elif signal.name == multiplexer_name:
                 filtered_signals.append(signal)
@@ -1562,7 +1557,8 @@ class Define(object):
             """
             out = int(defaultFloatFactory(inStr))
             if out != defaultFloatFactory(inStr):
-                logger.warning("Warning, integer was expected but got float: got: {0} using {1}\n".format(inStr, str(out)))
+                logger.warning(
+                    "Warning, integer was expected but got float: got: {0} using {1}\n".format(inStr, str(out)))
             return out
 
         # for any known type:
@@ -1570,6 +1566,7 @@ class Define(object):
             self.type = 'INT'
             min, max = definition[4:].split(' ', 2)
             self.min = safe_convert_str_to_int(min)
+            self.max = safe_convert_str_to_int(max)
             self.max = safe_convert_str_to_int(max)
 
         elif definition[0:6] == 'STRING':
@@ -1603,7 +1600,9 @@ class Define(object):
         :param default: default value; number, str or quoted str ("value")
         """
         if default is not None and len(default) > 1 and default[0] == '"' and default[-1] == '"':
-            default = default[1:-1]
+            default = str(default[1:-1])
+        elif default.isdigit():
+            default = int(default)
         self.defaultValue = default
 
     def update(self):  # type: () -> None
@@ -1613,7 +1612,8 @@ class Define(object):
         """
         if self.type != 'ENUM':
             return
-        self.definition = 'ENUM "' + '","' .join(self.values) +'"'
+        self.definition = 'ENUM "' + '","'.join(self.values) + '"'
+
 
 import enum
 
@@ -1622,6 +1622,7 @@ class matrix_class(enum.Enum):
     CAN = 1
     FLEXRAY = 2
     SOMEIP = 3
+
 
 @attr.s(eq=False)
 class CanMatrix(object):
@@ -1637,10 +1638,11 @@ class CanMatrix(object):
     value_tables (global defined values)
     """
 
-    type = attr.ib(default=matrix_class.CAN)  #type: matrix_class
+    type = attr.ib(default=matrix_class.CAN)  # type: matrix_class
     attributes = attr.ib(factory=dict)  # type: typing.MutableMapping[str, typing.Any]
     ecus = attr.ib(factory=list)  # type: typing.MutableSequence[Ecu]
     frames = attr.ib(factory=list)  # type: typing.MutableSequence[Frame]
+    signals = attr.ib(factory=list)  # type: typing.MutableSequence[Signal]
 
     signal_defines = attr.ib(factory=dict)  # type: typing.MutableMapping[str, Define]
     frame_defines = attr.ib(factory=dict)  # type: typing.MutableMapping[str, Define]
@@ -1649,7 +1651,6 @@ class CanMatrix(object):
     ecu_defines = attr.ib(factory=dict)  # type: typing.MutableMapping[str, Define]
     value_tables = attr.ib(factory=dict)  # type: typing.MutableMapping[str, typing.MutableMapping]
     env_vars = attr.ib(factory=dict)  # type: typing.MutableMapping[str, typing.MutableMapping]
-    signals = attr.ib(factory=list)  # type: typing.MutableSequence[Signal]
 
     baudrate = attr.ib(default=0)  # type:int
     fd_baudrate = attr.ib(default=0)  # type:int
@@ -1672,7 +1673,8 @@ class CanMatrix(object):
 
     @property
     def contains_fd(self):  # type: () -> bool
-        for frame in self.frames:
+        for signal in self.signals:
+            frame = signal.frames
             if frame.is_fd:
                 return True
         return False
@@ -1695,8 +1697,8 @@ class CanMatrix(object):
         if attributeName in self.attributes:
             return self.attributes[attributeName]
         elif attributeName in self.global_defines:
-                define = self.global_defines[attributeName]
-                return define.defaultValue
+            define = self.global_defines[attributeName]
+            return define.defaultValue
         else:
             return default
 
@@ -1725,6 +1727,7 @@ class CanMatrix(object):
         :param str definition: signal-attribute string definition, see class Define
         """
         if type not in self.signal_defines:
+            # print(Define(definition))
             self.signal_defines[type] = Define(definition)
 
     def add_frame_defines(self, name, definition):  # type: (str, str) -> None
@@ -1836,7 +1839,7 @@ class CanMatrix(object):
         return None
 
     def frame_by_pgn(self, pgn):  # type: (int) -> typing.Union[Frame, None]
-        """Get Frame by pgn (j1939).
+        """Get Frame by pgn (j1939).n
 
         :param int pgn: pgn to search for
         :rtype: Frame or None
@@ -1848,7 +1851,6 @@ class CanMatrix(object):
                 # of just pgn is needed to do the pf >= 240 check
                 return test
         return None
-
 
     def frame_by_name(self, name):  # type: (str) -> typing.Union[Frame, None]
         """Get Frame by name.
@@ -1906,6 +1908,15 @@ class CanMatrix(object):
         """
         self.frames.append(frame)
         return self.frames[len(self.frames) - 1]
+
+    def add_signal(self, signal):  # type: (Signal) -> Signal
+        """Add the Frame to the Matrix.
+
+        :param Frame frame: Frame to add
+        :return: the inserted Frame
+        """
+        self.signals.append(signal)
+        return self.signals[len(self.signals) - 1]
 
     def remove_frame(self, frame):  # type: (Frame) -> None
         """Remove the Frame from Matrix.
@@ -2044,11 +2055,11 @@ class CanMatrix(object):
         old_name = frame_or_name.name if isinstance(frame_or_name, Frame) else frame_or_name
         for frame in self.frames:
             if old_name[-1] == '*':
-                old_prefix_len = len(old_name)-1
+                old_prefix_len = len(old_name) - 1
                 if frame.name[:old_prefix_len] == old_name[:-1]:
                     frame.name = new_name + frame.name[old_prefix_len:]
             if old_name[0] == '*':
-                old_suffix_len = len(old_name)-1
+                old_suffix_len = len(old_name) - 1
                 if frame.name[-old_suffix_len:] == old_name[1:]:
                     frame.name = frame.name[:-old_suffix_len] + new_name
             elif frame.name == old_name:
@@ -2169,7 +2180,8 @@ class CanMatrix(object):
                 copyResult = canmatrix.copy.copy_frame(frame.arbitration_id, dbTemp, self)
                 if copyResult is False:
                     logger.error(
-                        "ID Conflict, could not copy/merge frame " + frame.name + "  %xh " % frame.arbitration_id.id + self.frame_by_id(frame.arbitration_id).name
+                        "ID Conflict, could not copy/merge frame " + frame.name + "  %xh " % frame.arbitration_id.id + self.frame_by_id(
+                            frame.arbitration_id).name
                     )
             for envVar in dbTemp.env_vars:
                 if envVar not in self.env_vars:
@@ -2177,16 +2189,6 @@ class CanMatrix(object):
                 else:
                     logger.error(
                         "Name Conflict, could not copy/merge EnvVar " + envVar)
-
-    def set_fd_type(self):  # type: () -> None
-        """Try to guess and set the CAN type for every frame.
-
-        If a Frame is longer than 8 bytes, it must be Flexible Data Rate frame (CAN-FD).
-        If not, the Frame type stays unchanged.
-        """
-        for frame in self.frames:
-            if frame.size > 8:
-                frame.is_fd = True
 
     def encode(self, frame_id, data):  # type: (ArbitrationId, typing.Mapping[str, typing.Any]) -> bytes
         """Return a byte string containing the values from data packed
@@ -2234,10 +2236,10 @@ class CanMatrix(object):
                 for bu in self.ecus:
                     if define in bu.attributes:
                         bu.attributes[define] = self.ecu_defines[define].values[int(bu.attributes[define])]
-
         for define in self.frame_defines:
             if self.frame_defines[define].type == "ENUM":
-                for frame in self.frames:
+                for signal in self.signals:
+                    frame = signal.frames
                     if define in frame.attributes:
                         frame.attributes[define] = self.frame_defines[define].values[int(frame.attributes[define])]
 
@@ -2246,7 +2248,8 @@ class CanMatrix(object):
                 for frame in self.frames:
                     for signal in frame.signals:
                         if define in signal.attributes:
-                            signal.attributes[define] = self.signal_defines[define].values[int(signal.attributes[define])]
+                            signal.attributes[define] = self.signal_defines[define].values[
+                                int(signal.attributes[define])]
 
     def enum_attribs_to_keys(self):  # type: () -> None
         for define in self.ecu_defines:
@@ -2258,7 +2261,8 @@ class CanMatrix(object):
                             bu.attributes[define] = str(bu.attributes[define])
         for define in self.frame_defines:
             if self.frame_defines[define].type == "ENUM":
-                for frame in self.frames:
+                for signal in self.signals:
+                    frame = signal.frames
                     if define in frame.attributes:
                         if len(frame.attributes[define]) > 0:
                             frame.attributes[define] = self.frame_defines[define].values.index(frame.attributes[define])
@@ -2268,5 +2272,6 @@ class CanMatrix(object):
                 for frame in self.frames:
                     for signal in frame.signals:
                         if define in signal.attributes:
-                            signal.attributes[define] = self.signal_defines[define].values.index(signal.attributes[define])
+                            signal.attributes[define] = self.signal_defines[define].values.index(
+                                signal.attributes[define])
                             signal.attributes[define] = str(signal.attributes[define])

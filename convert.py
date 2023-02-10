@@ -67,9 +67,8 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
     logger.info("Importing " + infile + " ... ")
     dbs = canmatrix.formats.loadp(infile, **options)
     logger.info("done\n")
-
+    # print(dbs)
     logger.info("Exporting " + out_file_name + " ... ")
-
     out_dbs = {}  # type: typing.Dict[str, canmatrix.CanMatrix]
     for name in dbs:
         db = None
@@ -96,7 +95,6 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         if db is None:
             db = dbs[name]
-
         if 'merge' in options and options['merge'] is not None:
             merge_files = options['merge'].split(',')
             for database in merge_files:
@@ -290,21 +288,21 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
         # Check & Warn for Frame/Messages without Transmitter Node
         if options.get('checkFloatingFrames') is not None and options['checkFloatingFrames']:
             for frame in db.frames:
-                if len(frame.transmitters) is 0:
+                if len(frame.transmitters) == 0:
                     logger.warning("No Transmitter Node Found for Frame %s", frame.name)
 
         # Check & Warn for Signals with Min/Max set to 0
         if options.get('checkSignalRange') is not None and options['checkSignalRange']:
             for frame in db.frames:
                 for signal in frame.signals:
-                    if (signal.phys2raw(signal.max) - signal.phys2raw(signal.min)) is 0:
+                    if (signal.phys2raw(signal.max) - signal.phys2raw(signal.min)) == 0:
                         logger.warning("Invalid Min , Max value of %s", (frame.name+"::"+signal.name))
 
         # Check for Signals without unit and Value table , the idea is to improve signal readability
         if options.get('checkSignalUnit') is not None and options['checkSignalUnit']:
             for frame in db.frames:
                 for signal in frame:
-                    if signal.unit is "" and len(signal.values) == 0:
+                    if signal.unit == "" and len(signal.values) == 0:
                         logger.warning("Please add value table for the signal %s or add appropriate Unit", (frame.name+"::"+signal.name))
 
         # Convert dbc from J1939 to Extended format
@@ -320,10 +318,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
             db.add_attribute("ProtocolType","J1939")
 
         logger.info(name)
-        logger.info("%d Frames found" % (db.frames.__len__()))
+        logger.info("%d Signals found" % (db.signals.__len__()))
 
         out_dbs[name] = db
-
     if 'force_output' in options and options['force_output'] is not None:
         canmatrix.formats.dumpp(out_dbs, out_file_name, export_type=options[
                                 'force_output'], **options)
