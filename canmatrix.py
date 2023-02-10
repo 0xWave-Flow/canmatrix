@@ -2238,10 +2238,12 @@ class CanMatrix(object):
                         bu.attributes[define] = self.ecu_defines[define].values[int(bu.attributes[define])]
         for define in self.frame_defines:
             if self.frame_defines[define].type == "ENUM":
+                curr_frame = ''
                 for signal in self.signals:
-                    frame = signal.frames
-                    if define in frame.attributes:
+                    frame = signal.frames[0]
+                    if define in frame.attributes and frame != curr_frame:
                         frame.attributes[define] = self.frame_defines[define].values[int(frame.attributes[define])]
+                        curr_frame = frame
 
         for define in self.signal_defines:
             if self.signal_defines[define].type == "ENUM":
@@ -2275,3 +2277,4 @@ class CanMatrix(object):
                             signal.attributes[define] = self.signal_defines[define].values.index(
                                 signal.attributes[define])
                             signal.attributes[define] = str(signal.attributes[define])
+

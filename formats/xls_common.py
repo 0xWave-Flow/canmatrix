@@ -26,6 +26,11 @@ from builtins import *
 
 import canmatrix
 
+def remove_suffix(inputstring, suffix):
+    if suffix and inputstring.endswith(suffix):
+        return inputstring[:-len(suffix)]
+    return inputstring
+
 
 def get_frame_info(db, frame):
     # type: (canmatrix.CanMatrix, canmatrix.Frame) -> typing.List[str]
@@ -181,7 +186,7 @@ def get_signal(db, frame, sig, motorola_bit_format):
     coding = str()
     for val in sorted(sig.values.keys()):
         coding += str(val) + ':' + sig.values[val] + '\n'
-    coding = coding.removesuffix('\n')
+    coding = remove_suffix(coding, '\n')
     front_array.append(coding)
 
     # Signal Group

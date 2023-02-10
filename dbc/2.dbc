@@ -1,0 +1,367 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: IP Tester MyEcu BCM
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ KeyID : 0|16@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1026 MyEcu_RxMessage_0x402: 8 Vector__XXX
+ SG_ BCM_ErrorLog_Code : 15|24@0+ (1,0) [0|0] ""  MyEcu
+ SG_ BCM_ErrorLog_Type : 7|4@0+ (1,0) [0|0] ""  MyEcu
+ SG_ BCM_ErrorLog_Level : 3|4@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1360 MyEcu_RxMessage_0x550: 8 Vector__XXX
+ SG_ BCM_VehicleSTS_VehSpeed : 31|8@0+ (1,0) [0|0] ""  MyEcu
+ SG_ BCM_VehicleSTS_OutTemp : 15|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ BCM_VehicleSTS_VehBattVolt : 7|8@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1286 MyEcu_RxMessage_0x506: 8 Vector__XXX
+ SG_ BCM_SmartKey_KeyCommand : 23|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ BCM_SmartKey_KeyID : 7|16@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1285 MyEcu_RxMessage_0x505: 8 Vector__XXX
+ SG_ UWB4Distance : 55|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ UWB3Distance : 39|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ UWB2Distance : 23|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ UWB1Distance : 7|16@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1284 MyEcu_RxMessage_0x504: 8 Vector__XXX
+ SG_ CMDCode : 31|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ Command : 23|8@0+ (1,0) [0|0] ""  MyEcu
+ SG_ KeyID : 7|16@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1283 MyEcu_RxMessage_0x503: 8 Vector__XXX
+ SG_ KeyID : 23|16@0+ (1,0) [0|0] ""  MyEcu
+ SG_ Reversed : 15|4@0+ (1,0) [0|0] ""  MyEcu
+ SG_ KeyStatus : 11|4@0+ (1,0) [0|0] ""  MyEcu
+ SG_ SmartKeyType : 7|4@0+ (1,0) [0|0] ""  MyEcu
+ SG_ SmartKeyNum : 3|4@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1025 MyEcu_RxMessage_0x401: 8 Vector__XXX
+ SG_ BLEModuleStatus : 7|8@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 770 MyEcu_TxMessage_0x302: 8 MyEcu
+ SG_ VIU_Debug_STDReturn : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VIU_Debug_MEID : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VIU_Debug_ServiceID : 7|16@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 769 MyEcu_TxMessage_0x301: 8 MyEcu
+ SG_ VIU_HeartBeat_Status : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 880 MyEcu_Xcp_Rx: 8 Vector__XXX
+ SG_ Xcp_Rx_Signal : 7|64@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 873 MyEcu_Xcp_Tx: 8 Vector__XXX
+ SG_ Xcp_Tx_Signal : 7|64@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 652 BCM6: 8 Vector__XXX
+ SG_ HeatRearWndSwtReq : 11|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 837 BCM3: 8 Vector__XXX
+ SG_ DoorLockSts : 13|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ AntitheftSts : 15|2@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1383 MyEcu_GatewayMessage_Demo_0x567: 8 Vector__XXX
+ SG_ Rx_8bitSignal_Gateway_Demo : 21|8@0+ (1,0) [0|0] ""  MyEcu
+ SG_ Rx_1bitSignal_Gateway_Demo : 22|1@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1110 MyEcu_RxMessage_0x456: 8 Vector__XXX
+ SG_ MyEcu_RxTestSignal0 : 13|1@0+ (1,0) [0|0] ""  MyEcu
+ SG_ MyEcu_RxTestSignal1 : 12|13@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1299 MyEcu_NM: 8 MyEcu
+ SG_ NM_WakeupReason_Bit2 : 26|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_WakeupReason_Bit1 : 25|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_WakeupReason_Bit0 : 24|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_AwakeReason : 32|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_RMS_FlAG : 16|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_NodeId : 7|8@0+ (1,0) [0|0] ""  BCM
+ SG_ NM_CBV_RMR : 8|1@0+ (1,0) [0|0] ""  BCM
+ SG_ NM_CBV_AWB : 12|1@0+ (1,0) [0|0] ""  BCM
+
+BO_ 1652 KostiaResponse: 8 MyEcu
+ SG_ KostiaResponse : 7|64@0+ (1,0) [0|0] ""  Tester
+
+BO_ 1653 KostiaRequest: 8 Tester
+ SG_ KostiaRequest : 7|64@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1980 MyEcu_Diag_Phy_Resp: 8 MyEcu
+ SG_ DiagResponse : 7|64@0+ (1,0) [0|0] ""  Tester
+
+BO_ 1888 MyEcu_Diag_Fun_Req: 8 Tester
+ SG_ DiagRequestFunc : 7|64@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 1916 MyEcu_Diag_Phy_Req: 8 Tester
+ SG_ DiagRequest : 7|64@0+ (1,0) [0|0] ""  MyEcu
+
+BO_ 291 MyEcu_TxMessage_0x123: 16 MyEcu
+ SG_ MyEcu_TxTestSignal0 : 16|1@0+ (1,0) [0|1] ""  BCM
+ SG_ MyEcu_TxTestSignal1 : 15|15@0+ (0.1,0) [0|780] "бу"  BCM
+ SG_ MyEcu_TxTestSignal2 : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
+BA_DEF_ BO_  "SCP_FreshnessValueTxLength" INT 0 512;
+BA_DEF_ BO_  "SCP_FreshnessValueLength" INT 0 512;
+BA_DEF_ BO_  "SCP_FreshnessValueId" INT 0 65535;
+BA_DEF_ BO_  "SCP_DataId" INT 0 65535;
+BA_DEF_ BO_  "SCP_AuthInfoTxLength" INT 0 512;
+BA_DEF_ BO_  "SC_Message" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmMessage" ENUM  "no","yes";
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 255;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "NotUsed","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepeition","NoSigSendType";
+BA_DEF_ SG_  "VNSigSLHS_VNReq" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigPrimaryTriggering" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigParkedVehicle" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigIntermediate" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigInfotainment" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigAllNodes" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigSLHSSharedDiagnostic" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigSLHS_VNHVEM" ENUM  "No","Yes";
+BA_DEF_ SG_  "VNSigDiagnostic" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigSendOnInit" ENUM  "Not Initialized","Application","Handler";
+BA_DEF_ SG_  "GenSigSendTopBottom" ENUM  "None","SendAtTop","SendAtBottom","SendAtTopBottom";
+BA_DEF_ SG_  "GenSigDeltaValue" INT 0 65535;
+BA_DEF_ SG_  "SignalType" STRING ;
+BA_DEF_ SG_  "SignalLongName" STRING ;
+BA_DEF_ SG_  "PacketOrder" INT 0 65535;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ SG_  "GenSigStartValue" INT 0 65535;
+BA_DEF_ BO_  "DiagUUDTResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmAsrMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","NoMsgSendType";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BO_  "TpTxIndex" INT 0 99;
+BA_DEF_ BO_  "MessageSubnet" ENUM  "BB","PB","CB","Body","HS","Powertrain","Chassis","Spare","PE","CC";
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagConnection" INT 0 100;
+BA_DEF_ BU_  "NmAsrCanMsgReducedTime" INT 0 65535;
+BA_DEF_ BU_  "NmAsrCanMsgCycleOffset" INT 0 65535;
+BA_DEF_ BU_  "NmAsrNodeIdentifier" HEX 0 255;
+BA_DEF_ BU_  "NmAsrNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "SourceId" HEX 0 255;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "ECU_Id" HEX 0 255;
+BA_DEF_  "NmAsrCanMsgCycleTime" INT 0 65535;
+BA_DEF_  "NmAsrRepeatMessageTime" INT 0 65525;
+BA_DEF_  "NmAsrWaitBusSleepTime" INT 0 65535;
+BA_DEF_  "NmAsrTimeoutTime" INT 0 65535;
+BA_DEF_  "NmAsrBaseAddress" HEX 0 1535;
+BA_DEF_  "NmAsrMessageCount" INT 0 256;
+BA_DEF_  "SyncJumpWidthMax" INT 0 255;
+BA_DEF_  "SyncJumpWidthMin" INT 0 255;
+BA_DEF_  "SamplePointMax" FLOAT 0 100;
+BA_DEF_  "SamplePointMin" FLOAT 0 100;
+BA_DEF_  "VersionNumber" INT 0 65535;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "BusOffRecoveryTime" INT 0 65535;
+BA_DEF_  "Baudrate" INT 0 1000000;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_REL_ BU_SG_REL_  "SC_Verification" ENUM  "No","Yes";
+BA_DEF_REL_ BU_SG_REL_  "GenSigVDAFailComment" STRING ;
+BA_DEF_REL_ BU_SG_REL_  "GenSigSuprvRespComment" STRING ;
+BA_DEF_REL_ BU_SG_REL_  "GenSigRxStartValue" STRING ;
+BA_DEF_REL_ BU_SG_REL_  "GenSigVDAFailResp" ENUM  "No","Yes";
+BA_DEF_REL_ BU_SG_REL_  "GenSigVBitRespComment" STRING ;
+BA_DEF_REL_ BU_SG_REL_  "GenSigVBitResp" ENUM  "No","Yes";
+BA_DEF_REL_ BU_SG_REL_  "GenSigSuprvRespSubValue" INT 0 65535;
+BA_DEF_REL_ BU_SG_REL_  "GenSigSuprvResp" ENUM  "None","Notify App","Substitute Default";
+BA_DEF_REL_ BU_SG_REL_  "GenSigTimeoutTime" INT 0 15000;
+BA_DEF_REL_ BU_SG_REL_  "GenSigTimeoutMsg" HEX 0 2032;
+BA_DEF_DEF_  "VFrameFormat" "ExtendedCAN_FD";
+BA_DEF_DEF_  "SCP_FreshnessValueTxLength" 4;
+BA_DEF_DEF_  "SCP_FreshnessValueLength" 48;
+BA_DEF_DEF_  "SCP_FreshnessValueId" 0;
+BA_DEF_DEF_  "SCP_DataId" 0;
+BA_DEF_DEF_  "SCP_AuthInfoTxLength" 28;
+BA_DEF_DEF_  "SC_Message" "No";
+BA_DEF_DEF_  "NmMessage" "no";
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "VNSigSLHS_VNReq" "No";
+BA_DEF_DEF_  "VNSigPrimaryTriggering" "No";
+BA_DEF_DEF_  "VNSigParkedVehicle" "No";
+BA_DEF_DEF_  "VNSigIntermediate" "No";
+BA_DEF_DEF_  "VNSigInfotainment" "No";
+BA_DEF_DEF_  "VNSigAllNodes" "No";
+BA_DEF_DEF_  "VNSigSLHSSharedDiagnostic" "No";
+BA_DEF_DEF_  "VNSigSLHS_VNHVEM" "No";
+BA_DEF_DEF_  "VNSigDiagnostic" "No";
+BA_DEF_DEF_  "GenSigSendOnInit" "Not Initialized";
+BA_DEF_DEF_  "GenSigSendTopBottom" "None";
+BA_DEF_DEF_  "GenSigDeltaValue" 0;
+BA_DEF_DEF_  "SignalType" "";
+BA_DEF_DEF_  "SignalLongName" "";
+BA_DEF_DEF_  "PacketOrder" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "DiagUUDTResponse" "No";
+BA_DEF_DEF_  "NmAsrMessage" "No";
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "TpTxIndex" 0;
+BA_DEF_DEF_  "MessageSubnet" "Body";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "DiagConnection" 0;
+BA_DEF_DEF_  "NmAsrCanMsgReducedTime" 0;
+BA_DEF_DEF_  "NmAsrCanMsgCycleOffset" 0;
+BA_DEF_DEF_  "NmAsrNodeIdentifier" 0;
+BA_DEF_DEF_  "NmAsrNode" "Yes";
+BA_DEF_DEF_  "SourceId" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "ECU_Id" 0;
+BA_DEF_DEF_  "NmAsrCanMsgCycleTime" 0;
+BA_DEF_DEF_  "NmAsrRepeatMessageTime" 0;
+BA_DEF_DEF_  "NmAsrWaitBusSleepTime" 0;
+BA_DEF_DEF_  "NmAsrTimeoutTime" 0;
+BA_DEF_DEF_  "NmAsrBaseAddress" 0;
+BA_DEF_DEF_  "NmAsrMessageCount" 22;
+BA_DEF_DEF_  "SyncJumpWidthMax" 3;
+BA_DEF_DEF_  "SyncJumpWidthMin" 4;
+BA_DEF_DEF_  "SamplePointMax" 80;
+BA_DEF_DEF_  "SamplePointMin" 81.25;
+BA_DEF_DEF_  "VersionNumber" 0;
+BA_DEF_DEF_  "Manufacturer" "Vector";
+BA_DEF_DEF_  "BusOffRecoveryTime" 160;
+BA_DEF_DEF_  "Baudrate" 500000;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "NmType" "NmAsr";
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_REL_ "SC_Verification" "Yes";
+BA_DEF_DEF_REL_ "GenSigVDAFailComment" "";
+BA_DEF_DEF_REL_ "GenSigSuprvRespComment" "";
+BA_DEF_DEF_REL_ "GenSigRxStartValue" "";
+BA_DEF_DEF_REL_ "GenSigVDAFailResp" "No";
+BA_DEF_DEF_REL_ "GenSigVBitRespComment" "";
+BA_DEF_DEF_REL_ "GenSigVBitResp" "No";
+BA_DEF_DEF_REL_ "GenSigSuprvRespSubValue" 0;
+BA_DEF_DEF_REL_ "GenSigSuprvResp" "None";
+BA_DEF_DEF_REL_ "GenSigTimeoutTime" 500;
+BA_DEF_DEF_REL_ "GenSigTimeoutMsg" 0;
+BA_ "VersionNumber" 1;
+BA_ "SamplePointMin" 75;
+BA_ "SamplePointMax" 85;
+BA_ "SyncJumpWidthMin" 3;
+BA_ "SyncJumpWidthMax" 4;
+BA_ "NmAsrMessageCount" 128;
+BA_ "NmAsrTimeoutTime" 2000;
+BA_ "NmAsrWaitBusSleepTime" 5000;
+BA_ "NmAsrRepeatMessageTime" 1500;
+BA_ "NmAsrCanMsgCycleTime" 500;
+BA_ "BusType" "CAN FD";
+BA_ "Manufacturer" "Vector";
+BA_ "NmAsrBaseAddress" 1280;
+BA_ "DBName" "BODY";
+BA_ "ECU_Id" BU_ MyEcu 8;
+BA_ "SourceId" BU_ MyEcu 19;
+BA_ "NmAsrNodeIdentifier" BU_ MyEcu 19;
+BA_ "NmAsrCanMsgReducedTime" BU_ MyEcu 320;
+BA_ "NmAsrCanMsgReducedTime" BU_ BCM 350;
+BA_ "NmAsrCanMsgCycleOffset" BU_ BCM 30;
+BA_ "ECU_Id" BU_ BCM 4;
+BA_ "SourceId" BU_ BCM 4;
+BA_ "NmAsrNodeIdentifier" BU_ BCM 4;
+BA_ "VFrameFormat" BO_ 1026 0;
+BA_ "VFrameFormat" BO_ 1360 0;
+BA_ "VFrameFormat" BO_ 1286 0;
+BA_ "VFrameFormat" BO_ 1285 0;
+BA_ "VFrameFormat" BO_ 1284 0;
+BA_ "VFrameFormat" BO_ 1283 0;
+BA_ "VFrameFormat" BO_ 1025 0;
+BA_ "VFrameFormat" BO_ 770 0;
+BA_ "VFrameFormat" BO_ 769 0;
+BA_ "GenMsgILSupport" BO_ 880 0;
+BA_ "GenMsgCycleTime" BO_ 880 1000;
+BA_ "VFrameFormat" BO_ 880 0;
+BA_ "GenMsgILSupport" BO_ 873 0;
+BA_ "VFrameFormat" BO_ 873 0;
+BA_ "GenMsgSendType" BO_ 652 0;
+BA_ "GenMsgCycleTime" BO_ 652 100;
+BA_ "VFrameFormat" BO_ 652 0;
+BA_ "VFrameFormat" BO_ 837 0;
+BA_ "GenMsgSendType" BO_ 1383 0;
+BA_ "GenMsgCycleTime" BO_ 1383 50;
+BA_ "VFrameFormat" BO_ 1383 0;
+BA_ "GenMsgCycleTime" BO_ 1110 20;
+BA_ "VFrameFormat" BO_ 1110 0;
+BA_ "GenMsgILSupport" BO_ 1299 0;
+BA_ "NmAsrMessage" BO_ 1299 1;
+BA_ "VFrameFormat" BO_ 1299 0;
+BA_ "GenMsgILSupport" BO_ 1652 0;
+BA_ "VFrameFormat" BO_ 1652 0;
+BA_ "GenMsgILSupport" BO_ 1653 0;
+BA_ "VFrameFormat" BO_ 1653 0;
+BA_ "DiagConnection" BO_ 1980 1;
+BA_ "GenMsgILSupport" BO_ 1980 0;
+BA_ "DiagResponse" BO_ 1980 1;
+BA_ "VFrameFormat" BO_ 1980 0;
+BA_ "DiagConnection" BO_ 1888 1;
+BA_ "GenMsgILSupport" BO_ 1888 0;
+BA_ "DiagState" BO_ 1888 1;
+BA_ "VFrameFormat" BO_ 1888 0;
+BA_ "DiagConnection" BO_ 1916 1;
+BA_ "GenMsgILSupport" BO_ 1916 0;
+BA_ "DiagRequest" BO_ 1916 1;
+BA_ "VFrameFormat" BO_ 1916 0;
+BA_ "GenMsgCycleTime" BO_ 291 100;
+BA_ "GenMsgSendType" BO_ 291 0;
+BA_ "VFrameFormat" BO_ 291 14;
+VAL_ 1299 NM_WakeupReason_Bit2 1 "Local wake-up reason" ;
+VAL_ 1299 NM_WakeupReason_Bit1 1 "CAN wake-up" ;
+VAL_ 1299 NM_WakeupReason_Bit0 1 "Terminal 15 on" ;
+VAL_ 1299 NM_AwakeReason 1 "Local wake-up reason" 0 "Default value" ;
+VAL_ 1299 NM_RMS_FlAG 1 "not in repeat message state" 0 "In repeat message state" ;
+VAL_ 1299 NM_CBV_RMR 1 "RepeatMessage State requested" 0 "RepeatMessage State no requested" ;
+VAL_ 1299 NM_CBV_AWB 1 "Node has waken up the network" 0 "Node not woken up the network" ;
+VAL_ 291 MyEcu_TxTestSignal0 1 "Right (Negative)" 0 "Left (Positive)" ;
+
