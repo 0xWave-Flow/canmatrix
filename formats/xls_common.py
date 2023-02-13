@@ -26,10 +26,7 @@ from builtins import *
 
 import canmatrix
 
-def remove_suffix(inputstring, suffix):
-    if suffix and inputstring.endswith(suffix):
-        return inputstring[:-len(suffix)]
-    return inputstring
+
 
 
 def get_frame_info(db, frame):
@@ -53,6 +50,12 @@ def get_frame_info(db, frame):
     ret_array.append(frame.effective_cycle_time)
 
     return ret_array
+
+
+def removesuffix(input_string, suffix):
+    if suffix and input_string.endswith(suffix):
+        return input_string[:-len(suffix)]
+    return input_string
 
 
 def get_signal(db, frame, sig, motorola_bit_format):
@@ -186,7 +189,8 @@ def get_signal(db, frame, sig, motorola_bit_format):
     coding = str()
     for val in sorted(sig.values.keys()):
         coding += str(val) + ':' + sig.values[val] + '\n'
-    coding = remove_suffix(coding, '\n')
+    #coding = coding.removesuffix('\n')
+    coding = removesuffix(coding,'\n')
     front_array.append(coding)
 
     # Signal Group

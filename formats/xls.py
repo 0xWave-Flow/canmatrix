@@ -435,7 +435,7 @@ def load(file, **options):
             signal_length = int(sh.cell(row_num, index['Size']).value)
 
             # cycle_time
-            cycle_time = int(sh.cell(row_num, index['Period']).value)
+            cycle_time = 0
 
             # byte order
             if index.get("ByteOrder", False):
@@ -516,8 +516,7 @@ def load(file, **options):
             frame_id = sh.cell(row_num, index['MessageID']).value
 
             # period (follow signal period)
-            # cycle_time = int(sh.cell(row_num, index['Period']).value)
-
+            cycle_time = int(sh.cell(row_num, index['Period']).value)
             # dlc
             dlc = int(sh.cell(row_num, index['DLC']).value)
 
@@ -526,6 +525,8 @@ def load(file, **options):
 
             # create Canmatrix frame
             new_frame: object = canmatrix.Frame(frame_name, size=dlc)
+            
+            new_frame.cycle_time = cycle_time
 
             # eval transmitter
             new_frame.transmitters = transmitter
@@ -538,7 +539,6 @@ def load(file, **options):
 
             # add frame information to signal
             new_signal.frames = new_frame
-
     # read rows values loop end
 
     # add vframeformat
