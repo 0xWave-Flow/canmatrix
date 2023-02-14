@@ -37,6 +37,9 @@ sys.path.append('..')  # todo remove?
 
 
 def convert_pdu_container_to_multiplexed(frame):  # type: (canmatrix.Frame) -> canmatrix.Frame
+
+    print("def : convert - convert_pdu_container_to_multiplexed")
+
     new_frame = copy.deepcopy(frame)
     if not frame.is_pdu_container:
         return new_frame
@@ -64,6 +67,9 @@ def convert_pdu_container_to_multiplexed(frame):  # type: (canmatrix.Frame) -> c
 
 
 def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> None
+
+    print("def : convert - convert")
+
     logger.info("Importing " + infile + " ... ")
     dbs = canmatrix.formats.loadp(infile, **options)
     logger.info("done\n")

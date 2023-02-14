@@ -35,6 +35,9 @@ logger = logging.getLogger(__name__)
 
 
 def get_formats():
+
+    print("def : cli - convert - get_formats")
+
     input = ""
     output = ""
     for suppFormat, features in canmatrix.formats.supportedFormats.items():
@@ -129,6 +132,9 @@ Example --signalNameFromAttrib SysSignalName\nARXML known Attributes: SysSignalN
 @click.argument('outfile', required=True)
 #
 def cli_convert(infile, outfile, silent, verbosity, **options):
+
+    print("def : cli - convert - cli_convert")
+
     """
     canmatrix.cli.convert [options] import-file export-file
 

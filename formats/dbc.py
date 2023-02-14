@@ -41,10 +41,16 @@ logger = logging.getLogger(__name__)
 
 
 def default_float_factory(value):  # type: (typing.Any) -> decimal.Decimal
+
+    print("def : format - dbc - default_float_factory")
+
     return decimal.Decimal(value)
 
 
 def normalize_name(name, whitespace_replacement):  # type: (str, str) -> str
+
+    print("def : format - dbc - normalize_name")
+
     name = re.sub(r'\s+', whitespace_replacement, name)
 
     if ' ' in name:
@@ -54,6 +60,9 @@ def normalize_name(name, whitespace_replacement):  # type: (str, str) -> str
 
 
 def format_float(f):  # type: (typing.Any) -> str
+
+    print("def : format - dbc - format_float")
+
     s = str(f).upper()
     if s.endswith('.0'):
         s = s[:-2]
@@ -66,6 +75,9 @@ def format_float(f):  # type: (typing.Any) -> str
 
 
 def check_define(define):  # type: (canmatrix.Define) -> None
+
+    print("def : format - dbc - check_define")
+
     # check if define is compatible with dbc. else replace by STRING
     if define.type not in ["ENUM", "STRING", "INT", "HEX", "FLOAT"]:
         logger.warning("dbc export of attribute type %s not supported; replaced by STRING", define.type)
@@ -74,6 +86,9 @@ def check_define(define):  # type: (canmatrix.Define) -> None
 
 
 def create_define(data_type, define, define_type, defaults):
+
+    print("def : format - dbc - create_define")
+
     # type: (str, canmatrix.Define, str, typing.MutableMapping[str, str]) -> str
     check_define(define)
     define_string = "BA_DEF_ " + define_type
@@ -89,6 +104,9 @@ def create_define(data_type, define, define_type, defaults):
 
 
 def create_attribute_string(attribute, attribute_class, name, value, is_string):
+
+    print("def : format - dbc - create_attribute_string")
+
     # type: (str, str, str, typing.Any, bool) -> str
     if is_string:
         value = '"' + value + '"'
@@ -100,6 +118,9 @@ def create_attribute_string(attribute, attribute_class, name, value, is_string):
 
 def create_comment_string(comment_class, comment_ident, comment, export_encoding, export_comment_encoding,
                           ignore_encoding_errors):
+
+    print("def : format - dbc - create_comment_string")
+
     # type: (str, str, str, str, str, str) -> bytes
     if len(comment) == 0:
         return b""
@@ -110,6 +131,9 @@ def create_comment_string(comment_class, comment_ident, comment, export_encoding
 
 
 def dump(in_db, f, **options):
+
+    print("def : format - dbc - dump")
+
     # type: (canmatrix.CanMatrix, typing.IO, **typing.Any) -> None
     # create copy because export changes database
     db = copy.deepcopy(in_db)
@@ -487,6 +511,9 @@ class _FollowUps(object):
 
 
 def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatrix
+
+    print("def : format - dbc - load")
+
     dbc_import_encoding = options.get("dbcImportEncoding", 'UTF-8')
     dbc_comment_encoding = options.get("dbcImportCommentEncoding", dbc_import_encoding)
     float_factory = options.get('float_factory', default_float_factory)

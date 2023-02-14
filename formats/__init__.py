@@ -46,6 +46,9 @@ for loadedModule in loadedFormats:
 
 
 def loads(string, import_type=None, key="", encoding="utf-8", **options):
+
+    print("def : format - __init__ - loads")
+
     # type: (typing.Union[bytes,str], str, str, str, **str) -> typing.Union[typing.Dict[str, canmatrix.CanMatrix], None]
     bytes_str = string.encode(encoding=encoding) if isinstance(string, str) else string
     file_object = BytesIO(bytes_str)
@@ -53,12 +56,18 @@ def loads(string, import_type=None, key="", encoding="utf-8", **options):
 
 
 def loads_flat(string, import_type=None, key="", **options):
+
+    print("def : format - __init__ - loads_flat")
+
     # type: (str, str, typing.Optional[str], **str) -> typing.Union[canmatrix.CanMatrix, None]
     dbs = loads(string, import_type, key, **options)
     return dbs.popitem()[1] if dbs else None
 
 
 def loadp(path, import_type=None, key="", **options):
+
+    print("def : format - __init__ - loadp")
+
     # type: (str, str, str, **str) -> typing.Union[typing.Dict[str, canmatrix.CanMatrix], None]
     with open(path, "rb") as fileObject:
         if not import_type:
@@ -74,12 +83,18 @@ def loadp(path, import_type=None, key="", **options):
 
 
 def loadp_flat(path, import_type=None, key="", **options):
+
+    print("def : format - __init__ - loadp_flat")
+
     # type: (str, str, str, **str) -> typing.Union[canmatrix.CanMatrix, None]
     dbs = loadp(path, import_type, key, **options)
     return dbs.popitem()[1] if dbs else None
 
 
 def load(file_object, import_type, key="", **options):
+
+    print("def : format - __init__ - load")
+
     # type: (typing.BinaryIO, str, str, **str) -> typing.Union[typing.Dict[str, canmatrix.CanMatrix], None]
     dbs = {}  # type: typing.Dict[str, canmatrix.CanMatrix]
     module_instance = sys.modules["canmatrix.formats." + import_type]
@@ -91,12 +106,18 @@ def load(file_object, import_type, key="", **options):
 
 
 def load_flat(file_object, import_type, key="", **options):
+
+    print("def : format - __init__ - load_flat")
+
     # type: (typing.BinaryIO, str, str, **str) -> typing.Union[canmatrix.CanMatrix, None]
     dbs = load(file_object, import_type, key, **options)
     return dbs.popitem()[1] if dbs else None
 
 
 def dump(can_matrix_or_cluster, file_object, export_type, **options):
+
+    print("def : format - __init__ - dump")
+
     # type: (typing.Union[canmatrix.CanMatrix, typing.Mapping[str, canmatrix.CanMatrix]], typing.IO, str, **str) -> None
     module_instance = sys.modules["canmatrix.formats." + export_type]
     if isinstance(can_matrix_or_cluster, canmatrix.CanMatrix):
@@ -106,6 +127,9 @@ def dump(can_matrix_or_cluster, file_object, export_type, **options):
 
 
 def dumpp(can_cluster, path, export_type=None, **options):
+
+    print("def : format - __init__ - dumpp")
+
     # type: (typing.Mapping[str, canmatrix.CanMatrix], str, str, **str) -> None
     if not export_type:
         for key, extension in extensionMapping.items():

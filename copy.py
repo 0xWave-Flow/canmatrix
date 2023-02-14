@@ -31,6 +31,9 @@ import canmatrix
 logger = logging.getLogger(__name__)
 
 def copy_ecu(ecu_or_glob, source_db, target_db):
+
+    print("def : copy - copy_ecu")
+
     # type: (typing.Union[canmatrix.Ecu, str], canmatrix.CanMatrix, canmatrix.CanMatrix) -> None
     """
     Copy ECU(s) identified by Name or as Object from source CAN matrix to target CAN matrix.
@@ -70,6 +73,9 @@ def copy_ecu(ecu_or_glob, source_db, target_db):
 
 
 def copy_ecu_with_frames(ecu_or_glob, source_db, target_db, rx=True, tx=True, direct_ecu_only=True):
+
+    print("def : copy - copy_ecu_with_frames")
+
     # type: (typing.Union[canmatrix.Ecu, str], canmatrix.CanMatrix, canmatrix.CanMatrix) -> None
     """
     Copy ECU(s) identified by Name or as Object from source CAN matrix to target CAN matrix.
@@ -122,6 +128,9 @@ def copy_ecu_with_frames(ecu_or_glob, source_db, target_db, rx=True, tx=True, di
             target_db.del_ecu(ecu)
 
 def copy_signal(signal_glob, source_db, target_db):
+
+    print("def : copy - copy_signal")
+
     # type: (str, canmatrix.CanMatrix, canmatrix.CanMatrix) -> None
     """
     Copy Signals identified by name from source CAN matrix to target CAN matrix.
@@ -156,6 +165,9 @@ def copy_signal(signal_glob, source_db, target_db):
 
 
 def copy_frame(frame_id, source_db, target_db):
+
+    print("def : copy - copy_frame")
+
     # type: (canmatrix.ArbitrationId, canmatrix.CanMatrix, canmatrix.CanMatrix) -> bool
     """
     Copy a Frame identified by ArbitrationId from source CAN matrix to target CAN matrix.

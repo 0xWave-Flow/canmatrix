@@ -30,6 +30,9 @@ import canmatrix
 
 
 def get_frame_info(db, frame):
+
+    print("def : format - xls_common - get_frame_info")
+
     # type: (canmatrix.CanMatrix, canmatrix.Frame) -> typing.List[str]
     ret_array = []  # type: typing.List[str]
 
@@ -53,12 +56,18 @@ def get_frame_info(db, frame):
 
 
 def removesuffix(input_string, suffix):
+
+    print("def : format - xls_common - removesuffix")
+
     if suffix and input_string.endswith(suffix):
         return input_string[:-len(suffix)]
     return input_string
 
 
 def get_signal(db, frame, sig, motorola_bit_format):
+
+    print("def : format - xls_common - get_signal")
+
     # type: (canmatrix.CanMatrix, canmatrix.Frame, canmatrix.Signal, str) -> typing.Tuple[typing.List, typing.List]
     front_array = []  # type: typing.List[typing.Union[str, float]]
 

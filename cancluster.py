@@ -10,6 +10,9 @@ import canmatrix
 class CanCluster(dict):
 
     def __init__(self, *arg, **kw):
+
+        print("def : cancluster - __init__")
+
         super(CanCluster, self).__init__(*arg, **kw)
         self._frames = []  # type: typing.List[canmatrix.Frame]
         self._signals = []  # type: typing.List[canmatrix.Signal]
@@ -17,6 +20,9 @@ class CanCluster(dict):
         self.update()
 
     def update_frames(self):  # type: () -> typing.MutableSequence[canmatrix.Frame]
+
+        print("def : cancluster - update_frames")
+
         frames = []  # type: typing.List[canmatrix.Frame]
         frame_names = []  # type: typing.List[str]
         for matrixName in self:
@@ -34,6 +40,9 @@ class CanCluster(dict):
         return frames
 
     def update_signals(self):  # type: () -> typing.MutableSequence[canmatrix.Signal]
+
+        print("def : cancluster - update_signals")
+
         signals = []  # type: typing.List[canmatrix.Signal]
         signal_names = []  # type: typing.List[str]
         for matrixName in self:
@@ -50,6 +59,9 @@ class CanCluster(dict):
         return signals
 
     def update_ecus(self):  # type: () -> typing.MutableSequence[canmatrix.Ecu]
+
+        print("def : cancluster - update_ecus")
+
         ecus = []  # type: typing.List[canmatrix.Ecu]
         ecu_names = []  # type: typing.List[str]
         for matrixName in self:
@@ -61,24 +73,36 @@ class CanCluster(dict):
         return ecus
 
     def update(self):
+
+        print("def : cancluster - update")
+
         self.update_frames()
         self.update_signals()
         self.update_ecus()
 
     @property
     def ecus(self):  # type: () -> typing.MutableSequence[canmatrix.Ecu]
+
+        print("def : cancluster - ecus")
+
         if not self._ecus:
             self.update_ecus()
         return self._ecus
 
     @property
     def frames(self):  # type: () -> typing.MutableSequence[canmatrix.Frame]
+
+        print("def : cancluster - frames")
+
         if not self._frames:
             self.update_frames()
         return self._frames
 
     @property
     def signals(self):  # type: () -> typing.MutableSequence[canmatrix.Signal]
+
+        print("def : cancluster - signals")
+
         if not self._signals:
             self.update_signals()
         return self._signals

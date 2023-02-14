@@ -28,6 +28,9 @@ import logging
 
 
 def setup_logger():  # type: () -> logging.Logger
+
+    print("def : log - setup_logger")
+
     """Setup the root logger. Return the logger instance for possible further setting and use.
 
     To be used from CLI scripts only.
@@ -45,6 +48,9 @@ def setup_logger():  # type: () -> logging.Logger
 
 
 def set_log_level(logger, level):  # type: (logging.Logger, int) -> None
+
+    print("def : log - set_log_level")
+
     """Dynamic reconfiguration of the log level"""
     if level > 2:
         level = 2

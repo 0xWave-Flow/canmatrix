@@ -63,6 +63,9 @@ if xlwt is not None:
 
 
 def write_ecu_matrix(ecus, sig, frame, worksheet, row, col, first_frame):
+
+    print("def : format - xls - write_ecu_matrix")
+
     # type: (typing.Sequence[str], typing.Optional[canmatrix.Signal], canmatrix.Frame, xlwt.Worksheet, int, int, xlwt.XFStyle) -> int
     # first-frame - style with borders:
     if first_frame == sty_first_frame:
@@ -103,14 +106,19 @@ def write_ecu_matrix(ecus, sig, frame, worksheet, row, col, first_frame):
 
 
 def write_excel_line(worksheet, row, col, row_array, style):
+
+    print("def : format - xls - write_excel_line")
+
     # type: (xlwt.Worksheet, int, int, typing.Sequence, xlwt.XFStyle) -> int
     for item in row_array:
         worksheet.write(row, col, label=item, style=style)
         col += 1
     return col
 
-
 def dump(db, file, **options):
+
+    print("def : format - xls - dump")
+
     # type: (canmatrix.CanMatrix, typing.IO, **typing.Any) -> None
     head_top = ['ID', 'Frame Name', 'Cycle Time [ms]', 'Launch Type', 'Launch Parameter', 'Signal Byte No.',
                 'Signal Bit No.', 'Signal Name', 'Signal Function', 'Signal Length [Bit]', 'Signal Default',
@@ -304,6 +312,9 @@ def dump(db, file, **options):
 # ########################### load ###############################
 
 def parse_value_name_column(value_name, value_str, signal_size, float_factory):
+
+    print("def : format - xls - parse_value_name_column")
+
     # type: (str, str, int, typing.Callable) -> typing.Tuple
     mini = maxi = offset = None  # type: typing.Any
     value_table = dict()
@@ -326,6 +337,9 @@ def parse_value_name_column(value_name, value_str, signal_size, float_factory):
 
 
 def read_additional_signal_attributes(signal, attribute_name, attribute_value):
+
+    print("def : format - xls - read_additional_signal_attributes")
+
     if not attribute_name.startswith("signal"):
         return
     if attribute_name.replace("signal.", "") in vars(signal):
@@ -338,6 +352,9 @@ def read_additional_signal_attributes(signal, attribute_name, attribute_value):
 
 
 def load(file, **options):
+
+    print("def : format - xls - load")
+
     # type: (typing.IO, **typing.Any) -> canmatrix.CanMatrix
     wb = xlrd.open_workbook(file_contents=file.read())
     sh = wb.sheet_by_index(0)

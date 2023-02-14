@@ -54,6 +54,9 @@ sty_sender_green_first_frame = 0
 
 
 def write_excel_line(worksheet, row, col, row_array, style):
+
+    print("def : format - xlsx - write_excel_line")
+
     # type: (xlsxwriter.workbook.Worksheet, int, int, typing.Sequence[typing.Any], xlsxwriter.workbook.Format) -> int
     for item in row_array:
         worksheet.write(row, col, item, style)
@@ -62,6 +65,9 @@ def write_excel_line(worksheet, row, col, row_array, style):
 
 
 def dump(db, filename, **options):
+
+    print("def : format - xlsx - dump")
+
     # type: (canmatrix.CanMatrix, str, **str) -> None
     motorola_bit_format = options.get("xlsMotorolaBitFormat", "msbreverse")
 
@@ -220,6 +226,9 @@ def dump(db, filename, **options):
 
 
 def read_xlsx(file, **args):
+
+    print("def : format - xlsx - read_xlsx")
+
     # type: (typing.Any, **typing.Any) -> typing.Tuple[typing.Dict[typing.Any, str], typing.List[typing.Dict[str, str]]]
     # from: Hooshmand zandi http://stackoverflow.com/a/16544219
     import zipfile
@@ -278,6 +287,9 @@ def read_xlsx(file, **args):
 
 
 def get_if_possible(row, value, default=None):
+
+    print("def : format - xlsx - get_if_possible")
+
     # type: (typing.Mapping[str, str], str, typing.Optional[str]) -> typing.Union[str, None]
     if value in row:
         return row[value].strip()
@@ -286,6 +298,9 @@ def get_if_possible(row, value, default=None):
 
 
 def load(filename, **options):
+
+    print("def : format - xlsx - load")
+
     # type: (typing.BinaryIO, **str) -> canmatrix.CanMatrix
     # use xlrd excel reader if available, because its more robust
     if options.get('xlsxLegacy', False) is True:
