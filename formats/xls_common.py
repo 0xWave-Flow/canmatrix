@@ -57,7 +57,7 @@ def get_frame_info(db, frame):
 
 def removesuffix(input_string, suffix):
 
-    print("def : format - xls_common - removesuffix")
+    #print("def : format - xls_common - removesuffix - 1.{} - 2.{}".format(input_string,suffix))
 
     if suffix and input_string.endswith(suffix):
         return input_string[:-len(suffix)]
@@ -66,7 +66,8 @@ def removesuffix(input_string, suffix):
 
 def get_signal(db, frame, sig, motorola_bit_format):
 
-    print("def : format - xls_common - get_signal")
+    print("def : format - xls_common - get_signal - [{},{}]".format(frame.name,sig.name))
+    # print("def : format - xls_common - get_signal - [{},{},{}]".format(db,frame,sig))
 
     # type: (canmatrix.CanMatrix, canmatrix.Frame, canmatrix.Signal, str) -> typing.Tuple[typing.List, typing.List]
     front_array = []  # type: typing.List[typing.Union[str, float]]
@@ -217,5 +218,7 @@ def get_signal(db, frame, sig, motorola_bit_format):
     # write comment and size of signal in sheet
     front_array.append(comment)
     # Receiver ECU list
+
+    #print("def : format - xls_common - get_signal - {}".format(front_array))
 
     return front_array

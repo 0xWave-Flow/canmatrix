@@ -66,7 +66,7 @@ def loads_flat(string, import_type=None, key="", **options):
 
 def loadp(path, import_type=None, key="", **options):
 
-    print("def : format - __init__ - loadp")
+    #print("def : format - __init__ - loadp")
 
     # type: (str, str, str, **str) -> typing.Union[typing.Dict[str, canmatrix.CanMatrix], None]
     with open(path, "rb") as fileObject:
@@ -93,7 +93,7 @@ def loadp_flat(path, import_type=None, key="", **options):
 
 def load(file_object, import_type, key="", **options):
 
-    print("def : format - __init__ - load")
+    #print("def : format - __init__ - load")
 
     # type: (typing.BinaryIO, str, str, **str) -> typing.Union[typing.Dict[str, canmatrix.CanMatrix], None]
     dbs = {}  # type: typing.Dict[str, canmatrix.CanMatrix]

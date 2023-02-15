@@ -1,0 +1,190 @@
+VERSION "Excel 2 DBC"
+
+
+NS_ :
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+BS_:
+
+BU_: IP Tester MyEcu BCM 
+VAL_TABLE_ NM_WakeupReason_Bit2 1 "Local wake-up reason";
+VAL_TABLE_ NM_WakeupReason_Bit1 1 "CAN wake-up";
+VAL_TABLE_ NM_WakeupReason_Bit0 1 "Terminal 15 on";
+VAL_TABLE_ NM_AwakeReason 0 "Default value" 1 "Local wake-up reason";
+VAL_TABLE_ NM_RMS_FlAG 0 "In repeat message state" 1 "not in repeat message state";
+VAL_TABLE_ NM_CBV_RMR 0 "RepeatMessage State no requested" 1 "RepeatMessage State requested";
+VAL_TABLE_ NM_CBV_AWB 0 "Node not woken up the network" 1 "Node has waken up the network";
+VAL_TABLE_ MyEcu_TxTestSignal0 0 "Left (Positive)" 1 "Right (Negative)";
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ KeyID : 0|16@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1026 MyEcu_RxMessage_0x402: 8 Vector__XXX
+ SG_ BCM_ErrorLog_Code : 15|24@0+ (1,0) [0|0] "" MyEcu
+ SG_ BCM_ErrorLog_Type : 7|4@0+ (1,0) [0|0] "" MyEcu
+ SG_ BCM_ErrorLog_Level : 3|4@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1360 MyEcu_RxMessage_0x550: 8 Vector__XXX
+ SG_ BCM_VehicleSTS_VehSpeed : 31|8@0+ (1,0) [0|0] "" MyEcu
+ SG_ BCM_VehicleSTS_OutTemp : 15|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ BCM_VehicleSTS_VehBattVolt : 7|8@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1286 MyEcu_RxMessage_0x506: 8 Vector__XXX
+ SG_ BCM_SmartKey_KeyCommand : 23|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ BCM_SmartKey_KeyID : 7|16@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1285 MyEcu_RxMessage_0x505: 8 Vector__XXX
+ SG_ UWB4Distance : 55|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ UWB3Distance : 39|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ UWB2Distance : 23|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ UWB1Distance : 7|16@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1284 MyEcu_RxMessage_0x504: 8 Vector__XXX
+ SG_ CMDCode : 31|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ Command : 23|8@0+ (1,0) [0|0] "" MyEcu
+ SG_ KeyID : 7|16@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1283 MyEcu_RxMessage_0x503: 8 Vector__XXX
+ SG_ KeyID : 23|16@0+ (1,0) [0|0] "" MyEcu
+ SG_ Reversed : 15|4@0+ (1,0) [0|0] "" MyEcu
+ SG_ KeyStatus : 11|4@0+ (1,0) [0|0] "" MyEcu
+ SG_ SmartKeyType : 7|4@0+ (1,0) [0|0] "" MyEcu
+ SG_ SmartKeyNum : 3|4@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1025 MyEcu_RxMessage_0x401: 8 Vector__XXX
+ SG_ BLEModuleStatus : 7|8@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 770 MyEcu_TxMessage_0x302: 8 MyEcu
+ SG_ VIU_Debug_STDReturn : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VIU_Debug_MEID : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ VIU_Debug_ServiceID : 7|16@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 769 MyEcu_TxMessage_0x301: 8 MyEcu
+ SG_ VIU_HeartBeat_Status : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 880 MyEcu_Xcp_Rx: 8 Vector__XXX
+ SG_ Xcp_Rx_Signal : 7|64@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 873 MyEcu_Xcp_Tx: 8 Vector__XXX
+ SG_ Xcp_Tx_Signal : 7|64@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 652 BCM6: 8 Vector__XXX
+ SG_ HeatRearWndSwtReq : 11|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 837 BCM3: 8 Vector__XXX
+ SG_ DoorLockSts : 13|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ AntitheftSts : 15|2@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1383 MyEcu_GatewayMessage_Demo_0x567: 8 Vector__XXX
+ SG_ Rx_8bitSignal_Gateway_Demo : 21|8@0+ (1,0) [0|0] "" MyEcu
+ SG_ Rx_1bitSignal_Gateway_Demo : 22|1@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1110 MyEcu_RxMessage_0x456: 8 Vector__XXX
+ SG_ MyEcu_RxTestSignal0 : 13|1@0+ (1,0) [0|0] "" MyEcu
+ SG_ MyEcu_RxTestSignal1 : 12|13@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1299 MyEcu_NM: 8 MyEcu
+ SG_ NM_WakeupReason_Bit2 : 26|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_WakeupReason_Bit1 : 25|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_WakeupReason_Bit0 : 24|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_AwakeReason : 32|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_RMS_FlAG : 16|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NM_NodeId : 7|8@0+ (1,0) [0|0] "" BCM
+ SG_ NM_CBV_RMR : 8|1@0+ (1,0) [0|0] "" BCM
+ SG_ NM_CBV_AWB : 12|1@0+ (1,0) [0|0] "" BCM
+
+BO_ 1652 KostiaResponse: 8 MyEcu
+ SG_ KostiaResponse : 7|64@0+ (1,0) [0|0] "" Tester
+
+BO_ 1653 KostiaRequest: 8 Tester
+ SG_ KostiaRequest : 7|64@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1980 MyEcu_Diag_Phy_Resp: 8 MyEcu
+ SG_ DiagResponse : 7|64@0+ (1,0) [0|0] "" Tester
+
+BO_ 1888 MyEcu_Diag_Fun_Req: 8 Tester
+ SG_ DiagRequestFunc : 7|64@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 1916 MyEcu_Diag_Phy_Req: 8 Tester
+ SG_ DiagRequest : 7|64@0+ (1,0) [0|0] "" MyEcu
+
+BO_ 291 MyEcu_TxMessage_0x123: 16 MyEcu
+ SG_ MyEcu_TxTestSignal0 : 16|1@0+ (1,0) [0|1] "" BCM
+ SG_ MyEcu_TxTestSignal1 : 15|15@0+ (0.1,0) [0|780] "бу" BCM
+ SG_ MyEcu_TxTestSignal2 : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+
+
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 65535;
+BA_DEF_ BO_ "GenMsgCycleTimeActive" INT 0 65535;
+BA_DEF_ BO_ "GenMsgDelayTime" INT 0 65535;
+BA_DEF_ BO_ "GenMsgNrOfRepetitions" INT 0 65535;
+BA_DEF_ BO_ "GenMsgStartValue" STRING;
+BA_DEF_ BO_ "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
+BA_DEF_ SG_ "GenSigSNA" STRING;
+BA_DEF_ BU_ "NWM-Knoten" ENUM  "nein","ja";
+BA_DEF_ BU_ "NWM-Stationsadresse" HEX 0 63;
+BA_DEF_  "BusType" STRING;
+BA_ "BusType"   "CAN FD";
+BA_ "VFrameFormat" BO_ 3221225472 0;
+BA_ "VFrameFormat" BO_ 1026 0;
+BA_ "VFrameFormat" BO_ 1360 0;
+BA_ "VFrameFormat" BO_ 1286 0;
+BA_ "VFrameFormat" BO_ 1285 0;
+BA_ "VFrameFormat" BO_ 1284 0;
+BA_ "VFrameFormat" BO_ 1283 0;
+BA_ "VFrameFormat" BO_ 1025 0;
+BA_ "VFrameFormat" BO_ 770 0;
+BA_ "VFrameFormat" BO_ 769 0;
+BA_ "GenMsgCycleTime" BO_ 880 1000;
+BA_ "VFrameFormat" BO_ 880 0;
+BA_ "VFrameFormat" BO_ 873 0;
+BA_ "GenMsgCycleTime" BO_ 652 100;
+BA_ "VFrameFormat" BO_ 652 0;
+BA_ "VFrameFormat" BO_ 837 0;
+BA_ "GenMsgCycleTime" BO_ 1383 50;
+BA_ "VFrameFormat" BO_ 1383 0;
+BA_ "GenMsgCycleTime" BO_ 1110 20;
+BA_ "VFrameFormat" BO_ 1110 0;
+BA_ "VFrameFormat" BO_ 1299 0;
+BA_ "VFrameFormat" BO_ 1652 0;
+BA_ "VFrameFormat" BO_ 1653 0;
+BA_ "VFrameFormat" BO_ 1980 0;
+BA_ "VFrameFormat" BO_ 1888 0;
+BA_ "VFrameFormat" BO_ 1916 0;
+BA_ "GenMsgCycleTime" BO_ 291 100;
+BA_ "VFrameFormat" BO_ 291 14;
+VAL_ 1299 NM_WakeupReason_Bit2 1 "Local wake-up reason";
+VAL_ 1299 NM_WakeupReason_Bit1 1 "CAN wake-up";
+VAL_ 1299 NM_WakeupReason_Bit0 1 "Terminal 15 on";
+VAL_ 1299 NM_AwakeReason 0 "Default value" 1 "Local wake-up reason";
+VAL_ 1299 NM_RMS_FlAG 0 "In repeat message state" 1 "not in repeat message state";
+VAL_ 1299 NM_CBV_RMR 0 "RepeatMessage State no requested" 1 "RepeatMessage State requested";
+VAL_ 1299 NM_CBV_AWB 0 "Node not woken up the network" 1 "Node has waken up the network";
+VAL_ 291 MyEcu_TxTestSignal0 0 "Left (Positive)" 1 "Right (Negative)";

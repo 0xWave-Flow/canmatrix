@@ -42,7 +42,7 @@ logger = logging.getLogger(__name__)
 
 def default_float_factory(value):  # type: (typing.Any) -> decimal.Decimal
 
-    print("def : format - dbc - default_float_factory")
+    # print("def : format - dbc - default_float_factory - [{}]".format(value))
 
     return decimal.Decimal(value)
 
@@ -61,7 +61,7 @@ def normalize_name(name, whitespace_replacement):  # type: (str, str) -> str
 
 def format_float(f):  # type: (typing.Any) -> str
 
-    print("def : format - dbc - format_float")
+    #print("def : format - dbc - format_float")
 
     s = str(f).upper()
     if s.endswith('.0'):
@@ -71,12 +71,13 @@ def format_float(f):  # type: (typing.Any) -> str
         tmp = s.split('E')
         s = '%sE%s%s' % (tmp[0], tmp[1][0], tmp[1][1:].rjust(3, '0'))
 
+    #print("def : format - dbc - format_float - [{}  ,  {}]".format(f,s.upper()))
     return s.upper()
 
 
 def check_define(define):  # type: (canmatrix.Define) -> None
 
-    print("def : format - dbc - check_define")
+    #print("def : format - dbc - check_define - {}".format(define.type))
 
     # check if define is compatible with dbc. else replace by STRING
     if define.type not in ["ENUM", "STRING", "INT", "HEX", "FLOAT"]:
@@ -87,7 +88,7 @@ def check_define(define):  # type: (canmatrix.Define) -> None
 
 def create_define(data_type, define, define_type, defaults):
 
-    print("def : format - dbc - create_define")
+    #print("def : format - dbc - create_define")
 
     # type: (str, canmatrix.Define, str, typing.MutableMapping[str, str]) -> str
     check_define(define)
@@ -100,12 +101,15 @@ def create_define(data_type, define, define_type, defaults):
             defaults[data_type] = '"' + define.defaultValue + '"'
         else:
             defaults[data_type] = define.defaultValue
+
+    print("def : format - dbc - create_define - {}".format(define_string))
+
     return define_string
 
 
 def create_attribute_string(attribute, attribute_class, name, value, is_string):
 
-    print("def : format - dbc - create_attribute_string")
+    #print("def : format - dbc - create_attribute_string")
 
     # type: (str, str, str, typing.Any, bool) -> str
     if is_string:
@@ -113,13 +117,15 @@ def create_attribute_string(attribute, attribute_class, name, value, is_string):
     elif not value:
         value = '""'
     attribute_string = 'BA_ "' + attribute + '" ' + attribute_class + ' ' + name + ' ' + str(value) + ';\n'
+
+    print("def : format - dbc - create_attribute_string - {}".format(attribute_string))
     return attribute_string
 
 
 def create_comment_string(comment_class, comment_ident, comment, export_encoding, export_comment_encoding,
                           ignore_encoding_errors):
 
-    print("def : format - dbc - create_comment_string")
+    #print("def : format - dbc - create_comment_string")
 
     # type: (str, str, str, str, str, str) -> bytes
     if len(comment) == 0:
@@ -127,6 +133,8 @@ def create_comment_string(comment_class, comment_ident, comment, export_encoding
     comment_string = ("CM_ " + comment_class + " " + comment_ident + ' "').encode(export_encoding, 'ignore')
     comment_string += comment.replace('"', '\\"').encode(export_comment_encoding, 'ignore')
     comment_string += '";\n'.encode(export_encoding, ignore_encoding_errors)
+
+    print("def : format - dbc - create_comment_string - {}".format(comment_string))
     return comment_string
 
 
@@ -203,6 +211,7 @@ def dump(in_db, f, **options):
         header += "\t" + NS + "\n"
 
     header += 'BS_:\n\n'
+    print("def : format - dbc - dump - HEADER : {}".format(header.encode(dbc_export_encoding, ignore_encoding_errors)))
     f.write(header.encode(dbc_export_encoding, ignore_encoding_errors))
 
     # ECUs
@@ -217,6 +226,7 @@ def dump(in_db, f, **options):
         elif ecu.name == 'Vector__XXX':
             ecu.name = ''
 
+        print("def : format - dbc - dump - ECU : {}".format(ecu.name))
         f.write((ecu.name + " ").encode(dbc_export_encoding, ignore_encoding_errors))
     f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
 
@@ -227,6 +237,7 @@ def dump(in_db, f, **options):
             if signal.values:
                 f.write(("VAL_TABLE_ " + signal.name).encode(dbc_export_encoding, ignore_encoding_errors))
                 for key, val in signal.values.items():
+                    print("def : format - dbc - dump - VALUE TABLE : {} , {}".format(str(key),val))
                     f.write(' {} "{}"'.format(str(key), val).encode(dbc_export_encoding, ignore_encoding_errors))
                 f.write(";\n".encode(dbc_export_encoding, ignore_encoding_errors))
     f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
@@ -291,6 +302,12 @@ def dump(in_db, f, **options):
                 frame.add_transmitter("Vector__XXX")
 
             # write BO_ (frame information) to dbc file
+            print("def : format - dbc - dump - FRAME : {} , {} , {} , {}".format(
+                frame.arbitration_id,
+                frame.name,
+                frame.size,
+                frame.transmitters))
+
             f.write(
                 ("BO_ %d " %
                  frame.arbitration_id.to_compound_integer() +
@@ -339,6 +356,14 @@ def dump(in_db, f, **options):
         if len(signal.receivers) == 0:
             signal.add_receiver('Vector__XXX')
         signal_line += ','.join(signal.receivers) + "\n"
+
+        print("def : format - dbc - dump - SIGNAL : {} , {} , {} , {} , {}".format(
+            signal.name,
+            signal.frames,
+            signal.size,
+            signal.receivers,
+            signal.attributes))
+
         f.write(signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
 
     f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
@@ -381,33 +406,46 @@ def dump(in_db, f, **options):
     # write defines
     defaults = {}  # type: typing.Dict[str, str]
     for (data_type, define) in sorted(list(db.frame_defines.items())):
+        print("def : format - dbc - dump - BO_ DEFINE : [{} , {}]".format(data_type,define))
         f.write(create_define(data_type, define, "BO_", defaults).encode(dbc_export_encoding, 'replace'))
 
     for (data_type, define) in sorted(list(db.signal_defines.items())):
+        print("def : format - dbc - dump - SG_ DEFINE : [{} , {}]".format(data_type, define))
         f.write(create_define(data_type, define, "SG_", defaults).encode(dbc_export_encoding, 'replace'))
 
     for (data_type, define) in sorted(list(db.ecu_defines.items())):
+        print("def : format - dbc - dump - BU_ DEFINE : [{} , {}]".format(data_type, define))
         f.write(create_define(data_type, define, "BU_", defaults).encode(dbc_export_encoding, 'replace'))
 
     for (data_type, define) in sorted(list(db.env_defines.items())):
+        print("def : format - dbc - dump - EV_ DEFINE : [{} , {}]".format(data_type, define))
         f.write(create_define(data_type, define, "EV_", defaults).encode(dbc_export_encoding, 'replace'))
 
     for (data_type, define) in sorted(list(db.global_defines.items())):
         f.write(create_define(data_type, define, "", defaults).encode(dbc_export_encoding, 'replace'))
 
     for define_name in sorted(defaults):
+
+        print("def : format - dbc - dump - DEFINE : {}".format(define_name))
+
         f.write(('BA_DEF_DEF_ "' + define_name + '" ').encode(dbc_export_encoding, ignore_encoding_errors) +
                 defaults[define_name].encode(dbc_export_encoding, 'replace') + ';\n'.encode(dbc_export_encoding,
                                                                                             ignore_encoding_errors))
     # ecu-attributes:
     for ecu in db.ecus:
         for attrib, val in sorted(ecu.attributes.items()):
+
+            print("def : format - dbc - dump - ECU ATTRIBUTE : [{} , {}]".format(attrib, val))
+
             f.write(
                 create_attribute_string(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING").encode(
                     dbc_export_encoding, ignore_encoding_errors))
 
     # global-attributes:
     for attrib, val in sorted(db.attributes.items()):
+
+        print("def : format - dbc - dump - GLOBAL ATTRIBUTE : [{} , {}]".format(attrib, val))
+
         f.write(create_attribute_string(attrib, "", "", val, db.global_defines[attrib].type == "STRING").encode(
             dbc_export_encoding, ignore_encoding_errors))
 
@@ -417,6 +455,9 @@ def dump(in_db, f, **options):
         frame = signal.frames
         if frame.name != curr_frame:
             for attrib, val in sorted(frame.attributes.items()):
+
+                print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {}]".format(attrib,val))
+
                 f.write(create_attribute_string(attrib, "BO_", str(frame.arbitration_id.to_compound_integer()), val,
                                                 db.frame_defines[attrib].type == "STRING").encode(dbc_export_encoding,
                                                                                                   ignore_encoding_errors))
@@ -430,6 +471,9 @@ def dump(in_db, f, **options):
             if isinstance(val, float):
                 val = format_float(val)
             if attrib in db.signal_defines:
+
+                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : [{} , {}]".format(attrib))
+
                 f.write(create_attribute_string(
                     attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
                                    db.signal_defines[attrib].type == "STRING").encode(dbc_export_encoding,
@@ -438,6 +482,9 @@ def dump(in_db, f, **options):
     for env_var_name, env_var in db.env_vars.items():
         if "attributes" in env_var:
             for attribute, value in env_var["attributes"].items():
+
+                print("def : format - dbc - dump - ENVIRONMENT ATTRIBUTE : [{} , {}]".format(attrib, val))
+
                 f.write(create_attribute_string(attribute, "EV_", "", value,
                                                 db.env_defines[attribute].type == "STRING")
                         .encode(dbc_export_encoding, ignore_encoding_errors))
@@ -512,7 +559,7 @@ class _FollowUps(object):
 
 def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatrix
 
-    print("def : format - dbc - load")
+    #print("def : format - dbc - load")
 
     dbc_import_encoding = options.get("dbcImportEncoding", 'UTF-8')
     dbc_comment_encoding = options.get("dbcImportCommentEncoding", dbc_import_encoding)
@@ -541,6 +588,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
     # read line by line
     for line in f:
+
+        # print("def : format - dbc - load - LINE : {}".format(line))
+
         i = i + 1
         l = line.strip()
         if len(l) == 0:
@@ -583,12 +633,21 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             # decoded dbc file
             decoded = l.decode(dbc_import_encoding).strip()
 
+            # print("LINE OF *.DBC : " + decoded)
+            # print("def : format - dbc - load - LINE DECODED : {}".format(decoded))
+
             # decoded message
             if decoded.startswith("BO_ "):
+
+                print("def : format - dbc - load - BO_ : {}".format(decoded))
+
                 regexp = re.compile(r"^BO_ ([^\ ]+) ([^\ ]+) *: ([^\ ]+) ([^\ ]+)")
                 temp = regexp.match(decoded)
                 frame = canmatrix.Frame(temp.group(2), arbitration_id=int(temp.group(1)),
                                         size=int(temp.group(3)), transmitters=temp.group(4).split())
+
+                # print("FIND FRAME : " + frame)
+                print("def : format - dbc - load - BO_ FRAME : {}".format(frame))
                 add_frame_by_id(frame)
 
                 if frame.name == "VECTOR__INDEPENDENT_SIG_MSG" and frame.arbitration_id.id == 0:
@@ -596,6 +655,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decoded signal
             elif decoded.startswith("SG_ "):
+
+                print("def : format - dbc - load - SG_ : {}".format(decoded))
+
                 original_line = l
                 if decoded.strip().endswith(r'"'):
                     decoded += r" Vector__XXX"
@@ -629,10 +691,17 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                         **extras
                     )
                     temp_signal.add_frame(frame)
+
+                    # print("FIND SIGNAL : " + temp_signal)
+                    print("def : format - dbc - load - SG_ SIGNAL: {}".format(temp_signal))
+
                     db.add_signal(temp_signal)
 
                 # signal with multiplex
                 else:
+
+                    print("MULTIPLEX >>>>>")
+
                     pattern = r"^SG_ +(.+?) +(.+?) *: *(\d+)\|(\d+)@(\d+)([\+|\-]) *\(([0-9.+\-eE]+),([0-9.+\-eE]+)\) " \
                               r"*\[([0-9.+\-eE]+)\|([0-9.+\-eE]+)\] +\"(.*)\" +(.*)"
                     regexp = re.compile(pattern)
@@ -682,14 +751,21 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode other define or comment
             elif decoded.startswith("BO_TX_BU_ "):
+
+                print("def : format - dbc - load - BO_TX_BU_ : {}".format(decoded))
+
                 regexp = re.compile(r"^BO_TX_BU_ ([0-9]+) *: *(.+) *;")
                 temp = regexp.match(decoded)
                 frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
                 for ecu_name in temp.group(2).split(','):
+                    # print(">>>>> " + ecu_name)
                     frame.add_transmitter(ecu_name)
 
             # decode signal comment
             elif decoded.startswith("CM_ SG_ "):
+
+                print("def : format - dbc - load - CM_ SG_ : {}".format(decoded))
+
                 pattern = r"^CM_ +SG_ +(\w+) +(\w+) +\"(.*)\" *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
@@ -726,6 +802,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode message comment
             elif decoded.startswith("CM_ BO_ "):
+
+                print("def : format - dbc - load - CM_ BO_ : {}".format(decoded))
+
                 pattern = r"^CM_ +BO_ +(\w+) +\"(.*)\" *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
@@ -760,6 +839,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode ecu comment
             elif decoded.startswith("CM_ BU_ "):
+
+                print("def : format - dbc - load - CM_ BU_ : {}".format(decoded))
+
                 pattern = r"^CM_ +BU_ +(\w+) +\"(.*)\" *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
@@ -793,6 +875,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode ecus
             elif decoded.startswith("BU_:"):
+
+                print("def : format - dbc - load - BU_ : {}".format(decoded))
+
                 pattern = r"^BU_\:(.*)"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
@@ -805,6 +890,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode values
             elif decoded.startswith("VAL_ "):
+
+                print("def : format - dbc - load - VAL_ : {}".format(decoded))
+
                 regexp = re.compile(r"^VAL_ +(\w+) +(\w+) +(.*) *;")
                 temp = regexp.match(decoded)
                 if temp:
@@ -827,6 +915,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode value table
             elif decoded.startswith("VAL_TABLE_ "):
+
+                print("def : format - dbc - load - VAL_TABLE_ : {}".format(decoded))
+
                 regexp = re.compile(r"^VAL_TABLE_ +(\w+) +(.*) *;")
                 temp = regexp.match(decoded)
                 if temp:
@@ -845,6 +936,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode definitions
             elif decoded.startswith("BA_DEF_") and decoded[7:].strip()[:3] in ["SG_", "BO_", "BU_", "EV_"]:
+
+                print("def : format - dbc - load - BA_DEF_ : {}".format(decoded))
+
                 substring = decoded[7:].strip()
                 define_type = substring[:3]
                 substring = substring[3:].strip()
@@ -866,6 +960,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode define
             elif decoded.startswith("BA_DEF_ "):
+
+                print("def : format - dbc - load - BA_DEF_ : {}".format(decoded))
+
                 pattern = r"^BA_DEF_ +\"(.+?)\" +(.+) *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
@@ -877,6 +974,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode attribute value definitions
             elif decoded.startswith("BA_ "):
+
+                print("def : format - dbc - load - BA_ : {}".format(decoded))
+
                 regexp = re.compile(r"^BA_ +\".+?\" +(.+)")
                 tempba = regexp.match(decoded)
 
@@ -913,6 +1013,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode signal group
             elif decoded.startswith("SIG_GROUP_ "):
+
+                print("def : format - dbc - load - SIG_GROUP_ : {}".format(decoded))
+
                 regexp = re.compile(r"^SIG_GROUP_ +(\w+) +(\w+) +(\w+) +\:(.*) *; *")
                 temp = regexp.match(decoded)
                 frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
@@ -923,6 +1026,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode signal value type
             elif decoded.startswith("SIG_VALTYPE_ "):
+
+                print("def : format - dbc - load - SIG_VALTYPE_ : {}".format(decoded))
+
                 regexp = re.compile(r"^SIG_VALTYPE_ +(\w+) +(\w+)\s*\:(.*) *; *")
                 temp = regexp.match(decoded)
                 frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
@@ -932,6 +1038,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode attribute default value definitions
             elif decoded.startswith("BA_DEF_DEF_ "):
+
+                print("def : format - dbc - load - BA_DEF_DEF_ : {}".format(decoded))
+
                 pattern = r"^BA_DEF_DEF_ +\"(.+?)\" +(.+?) *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
@@ -943,6 +1052,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode signal multiplex value
             elif decoded.startswith("SG_MUL_VAL_ "):
+
+                print("def : format - dbc - load - SG_MUL_VAL_ : {}".format(decoded))
+
                 pattern = r"^SG_MUL_VAL_ +([0-9]+) +([\w\-]+) +([\w\-]+) +(.*) *; *"
                 regexp = re.compile(pattern)
                 temp = regexp.match(decoded)
@@ -964,6 +1076,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
             # decode environment value
             elif decoded.startswith("EV_ "):
+
+                print("def : format - dbc - load - EV_ : {}".format(decoded))
+
                 pattern = r"^EV_ +([\w\-\_]+?) *\: +([0-9]+) +\[([0-9.+\-eE]+)\|([0-9.+\-eE]+)\] +\"(.*?)\" +([" \
                           r"0-9.+\-eE]+) +([0-9.+\-eE]+) +([\w\-]+?) +(.*); *"
                 regexp = re.compile(pattern)

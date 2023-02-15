@@ -77,6 +77,7 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
     logger.info("Exporting " + out_file_name + " ... ")
     out_dbs = {}  # type: typing.Dict[str, canmatrix.CanMatrix]
     for name in dbs:
+
         db = None
 
         if options.get('ecus', False):

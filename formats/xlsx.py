@@ -55,7 +55,7 @@ sty_sender_green_first_frame = 0
 
 def write_excel_line(worksheet, row, col, row_array, style):
 
-    print("def : format - xlsx - write_excel_line")
+    print("def : format - xlsx - write_excel_line - {}".format(row_array))
 
     # type: (xlsxwriter.workbook.Worksheet, int, int, typing.Sequence[typing.Any], xlsxwriter.workbook.Format) -> int
     for item in row_array:
@@ -66,7 +66,7 @@ def write_excel_line(worksheet, row, col, row_array, style):
 
 def dump(db, filename, **options):
 
-    print("def : format - xlsx - dump")
+    # print("def : format - xlsx - dump")
 
     # type: (canmatrix.CanMatrix, str, **str) -> None
     motorola_bit_format = options.get("xlsMotorolaBitFormat", "msbreverse")
@@ -194,6 +194,7 @@ def dump(db, filename, **options):
     # iterate over the frames
     curr_frame = ''
     for signal in db.signals:
+        print("def : format - xlsx - dump - [{},{}]".format(signal,signal.frames[0]))
         if signal.frames[0] != curr_frame:
             signal_style = sty_first_frame
             curr_frame = signal.frames[0]

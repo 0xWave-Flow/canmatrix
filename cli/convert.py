@@ -45,6 +45,10 @@ def get_formats():
             input += suppFormat + "\n"
         if 'dump' in features:
             output += suppFormat + "\n"
+
+
+    print("INPUT : " + input)
+    print("OUTPUT : " + output)
     return (input, output)
 
 
