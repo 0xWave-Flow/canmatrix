@@ -36,16 +36,18 @@ BS_:
 BU_: Response CyclicSending
 
 
+BO_ 2148395729 Analyze: 8 Vector__XXX
+ SG_ MinResponseTime : 16|16@1- (0.01,0) [-327.68|327.67] "ms" Vector__XXX
+ SG_ MaxResponseTime : 32|16@1- (0.01,0) [-327.68|327.67] "ms" Vector__XXX
+ SG_ CurResponseTime : 0|16@1- (0.01,0) [-327.68|327.67] "ms" Vector__XXX
+ SG_ AvgResponseTime : 48|16@1- (0.01,0) [-327.68|327.67] "ms" Vector__XXX
+
 BO_ 256 CyclicMessage: 4 CyclicSending
- SG_ SendCount : 0|32@1+ (1,0) [0|4294967295] ""  Response
+ SG_ SendCount : 0|32@1- (1,0) [-2147483648|2147483647] ""  Response
 
 BO_ 258 ResponseMessage: 4 Response
- SG_ ResponseCount : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ ResponseCount : 0|32@1- (1,0) [-2147483648|2147483647] "" Vector__XXX
 
 
-
-EV_ CAN2: 0 [0|0] "" 2 1 DUMMY_NODE_VECTOR0 Vector__XXX;
-
-EV_ CAN1: 0 [0|0] "" 1 2 DUMMY_NODE_VECTOR0 Vector__XXX;
 
 

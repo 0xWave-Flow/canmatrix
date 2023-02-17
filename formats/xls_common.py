@@ -67,7 +67,7 @@ def removesuffix(input_string, suffix):
 
 def get_signal(db, frame, sig, motorola_bit_format):
 
-    print("def : format - xls_common - get_signal - [{},{}]".format(frame.name,sig.name))
+    print("def : format - xls_common - get_signal - [{},{},{}]".format(frame.name,sig.name,sig.is_signed))
     # print("def : format - xls_common - get_signal - [{},{},{}]".format(db,frame,sig))
 
     # type: (canmatrix.CanMatrix, canmatrix.Frame, canmatrix.Signal, str) -> typing.Tuple[typing.List, typing.List]
@@ -158,11 +158,11 @@ def get_signal(db, frame, sig, motorola_bit_format):
     if not sig.is_signed:
         front_array.append('Unsigned')
     else:
-        if sig.size == 32:
-            front_array.append('IEEE Float')
-        elif sig.size == 62:
-            front_array.append('IEEE Double')
-        else:
+        # if sig.size == 32:
+        #     front_array.append('IEEE Float')
+        # elif sig.size == 62:
+        #     front_array.append('IEEE Double')
+        # else:
             front_array.append('Signed')
     # First valid signal duration Tx(ms)
     front_array.append('/')

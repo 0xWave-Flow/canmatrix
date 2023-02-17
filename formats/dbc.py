@@ -699,7 +699,7 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     temp_signal.add_frame(frame)
 
                     # print("FIND SIGNAL : " + temp_signal)
-                    print("def : format - dbc - load - SG_ SIGNAL: {}".format(temp_signal))
+                    print("def : format - dbc - load - SG_ IS SIGNED: {} - {}".format(temp_signal.name,temp_signal.is_signed))
 
                     db.add_signal(temp_signal)
 
