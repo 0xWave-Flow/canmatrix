@@ -357,6 +357,7 @@ def dump(in_db, f, **options):
         if signal.unit is None:
             signal.unit = ""
 
+
         signal_line += signal.unit
         signal_line += '" '
 
@@ -364,12 +365,10 @@ def dump(in_db, f, **options):
             signal.add_receiver('Vector__XXX')
         signal_line += ','.join(signal.receivers) + "\n"
 
-        print("def : format - dbc - dump - SIGNAL : {} , {} , {} , {} , {}".format(
-            signal.name,
-            signal.frames,
-            signal.size,
-            signal.receivers,
-            signal.attributes))
+        print("def : format - dbc - dump - SIGNAL : {}".format(signal.unit))
+
+
+        print("def : format - dbc - dump - SIGNAL - BUG : {}",signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
 
         f.write(signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
 

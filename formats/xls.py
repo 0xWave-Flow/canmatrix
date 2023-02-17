@@ -399,6 +399,7 @@ def load(file, **options):
         elif "Size [Bit]" in value:
             index['Size'] = i
         elif "Byte Order" in value:
+            print("def : format - xls - load - BYTE ORDER INDEX: {} ".format(i))
             index['ByteOrder'] = i
         elif "Datatype" in value:
             index['DataType'] = i
@@ -412,7 +413,8 @@ def load(file, **options):
             index['Minimum'] = i
         elif "P-Maximum" in value:
             index['Maximum'] = i
-        elif "Unit" in value:
+        elif "Unit" == value:
+            print("def : format - xls - load - UNIT INDEX: {} ".format(i))
             index['Unit'] = i
         elif "Coding" in value:
             index['Coding'] = i
@@ -489,6 +491,7 @@ def load(file, **options):
 
             # unit
             unit = sh.cell(row_num, index['Unit']).value
+            print("def : format - xls - load - unit : {} - {} - {}".format(row_num,unit,index['Unit']))
 
             # coding
             coding = sh.cell(row_num, index['Coding']).value
