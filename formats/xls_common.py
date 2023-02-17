@@ -21,6 +21,7 @@
 
 from __future__ import absolute_import, division, print_function
 
+import signal
 import typing
 from builtins import *
 
@@ -92,6 +93,7 @@ def get_signal(db, frame, sig, motorola_bit_format):
 
     # ASIL level
     front_array.append('/')
+    #front_array.append(sig.)
     # Signal Description
     front_array.append('/')
     # Used by function

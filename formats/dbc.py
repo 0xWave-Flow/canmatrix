@@ -246,26 +246,30 @@ def dump(in_db, f, **options):
     # type: typing.Dict[canmatrix.Frame, typing.Dict[canmatrix.Signal, str]]
 
     # eval signals/frames name and cycle time, add some defines
+
     for signal in db.signals:
         # fix long frame names
         if len(signal.frames.name) > 32:
-            signal.frames.add_attribute("SystemMessageLongSymbol", signal.frames.name)
+            #signal.frames.add_attribute("SystemMessageLongSymbol", signal.frames.name)
             signal.frames.name = signal.frames.name[0:32]
-            db.add_frame_defines("SystemMessageLongSymbol", "STRING")
+            #db.add_frame_defines("SystemMessageLongSymbol", "STRING")
 
         # fix long signal names
         if len(signal.name) > 32:
-            signal.add_attribute("SystemSignalLongSymbol", signal.name)
+            #signal.add_attribute("SystemSignalLongSymbol", signal.name)
             signal.name = signal.name[0:32]
-            db.add_signal_defines("SystemSignalLongSymbol", "STRING")
+            #db.add_signal_defines("SystemSignalLongSymbol", "STRING")
 
         if signal.frames.cycle_time != 0:
-            signal.frames.add_attribute("GenMsgCycleTime", signal.frames.cycle_time)
+            pass
+            #signal.frames.add_attribute("GenMsgCycleTime", signal.frames.cycle_time)
 
         if signal.cycle_time != 0:
-            signal.add_attribute("GenSigCycleTime", signal.cycle_time)
+            pass
+            #signal.add_attribute("GenSigCycleTime", signal.cycle_time)
         if signal.phys2raw(None) != 0:
-            signal.add_attribute("GenSigStartValue", signal.phys2raw(None))
+            pass
+            #signal.add_attribute("GenSigStartValue", signal.phys2raw(None))
 
         name = signal.name
 
@@ -279,14 +283,17 @@ def dump(in_db, f, **options):
     # add signal/message cycle time and signal startvalue define
     if len(db.signals) > 0:
         if max([x.frames.cycle_time for x in db.signals]) > 0:
-            db.add_frame_defines("GenMsgCycleTime", 'INT 0 65535')
+            pass
+            #db.add_frame_defines("GenMsgCycleTime", 'INT 0 65535')
         if len([x.cycle_time for x in db.signals]) > 0:
             if max([x.cycle_time for x in db.signals]) > 0:
-                db.add_signal_defines("GenSigCycleTime", 'INT 0 65535')
+                pass
+                #db.add_signal_defines("GenSigCycleTime", 'INT 0 65535')
 
             if max([x.phys2raw(None) for x in db.signals]) > 0 or min(
                     [y.phys2raw(None) for y in db.signals]) < 0:
-                db.add_signal_defines("GenSigStartValue", 'FLOAT 0 100000000000')
+                pass
+                #db.add_signal_defines("GenSigStartValue", 'FLOAT 0 100000000000')
 
     # write message and signal loop
     curr_frame = None
@@ -472,7 +479,7 @@ def dump(in_db, f, **options):
                 val = format_float(val)
             if attrib in db.signal_defines:
 
-                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : [{} , {}]".format(attrib))
+                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : {}".format(attrib))
 
                 f.write(create_attribute_string(
                     attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,

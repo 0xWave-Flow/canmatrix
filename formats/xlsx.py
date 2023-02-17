@@ -66,7 +66,7 @@ def write_excel_line(worksheet, row, col, row_array, style):
 
 def dump(db, filename, **options):
 
-    # print("def : format - xlsx - dump")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - dump")
 
     # type: (canmatrix.CanMatrix, str, **str) -> None
     motorola_bit_format = options.get("xlsMotorolaBitFormat", "msbreverse")
@@ -194,12 +194,13 @@ def dump(db, filename, **options):
     # iterate over the frames
     curr_frame = ''
     for signal in db.signals:
-        print("def : format - xlsx - dump - [{},{}]".format(signal,signal.frames[0]))
+        print("def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}".format(signal.attributes))
         if signal.frames[0] != curr_frame:
             signal_style = sty_first_frame
             curr_frame = signal.frames[0]
 
         frame = signal.frames[0]
+        print("def : format - xlsx - dump - FRAME ATTRIBUTES : {}".format(frame.attributes))
 
         # get data from xls_common.py
         frontRow = canmatrix.formats.xls_common.get_signal(db, frame, signal, motorola_bit_format)
@@ -228,7 +229,7 @@ def dump(db, filename, **options):
 
 def read_xlsx(file, **args):
 
-    print("def : format - xlsx - read_xlsx")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - read_xlsx")
 
     # type: (typing.Any, **typing.Any) -> typing.Tuple[typing.Dict[typing.Any, str], typing.List[typing.Dict[str, str]]]
     # from: Hooshmand zandi http://stackoverflow.com/a/16544219
@@ -300,7 +301,7 @@ def get_if_possible(row, value, default=None):
 
 def load(filename, **options):
 
-    print("def : format - xlsx - load")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - load")
 
     # type: (typing.BinaryIO, **str) -> canmatrix.CanMatrix
     # use xlrd excel reader if available, because its more robust
@@ -321,12 +322,12 @@ def load(filename, **options):
     letter_index += ["%s%s" % (a, b) for a in all_letters for b in all_letters]
 
     # Defines not imported...
-    db.add_frame_defines("GenMsgDelayTime", 'INT 0 65535')
-    db.add_frame_defines("GenMsgCycleTimeActive", 'INT 0 65535')
-    db.add_frame_defines("GenMsgNrOfRepetitions", 'INT 0 65535')
+    #db.add_frame_defines("GenMsgDelayTime", 'INT 0 65535')
+    #db.add_frame_defines("GenMsgCycleTimeActive", 'INT 0 65535')
+    #db.add_frame_defines("GenMsgNrOfRepetitions", 'INT 0 65535')
     launch_types = []  # type: typing.List[str]
 
-    db.add_signal_defines("GenSigSNA", 'STRING')
+    #db.add_signal_defines("GenSigSNA", 'STRING')
 
     ecu_start = ecu_end = 0
     if 'Byte Order' in list(sheet[0].values()):

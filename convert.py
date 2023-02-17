@@ -81,6 +81,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
         db = None
 
         if options.get('ecus', False):
+
+            print("def : convert - convert - OPTIONS : ECUS")
+
             ecu_list = options['ecus'].split(',')
             db = canmatrix.CanMatrix()
             direction = None
@@ -89,12 +92,18 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                     ecu, direction = ecu.split(":")
                 canmatrix.copy.copy_ecu_with_frames(ecu, dbs[name], db, rx=(direction != "tx"), tx=(direction != "rx"))
         if options.get('frames', False):
+
+            print("def : convert - convert - OPTIONS : FRAMES")
+
             frame_list = options['frames'].split(',')
             db = canmatrix.CanMatrix() if db is None else db
             for frame_name in frame_list:
                 frame_to_copy = dbs[name].frame_by_name(frame_name)
                 canmatrix.copy.copy_frame(frame_to_copy.arbitration_id, dbs[name], db)
         if options.get('signals', False):
+
+            print("def : convert - convert - OPTIONS : SIGNALS")
+
             signal_list = options['signals'].split(',')
             db = canmatrix.CanMatrix() if db is None else db
             for signal_name in signal_list:
@@ -103,6 +112,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
         if db is None:
             db = dbs[name]
         if 'merge' in options and options['merge'] is not None:
+
+            print("def : convert - convert - OPTIONS : MERGE")
+
             merge_files = options['merge'].split(',')
             for database in merge_files:
                 merge_string = database.split(':')
@@ -124,24 +136,39 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                             canmatrix.copy.copy_frame(frame_to_copy.arbitration_id, db_temp_list[dbTemp], db)
 
         if 'renameEcu' in options and options['renameEcu'] is not None:
+
+            print("def : convert - convert - OPTIONS : RENAME ECU")
+
             rename_tuples = options['renameEcu'].split(',')
             for renameTuple in rename_tuples:
                 old, new = renameTuple.split(':')
                 db.rename_ecu(old, new)
         if 'deleteEcu' in options and options['deleteEcu'] is not None:
+
+            print("def : convert - convert - OPTIONS : DELETE ECU")
+
             delete_ecu_list = options['deleteEcu'].split(',')
             for ecu in delete_ecu_list:
                 db.del_ecu(ecu)
         if 'renameFrame' in options and options['renameFrame'] is not None:
+
+            print("def : convert - convert - OPTIONS : RENAME FRAME")
+
             rename_tuples = options['renameFrame'].split(',')
             for renameTuple in rename_tuples:
                 old, new = renameTuple.split(':')
                 db.rename_frame(old, new)
         if 'deleteFrame' in options and options['deleteFrame'] is not None:
+
+            print("def : convert - convert - OPTIONS : DELETE FRAME")
+
             delete_frame_names = options['deleteFrame'].split(',')
             for frame_name in delete_frame_names:
                 db.del_frame(frame_name)
         if 'addFrameReceiver' in options and options['addFrameReceiver'] is not None:
+
+            print("def : convert - convert - OPTIONS : ADD FRAME RECEIVER")
+
             touples = options['addFrameReceiver'].split(',')
             for touple in touples:
                 (frameName, ecu) = touple.split(':')
@@ -152,10 +179,16 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                     frame.update_receiver()
 
         if 'frameIdIncrement' in options and options['frameIdIncrement'] is not None:
+
+            print("def : convert - convert - OPTIONS : FRAME ID INCREMENT")
+
             id_increment = int(options['frameIdIncrement'])
             for frame in db.frames:
                 frame.arbitration_id.id += id_increment
         if 'changeFrameId' in options and options['changeFrameId'] is not None:
+
+            print("def : convert - convert - OPTIONS : CHANGE FRAME ID")
+
             change_tuples = options['changeFrameId'].split(',')
             for renameTuple in change_tuples:
                 old, new = renameTuple.split(':')
@@ -166,12 +199,18 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                     logger.error("frame with id {} not found", old)
 
         if 'setFrameFd' in options and options['setFrameFd'] is not None:
+
+            print("def : convert - convert - OPTIONS : SET FRAME FD")
+
             fd_frame_list = options['setFrameFd'].split(',')
             for frame_name in fd_frame_list:
                 frame_ptr = db.frame_by_name(frame_name)
                 if frame_ptr is not None:
                     frame_ptr.is_fd = True
         if 'unsetFrameFd' in options and options['unsetFrameFd'] is not None:
+
+            print("def : convert - convert - OPTIONS : UNSET FRAME FD")
+
             fd_frame_list = options['unsetFrameFd'].split(',')
             for frame_name in fd_frame_list:
                 frame_ptr = db.frame_by_name(frame_name)
@@ -180,6 +219,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                     frame_ptr.del_attribute("VFrameFormat")
 
         if 'skipLongDlc' in options and options['skipLongDlc'] is not None:
+
+            print("def : convert - convert - OPTIONS : SKIP LONG DLC")
+
             delete_frame_list = [
                 frame
                 for frame in db.frames
@@ -189,6 +231,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                 db.del_frame(frame)
 
         if 'cutLongFrames' in options and options['cutLongFrames'] is not None:
+
+            print("def : convert - convert - OPTIONS : CUT LONG FRAMES")
+
             for frame in db.frames:
                 if frame.size > int(options['cutLongFrames']):
                     delete_signal_list = [
@@ -202,37 +247,61 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                     frame.calc_dlc()
 
         if 'renameSignal' in options and options['renameSignal'] is not None:
+
+            print("def : convert - convert - OPTIONS : RENAME SIGNAL")
+
             rename_tuples = options['renameSignal'].split(',')
             for renameTuple in rename_tuples:
                 old, new = renameTuple.split(':')
                 db.rename_signal(old, new)
         if 'deleteSignal' in options and options['deleteSignal'] is not None:
+
+            print("def : convert - convert - OPTIONS : DELETE SIGNAL")
+
             delete_signal_names = options['deleteSignal'].split(',')
             for signal_name in delete_signal_names:
                 db.del_signal(signal_name)
 
         if 'deleteZeroSignals' in options and options['deleteZeroSignals']:
+
+            print("def : convert - convert - OPTIONS : DELETE ZERO SIGNALS")
+
             db.delete_zero_signals()
 
         if 'deleteSignalAttributes' in options and options[
                 'deleteSignalAttributes']:
+
+            print("def : convert - convert - OPTIONS : DELETE SIGNAL ATTRIBUTES")
+
             unwanted_attributes = options['deleteSignalAttributes'].split(',')
             db.del_signal_attributes(unwanted_attributes)
 
         if 'deleteFrameAttributes' in options and options[
                 'deleteFrameAttributes']:
+
+            print("def : convert - convert - OPTIONS : DELETE FRAME ATTRIBUTES")
+
             unwanted_attributes = options['deleteFrameAttributes'].split(',')
             db.del_frame_attributes(unwanted_attributes)
 
         if 'deleteObsoleteDefines' in options and options[
                 'deleteObsoleteDefines']:
+
+            print("def : convert - convert - OPTIONS : DELETE OBSOLETE DEFINES")
+
             db.delete_obsolete_defines()
 
         if 'deleteObsoleteEcus' in options and options[
                 'deleteObsoleteEcus']:
+
+            print("def : convert - convert - OPTIONS : DELETE OBSOLETE ECUS")
+
             db.delete_obsolete_ecus()
 
         if 'recalcDLC' in options and options['recalcDLC']:
+
+            print("def : convert - convert - OPTIONS : RECALC DLC")
+
             db.recalc_dlc(options['recalcDLC'])
 
         # PDU contained frames handling
@@ -242,6 +311,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
             if frame.is_pdu_container
         ]
         if options.get('ignorePduContainer'):
+
+            print("def : convert - convert - OPTIONS : IGNORE PDU CONTAINER")
+
             for frame in frame_pdu_container_list:
                 db.del_frame(frame)
         else:
@@ -253,11 +325,17 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
                 db.add_frame(new_frame)
 
         if options.get('signalNameFromAttrib') is not None:
+
+            print("def : convert - convert - OPTIONS : SIGNAL NAME FROM ATTRIB")
+
             for signal in [b for a in db for b in a.signals]:
                 signal.name = signal.attributes.get(options.get('signalNameFromAttrib'), signal.name)
 
         # Max Signal Value Calculation , if max value is 0
         if options.get('calcSignalMax') is not None and options['calcSignalMax']:
+
+            print("def : convert - convert - OPTIONS : CALC SIGNAL MAX")
+
             for signal in [b for a in db for b in a.signals]:
                 if signal.max == 0 or signal.max is None:
                     signal.calc_max_for_none = True
@@ -265,12 +343,18 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         # Max Signal Value Calculation
         if options.get('recalcSignalMax') is not None and options['recalcSignalMax']:
+
+            print("def : convert - convert - OPTIONS : RECALC SIGNAL MAX")
+
             for signal in [b for a in db for b in a.signals]:
                 signal.calc_max_for_none = True
                 signal.set_max(None)
 
         # Delete Unassigned Signals to a Valid Frame/Message
         if options.get('deleteFloatingSignals') is not None and options['deleteFloatingSignals']:
+
+            print("def : convert - convert - OPTIONS : DELETE FLOATING SIGNALS")
+
             for frame in db.frames:
                 if frame.name == 'VECTOR__INDEPENDENT_SIG_MSG':
                     for signal in frame:
@@ -280,6 +364,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         # Check & Warn for Receiver Node against signals
         if options.get('checkSignalReceiver') is not None and options['checkSignalReceiver']:
+
+            print("def : convert - convert - OPTIONS : CHECK SIGNAL RECEIVER")
+
             for frame in db.frames:
                 for signal in frame:
                     if len(signal.receivers) == 0:
@@ -287,6 +374,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         # Check & Warn Unassigned Signals to a Valid Frame/Message
         if options.get('checkFloatingSignals') is not None and options['checkFloatingSignals']:
+
+            print("def : convert - convert - OPTIONS : CHECK FLOATING SIGNALS")
+
             for frame in db.frames:
                 if frame.name == 'VECTOR__INDEPENDENT_SIG_MSG':
                     for signal in frame:
@@ -294,12 +384,18 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         # Check & Warn for Frame/Messages without Transmitter Node
         if options.get('checkFloatingFrames') is not None and options['checkFloatingFrames']:
+
+            print("def : convert - convert - OPTIONS : CHECK FLOATING FRAMES")
+
             for frame in db.frames:
                 if len(frame.transmitters) == 0:
                     logger.warning("No Transmitter Node Found for Frame %s", frame.name)
 
         # Check & Warn for Signals with Min/Max set to 0
         if options.get('checkSignalRange') is not None and options['checkSignalRange']:
+
+            print("def : convert - convert - OPTIONS : CHECK SIGNAL RANGE")
+
             for frame in db.frames:
                 for signal in frame.signals:
                     if (signal.phys2raw(signal.max) - signal.phys2raw(signal.min)) == 0:
@@ -307,6 +403,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         # Check for Signals without unit and Value table , the idea is to improve signal readability
         if options.get('checkSignalUnit') is not None and options['checkSignalUnit']:
+
+            print("def : convert - convert - OPTIONS : CHECK SIGNAL UNIT")
+
             for frame in db.frames:
                 for signal in frame:
                     if signal.unit == "" and len(signal.values) == 0:
@@ -314,12 +413,18 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         # Convert dbc from J1939 to Extended format
         if options.get('convertToExtended') is not None and options['convertToExtended']:
+
+            print("def : convert - convert - OPTIONS : CONVERT TO EXTENDED")
+
             for frame in db.frames:
                 frame.is_j1939=False
             db.add_attribute("ProtocolType","ExtendedCAN")
 
         # Convert dbc from Extended to J1939 format
         if options.get('convertToJ1939') is not None and options['convertToJ1939']:
+
+            print("def : convert - convert - OPTIONS : CONVERT TO J1939")
+
             for frame in db.frames:
                 frame.is_j1939=True
             db.add_attribute("ProtocolType","J1939")
@@ -329,6 +434,9 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
         out_dbs[name] = db
     if 'force_output' in options and options['force_output'] is not None:
+
+        print("def : convert - convert - OPTIONS : FORCE OUTPUT")
+
         canmatrix.formats.dumpp(out_dbs, out_file_name, export_type=options[
                                 'force_output'], **options)
     else:

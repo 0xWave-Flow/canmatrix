@@ -362,17 +362,17 @@ def load(file, **options):
 
     # Defines not imported... add by users
     # add_ecu_defines BA_DEF_ BU_
-    db.add_ecu_defines("NWM-Stationsadresse", 'HEX 0 63')
-    db.add_ecu_defines("NWM-Knoten", 'ENUM  "nein","ja"')
+    #db.add_ecu_defines("NWM-Stationsadresse", 'HEX 0 63')
+    #db.add_ecu_defines("NWM-Knoten", 'ENUM  "nein","ja"')
 
     # add_frame_defines BA_DEF_ BO_
-    db.add_frame_defines("GenMsgDelayTime", 'INT 0 65535')
-    db.add_frame_defines("GenMsgCycleTimeActive", 'INT 0 65535')
-    db.add_frame_defines("GenMsgNrOfRepetitions", 'INT 0 65535')
-    db.add_frame_defines("GenMsgStartValue", 'STRING')
+    #db.add_frame_defines("GenMsgDelayTime", 'INT 0 65535')
+    #db.add_frame_defines("GenMsgCycleTimeActive", 'INT 0 65535')
+    #db.add_frame_defines("GenMsgNrOfRepetitions", 'INT 0 65535')
+    #db.add_frame_defines("GenMsgStartValue", 'STRING')
 
     # add_signal_defines BA_DEF_ SG_
-    db.add_signal_defines("GenSigSNA", 'STRING')
+    #db.add_signal_defines("GenSigSNA", 'STRING')
 
     # eval search for correct columns:
     index = {}
