@@ -149,7 +149,7 @@ def dump(in_db, f, **options):
     dbc_export_comment_encoding = options.get("dbcExportCommentEncoding", dbc_export_encoding)
     compatibility = options.get('compatibility', True)
     ignore_encoding_errors = options.get("ignoreEncodingErrors", "ignore")
-    write_val_table = options.get("writeValTable", True)
+    write_val_table = options.get("writeValTable", False)
 
     whitespace_replacement = options.get("whitespaceReplacement", '_')
     if whitespace_replacement in ['', None] or {' ', '\t'}.intersection(whitespace_replacement):
@@ -235,6 +235,11 @@ def dump(in_db, f, **options):
         # ValueTables
         for signal in db.signals:
             if signal.values:
+
+                print("def : format - dbc - dump - ECU - BUG : {} - {}".format(
+                    write_val_table,signal.values))
+
+
                 f.write(("VAL_TABLE_ " + signal.name).encode(dbc_export_encoding, ignore_encoding_errors))
                 for key, val in signal.values.items():
                     print("def : format - dbc - dump - VALUE TABLE : {} , {}".format(str(key),val))
@@ -904,10 +909,11 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             # decode values
             elif decoded.startswith("VAL_ "):
 
-                print("def : format - dbc - load - VAL_ : {}".format(decoded))
-
                 regexp = re.compile(r"^VAL_ +(\w+) +(\w+) +(.*) *;")
                 temp = regexp.match(decoded)
+
+                print("def : format - dbc - load - VAL_ : {} - {} - {}".format(temp.group(1),temp.group(2),temp.group(3)))
+
                 if temp:
                     signal_name = temp.group(2)
                     temp_list = list(canmatrix.utils.escape_aware_split(temp.group(3), '"'))
@@ -919,6 +925,8 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                                     for i in range(math.floor(len(temp_list) / 2)):
                                         val = temp_list[i * 2 + 1]
                                         val = val.replace('\\"', '"')
+
+                                        print("def : format - dbc - load - LOOP : VAL_ : {} - {}".format(temp_list[i * 2],val))
 
                                         signal.add_values(temp_list[i * 2], val)
                         except:
@@ -933,6 +941,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                 regexp = re.compile(r"^VAL_TABLE_ +(\w+) +(.*) *;")
                 temp = regexp.match(decoded)
+
+                print("def : format - dbc - load - VAL_TABLE_ : {} - {}".format(temp.group(1), temp.group(2)))
+
                 if temp:
                     table_name = temp.group(1)
                     temp_list = temp.group(2).split('"')
