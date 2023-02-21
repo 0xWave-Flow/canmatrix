@@ -78,12 +78,18 @@ def get_signal(db, frame, sig, motorola_bit_format):
     # No.
     front_array.append('/')
     try:
-        front_array.append(frame.transmitters[0])
+        if len(frame.transmitters) > 1:
+            front_array.append(",".join(frame.transmitters))
+        else:
+            front_array.append(frame.transmitters[0])
     except:
         front_array.append('None')
         # print('No transmitter!')
     try:
-        front_array.append(sig.receivers[0])
+        if len(sig.receivers) > 1:
+            front_array.append(",".join(sig.receivers))
+        else:
+            front_array.append(sig.receivers[0])
     except:
         front_array.append('None')
         # print('No receiver!')

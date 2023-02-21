@@ -25,70 +25,381 @@ def : convert - convert
 def : format - xls - load
 def : format - xls - load - BYTE ORDER INDEX: 21 
 def : format - xls - load - UNIT INDEX: 34 
-def : canmatrix - CanMatrix - add_ecu - Ecu(name='FuelPanel', comment=None)
+def : canmatrix - CanMatrix - add_ecu - Ecu(name='ADAS_ECU', comment=None)
+def : canmatrix - CanMatrix - add_ecu - Ecu(name='ExternalUnit', comment=None)
+def : canmatrix - CanMatrix - add_ecu - Ecu(name='ARS_ISF', comment=None)
 def : format - xls - load - unit : 1 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - SSM_141 - {0: 'Normal Operation ', 1: 'NCD', 2: 'Functional Test', 3: 'Failure Warning '}
+def : format - xls - load - SIGNAL - Obj_ProbOfExist - {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
 def : format - xls - load - unit : 2 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - SDI_141 - {1: 'Computer 1', 2: 'Computer 2'}
+def : format - xls - load - SIGNAL - Obj_MeasState - {0: 'Deleted', 1: 'New', 2: 'Measured', 3: 'Predicted', 4: 'Deleted for merge', 5: 'New from merge'}
 def : format - xls - load - unit : 3 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Standby_Pump_1_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_ArelLong_rms - {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
 def : format - xls - load - unit : 4 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Standby_Pump_4_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_ArelLat_rms - {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
 def : format - xls - load - unit : 5 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Standby_Pump_3_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_VrelLong_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
 def : format - xls - load - unit : 6 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Standby_Pump_2_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_VrelLat_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
 def : format - xls - load - unit : 7 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - APU_Pump_Contactor - {0: 'Energized', 1: 'Off'}
+def : format - xls - load - SIGNAL - Obj_Orientation_rms - {0: '<0.005 deg', 1: '<0.007 deg', 2: '<0.010 deg', 3: '<0.014 deg', 4: '<0.020 deg', 5: '<0.029 deg', 6: '<0.041 deg', 7: '<0.058 deg', 8: '<0.082 deg', 9: '<0.116 deg', 10: '<0.165 deg', 11: '<0.234 deg', 12: '<0.332 deg', 13: '<0.471 deg', 14: '<0.669 deg', 15: '<0.949 deg', 16: '<1.346 deg', 17: '<1.909 deg', 18: '<2.709 deg', 19: '<3.843 deg', 20: '<5.451 deg', 21: '<7.734 deg', 22: '<10.971 deg', 23: '<15.565 deg', 24: '<22.081 deg', 25: '<31.325 deg', 26: '<44.439 deg', 27: '<63.044 deg', 28: '<89.437 deg', 29: '<126.881 deg', 30: '<180.000 deg', 31: 'Invalid'}
 def : format - xls - load - unit : 8 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Center_Tank_Left_Transfer_Pump_P - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_DistLong_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
 def : format - xls - load - unit : 9 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - RCT_Transfer_Pump_B_Rear_Contact - {0: 'Energized', 1: 'Off'}
+def : format - xls - load - SIGNAL - Obj_DistLat_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
 def : format - xls - load - unit : 10 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - RCT_Transfer_Pump_A_Front_Contac - {0: 'Energized', 1: 'Off'}
+def : format - xls - load - SIGNAL - Obj_ID_Quality - {}
 def : format - xls - load - unit : 11 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Main_Pump_4_Pushbutton - {0: 'Off', 1: 'On'}
-def : format - xls - load - unit : 12 - / - 34
+def : format - xls - load - SIGNAL - Obj_Class - {0: 'Point', 1: 'Car', 2: 'Truck', 3: 'Pedestrian', 4: 'Motorcycle', 5: 'Bicycle', 6: 'Wide', 7: "Description for the value '0x7'"}
+def : format - xls - load - unit : 12 - m/s² - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Main_Pump_3_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_ArelLat - {}
 def : format - xls - load - unit : 13 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Main_Pump_2_Pushbutton - {0: 'Off', 1: 'On'}
-def : format - xls - load - unit : 14 - / - 34
+def : format - xls - load - SIGNAL - Obj_ID_extended - {}
+def : format - xls - load - unit : 14 - deg - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Main_Pump_1_Pushbutton - {0: 'Off', 1: 'On'}
-def : format - xls - load - unit : 15 - / - 34
+def : format - xls - load - SIGNAL - Obj_OrientationAngle - {}
+def : format - xls - load - unit : 15 - m - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - RCT_Transfer_Pump_B_Rear_Pushbut - {0: 'Off', 1: 'On'}
-def : format - xls - load - unit : 16 - / - 34
+def : format - xls - load - SIGNAL - Obj_Width - {}
+def : format - xls - load - unit : 16 - m - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - RCT_Transfer_Pump_A_Front_Pushbu - {0: 'Off', 1: 'On'}
-def : format - xls - load - unit : 17 - / - 34
+def : format - xls - load - SIGNAL - Obj_Length - {}
+def : format - xls - load - unit : 17 - m/s² - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Trim_Tank_Right_Transfer_Pump_Pu - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - Obj_ArelLong - {}
 def : format - xls - load - unit : 18 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Trim_Tank_Left_Transfer_Pump_Pus - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - CollDetRegState_WarningLevel - {0: 'No warning', 1: 'Object warning', 2: 'Preliminary warning', 3: 'Warning deactivated'}
 def : format - xls - load - unit : 19 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Center_Tank_Right_Aft_Transfer_P - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - CollDetRegState_NofObjects - {}
 def : format - xls - load - unit : 20 - / - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Center_Tank_Left_Aft_Transfer_Pu - {0: 'Off', 1: 'On'}
-def : format - xls - load - unit : 21 - / - 34
+def : format - xls - load - SIGNAL - CollDetRegState_RegionID - {}
+def : format - xls - load - unit : 21 - m - 34
 def : canmatrix - Signal - add_comment - /
-def : format - xls - load - SIGNAL - Center_Tank_Right_Transfer_Pump_ - {0: 'Off', 1: 'On'}
+def : format - xls - load - SIGNAL - CollDetRegState_Point2Y - {}
+def : format - xls - load - unit : 22 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegState_Point2X - {}
+def : format - xls - load - unit : 23 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegState_Point1Y - {}
+def : format - xls - load - unit : 24 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegState_Point1X - {}
+def : format - xls - load - unit : 25 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_CollDetRegionBitfield - {}
+def : format - xls - load - unit : 26 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_ID - {}
+def : format - xls - load - unit : 27 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRelayCtrl_Param - {}
+def : format - xls - load - unit : 28 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterState_Type - {0: 'Cluster filter', 1: 'Object filter'}
+def : format - xls - load - unit : 29 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterState_Active - {0: 'inactive', 1: 'active'}
+def : format - xls - load - unit : 30 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterState_NofObjectFilterCfg - {}
+def : format - xls - load - unit : 31 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterState_NofClusterFilterCfg - {}
+def : format - xls - load - unit : 32 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterCfg_Valid - {0: 'invalid', 1: 'valid'}
+def : format - xls - load - unit : 33 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterCfg_Active - {0: 'inactive', 1: 'active'}
+def : format - xls - load - unit : 34 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FilterCfg_Type - {0: 'Cluster filter', 1: 'Object filter'}
+def : format - xls - load - unit : 35 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_RCS_Threshold_Valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 36 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_RCS_Threshold - {0: 'Standard', 1: 'High Sensitivity', 2: 'Reserved', 3: 'Reserved', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - xls - load - unit : 37 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_StoreInNVM_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 38 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SortIndex_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 39 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SortIndex - {0: 'No sorting', 1: 'Sorted by range', 2: 'Sorted by RCS'}
+def : format - xls - load - unit : 40 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_StoreInNVM - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 41 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SendExtInfo_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 42 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SendExtInfo - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 43 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_CtrlRelay_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 44 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_CtrlRelay - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 45 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SendQuality_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 46 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SendQuality - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 47 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_MaxDistance_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 48 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_RadarPower_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 49 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_OutputType_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 50 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SensorID_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 51 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_MaxDistance - {}
+def : format - xls - load - unit : 52 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_RadarPower - {0: 'Standard', 1: '-3 dB Tx gain', 2: '-6 dB Tx gain', 3: '-9 dB Tx gain', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - xls - load - unit : 53 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_OutputType - {0: 'None', 1: 'SendObjects', 2: 'SendClusters', 3: 'reserved 2'}
+def : format - xls - load - unit : 54 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarCfg_SensorID - {}
+def : format - xls - load - unit : 55 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_Voltage_Error - {0: 'No error', 1: 'Error active'}
+def : format - xls - load - unit : 56 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_Temporary_Error - {0: 'No error', 1: 'Error active'}
+def : format - xls - load - unit : 57 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_Temperature_Error - {0: 'No error', 1: 'Error active'}
+def : format - xls - load - unit : 58 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_Interference - {0: 'No interference', 1: 'Interference present'}
+def : format - xls - load - unit : 59 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_Persistent_Error - {0: 'No error', 1: 'Error active'}
+def : format - xls - load - unit : 60 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_SortIndex - {}
+def : format - xls - load - unit : 61 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_RCS_Threshold - {0: 'Standard', 1: 'High Sensitivity', 2: 'Reserved', 3: 'Reserved', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - xls - load - unit : 62 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_CtrlRelayCfg - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 63 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_SendQualityCfg - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 64 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_SendExtInfoCfg - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 65 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_MotionRxState - {0: 'Input ok', 1: 'Speed missing', 2: 'Yaw rate missing', 3: 'Speed and yaw rate missing'}
+def : format - xls - load - unit : 66 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_SensorID - {}
+def : format - xls - load - unit : 67 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_OutputTypeCfg - {0: 'None', 1: 'SendObjects', 2: 'SendClusters', 3: 'reserved 2'}
+def : format - xls - load - unit : 68 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_RadarPowerCfg - {0: 'Standard', 1: '-3 dB Tx gain', 2: '-6 dB Tx gain', 3: '-9 dB Tx gain', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - xls - load - unit : 69 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_NVMReadStatus - {0: 'pending', 1: 'successful'}
+def : format - xls - load - unit : 70 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_NVMwriteStatus - {0: 'failed', 1: 'successful'}
+def : format - xls - load - unit : 71 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarState_MaxDistanceCfg - {}
+def : format - xls - load - unit : 72 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarDevice_Speed - {}
+def : format - xls - load - unit : 73 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarDevice_SpeedDirection - {0: 'standstill', 1: 'forward', 2: 'reverse', 3: 'reserved'}
+def : format - xls - load - unit : 74 - °/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RadarDevice_YawRate - {}
+def : format - xls - load - unit : 75 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetCfg_ClearRegions - {0: 'Idle', 1: 'Clear all defined regions'}
+def : format - xls - load - unit : 76 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetCfg_WarningReset - {0: 'Idle', 1: 'Warn reset'}
+def : format - xls - load - unit : 77 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetCfg_Activate - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 78 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetCfg_MinTime_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 79 - s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetCfg_MinDetectTime - {}
+def : format - xls - load - unit : 80 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_Activate - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 81 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_Coordinates_valid - {0: 'Invalid', 1: 'Valid'}
+def : format - xls - load - unit : 82 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_RegionID - {}
+def : format - xls - load - unit : 83 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_Point1X - {}
+def : format - xls - load - unit : 84 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_Point1Y - {}
+def : format - xls - load - unit : 85 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_Point2X - {}
+def : format - xls - load - unit : 86 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetRegCfg_Point2Y - {}
+def : format - xls - load - unit : 87 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetState_MeasCounter - {}
+def : format - xls - load - unit : 88 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetState_Active - {0: 'Inactive', 1: 'Active'}
+def : format - xls - load - unit : 89 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetState_NofRegions - {}
+def : format - xls - load - unit : 90 - s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CollDetState_MinDetectTime - {}
+def : format - xls - load - unit : 91 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_MeasCounter - {}
+def : format - xls - load - unit : 92 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_NofClustersNear - {}
+def : format - xls - load - unit : 93 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_NofClustersFar - {}
+def : format - xls - load - unit : 94 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_InterfaceVersion - {}
+def : format - xls - load - unit : 95 - 1 - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_NofObjects - {}
+def : format - xls - load - unit : 96 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_MeasCounter - {}
+def : format - xls - load - unit : 97 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_InterfaceVersion - {}
+def : format - xls - load - unit : 98 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_DynProp - {0: 'Moving', 1: 'Stationary', 2: 'Oncoming', 3: 'Stationary candidate', 4: 'Unknown', 5: 'Crossing stationary', 6: 'Crossing moving', 7: 'Stopped'}
+def : format - xls - load - unit : 99 - dBm² - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_RCS - {}
+def : format - xls - load - unit : 100 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_VrelLat - {}
+def : format - xls - load - unit : 101 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_ID - {}
+def : format - xls - load - unit : 102 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_DistLong - {}
+def : format - xls - load - unit : 103 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_VrelLong - {}
+def : format - xls - load - unit : 104 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Obj_DistLat - {}
+def : format - xls - load - unit : 105 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Version_ExtendedRange - {0: 'Standard range', 1: 'Extended range'}
+def : format - xls - load - unit : 106 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Version_CountryCode - {0: 'International version', 1: 'South Korea, Japan'}
+def : format - xls - load - unit : 107 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Version_MajorRelease - {}
+def : format - xls - load - unit : 108 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Version_MinorRelease - {}
+def : format - xls - load - unit : 109 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Version_PatchLevel - {}
+def : format - xls - load - unit : 110 - 1 - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_DynProp - {0: 'Moving', 1: 'Stationary', 2: 'Oncoming', 3: 'Stationary candidate', 4: 'Unknown', 5: 'Crossing stationary', 6: 'Crossing moving', 7: 'Stopped'}
+def : format - xls - load - unit : 111 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_VrelLat - {}
+def : format - xls - load - unit : 112 - dBm² - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_RCS - {}
+def : format - xls - load - unit : 113 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_DistLong - {}
+def : format - xls - load - unit : 114 - 1 - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_ID - {}
+def : format - xls - load - unit : 115 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_VrelLong - {}
+def : format - xls - load - unit : 116 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_DistLat - {}
+def : format - xls - load - unit : 117 - 1 - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_ID - {}
+def : format - xls - load - unit : 118 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_VrelLat_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
+def : format - xls - load - unit : 119 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_InvalidState - {0: 'Valid', 1: 'Invalid with too low RCS', 2: 'Invalid nearfield', 3: 'Invalid far not confirmed', 4: 'Valid with low RCS', 5: 'reserved', 6: 'Invalid mirror', 7: 'Invalid outside field of view', 8: 'Valid with elevation', 9: 'Valid child', 10: 'Valid 50 deg artefact', 11: 'Valid but no local maximum', 12: 'Valid artefact ', 13: 'reserved', 14: 'Invalid harmonics ', 15: 'Valid near above 95 m', 16: 'Valid multi-target', 17: 'Valid suspicious angle'}
+def : format - xls - load - unit : 120 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_DistLat_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
+def : format - xls - load - unit : 121 - m - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_DistLong_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
+def : format - xls - load - unit : 122 - m/s - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_VrelLong_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
+def : format - xls - load - unit : 123 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_PdH0 - {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
+def : format - xls - load - unit : 124 - 1 - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Cluster_AmbigState - {0: 'Invalid', 1: 'Ambiguous', 2: 'Staggered ramp', 3: 'Unambiguous', 4: 'Stationary candidate'}
 def : format - __init__ - dumpp
 def : format - __init__ - dump
 def : format - dbc - dump
@@ -98,175 +409,647 @@ def : canmatrix - CanMatrix - contains_j1939
 def : canmatrix - CanMatrix - contains_fd
 def : canmatrix - CanMatrix - contains_j1939
 def : format - dbc - dump - HEADER : b'VERSION "Excel 2 DBC"\n\n\nNS_ :\n\tNS_DESC_\n\tCM_\n\tBA_DEF_\n\tBA_\n\tVAL_\n\tCAT_DEF_\n\tCAT_\n\tFILTER\n\tBA_DEF_DEF_\n\tEV_DATA_\n\tENVVAR_DATA_\n\tSGTYPE_\n\tSGTYPE_VAL_\n\tBA_DEF_SGTYPE_\n\tBA_SGTYPE_\n\tSIG_TYPE_REF_\n\tVAL_TABLE_\n\tSIG_GROUP_\n\tSIG_VALTYPE_\n\tSIGTYPE_VALTYPE_\n\tBO_TX_BU_\n\tBA_DEF_REL_\n\tBA_REL_\n\tBA_DEF_DEF_REL_\n\tBU_SG_REL_\n\tBU_EV_REL_\n\tBU_BO_REL_\n\tSG_MUL_VAL_\nBS_:\n\n'
-def : format - dbc - dump - ECU : FuelPanel
-def : canmatrix - Signal - phys2raw - SSM_141,0
-def : canmatrix - Signal - phys2raw - SDI_141,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_1_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_4_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_3_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_2_Pushbutton,0
-def : canmatrix - Signal - phys2raw - APU_Pump_Contactor,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Left_Transfer_Pump_P,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Contact,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Contac,0
-def : canmatrix - Signal - phys2raw - Main_Pump_4_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_3_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_2_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_1_Pushbutton,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Pushbut,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Pushbu,0
-def : canmatrix - Signal - phys2raw - Trim_Tank_Right_Transfer_Pump_Pu,0
-def : canmatrix - Signal - phys2raw - Trim_Tank_Left_Transfer_Pump_Pus,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Right_Aft_Transfer_P,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Left_Aft_Transfer_Pu,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Right_Transfer_Pump_,0
-def : canmatrix - Signal - phys2raw - SSM_141,0
-def : canmatrix - Signal - phys2raw - SDI_141,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_1_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_4_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_3_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_2_Pushbutton,0
-def : canmatrix - Signal - phys2raw - APU_Pump_Contactor,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Left_Transfer_Pump_P,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Contact,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Contac,0
-def : canmatrix - Signal - phys2raw - Main_Pump_4_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_3_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_2_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_1_Pushbutton,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Pushbut,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Pushbu,0
-def : canmatrix - Signal - phys2raw - Trim_Tank_Right_Transfer_Pump_Pu,0
-def : canmatrix - Signal - phys2raw - Trim_Tank_Left_Transfer_Pump_Pus,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Right_Aft_Transfer_P,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Left_Aft_Transfer_Pu,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Right_Transfer_Pump_,0
-def : canmatrix - Signal - phys2raw - SSM_141,0
-def : canmatrix - Signal - phys2raw - SDI_141,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_1_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_4_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_3_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Standby_Pump_2_Pushbutton,0
-def : canmatrix - Signal - phys2raw - APU_Pump_Contactor,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Left_Transfer_Pump_P,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Contact,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Contac,0
-def : canmatrix - Signal - phys2raw - Main_Pump_4_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_3_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_2_Pushbutton,0
-def : canmatrix - Signal - phys2raw - Main_Pump_1_Pushbutton,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Pushbut,0
-def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Pushbu,0
-def : canmatrix - Signal - phys2raw - Trim_Tank_Right_Transfer_Pump_Pu,0
-def : canmatrix - Signal - phys2raw - Trim_Tank_Left_Transfer_Pump_Pus,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Right_Aft_Transfer_P,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Left_Aft_Transfer_Pu,0
-def : canmatrix - Signal - phys2raw - Center_Tank_Right_Transfer_Pump_,0
-def : format - dbc - dump - FRAME : ArbitrationId(id=97, extended=False) , Pump_Contactor_And_Pushbutton_St , 4 , ['FuelPanel']
+def : format - dbc - dump - ECU : ADAS_ECU
+def : format - dbc - dump - ECU : ExternalUnit
+def : format - dbc - dump - ECU : ARS_ISF
+def : canmatrix - Signal - phys2raw - Obj_ProbOfExist,0
+def : canmatrix - Signal - phys2raw - Obj_MeasState,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLong_rms,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLat_rms,0
+def : canmatrix - Signal - phys2raw - Obj_VrelLong_rms,0
+def : canmatrix - Signal - phys2raw - Obj_VrelLat_rms,0
+def : canmatrix - Signal - phys2raw - Obj_Orientation_rms,0
+def : canmatrix - Signal - phys2raw - Obj_DistLong_rms,0
+def : canmatrix - Signal - phys2raw - Obj_DistLat_rms,0
+def : canmatrix - Signal - phys2raw - Obj_ID_Quality,0
+def : canmatrix - Signal - phys2raw - Obj_Class,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLat,250
+def : canmatrix - Signal - phys2raw - Obj_ID_extended,0
+def : canmatrix - Signal - phys2raw - Obj_OrientationAngle,450
+def : canmatrix - Signal - phys2raw - Obj_Width,0
+def : canmatrix - Signal - phys2raw - Obj_Length,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLong,1000
+def : canmatrix - Signal - phys2raw - CollDetRegState_WarningLevel,0
+def : canmatrix - Signal - phys2raw - CollDetRegState_NofObjects,0
+def : canmatrix - Signal - phys2raw - CollDetRegState_RegionID,0
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point2Y,1023
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point2X,2500
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point1Y,1023
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point1X,2500
+def : canmatrix - Signal - phys2raw - Obj_CollDetRegionBitfield,0
+def : canmatrix - Signal - phys2raw - Obj_ID,0
+def : canmatrix - Signal - phys2raw - CollDetRelayCtrl_Param,0
+def : canmatrix - Signal - phys2raw - FilterState_Type,0
+def : canmatrix - Signal - phys2raw - FilterState_Active,0
+def : canmatrix - Signal - phys2raw - FilterState_NofObjectFilterCfg,0
+def : canmatrix - Signal - phys2raw - FilterState_NofClusterFilterCfg,0
+def : canmatrix - Signal - phys2raw - FilterCfg_Valid,0
+def : canmatrix - Signal - phys2raw - FilterCfg_Active,0
+def : canmatrix - Signal - phys2raw - FilterCfg_Type,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RCS_Threshold_Valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RCS_Threshold,0
+def : canmatrix - Signal - phys2raw - RadarCfg_StoreInNVM_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SortIndex_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SortIndex,0
+def : canmatrix - Signal - phys2raw - RadarCfg_StoreInNVM,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendExtInfo_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendExtInfo,0
+def : canmatrix - Signal - phys2raw - RadarCfg_CtrlRelay_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_CtrlRelay,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendQuality_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendQuality,0
+def : canmatrix - Signal - phys2raw - RadarCfg_MaxDistance_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RadarPower_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_OutputType_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SensorID_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_MaxDistance,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RadarPower,0
+def : canmatrix - Signal - phys2raw - RadarCfg_OutputType,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SensorID,0
+def : canmatrix - Signal - phys2raw - RadarState_Voltage_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_Temporary_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_Temperature_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_Interference,0
+def : canmatrix - Signal - phys2raw - RadarState_Persistent_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_SortIndex,0
+def : canmatrix - Signal - phys2raw - RadarState_RCS_Threshold,0
+def : canmatrix - Signal - phys2raw - RadarState_CtrlRelayCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_SendQualityCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_SendExtInfoCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_MotionRxState,0
+def : canmatrix - Signal - phys2raw - RadarState_SensorID,0
+def : canmatrix - Signal - phys2raw - RadarState_OutputTypeCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_RadarPowerCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_NVMReadStatus,0
+def : canmatrix - Signal - phys2raw - RadarState_NVMwriteStatus,0
+def : canmatrix - Signal - phys2raw - RadarState_MaxDistanceCfg,0
+def : canmatrix - Signal - phys2raw - RadarDevice_Speed,0
+def : canmatrix - Signal - phys2raw - RadarDevice_SpeedDirection,0
+def : canmatrix - Signal - phys2raw - RadarDevice_YawRate,32768
+def : canmatrix - Signal - phys2raw - CollDetCfg_ClearRegions,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_WarningReset,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_Activate,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_MinTime_valid,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_MinDetectTime,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Activate,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Coordinates_valid,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_RegionID,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point1X,2500
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point1Y,1023
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point2X,2500
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point2Y,1023
+def : canmatrix - Signal - phys2raw - CollDetState_MeasCounter,0
+def : canmatrix - Signal - phys2raw - CollDetState_Active,0
+def : canmatrix - Signal - phys2raw - CollDetState_NofRegions,0
+def : canmatrix - Signal - phys2raw - CollDetState_MinDetectTime,0
+def : canmatrix - Signal - phys2raw - Cluster_MeasCounter,0
+def : canmatrix - Signal - phys2raw - Cluster_NofClustersNear,0
+def : canmatrix - Signal - phys2raw - Cluster_NofClustersFar,0
+def : canmatrix - Signal - phys2raw - Cluster_InterfaceVersion,0
+def : canmatrix - Signal - phys2raw - Obj_NofObjects,0
+def : canmatrix - Signal - phys2raw - Obj_MeasCounter,0
+def : canmatrix - Signal - phys2raw - Obj_InterfaceVersion,0
+def : canmatrix - Signal - phys2raw - Obj_DynProp,0
+def : canmatrix - Signal - phys2raw - Obj_RCS,128
+def : canmatrix - Signal - phys2raw - Obj_VrelLat,256
+def : canmatrix - Signal - phys2raw - Obj_ID,0
+def : canmatrix - Signal - phys2raw - Obj_DistLong,2500
+def : canmatrix - Signal - phys2raw - Obj_VrelLong,512
+def : canmatrix - Signal - phys2raw - Obj_DistLat,1023
+def : canmatrix - Signal - phys2raw - Version_ExtendedRange,0
+def : canmatrix - Signal - phys2raw - Version_CountryCode,0
+def : canmatrix - Signal - phys2raw - Version_MajorRelease,0
+def : canmatrix - Signal - phys2raw - Version_MinorRelease,0
+def : canmatrix - Signal - phys2raw - Version_PatchLevel,0
+def : canmatrix - Signal - phys2raw - Cluster_DynProp,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLat,256
+def : canmatrix - Signal - phys2raw - Cluster_RCS,128
+def : canmatrix - Signal - phys2raw - Cluster_DistLong,2500
+def : canmatrix - Signal - phys2raw - Cluster_ID,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLong,512
+def : canmatrix - Signal - phys2raw - Cluster_DistLat,511
+def : canmatrix - Signal - phys2raw - Cluster_ID,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLat_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_InvalidState,0
+def : canmatrix - Signal - phys2raw - Cluster_DistLat_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_DistLong_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLong_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_PdH0,0
+def : canmatrix - Signal - phys2raw - Cluster_AmbigState,0
+def : canmatrix - Signal - phys2raw - Obj_ProbOfExist,0
+def : canmatrix - Signal - phys2raw - Obj_MeasState,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLong_rms,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLat_rms,0
+def : canmatrix - Signal - phys2raw - Obj_VrelLong_rms,0
+def : canmatrix - Signal - phys2raw - Obj_VrelLat_rms,0
+def : canmatrix - Signal - phys2raw - Obj_Orientation_rms,0
+def : canmatrix - Signal - phys2raw - Obj_DistLong_rms,0
+def : canmatrix - Signal - phys2raw - Obj_DistLat_rms,0
+def : canmatrix - Signal - phys2raw - Obj_ID_Quality,0
+def : canmatrix - Signal - phys2raw - Obj_Class,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLat,250
+def : canmatrix - Signal - phys2raw - Obj_ID_extended,0
+def : canmatrix - Signal - phys2raw - Obj_OrientationAngle,450
+def : canmatrix - Signal - phys2raw - Obj_Width,0
+def : canmatrix - Signal - phys2raw - Obj_Length,0
+def : canmatrix - Signal - phys2raw - Obj_ArelLong,1000
+def : canmatrix - Signal - phys2raw - CollDetRegState_WarningLevel,0
+def : canmatrix - Signal - phys2raw - CollDetRegState_NofObjects,0
+def : canmatrix - Signal - phys2raw - CollDetRegState_RegionID,0
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point2Y,1023
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point2X,2500
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point1Y,1023
+def : canmatrix - Signal - phys2raw - CollDetRegState_Point1X,2500
+def : canmatrix - Signal - phys2raw - Obj_CollDetRegionBitfield,0
+def : canmatrix - Signal - phys2raw - Obj_ID,0
+def : canmatrix - Signal - phys2raw - CollDetRelayCtrl_Param,0
+def : canmatrix - Signal - phys2raw - FilterState_Type,0
+def : canmatrix - Signal - phys2raw - FilterState_Active,0
+def : canmatrix - Signal - phys2raw - FilterState_NofObjectFilterCfg,0
+def : canmatrix - Signal - phys2raw - FilterState_NofClusterFilterCfg,0
+def : canmatrix - Signal - phys2raw - FilterCfg_Valid,0
+def : canmatrix - Signal - phys2raw - FilterCfg_Active,0
+def : canmatrix - Signal - phys2raw - FilterCfg_Type,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RCS_Threshold_Valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RCS_Threshold,0
+def : canmatrix - Signal - phys2raw - RadarCfg_StoreInNVM_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SortIndex_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SortIndex,0
+def : canmatrix - Signal - phys2raw - RadarCfg_StoreInNVM,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendExtInfo_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendExtInfo,0
+def : canmatrix - Signal - phys2raw - RadarCfg_CtrlRelay_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_CtrlRelay,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendQuality_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SendQuality,0
+def : canmatrix - Signal - phys2raw - RadarCfg_MaxDistance_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RadarPower_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_OutputType_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SensorID_valid,0
+def : canmatrix - Signal - phys2raw - RadarCfg_MaxDistance,0
+def : canmatrix - Signal - phys2raw - RadarCfg_RadarPower,0
+def : canmatrix - Signal - phys2raw - RadarCfg_OutputType,0
+def : canmatrix - Signal - phys2raw - RadarCfg_SensorID,0
+def : canmatrix - Signal - phys2raw - RadarState_Voltage_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_Temporary_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_Temperature_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_Interference,0
+def : canmatrix - Signal - phys2raw - RadarState_Persistent_Error,0
+def : canmatrix - Signal - phys2raw - RadarState_SortIndex,0
+def : canmatrix - Signal - phys2raw - RadarState_RCS_Threshold,0
+def : canmatrix - Signal - phys2raw - RadarState_CtrlRelayCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_SendQualityCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_SendExtInfoCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_MotionRxState,0
+def : canmatrix - Signal - phys2raw - RadarState_SensorID,0
+def : canmatrix - Signal - phys2raw - RadarState_OutputTypeCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_RadarPowerCfg,0
+def : canmatrix - Signal - phys2raw - RadarState_NVMReadStatus,0
+def : canmatrix - Signal - phys2raw - RadarState_NVMwriteStatus,0
+def : canmatrix - Signal - phys2raw - RadarState_MaxDistanceCfg,0
+def : canmatrix - Signal - phys2raw - RadarDevice_Speed,0
+def : canmatrix - Signal - phys2raw - RadarDevice_SpeedDirection,0
+def : canmatrix - Signal - phys2raw - RadarDevice_YawRate,32768
+def : canmatrix - Signal - phys2raw - CollDetCfg_ClearRegions,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_WarningReset,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_Activate,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_MinTime_valid,0
+def : canmatrix - Signal - phys2raw - CollDetCfg_MinDetectTime,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Activate,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Coordinates_valid,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_RegionID,0
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point1X,2500
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point1Y,1023
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point2X,2500
+def : canmatrix - Signal - phys2raw - CollDetRegCfg_Point2Y,1023
+def : canmatrix - Signal - phys2raw - CollDetState_MeasCounter,0
+def : canmatrix - Signal - phys2raw - CollDetState_Active,0
+def : canmatrix - Signal - phys2raw - CollDetState_NofRegions,0
+def : canmatrix - Signal - phys2raw - CollDetState_MinDetectTime,0
+def : canmatrix - Signal - phys2raw - Cluster_MeasCounter,0
+def : canmatrix - Signal - phys2raw - Cluster_NofClustersNear,0
+def : canmatrix - Signal - phys2raw - Cluster_NofClustersFar,0
+def : canmatrix - Signal - phys2raw - Cluster_InterfaceVersion,0
+def : canmatrix - Signal - phys2raw - Obj_NofObjects,0
+def : canmatrix - Signal - phys2raw - Obj_MeasCounter,0
+def : canmatrix - Signal - phys2raw - Obj_InterfaceVersion,0
+def : canmatrix - Signal - phys2raw - Obj_DynProp,0
+def : canmatrix - Signal - phys2raw - Obj_RCS,128
+def : canmatrix - Signal - phys2raw - Obj_VrelLat,256
+def : canmatrix - Signal - phys2raw - Obj_ID,0
+def : canmatrix - Signal - phys2raw - Obj_DistLong,2500
+def : canmatrix - Signal - phys2raw - Obj_VrelLong,512
+def : canmatrix - Signal - phys2raw - Obj_DistLat,1023
+def : canmatrix - Signal - phys2raw - Version_ExtendedRange,0
+def : canmatrix - Signal - phys2raw - Version_CountryCode,0
+def : canmatrix - Signal - phys2raw - Version_MajorRelease,0
+def : canmatrix - Signal - phys2raw - Version_MinorRelease,0
+def : canmatrix - Signal - phys2raw - Version_PatchLevel,0
+def : canmatrix - Signal - phys2raw - Cluster_DynProp,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLat,256
+def : canmatrix - Signal - phys2raw - Cluster_RCS,128
+def : canmatrix - Signal - phys2raw - Cluster_DistLong,2500
+def : canmatrix - Signal - phys2raw - Cluster_ID,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLong,512
+def : canmatrix - Signal - phys2raw - Cluster_DistLat,511
+def : canmatrix - Signal - phys2raw - Cluster_ID,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLat_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_InvalidState,0
+def : canmatrix - Signal - phys2raw - Cluster_DistLat_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_DistLong_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_VrelLong_rms,0
+def : canmatrix - Signal - phys2raw - Cluster_PdH0,0
+def : canmatrix - Signal - phys2raw - Cluster_AmbigState,0
+def : format - dbc - dump - FRAME : ArbitrationId(id=1548, extended=False) , Obj_2_Quality , 7 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SSM_141 : 29|2@1+ (1,0) [0|3] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ProbOfExist : 55|3@0+ (1,0) [0|7] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SDI_141 : 8|2@1+ (1,0) [0|3] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_MeasState : 52|3@0+ (1,0) [0|7] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_1_Pushbutton : 14|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ArelLong_rms : 27|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_4_Pushbutton : 20|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ArelLat_rms : 38|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_3_Pushbutton : 18|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_VrelLong_rms : 21|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_2_Pushbutton : 16|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_VrelLat_rms : 16|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ APU_Pump_Contactor : 12|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_Orientation_rms : 33|5@0+ (1,0) [0|31] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Left_Transfer_Pump_P : 21|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_DistLong_rms : 15|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_B_Rear_Contact : 11|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_DistLat_rms : 10|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_A_Front_Contac : 10|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ID_Quality : 7|8@0+ (1,0) [0|255] "" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1549, extended=False) , Obj_3_Extended , 8 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_4_Pushbutton : 19|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_Class : 26|3@0+ (1,0) [0|7] "" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s²
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ArelLat : 20|9@0+ (0.01,-2.5) [-2.5|2.61] "m/s\xb2" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_3_Pushbutton : 17|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ID_extended : 7|8@0+ (1,0) [0|255] "" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : deg
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_OrientationAngle : 39|10@0+ (0.4,-180) [-180|229.2] "deg" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_Width : 63|8@0+ (0.2,0) [0|51] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_Length : 55|8@0+ (0.2,0) [0|51] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s²
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ArelLong : 15|11@0+ (0.01,-10) [-10|10.47] "m/s\xb2" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1026, extended=False) , CollDetRegionState , 8 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_2_Pushbutton : 15|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_WarningLevel : 4|2@0+ (1,0) [0|3] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_1_Pushbutton : 13|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_NofObjects : 63|8@0+ (1,0) [0|255] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_B_Rear_Pushbut : 28|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_RegionID : 7|3@0+ (1,0) [0|7] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_Point2Y : 42|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_Point2X : 39|13@0+ (0.2,-500) [-500|1138.2] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_Point1Y : 18|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegState_Point1X : 15|13@0+ (0.2,-500) [-500|1138.2] "m" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1550, extended=False) , Obj_4_Warning , 4 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_A_Front_Pushbu : 27|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_CollDetRegionBitfield : 15|8@0+ (1,0) [0|255] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Trim_Tank_Right_Transfer_Pump_Pu : 26|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ID : 7|8@0+ (1,0) [0|255] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=8, extended=False) , CollDetRelayCtrl , 1 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Trim_Tank_Left_Transfer_Pump_Pus : 25|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRelayCtrl_Param : 7|8@0+ (1,0) [0|255] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=516, extended=False) , FilterState_Cfg , 5 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Right_Aft_Transfer_P : 24|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterState_Type : 7|1@0+ (1,0) [0|1] "" ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Left_Aft_Transfer_Pu : 23|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterState_Active : 2|1@0+ (1,0) [0|1] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=515, extended=False) , FilterState_Header , 2 , ['ARS_ISF']
 def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Right_Transfer_Pump_ : 22|1@1+ (1,0) [0|1] "" Vector__XXX\n'
-def : format - dbc - dump - VAL : {0: 'Normal Operation ', 1: 'NCD', 2: 'Functional Test', 3: 'Failure Warning '}
-def : format - dbc - dump - VAL ITEM : 3 - Failure Warning 
-def : format - dbc - dump - VAL ITEM : 2 - Functional Test
-def : format - dbc - dump - VAL ITEM : 1 - NCD
-def : format - dbc - dump - VAL ITEM : 0 - Normal Operation 
-def : format - dbc - dump - VAL : {1: 'Computer 1', 2: 'Computer 2'}
-def : format - dbc - dump - VAL ITEM : 2 - Computer 2
-def : format - dbc - dump - VAL ITEM : 1 - Computer 1
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Energized', 1: 'Off'}
-def : format - dbc - dump - VAL ITEM : 1 - Off
-def : format - dbc - dump - VAL ITEM : 0 - Energized
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Energized', 1: 'Off'}
-def : format - dbc - dump - VAL ITEM : 1 - Off
-def : format - dbc - dump - VAL ITEM : 0 - Energized
-def : format - dbc - dump - VAL : {0: 'Energized', 1: 'Off'}
-def : format - dbc - dump - VAL ITEM : 1 - Off
-def : format - dbc - dump - VAL ITEM : 0 - Energized
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
-def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
-def : format - dbc - dump - VAL ITEM : 1 - On
-def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterState_NofObjectFilterCfg : 15|5@0+ (1,0) [0|31] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterState_NofClusterFilterCfg : 7|5@0+ (1,0) [0|31] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=514, extended=False) , FilterCfg , 5 , ['ExternalUnit']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterCfg_Valid : 1|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterCfg_Active : 2|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FilterCfg_Type : 7|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=512, extended=False) , RadarConfiguration , 8 , ['ExternalUnit']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_RCS_Threshold_Valid : 48|1@0+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_RCS_Threshold : 51|3@0+ (1,0) [0|7] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_StoreInNVM_valid : 7|1@0+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SortIndex_valid : 6|1@0+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SortIndex : 46|3@0+ (1,0) [0|7] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_StoreInNVM : 47|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SendExtInfo_valid : 5|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SendExtInfo : 43|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_CtrlRelay_valid : 40|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_CtrlRelay : 41|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SendQuality_valid : 4|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SendQuality : 42|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_MaxDistance_valid : 0|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_RadarPower_valid : 2|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_OutputType_valid : 3|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SensorID_valid : 1|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_MaxDistance : 15|10@0+ (2,0) [0|2046] "m" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_RadarPower : 39|3@0+ (1,0) [0|7] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_OutputType : 36|2@0+ (1,0) [0|2] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarCfg_SensorID : 34|3@0+ (1,0) [0|7] "" ARS_ISF\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=513, extended=False) , RadarState , 8 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_Voltage_Error : 17|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_Temporary_Error : 18|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_Temperature_Error : 19|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_Interference : 20|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_Persistent_Error : 21|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_SortIndex : 38|3@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_RCS_Threshold : 60|3@0+ (1,0) [0|7] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_CtrlRelayCfg : 41|1@0+ (1,0) [0|1] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_SendQualityCfg : 44|1@0+ (1,0) [0|1] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_SendExtInfoCfg : 45|1@0+ (1,0) [0|1] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_MotionRxState : 47|2@0+ (1,0) [0|3] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_SensorID : 34|3@0+ (1,0) [0|7] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_OutputTypeCfg : 43|2@0+ (1,0) [0|3] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_RadarPowerCfg : 25|3@0+ (1,0) [0|7] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_NVMReadStatus : 6|1@0+ (1,0) [0|1] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_NVMwriteStatus : 7|1@0+ (1,0) [0|1] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarState_MaxDistanceCfg : 15|10@0+ (2,0) [0|2046] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=768, extended=False) , SpeedInformation , 2 , ['ExternalUnit']
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarDevice_Speed : 4|13@0+ (0.02,0) [0|163.8] "m/s" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarDevice_SpeedDirection : 7|2@0+ (1,0) [0|2] "" ARS_ISF\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=769, extended=False) , YawRateInformation , 2 , ['ExternalUnit']
+def : format - dbc - dump - SIGNAL : °/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RadarDevice_YawRate : 7|16@0+ (0.01,-327.68) [-327.68|327.66] "\xb0/s" ARS_ISF\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1024, extended=False) , CollDetCfg , 2 , ['ExternalUnit']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetCfg_ClearRegions : 7|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetCfg_WarningReset : 0|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetCfg_Activate : 1|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetCfg_MinTime_valid : 3|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetCfg_MinDetectTime : 15|8@0+ (0.1,0) [0|25.5] "s" ARS_ISF\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1025, extended=False) , CollDetRegionCfg , 8 , ['ExternalUnit']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_Activate : 1|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_Coordinates_valid : 2|1@0+ (1,0) [0|1] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_RegionID : 10|3@0+ (1,0) [0|7] "" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_Point1X : 23|13@0+ (0.2,-500) [-500|1138.2] "m" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_Point1Y : 26|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_Point2X : 47|13@0+ (0.2,-500) [-500|1138.2] "m" ARS_ISF\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetRegCfg_Point2Y : 50|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ARS_ISF\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1032, extended=False) , CollDetState , 4 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetState_MeasCounter : 23|16@0+ (1,0) [0|65535] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetState_Active : 1|1@0+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetState_NofRegions : 7|4@0+ (1,0) [0|15] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CollDetState_MinDetectTime : 15|8@0+ (0.1,0) [0|25.5] "s" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1536, extended=False) , Cluster_0_Status , 5 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_MeasCounter : 23|16@0+ (1,0) [0|65535] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_NofClustersNear : 7|8@0+ (1,0) [0|255] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_NofClustersFar : 15|8@0+ (1,0) [0|255] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_InterfaceVersion : 39|4@0+ (1,0) [0|15] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1546, extended=False) , Obj_0_Status , 4 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 1
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_NofObjects : 7|8@0+ (1,0) [0|255] "1" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_MeasCounter : 15|16@0+ (1,0) [0|65535] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_InterfaceVersion : 31|4@0+ (1,0) [0|16] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1547, extended=False) , Obj_1_General , 8 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_DynProp : 50|3@0+ (1,0) [0|7] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : dBm²
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm\xb2" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_VrelLat : 45|9@0+ (0.25,-64) [-64|63.75] "m/s" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_ID : 7|8@0+ (1,0) [0|255] "" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_DistLong : 15|13@0+ (0.2,-500) [-500|1138.2] "m" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_VrelLong : 39|10@0+ (0.25,-128) [-128|127.75] "m/s" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Obj_DistLat : 18|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ADAS_ECU,ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1792, extended=False) , VersionID , 4 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Version_ExtendedRange : 25|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Version_CountryCode : 24|1@0+ (1,0) [0|0] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Version_MajorRelease : 7|8@0+ (1,0) [0|256] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Version_MinorRelease : 15|8@0+ (1,0) [0|256] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Version_PatchLevel : 23|8@0+ (1,0) [0|256] "" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1793, extended=False) , Cluster_1_General , 8 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 1
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_DynProp : 50|3@0+ (1,0) [0|7] "1" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_VrelLat : 45|9@0+ (0.25,-64) [-64|63.75] "m/s" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : dBm²
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm\xb2" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_DistLong : 15|13@0+ (0.2,-500) [-500|1138.2] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 1
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_ID : 7|8@0+ (1,0) [0|255] "1" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_VrelLong : 39|10@0+ (0.25,-128) [-128|127.75] "m/s" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_DistLat : 17|10@0+ (0.2,-102.3) [-102.3|102.3] "m" ExternalUnit\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1794, extended=False) , Cluster_2_Quality , 5 , ['ARS_ISF']
+def : format - dbc - dump - SIGNAL : 1
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_ID : 7|8@0+ (1,0) [0|255] "1" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_VrelLat_rms : 16|5@0+ (1,0) [0|31] "m/s" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_InvalidState : 39|5@0+ (1,0) [0|31] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_DistLat_rms : 10|5@0+ (1,0) [0|31] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_DistLong_rms : 15|5@0+ (1,0) [0|31] "m" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : m/s
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_VrelLong_rms : 21|5@0+ (1,0) [0|31] "m/s" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_PdH0 : 26|3@0+ (1,0) [0|7] "" ExternalUnit\n'
+def : format - dbc - dump - SIGNAL : 1
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_AmbigState : 34|3@0+ (1,0) [0|7] "1" ExternalUnit\n'
+def : format - dbc - dump - VAL : {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
+def : format - dbc - dump - VAL : {0: 'Deleted', 1: 'New', 2: 'Measured', 3: 'Predicted', 4: 'Deleted for merge', 5: 'New from merge'}
+def : format - dbc - dump - VAL : {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 deg', 1: '<0.007 deg', 2: '<0.010 deg', 3: '<0.014 deg', 4: '<0.020 deg', 5: '<0.029 deg', 6: '<0.041 deg', 7: '<0.058 deg', 8: '<0.082 deg', 9: '<0.116 deg', 10: '<0.165 deg', 11: '<0.234 deg', 12: '<0.332 deg', 13: '<0.471 deg', 14: '<0.669 deg', 15: '<0.949 deg', 16: '<1.346 deg', 17: '<1.909 deg', 18: '<2.709 deg', 19: '<3.843 deg', 20: '<5.451 deg', 21: '<7.734 deg', 22: '<10.971 deg', 23: '<15.565 deg', 24: '<22.081 deg', 25: '<31.325 deg', 26: '<44.439 deg', 27: '<63.044 deg', 28: '<89.437 deg', 29: '<126.881 deg', 30: '<180.000 deg', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Point', 1: 'Car', 2: 'Truck', 3: 'Pedestrian', 4: 'Motorcycle', 5: 'Bicycle', 6: 'Wide', 7: "Description for the value '0x7'"}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'No warning', 1: 'Object warning', 2: 'Preliminary warning', 3: 'Warning deactivated'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Cluster filter', 1: 'Object filter'}
+def : format - dbc - dump - VAL : {0: 'inactive', 1: 'active'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'invalid', 1: 'valid'}
+def : format - dbc - dump - VAL : {0: 'inactive', 1: 'active'}
+def : format - dbc - dump - VAL : {0: 'Cluster filter', 1: 'Object filter'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Standard', 1: 'High Sensitivity', 2: 'Reserved', 3: 'Reserved', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'No sorting', 1: 'Sorted by range', 2: 'Sorted by RCS'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Standard', 1: '-3 dB Tx gain', 2: '-6 dB Tx gain', 3: '-9 dB Tx gain', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - dbc - dump - VAL : {0: 'None', 1: 'SendObjects', 2: 'SendClusters', 3: 'reserved 2'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'No error', 1: 'Error active'}
+def : format - dbc - dump - VAL : {0: 'No error', 1: 'Error active'}
+def : format - dbc - dump - VAL : {0: 'No error', 1: 'Error active'}
+def : format - dbc - dump - VAL : {0: 'No interference', 1: 'Interference present'}
+def : format - dbc - dump - VAL : {0: 'No error', 1: 'Error active'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Standard', 1: 'High Sensitivity', 2: 'Reserved', 3: 'Reserved', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Input ok', 1: 'Speed missing', 2: 'Yaw rate missing', 3: 'Speed and yaw rate missing'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'None', 1: 'SendObjects', 2: 'SendClusters', 3: 'reserved 2'}
+def : format - dbc - dump - VAL : {0: 'Standard', 1: '-3 dB Tx gain', 2: '-6 dB Tx gain', 3: '-9 dB Tx gain', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
+def : format - dbc - dump - VAL : {0: 'pending', 1: 'successful'}
+def : format - dbc - dump - VAL : {0: 'failed', 1: 'successful'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'standstill', 1: 'forward', 2: 'reverse', 3: 'reserved'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Idle', 1: 'Clear all defined regions'}
+def : format - dbc - dump - VAL : {0: 'Idle', 1: 'Warn reset'}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Valid'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Inactive', 1: 'Active'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Moving', 1: 'Stationary', 2: 'Oncoming', 3: 'Stationary candidate', 4: 'Unknown', 5: 'Crossing stationary', 6: 'Crossing moving', 7: 'Stopped'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Standard range', 1: 'Extended range'}
+def : format - dbc - dump - VAL : {0: 'International version', 1: 'South Korea, Japan'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Moving', 1: 'Stationary', 2: 'Oncoming', 3: 'Stationary candidate', 4: 'Unknown', 5: 'Crossing stationary', 6: 'Crossing moving', 7: 'Stopped'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: 'Valid', 1: 'Invalid with too low RCS', 2: 'Invalid nearfield', 3: 'Invalid far not confirmed', 4: 'Valid with low RCS', 5: 'reserved', 6: 'Invalid mirror', 7: 'Invalid outside field of view', 8: 'Valid with elevation', 9: 'Valid child', 10: 'Valid 50 deg artefact', 11: 'Valid but no local maximum', 12: 'Valid artefact ', 13: 'reserved', 14: 'Invalid harmonics ', 15: 'Valid near above 95 m', 16: 'Valid multi-target', 17: 'Valid suspicious angle'}
+def : format - dbc - dump - VAL : {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
+def : format - dbc - dump - VAL : {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
+def : format - dbc - dump - VAL : {0: 'Invalid', 1: 'Ambiguous', 2: 'Staggered ramp', 3: 'Unambiguous', 4: 'Stationary candidate'}

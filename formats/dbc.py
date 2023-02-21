@@ -698,6 +698,8 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                     extras = {}  # type: typing.Dict[typing.Any, typing.Any]
 
+                    #print("def : format - dbc - load - SG_ RECEIVER : {}".format(receiver))
+
                     temp_signal = canmatrix.Signal(
                         temp.group(1),
                         msb=int(temp.group(2)),
@@ -713,6 +715,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                         frames=list(),
                         **extras
                     )
+
+                    print("def : format - dbc - load - SG_ RECEIVER : {}".format(temp_signal.receivers))
+
                     temp_signal.add_frame(frame)
 
                     # print("FIND SIGNAL : " + temp_signal)
