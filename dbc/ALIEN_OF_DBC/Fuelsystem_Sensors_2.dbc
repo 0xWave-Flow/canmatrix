@@ -1,0 +1,57 @@
+VERSION "Excel 2 DBC"
+
+
+NS_ :
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+BS_:
+
+BU_: Tank_Sensor1 
+
+
+BO_ 132 Right_Outer_Tank_Fuel_Temp_And_A: 4 Tank_Sensor1
+ SG_ SSM_204 : 29|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ SDI_204 : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ Fuel_Temp_And_Advisory_Warning : 10|15@1- (0.25,0) [-512|512] "" Vector__XXX
+
+BO_ 126 Left_Outer_Tank_Fuel_Temp_And_Ad: 4 Tank_Sensor1
+ SG_ SSM_176 : 29|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ SDI_176 : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ Fuel_Temp_And_Advisory_Warning : 10|15@1- (0.25,0) [-512|512] "" Vector__XXX
+
+BO_ 232 Fuel_Density: 4 Tank_Sensor1
+ SG_ SSM_350 : 29|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ SDI_350 : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ Tand_Ident : 26|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ Fuel_Density : 10|16@1- (0.0001,0) [0|1] "kg/l" Vector__XXX
+
+
+VAL_ 132 SSM_204 0 "Normal Operation " 1 "NCD" 2 "Functional Test" 3 "Failure Warning ";
+VAL_ 126 SSM_176 0 "Normal Operation " 1 "NCD" 2 "Functional Test" 3 "Failure Warning ";
+VAL_ 232 SSM_350 0 "Normal Operation " 1 "NCD" 2 "Functional Test" 3 "Failure Warning ";

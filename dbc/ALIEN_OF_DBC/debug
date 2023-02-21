@@ -1,0 +1,272 @@
+def : _version - get_versions
+def : cli - convert - get_formats
+INPUT : dbc
+xls
+xlsx
+
+OUTPUT : dbc
+xls
+xlsx
+
+def : cli - convert - get_formats
+INPUT : dbc
+xls
+xlsx
+
+OUTPUT : dbc
+xls
+xlsx
+
+def : cli - convert - cli_convert
+def : log - setup_logger
+def : log - set_log_level
+def : convert - convert
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - load
+def : format - xls - load
+def : format - xls - load - BYTE ORDER INDEX: 21 
+def : format - xls - load - UNIT INDEX: 34 
+def : canmatrix - CanMatrix - add_ecu - Ecu(name='FuelPanel', comment=None)
+def : format - xls - load - unit : 1 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - SSM_141 - {0: 'Normal Operation ', 1: 'NCD', 2: 'Functional Test', 3: 'Failure Warning '}
+def : format - xls - load - unit : 2 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - SDI_141 - {1: 'Computer 1', 2: 'Computer 2'}
+def : format - xls - load - unit : 3 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Standby_Pump_1_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 4 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Standby_Pump_4_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 5 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Standby_Pump_3_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 6 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Standby_Pump_2_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 7 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - APU_Pump_Contactor - {0: 'Energized', 1: 'Off'}
+def : format - xls - load - unit : 8 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Center_Tank_Left_Transfer_Pump_P - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 9 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RCT_Transfer_Pump_B_Rear_Contact - {0: 'Energized', 1: 'Off'}
+def : format - xls - load - unit : 10 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RCT_Transfer_Pump_A_Front_Contac - {0: 'Energized', 1: 'Off'}
+def : format - xls - load - unit : 11 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Main_Pump_4_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 12 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Main_Pump_3_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 13 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Main_Pump_2_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 14 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Main_Pump_1_Pushbutton - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 15 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RCT_Transfer_Pump_B_Rear_Pushbut - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 16 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - RCT_Transfer_Pump_A_Front_Pushbu - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 17 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Trim_Tank_Right_Transfer_Pump_Pu - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 18 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Trim_Tank_Left_Transfer_Pump_Pus - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 19 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Center_Tank_Right_Aft_Transfer_P - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 20 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Center_Tank_Left_Aft_Transfer_Pu - {0: 'Off', 1: 'On'}
+def : format - xls - load - unit : 21 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Center_Tank_Right_Transfer_Pump_ - {0: 'Off', 1: 'On'}
+def : format - __init__ - dumpp
+def : format - __init__ - dump
+def : format - dbc - dump
+def : canmatrix - CanMatrix - contains_fd
+def : canmatrix - CanMatrix - contains_fd
+def : canmatrix - CanMatrix - contains_j1939
+def : canmatrix - CanMatrix - contains_fd
+def : canmatrix - CanMatrix - contains_j1939
+def : format - dbc - dump - HEADER : b'VERSION "Excel 2 DBC"\n\n\nNS_ :\n\tNS_DESC_\n\tCM_\n\tBA_DEF_\n\tBA_\n\tVAL_\n\tCAT_DEF_\n\tCAT_\n\tFILTER\n\tBA_DEF_DEF_\n\tEV_DATA_\n\tENVVAR_DATA_\n\tSGTYPE_\n\tSGTYPE_VAL_\n\tBA_DEF_SGTYPE_\n\tBA_SGTYPE_\n\tSIG_TYPE_REF_\n\tVAL_TABLE_\n\tSIG_GROUP_\n\tSIG_VALTYPE_\n\tSIGTYPE_VALTYPE_\n\tBO_TX_BU_\n\tBA_DEF_REL_\n\tBA_REL_\n\tBA_DEF_DEF_REL_\n\tBU_SG_REL_\n\tBU_EV_REL_\n\tBU_BO_REL_\n\tSG_MUL_VAL_\nBS_:\n\n'
+def : format - dbc - dump - ECU : FuelPanel
+def : canmatrix - Signal - phys2raw - SSM_141,0
+def : canmatrix - Signal - phys2raw - SDI_141,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_1_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_4_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_3_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_2_Pushbutton,0
+def : canmatrix - Signal - phys2raw - APU_Pump_Contactor,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Left_Transfer_Pump_P,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Contact,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Contac,0
+def : canmatrix - Signal - phys2raw - Main_Pump_4_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_3_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_2_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_1_Pushbutton,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Pushbut,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Pushbu,0
+def : canmatrix - Signal - phys2raw - Trim_Tank_Right_Transfer_Pump_Pu,0
+def : canmatrix - Signal - phys2raw - Trim_Tank_Left_Transfer_Pump_Pus,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Right_Aft_Transfer_P,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Left_Aft_Transfer_Pu,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Right_Transfer_Pump_,0
+def : canmatrix - Signal - phys2raw - SSM_141,0
+def : canmatrix - Signal - phys2raw - SDI_141,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_1_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_4_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_3_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_2_Pushbutton,0
+def : canmatrix - Signal - phys2raw - APU_Pump_Contactor,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Left_Transfer_Pump_P,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Contact,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Contac,0
+def : canmatrix - Signal - phys2raw - Main_Pump_4_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_3_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_2_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_1_Pushbutton,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Pushbut,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Pushbu,0
+def : canmatrix - Signal - phys2raw - Trim_Tank_Right_Transfer_Pump_Pu,0
+def : canmatrix - Signal - phys2raw - Trim_Tank_Left_Transfer_Pump_Pus,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Right_Aft_Transfer_P,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Left_Aft_Transfer_Pu,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Right_Transfer_Pump_,0
+def : canmatrix - Signal - phys2raw - SSM_141,0
+def : canmatrix - Signal - phys2raw - SDI_141,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_1_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_4_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_3_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Standby_Pump_2_Pushbutton,0
+def : canmatrix - Signal - phys2raw - APU_Pump_Contactor,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Left_Transfer_Pump_P,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Contact,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Contac,0
+def : canmatrix - Signal - phys2raw - Main_Pump_4_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_3_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_2_Pushbutton,0
+def : canmatrix - Signal - phys2raw - Main_Pump_1_Pushbutton,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_B_Rear_Pushbut,0
+def : canmatrix - Signal - phys2raw - RCT_Transfer_Pump_A_Front_Pushbu,0
+def : canmatrix - Signal - phys2raw - Trim_Tank_Right_Transfer_Pump_Pu,0
+def : canmatrix - Signal - phys2raw - Trim_Tank_Left_Transfer_Pump_Pus,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Right_Aft_Transfer_P,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Left_Aft_Transfer_Pu,0
+def : canmatrix - Signal - phys2raw - Center_Tank_Right_Transfer_Pump_,0
+def : format - dbc - dump - FRAME : ArbitrationId(id=97, extended=False) , Pump_Contactor_And_Pushbutton_St , 4 , ['FuelPanel']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SSM_141 : 29|2@1+ (1,0) [0|3] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SDI_141 : 8|2@1+ (1,0) [0|3] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_1_Pushbutton : 14|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_4_Pushbutton : 20|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_3_Pushbutton : 18|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Standby_Pump_2_Pushbutton : 16|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ APU_Pump_Contactor : 12|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Left_Transfer_Pump_P : 21|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_B_Rear_Contact : 11|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_A_Front_Contac : 10|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_4_Pushbutton : 19|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_3_Pushbutton : 17|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_2_Pushbutton : 15|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Main_Pump_1_Pushbutton : 13|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_B_Rear_Pushbut : 28|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ RCT_Transfer_Pump_A_Front_Pushbu : 27|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Trim_Tank_Right_Transfer_Pump_Pu : 26|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Trim_Tank_Left_Transfer_Pump_Pus : 25|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Right_Aft_Transfer_P : 24|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Left_Aft_Transfer_Pu : 23|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Center_Tank_Right_Transfer_Pump_ : 22|1@1+ (1,0) [0|1] "" Vector__XXX\n'
+def : format - dbc - dump - VAL : {0: 'Normal Operation ', 1: 'NCD', 2: 'Functional Test', 3: 'Failure Warning '}
+def : format - dbc - dump - VAL ITEM : 3 - Failure Warning 
+def : format - dbc - dump - VAL ITEM : 2 - Functional Test
+def : format - dbc - dump - VAL ITEM : 1 - NCD
+def : format - dbc - dump - VAL ITEM : 0 - Normal Operation 
+def : format - dbc - dump - VAL : {1: 'Computer 1', 2: 'Computer 2'}
+def : format - dbc - dump - VAL ITEM : 2 - Computer 2
+def : format - dbc - dump - VAL ITEM : 1 - Computer 1
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Energized', 1: 'Off'}
+def : format - dbc - dump - VAL ITEM : 1 - Off
+def : format - dbc - dump - VAL ITEM : 0 - Energized
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Energized', 1: 'Off'}
+def : format - dbc - dump - VAL ITEM : 1 - Off
+def : format - dbc - dump - VAL ITEM : 0 - Energized
+def : format - dbc - dump - VAL : {0: 'Energized', 1: 'Off'}
+def : format - dbc - dump - VAL ITEM : 1 - Off
+def : format - dbc - dump - VAL ITEM : 0 - Energized
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off
+def : format - dbc - dump - VAL : {0: 'Off', 1: 'On'}
+def : format - dbc - dump - VAL ITEM : 1 - On
+def : format - dbc - dump - VAL ITEM : 0 - Off

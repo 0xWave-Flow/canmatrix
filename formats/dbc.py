@@ -359,7 +359,7 @@ def dump(in_db, f, **options):
         signal_line += " [{}|{}]".format(format_float(signal.min), format_float(signal.max))
         signal_line += ' "'
 
-        if signal.unit is None:
+        if signal.unit is None or signal.unit is '/':
             signal.unit = ""
 
 
@@ -399,7 +399,8 @@ def dump(in_db, f, **options):
     # signal comments CM_SG_
     for signal in db.signals:
         frame = signal.frames
-        if signal.comment:
+        #print("def : format - dbc - dump - PRINT COMMENT : {}".format(signal.comment))
+        if signal.comment != '/':
             name = output_names[frame][signal]
             f.write(create_comment_string(
                 "SG_",
@@ -508,12 +509,16 @@ def dump(in_db, f, **options):
 
         multiplex_written = True
 
+        print("def : format - dbc - dump - VAL : {}".format(signal.values))
+
         if signal.values:
             f.write(
                 ('VAL_ %d ' %
                  signal.frames.arbitration_id.to_compound_integer() +
                  output_names[signal.frames][signal]).encode(dbc_export_encoding, ignore_encoding_errors))
-            for attr_name, val in sorted(signal.values.items(), key=lambda x: int(x[0])):
+            #for attr_name, val in sorted(signal.values.items(), key=lambda x: int(x[0])):
+            for attr_name, val in reversed(list(signal.values.items())):
+                #print("def : format - dbc - dump - VAL ITEM : {} - {}".format(attr_name, val))
                 if '"' in val:
                     val = val.replace('"', '\\"')
                 f.write(

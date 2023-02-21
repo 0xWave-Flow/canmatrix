@@ -525,6 +525,8 @@ def load(file, **options):
                 max=pmaximum,
                 values=value_table)
             new_signal.add_comment(signal_comment)
+
+            print("def : format - xls - load - SIGNAL - {} - {}".format(new_signal.name,new_signal.values))
             db.add_signal(new_signal)
 
             # Frame information for new signal

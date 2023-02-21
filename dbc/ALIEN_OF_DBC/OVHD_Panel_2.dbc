@@ -1,0 +1,82 @@
+VERSION "Excel 2 DBC"
+
+
+NS_ :
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+BS_:
+
+BU_: FuelPanel 
+
+
+BO_ 97 Pump_Contactor_And_Pushbutton_St: 4 FuelPanel
+ SG_ SSM_141 : 29|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ SDI_141 : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ Standby_Pump_1_Pushbutton : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Standby_Pump_4_Pushbutton : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Standby_Pump_3_Pushbutton : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Standby_Pump_2_Pushbutton : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ APU_Pump_Contactor : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Center_Tank_Left_Transfer_Pump_P : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RCT_Transfer_Pump_B_Rear_Contact : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RCT_Transfer_Pump_A_Front_Contac : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Main_Pump_4_Pushbutton : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Main_Pump_3_Pushbutton : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Main_Pump_2_Pushbutton : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Main_Pump_1_Pushbutton : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RCT_Transfer_Pump_B_Rear_Pushbut : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RCT_Transfer_Pump_A_Front_Pushbu : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Trim_Tank_Right_Transfer_Pump_Pu : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Trim_Tank_Left_Transfer_Pump_Pus : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Center_Tank_Right_Aft_Transfer_P : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Center_Tank_Left_Aft_Transfer_Pu : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Center_Tank_Right_Transfer_Pump_ : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+
+
+VAL_ 97 SSM_141 3 "Failure Warning " 2 "Functional Test" 1 "NCD" 0 "Normal Operation ";
+VAL_ 97 SDI_141 2 "Computer 2" 1 "Computer 1";
+VAL_ 97 Standby_Pump_1_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 Standby_Pump_4_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 Standby_Pump_3_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 Standby_Pump_2_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 APU_Pump_Contactor 1 "Off" 0 "Energized";
+VAL_ 97 Center_Tank_Left_Transfer_Pump_P 1 "On" 0 "Off";
+VAL_ 97 RCT_Transfer_Pump_B_Rear_Contact 1 "Off" 0 "Energized";
+VAL_ 97 RCT_Transfer_Pump_A_Front_Contac 1 "Off" 0 "Energized";
+VAL_ 97 Main_Pump_4_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 Main_Pump_3_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 Main_Pump_2_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 Main_Pump_1_Pushbutton 1 "On" 0 "Off";
+VAL_ 97 RCT_Transfer_Pump_B_Rear_Pushbut 1 "On" 0 "Off";
+VAL_ 97 RCT_Transfer_Pump_A_Front_Pushbu 1 "On" 0 "Off";
+VAL_ 97 Trim_Tank_Right_Transfer_Pump_Pu 1 "On" 0 "Off";
+VAL_ 97 Trim_Tank_Left_Transfer_Pump_Pus 1 "On" 0 "Off";
+VAL_ 97 Center_Tank_Right_Aft_Transfer_P 1 "On" 0 "Off";
+VAL_ 97 Center_Tank_Left_Aft_Transfer_Pu 1 "On" 0 "Off";
+VAL_ 97 Center_Tank_Right_Transfer_Pump_ 1 "On" 0 "Off";
