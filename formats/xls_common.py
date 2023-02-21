@@ -196,14 +196,23 @@ def get_signal(db, frame, sig, motorola_bit_format):
     front_array.append(float(sig.max))
 
     # unit
-    front_array.append(sig.unit)
+    if sig.unit == "":
+        front_array.append('/')
+    else:
+        front_array.append(sig.unit)
     # Coding
+
+    #print("def : format - xls_common - get_signal KEYS : - {}".format(sig.values.keys()))
     coding = str()
-    for val in sorted(sig.values.keys()):
-        coding += str(val) + ':' + sig.values[val] + '\n'
-    #coding = coding.removesuffix('\n')
-    coding = removesuffix(coding,'\n')
-    front_array.append(coding)
+
+    if sig.values.keys():
+        for val in sorted(sig.values.keys()):
+            coding += str(val) + ':' + sig.values[val] + '\n'
+        #coding = coding.removesuffix('\n')
+        coding = removesuffix(coding,'\n')
+        front_array.append(coding)
+    else:
+        front_array.append('/')
 
     # Signal Group
     front_array.append('/')
@@ -218,7 +227,10 @@ def get_signal(db, frame, sig, motorola_bit_format):
     comment = sig.comment if sig.comment else ""
 
     # write comment and size of signal in sheet
-    front_array.append(comment)
+    if comment == "":
+        front_array.append('/')
+    else:
+        front_array.append(comment)
     # Receiver ECU list
 
     #print("def : format - xls_common - get_signal - {}".format(front_array))

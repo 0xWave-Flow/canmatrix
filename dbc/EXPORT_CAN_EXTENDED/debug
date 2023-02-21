@@ -21,148 +21,1010 @@ def : cli - convert - cli_convert
 def : log - setup_logger
 def : log - set_log_level
 def : convert - convert
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - load
-def : format - xls - load
-def : format - xls - load - BYTE ORDER INDEX: 21 
-def : format - xls - load - UNIT INDEX: 34 
-def : canmatrix - CanMatrix - add_ecu - Ecu(name='Engine', comment=None)
-def : canmatrix - CanMatrix - add_ecu - Ecu(name='Gateway', comment=None)
-def : format - xls - load - unit : 1 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 2 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 3 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 4 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 5 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 6 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 7 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 8 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 9 - rpm - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 10 - N - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 11 - l - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 12 - kW - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 13 - N - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 14 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 15 - degC - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 16 - rpm - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 17 - N - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 18 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 19 -  - 34
-def : canmatrix - Signal - add_comment - 
-def : format - xls - load - unit : 20 - mph - 34
-def : canmatrix - Signal - add_comment - 
+def : format - dbc - load - BU_ : BU_: Engine Gateway
+def : format - dbc - load - BO_ : BO_ 512 Diag_Request: 8 Vector__XXX
+FIND FRAME : Diag_Request , ArbitrationId(id=512, extended=False) , 512 , 512
+def : format - dbc - load - BO_ FRAME : Diag_Request
+def : format - dbc - load - BO_ : BO_ 1024 Diag_Response: 8 Vector__XXX
+FIND FRAME : Diag_Response , ArbitrationId(id=1024, extended=False) , 1024 , 1024
+def : format - dbc - load - BO_ FRAME : Diag_Response
+def : format - dbc - load - BO_ : BO_ 103 Ignition_Info: 2 Gateway
+FIND FRAME : Ignition_Info , ArbitrationId(id=103, extended=False) , 103 , 103
+def : format - dbc - load - BO_ FRAME : Ignition_Info
+def : format - dbc - load - SG_ : SG_ StarterKey : 0|1@1+ (1,0) [0|1] ""  Engine
+def : format - dbc - load - SG_ IS SIGNED: StarterKey - False
+def : format - dbc - load - BO_ : BO_ 1544 DiagResponse_Motor: 8 Engine
+FIND FRAME : DiagResponse_Motor , ArbitrationId(id=1544, extended=False) , 1544 , 1544
+def : format - dbc - load - BO_ FRAME : DiagResponse_Motor
+def : format - dbc - load - BO_ : BO_ 1537 DiagRequest_Motor: 8 Gateway
+FIND FRAME : DiagRequest_Motor , ArbitrationId(id=1537, extended=False) , 1537 , 1537
+def : format - dbc - load - BO_ FRAME : DiagRequest_Motor
+def : format - dbc - load - BO_ : BO_ 1307 NM_Engine: 4 Engine
+FIND FRAME : NM_Engine , ArbitrationId(id=1307, extended=False) , 1307 , 1307
+def : format - dbc - load - BO_ FRAME : NM_Engine
+def : format - dbc - load - SG_ : SG_ SleepInd : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: SleepInd - False
+def : format - dbc - load - BO_ : BO_ 1306 NM_Gateway_PowerTrain: 4 Gateway
+FIND FRAME : NM_Gateway_PowerTrain , ArbitrationId(id=1306, extended=False) , 1306 , 1306
+def : format - dbc - load - BO_ FRAME : NM_Gateway_PowerTrain
+def : format - dbc - load - SG_ : SG_ SleepInd : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: SleepInd - False
+def : format - dbc - load - BO_ : BO_ 1020 GearBoxInfo: 1 Engine
+FIND FRAME : GearBoxInfo , ArbitrationId(id=1020, extended=False) , 1020 , 1020
+def : format - dbc - load - BO_ FRAME : GearBoxInfo
+def : format - dbc - load - SG_ : SG_ EcoMode : 6|2@1+ (1,0) [0|1] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EcoMode - False
+def : format - dbc - load - SG_ : SG_ ShiftRequest : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: ShiftRequest - False
+def : format - dbc - load - SG_ : SG_ Gear : 0|3@1+ (1,0) [0|5] ""  Gateway
+def : format - dbc - load - SG_ IS SIGNED: Gear - False
+def : format - dbc - load - BO_ : BO_ 101 EngineStatus: 1 Engine
+FIND FRAME : EngineStatus , ArbitrationId(id=101, extended=False) , 101 , 101
+def : format - dbc - load - BO_ FRAME : EngineStatus
+def : format - dbc - load - SG_ : SG_ ErrorCode : 2|6@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: ErrorCode - False
+def : format - dbc - load - SG_ : SG_ Status : 0|2@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Status - False
+def : format - dbc - load - BO_ : BO_ 102 EngineDataIEEE: 8 Engine
+FIND FRAME : EngineDataIEEE , ArbitrationId(id=102, extended=False) , 102 , 102
+def : format - dbc - load - BO_ FRAME : EngineDataIEEE
+def : format - dbc - load - SG_ : SG_ EngSpeed : 0|32@1- (1,0) [0|8000] "rpm" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EngSpeed - True
+def : format - dbc - load - SG_ : SG_ EngForce : 32|32@1- (1,0) [0|0] "N" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EngForce - True
+def : format - dbc - load - BO_ : BO_ 100 EngineData: 8 Engine
+FIND FRAME : EngineData , ArbitrationId(id=100, extended=False) , 100 , 100
+def : format - dbc - load - BO_ FRAME : EngineData
+def : format - dbc - load - SG_ : SG_ PetrolLevel : 24|8@1+ (1,0) [0|255] "l" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: PetrolLevel - False
+def : format - dbc - load - SG_ : SG_ EngPower : 48|16@1+ (0.01,0) [0|150] "kW" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EngPower - False
+def : format - dbc - load - SG_ : SG_ EngForce : 32|16@1+ (1,0) [0|0] "N" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EngForce - False
+def : format - dbc - load - SG_ : SG_ IdleRunning : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: IdleRunning - False
+def : format - dbc - load - SG_ : SG_ EngTemp : 16|7@1+ (2,-50) [-50|150] "degC" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EngTemp - False
+def : format - dbc - load - SG_ : SG_ EngSpeed : 0|16@1+ (1,0) [0|8000] "rpm" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: EngSpeed - False
+def : format - dbc - load - BO_ : BO_ 201 ABSdata: 6 Engine
+FIND FRAME : ABSdata , ArbitrationId(id=201, extended=False) , 201 , 201
+def : format - dbc - load - BO_ FRAME : ABSdata
+def : format - dbc - load - SG_ : SG_ AccelerationForce : 32|16@1+ (1,-10000) [0|0] "N" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: AccelerationForce - False
+def : format - dbc - load - SG_ : SG_ Diagnostics : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Diagnostics - False
+def : format - dbc - load - SG_ : SG_ GearLock : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: GearLock - False
+def : format - dbc - load - SG_ : SG_ CarSpeed : 0|10@1+ (0.5,0) [0|300] "mph" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CarSpeed - False
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpAddressingMode" INT 0 3;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpAddressingMode,INT 0 3]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgStartDelayTime,INT 0 100000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 100000;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgFastOnStart,INT 0 100000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgILSupport,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 2 50000;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgCycleTimeFast,INT 2 50000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "ILUsed" ENUM  "Yes","No";
+def : canmatrix - CanMatrix - add_ecu_defines - [ILUsed,ENUM  "Yes","No"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ EV_  "GenEnvControlType" ENUM  "NoControl","SliderHoriz","SliderVert","PushButton","Edit","BitmapSwitch";
+def : canmatrix - CanMatrix - add_env_defines
+def : format - dbc - load - BA_DEF_ : BA_DEF_ EV_  "GenEnvIsGeneratedSnd" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_env_defines
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "NWM-WakeupAllowed" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_signal_defines - [NWM-WakeupAllowed,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigAltSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigAltSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigPostIfSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigPostIfSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigPreIfSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigPreIfSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigConditionalSend" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigConditionalSend,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigAssignSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigAssignSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigPostSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigPostSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigPreSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigPreSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigReceiveSetting" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigReceiveSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigAutoGenDsp" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigAutoGenDsp,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigInactiveValue,INT 0 100000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigAutoGenSnd" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigAutoGenSnd,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition";
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigSendType,ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 999999;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgNrOfRepetition,INT 0 999999]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgAltSetting" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgAltSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgPostIfSetting" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgPostIfSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgPreIfSetting" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgPreIfSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgConditionalSend" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgConditionalSend,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgPostSetting" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgPostSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgPreSetting" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgPreSetting,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgEVName" STRING ;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgEVName,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgAutoGenDsp" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgAutoGenDsp,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgAutoGenSnd" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgAutoGenSnd,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgDelayTime" INT 1 1000;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgDelayTime,INT 1 1000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgCycleTime" INT 2 50000;
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgCycleTime,INT 2 50000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","not_used","not_used","not_used","not_used","Cyclic","not_used","IfActive";
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgSendType,ENUM  "Cyclic","not_used","not_used","not_used","not_used","Cyclic","not_used","IfActive"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "DiagRequest" ENUM  "no","yes";
+def : canmatrix - CanMatrix - add_frame_defines - [[],DiagRequest,ENUM  "no","yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "DiagResponse" ENUM  "no","yes";
+def : canmatrix - CanMatrix - add_frame_defines - [[],DiagResponse,ENUM  "no","yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "NmMessage" ENUM  "no","yes";
+def : canmatrix - CanMatrix - add_frame_defines - [[],NmMessage,ENUM  "no","yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "GenNodAutoGenDsp" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_ecu_defines - [GenNodAutoGenDsp,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "GenNodAutoGenSnd" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_ecu_defines - [GenNodAutoGenSnd,ENUM  "No","Yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "GenNodSleepTime" INT 0 1000000;
+def : canmatrix - CanMatrix - add_ecu_defines - [GenNodSleepTime,INT 0 1000000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "NmNode" ENUM  "no","yes";
+def : canmatrix - CanMatrix - add_ecu_defines - [NmNode,ENUM  "no","yes"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "NmStationAddress" INT 0 63;
+def : canmatrix - CanMatrix - add_ecu_defines - [NmStationAddress,INT 0 63]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "NmBaseAddress" HEX 1280 1311;
+def : canmatrix - CanMatrix - add_global_defines - [NmBaseAddress,HEX 1280 1311]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMApCanOff" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMApCanOff,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMApCanOn" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMApCanOn,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMApCanSleep" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMApCanSleep,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMGotoMode_Awake" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMGotoMode_Awake,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMGotoMode_BusSleep" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMGotoMode_BusSleep,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMSleepTime" INT 0 1000000;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMSleepTime,INT 0 1000000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenNWMTalkNM" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenNWMTalkNM,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigStartValue" FLOAT -100000000000 100000000000;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigStartValue,FLOAT -100000000000 100000000000]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ EV_  "GenEnvAutoGenCtrl" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_env_defines
+def : format - dbc - load - BA_DEF_ : BA_DEF_ EV_  "GenEnvMsgOffset" INT 0 2147483647;
+def : canmatrix - CanMatrix - add_env_defines
+def : format - dbc - load - BA_DEF_ : BA_DEF_ EV_  "GenEnvMsgName" STRING ;
+def : canmatrix - CanMatrix - add_env_defines
+def : format - dbc - load - BA_DEF_ : BA_DEF_ EV_  "GenEnvIsGeneratedDsp" ENUM  "No","Yes";
+def : canmatrix - CanMatrix - add_env_defines
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigEnvVarType" ENUM  "int","float","undef";
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigEnvVarType,ENUM  "int","float","undef"]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ SG_  "GenSigEVName" STRING ;
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigEVName,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenEnvVarPrefix" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenEnvVarPrefix,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenEnvVarEndingSnd" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenEnvVarEndingSnd,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_  "GenEnvVarEndingDsp" STRING ;
+def : canmatrix - CanMatrix - add_global_defines - [GenEnvVarEndingDsp,STRING ]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpNodeBaseAddress" HEX 0 33554431;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpNodeBaseAddress,HEX 0 33554431]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpUseFC" INT 0 1;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpUseFC,INT 0 1]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpCanBus" INT 0 2;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpCanBus,INT 0 2]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpRxMask" HEX 0 255;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpRxMask,HEX 0 255]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "Diagnose-Stationsadresse" HEX 0 255;
+def : canmatrix - CanMatrix - add_ecu_defines - [Diagnose-Stationsadresse,HEX 0 255]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpRxIdentifier" HEX 1536 1791;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpRxIdentifier,HEX 1536 1791]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "TpTxIdentifier" HEX 1536 1791;
+def : canmatrix - CanMatrix - add_ecu_defines - [TpTxIdentifier,HEX 1536 1791]
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BU_  "NodeLayerModules" STRING ;
+def : canmatrix - CanMatrix - add_ecu_defines - [NodeLayerModules,STRING ]
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpAddressingMode" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgCycleTimeFast" 100;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "ILUsed" "Yes";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvControlType" "";
+def : canmatrix - CanMatrix - add_define_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvIsGeneratedSnd" "No";
+def : canmatrix - CanMatrix - add_define_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "NWM-WakeupAllowed" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigAltSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigPostIfSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigPreIfSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigConditionalSend" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigAssignSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigPostSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigPreSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigReceiveSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigAutoGenDsp" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigInactiveValue" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigAutoGenSnd" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgAltSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgPostIfSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgPreIfSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgConditionalSend" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgPostSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgPreSetting" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgEVName" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgAutoGenDsp" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgAutoGenSnd" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgDelayTime" 1;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgCycleTime" 2;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenMsgSendType" "not_used";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "DiagRequest" "no";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "DiagResponse" "no";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "NmMessage" "no";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNodAutoGenDsp" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNodAutoGenSnd" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNodSleepTime" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "NmNode" "no";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "NmStationAddress" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "NmBaseAddress" 1280;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMApCanOff" "apCanOff()";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMApCanOn" "apCanOn()";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMApCanSleep" "apCanSleep()";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMGotoMode_Awake" "GotoMode_Awake()";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMGotoMode_BusSleep" "GotoMode_BusSleep()";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMSleepTime" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenNWMTalkNM" "TalkNM()";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigStartValue" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvAutoGenCtrl" "No";
+def : canmatrix - CanMatrix - add_define_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvMsgOffset" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvMsgName" "";
+def : canmatrix - CanMatrix - add_define_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvIsGeneratedDsp" "No";
+def : canmatrix - CanMatrix - add_define_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigEnvVarType" "undef";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenSigEVName" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvVarPrefix" "Env";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvVarEndingSnd" "_";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "GenEnvVarEndingDsp" "Dsp_";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpNodeBaseAddress" 1536;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpUseFC" 1;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpCanBus" 1;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpRxMask" 255;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "Diagnose-Stationsadresse" 0;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpRxIdentifier" 1536;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "TpTxIdentifier" 1536;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "NodeLayerModules" "";
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_ : BA_ "GenNWMSleepTime" 5000;
+def : canmatrix - CanMatrix - add_attribute - [GenNWMSleepTime,5000]
+def : format - dbc - load - BA_ : BA_ "GenNodSleepTime" BU_ Engine 5000;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "NmNode" BU_ Engine 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "NmStationAddress" BU_ Engine 27;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "TpRxIdentifier" BU_ Engine 1537;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "TpCanBus" BU_ Engine 2;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "Diagnose-Stationsadresse" BU_ Engine 8;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "TpTxIdentifier" BU_ Engine 1544;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "NodeLayerModules" BU_ Engine "dmoseknm.dll,osek_tp.dll,CANoeILNLVector.dll";
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "GenNodAutoGenDsp" BU_ Engine 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "GenNodAutoGenSnd" BU_ Engine 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "GenNodSleepTime" BU_ Gateway 5000;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "NmStationAddress" BU_ Gateway 26;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "NodeLayerModules" BU_ Gateway "dmoseknm.dll,osek_tp.dll,CANoeILNLVector.dll";
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "Diagnose-Stationsadresse" BU_ Gateway 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "TpCanBus" BU_ Gateway 2;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "TpRxIdentifier" BU_ Gateway 1542;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "TpTxIdentifier" BU_ Gateway 1537;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "NmNode" BU_ Gateway 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "GenNodAutoGenSnd" BU_ Gateway 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "GenNodAutoGenDsp" BU_ Gateway 1;
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : format - dbc - load - BA_ : BA_ "DiagRequest" BO_ 512 1;
+def : canmatrix - Frame - add_attribute - [Diag_Request,DiagRequest,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgILSupport" BO_ 512 0;
+def : canmatrix - Frame - add_attribute - [Diag_Request,GenMsgILSupport,0]
+def : format - dbc - load - BA_ : BA_ "DiagResponse" BO_ 1024 1;
+def : canmatrix - Frame - add_attribute - [Diag_Response,DiagResponse,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgILSupport" BO_ 1024 0;
+def : canmatrix - Frame - add_attribute - [Diag_Response,GenMsgILSupport,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgCycleTime" BO_ 103 20;
+def : canmatrix - Frame - add_attribute - [Ignition_Info,GenMsgCycleTime,20]
+def : format - dbc - load - BA_ : BA_ "GenMsgILSupport" BO_ 1307 0;
+def : canmatrix - Frame - add_attribute - [NM_Engine,GenMsgILSupport,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 1307 0;
+def : canmatrix - Frame - add_attribute - [NM_Engine,GenMsgAutoGenSnd,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 1307 0;
+def : canmatrix - Frame - add_attribute - [NM_Engine,GenMsgAutoGenDsp,0]
+def : format - dbc - load - BA_ : BA_ "NmMessage" BO_ 1307 1;
+def : canmatrix - Frame - add_attribute - [NM_Engine,NmMessage,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgSendType" BO_ 1307 0;
+def : canmatrix - Frame - add_attribute - [NM_Engine,GenMsgSendType,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 1306 0;
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,GenMsgAutoGenSnd,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 1306 0;
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,GenMsgAutoGenDsp,0]
+def : format - dbc - load - BA_ : BA_ "DiagResponse" BO_ 1306 0;
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,DiagResponse,0]
+def : format - dbc - load - BA_ : BA_ "NmMessage" BO_ 1306 1;
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,NmMessage,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgILSupport" BO_ 1306 0;
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,GenMsgILSupport,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgSendType" BO_ 1306 0;
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,GenMsgSendType,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgCycleTime" BO_ 1020 50;
+def : canmatrix - Frame - add_attribute - [GearBoxInfo,GenMsgCycleTime,50]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 1020 0;
+def : canmatrix - Frame - add_attribute - [GearBoxInfo,GenMsgAutoGenSnd,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 1020 0;
+def : canmatrix - Frame - add_attribute - [GearBoxInfo,GenMsgAutoGenDsp,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 101 0;
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgAutoGenSnd,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 101 0;
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgAutoGenDsp,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgCycleTime" BO_ 102 50;
+def : canmatrix - Frame - add_attribute - [EngineDataIEEE,GenMsgCycleTime,50]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 102 0;
+def : canmatrix - Frame - add_attribute - [EngineDataIEEE,GenMsgAutoGenSnd,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 102 0;
+def : canmatrix - Frame - add_attribute - [EngineDataIEEE,GenMsgAutoGenDsp,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgCycleTime" BO_ 100 50;
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,50]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 100 0;
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgAutoGenSnd,0]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 100 1;
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgAutoGenDsp,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgCycleTime" BO_ 201 50;
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgCycleTime,50]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenSnd" BO_ 201 1;
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgAutoGenSnd,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgAutoGenDsp" BO_ 201 1;
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgAutoGenDsp,1]
+def : format - dbc - load - BA_ : BA_ "GenMsgEVName" BO_ 201 "";
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgEVName,""]
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 103 StarterKey 0;
+def : canmatrix - Frame - signal_by_name - [StarterKey]
+error with line no: 280
+b'BA_ "GenSigEnvVarType" SG_ 103 StarterKey 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 103 StarterKey 0;
+def : canmatrix - Frame - signal_by_name - [StarterKey]
+error with line no: 281
+b'BA_ "NWM-WakeupAllowed" SG_ 103 StarterKey 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 1307 SleepInd 0;
+def : canmatrix - Frame - signal_by_name - [SleepInd]
+error with line no: 282
+b'BA_ "GenSigEnvVarType" SG_ 1307 SleepInd 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 1307 SleepInd 0;
+def : canmatrix - Frame - signal_by_name - [SleepInd]
+error with line no: 283
+b'BA_ "NWM-WakeupAllowed" SG_ 1307 SleepInd 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 1306 SleepInd 0;
+def : canmatrix - Frame - signal_by_name - [SleepInd]
+error with line no: 284
+b'BA_ "GenSigEnvVarType" SG_ 1306 SleepInd 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 1306 SleepInd 0;
+def : canmatrix - Frame - signal_by_name - [SleepInd]
+error with line no: 285
+b'BA_ "NWM-WakeupAllowed" SG_ 1306 SleepInd 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 1020 EcoMode 0;
+def : canmatrix - Frame - signal_by_name - [EcoMode]
+error with line no: 286
+b'BA_ "GenSigEnvVarType" SG_ 1020 EcoMode 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 1020 EcoMode 0;
+def : canmatrix - Frame - signal_by_name - [EcoMode]
+error with line no: 287
+b'BA_ "NWM-WakeupAllowed" SG_ 1020 EcoMode 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 1020 ShiftRequest 0;
+def : canmatrix - Frame - signal_by_name - [ShiftRequest]
+error with line no: 288
+b'BA_ "GenSigEnvVarType" SG_ 1020 ShiftRequest 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 1020 ShiftRequest 0;
+def : canmatrix - Frame - signal_by_name - [ShiftRequest]
+error with line no: 289
+b'BA_ "NWM-WakeupAllowed" SG_ 1020 ShiftRequest 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 1020 Gear 0;
+def : canmatrix - Frame - signal_by_name - [Gear]
+error with line no: 290
+b'BA_ "GenSigEnvVarType" SG_ 1020 Gear 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenDsp" SG_ 1020 Gear 1;
+def : canmatrix - Frame - signal_by_name - [Gear]
+error with line no: 291
+b'BA_ "GenSigAutoGenDsp" SG_ 1020 Gear 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenSnd" SG_ 1020 Gear 1;
+def : canmatrix - Frame - signal_by_name - [Gear]
+error with line no: 292
+b'BA_ "GenSigAutoGenSnd" SG_ 1020 Gear 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 1020 Gear 0;
+def : canmatrix - Frame - signal_by_name - [Gear]
+error with line no: 293
+b'BA_ "NWM-WakeupAllowed" SG_ 1020 Gear 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigSendType" SG_ 101 ErrorCode 1;
+def : canmatrix - Frame - signal_by_name - [ErrorCode]
+error with line no: 294
+b'BA_ "GenSigSendType" SG_ 101 ErrorCode 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 101 ErrorCode 0;
+def : canmatrix - Frame - signal_by_name - [ErrorCode]
+error with line no: 295
+b'BA_ "GenSigEnvVarType" SG_ 101 ErrorCode 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 101 ErrorCode 0;
+def : canmatrix - Frame - signal_by_name - [ErrorCode]
+error with line no: 296
+b'BA_ "NWM-WakeupAllowed" SG_ 101 ErrorCode 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigSendType" SG_ 101 Status 1;
+def : canmatrix - Frame - signal_by_name - [Status]
+error with line no: 297
+b'BA_ "GenSigSendType" SG_ 101 Status 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 101 Status 0;
+def : canmatrix - Frame - signal_by_name - [Status]
+error with line no: 298
+b'BA_ "GenSigEnvVarType" SG_ 101 Status 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 101 Status 0;
+def : canmatrix - Frame - signal_by_name - [Status]
+error with line no: 299
+b'BA_ "NWM-WakeupAllowed" SG_ 101 Status 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 102 EngSpeed 0;
+def : canmatrix - Frame - signal_by_name - [EngSpeed]
+error with line no: 300
+b'BA_ "NWM-WakeupAllowed" SG_ 102 EngSpeed 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEVName" SG_ 102 EngForce "@Msgname@Signame";
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 301
+b'BA_ "GenSigEVName" SG_ 102 EngForce "@Msgname@Signame";\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 102 EngForce 0;
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 302
+b'BA_ "GenSigEnvVarType" SG_ 102 EngForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 102 EngForce 0;
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 303
+b'BA_ "NWM-WakeupAllowed" SG_ 102 EngForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenSnd" SG_ 100 PetrolLevel 1;
+def : canmatrix - Frame - signal_by_name - [PetrolLevel]
+error with line no: 304
+b'BA_ "GenSigAutoGenSnd" SG_ 100 PetrolLevel 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenDsp" SG_ 100 PetrolLevel 0;
+def : canmatrix - Frame - signal_by_name - [PetrolLevel]
+error with line no: 305
+b'BA_ "GenSigAutoGenDsp" SG_ 100 PetrolLevel 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEVName" SG_ 100 PetrolLevel "@Msgname@Signame";
+def : canmatrix - Frame - signal_by_name - [PetrolLevel]
+error with line no: 306
+b'BA_ "GenSigEVName" SG_ 100 PetrolLevel "@Msgname@Signame";\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 100 PetrolLevel 0;
+def : canmatrix - Frame - signal_by_name - [PetrolLevel]
+error with line no: 307
+b'BA_ "GenSigEnvVarType" SG_ 100 PetrolLevel 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 100 PetrolLevel 0;
+def : canmatrix - Frame - signal_by_name - [PetrolLevel]
+error with line no: 308
+b'BA_ "NWM-WakeupAllowed" SG_ 100 PetrolLevel 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 100 EngPower 1;
+def : canmatrix - Frame - signal_by_name - [EngPower]
+error with line no: 309
+b'BA_ "GenSigEnvVarType" SG_ 100 EngPower 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 100 EngPower 0;
+def : canmatrix - Frame - signal_by_name - [EngPower]
+error with line no: 310
+b'BA_ "NWM-WakeupAllowed" SG_ 100 EngPower 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEVName" SG_ 100 EngForce "@Msgname@Signame";
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 311
+b'BA_ "GenSigEVName" SG_ 100 EngForce "@Msgname@Signame";\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 100 EngForce 0;
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 312
+b'BA_ "GenSigEnvVarType" SG_ 100 EngForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 100 EngForce 0;
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 313
+b'BA_ "NWM-WakeupAllowed" SG_ 100 EngForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigSendType" SG_ 100 IdleRunning 5;
+def : canmatrix - Frame - signal_by_name - [IdleRunning]
+error with line no: 314
+b'BA_ "GenSigSendType" SG_ 100 IdleRunning 5;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigInactiveValue" SG_ 100 IdleRunning 1;
+def : canmatrix - Frame - signal_by_name - [IdleRunning]
+error with line no: 315
+b'BA_ "GenSigInactiveValue" SG_ 100 IdleRunning 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 100 IdleRunning 0;
+def : canmatrix - Frame - signal_by_name - [IdleRunning]
+error with line no: 316
+b'BA_ "GenSigEnvVarType" SG_ 100 IdleRunning 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 100 IdleRunning 1;
+def : canmatrix - Frame - signal_by_name - [IdleRunning]
+error with line no: 317
+b'BA_ "NWM-WakeupAllowed" SG_ 100 IdleRunning 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 100 EngTemp 0;
+def : canmatrix - Frame - signal_by_name - [EngTemp]
+error with line no: 318
+b'BA_ "GenSigEnvVarType" SG_ 100 EngTemp 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 100 EngTemp 0;
+def : canmatrix - Frame - signal_by_name - [EngTemp]
+error with line no: 319
+b'BA_ "NWM-WakeupAllowed" SG_ 100 EngTemp 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEVName" SG_ 100 EngSpeed "@Msgname@Signame";
+def : canmatrix - Frame - signal_by_name - [EngSpeed]
+error with line no: 320
+b'BA_ "GenSigEVName" SG_ 100 EngSpeed "@Msgname@Signame";\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 100 EngSpeed 0;
+def : canmatrix - Frame - signal_by_name - [EngSpeed]
+error with line no: 321
+b'BA_ "GenSigEnvVarType" SG_ 100 EngSpeed 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 100 EngSpeed 0;
+def : canmatrix - Frame - signal_by_name - [EngSpeed]
+error with line no: 322
+b'BA_ "NWM-WakeupAllowed" SG_ 100 EngSpeed 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenSnd" SG_ 201 AccelerationForce 0;
+def : canmatrix - Frame - signal_by_name - [AccelerationForce]
+error with line no: 323
+b'BA_ "GenSigAutoGenSnd" SG_ 201 AccelerationForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenDsp" SG_ 201 AccelerationForce 0;
+def : canmatrix - Frame - signal_by_name - [AccelerationForce]
+error with line no: 324
+b'BA_ "GenSigAutoGenDsp" SG_ 201 AccelerationForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 201 AccelerationForce 0;
+def : canmatrix - Frame - signal_by_name - [AccelerationForce]
+error with line no: 325
+b'BA_ "GenSigEnvVarType" SG_ 201 AccelerationForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 201 AccelerationForce 0;
+def : canmatrix - Frame - signal_by_name - [AccelerationForce]
+error with line no: 326
+b'BA_ "NWM-WakeupAllowed" SG_ 201 AccelerationForce 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 201 Diagnostics 0;
+def : canmatrix - Frame - signal_by_name - [Diagnostics]
+error with line no: 327
+b'BA_ "GenSigEnvVarType" SG_ 201 Diagnostics 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenDsp" SG_ 201 Diagnostics 1;
+def : canmatrix - Frame - signal_by_name - [Diagnostics]
+error with line no: 328
+b'BA_ "GenSigAutoGenDsp" SG_ 201 Diagnostics 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenSnd" SG_ 201 Diagnostics 1;
+def : canmatrix - Frame - signal_by_name - [Diagnostics]
+error with line no: 329
+b'BA_ "GenSigAutoGenSnd" SG_ 201 Diagnostics 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 201 Diagnostics 0;
+def : canmatrix - Frame - signal_by_name - [Diagnostics]
+error with line no: 330
+b'BA_ "NWM-WakeupAllowed" SG_ 201 Diagnostics 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 201 GearLock 0;
+def : canmatrix - Frame - signal_by_name - [GearLock]
+error with line no: 331
+b'BA_ "GenSigEnvVarType" SG_ 201 GearLock 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 201 GearLock 0;
+def : canmatrix - Frame - signal_by_name - [GearLock]
+error with line no: 332
+b'BA_ "NWM-WakeupAllowed" SG_ 201 GearLock 0;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenSnd" SG_ 201 CarSpeed 1;
+def : canmatrix - Frame - signal_by_name - [CarSpeed]
+error with line no: 333
+b'BA_ "GenSigAutoGenSnd" SG_ 201 CarSpeed 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigAutoGenDsp" SG_ 201 CarSpeed 1;
+def : canmatrix - Frame - signal_by_name - [CarSpeed]
+error with line no: 334
+b'BA_ "GenSigAutoGenDsp" SG_ 201 CarSpeed 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEnvVarType" SG_ 201 CarSpeed 1;
+def : canmatrix - Frame - signal_by_name - [CarSpeed]
+error with line no: 335
+b'BA_ "GenSigEnvVarType" SG_ 201 CarSpeed 1;\r\n'
+def : format - dbc - load - BA_ : BA_ "GenSigEVName" SG_ 201 CarSpeed "@Msgname@Signame";
+def : canmatrix - Frame - signal_by_name - [CarSpeed]
+error with line no: 336
+b'BA_ "GenSigEVName" SG_ 201 CarSpeed "@Msgname@Signame";\r\n'
+def : format - dbc - load - BA_ : BA_ "NWM-WakeupAllowed" SG_ 201 CarSpeed 0;
+def : canmatrix - Frame - signal_by_name - [CarSpeed]
+error with line no: 337
+b'BA_ "NWM-WakeupAllowed" SG_ 201 CarSpeed 0;\r\n'
+def : format - dbc - load - VAL_ : 1020 - ShiftRequest - 1 "Shift_Request_On" 0 "Shift_Request_Off" 
+def : format - dbc - load - LOOP : VAL_ : 1  - Shift_Request_On
+def : canmatrix - Signal - add_values - [1 ,Shift_Request_On]
+def : format - dbc - load - LOOP : VAL_ :  0  - Shift_Request_Off
+def : canmatrix - Signal - add_values - [ 0 ,Shift_Request_Off]
+def : format - dbc - load - VAL_ : 1020 - Gear - 0 "Idle" 1 "Gear_1" 2 "Gear_2" 3 "Gear_3" 4 "Gear_4" 5 "Gear_5" 
+def : format - dbc - load - LOOP : VAL_ : 0  - Idle
+def : canmatrix - Signal - add_values - [0 ,Idle]
+def : format - dbc - load - LOOP : VAL_ :  1  - Gear_1
+def : canmatrix - Signal - add_values - [ 1 ,Gear_1]
+def : format - dbc - load - LOOP : VAL_ :  2  - Gear_2
+def : canmatrix - Signal - add_values - [ 2 ,Gear_2]
+def : format - dbc - load - LOOP : VAL_ :  3  - Gear_3
+def : canmatrix - Signal - add_values - [ 3 ,Gear_3]
+def : format - dbc - load - LOOP : VAL_ :  4  - Gear_4
+def : canmatrix - Signal - add_values - [ 4 ,Gear_4]
+def : format - dbc - load - LOOP : VAL_ :  5  - Gear_5
+def : canmatrix - Signal - add_values - [ 5 ,Gear_5]
+def : format - dbc - load - VAL_ : 101 - Status - 3 "Error" 2 "GoSleep" 1 "Running" 0 "WakeUp" 
+def : format - dbc - load - LOOP : VAL_ : 3  - Error
+def : canmatrix - Signal - add_values - [3 ,Error]
+def : format - dbc - load - LOOP : VAL_ :  2  - GoSleep
+def : canmatrix - Signal - add_values - [ 2 ,GoSleep]
+def : format - dbc - load - LOOP : VAL_ :  1  - Running
+def : canmatrix - Signal - add_values - [ 1 ,Running]
+def : format - dbc - load - LOOP : VAL_ :  0  - WakeUp
+def : canmatrix - Signal - add_values - [ 0 ,WakeUp]
+def : format - dbc - load - VAL_ : 100 - IdleRunning - 0 "Running" 1 "Idle" 
+def : format - dbc - load - LOOP : VAL_ : 0  - Running
+def : canmatrix - Signal - add_values - [0 ,Running]
+def : format - dbc - load - LOOP : VAL_ :  1  - Idle
+def : canmatrix - Signal - add_values - [ 1 ,Idle]
+def : format - dbc - load - VAL_ : 201 - GearLock - 1 "Gear_Lock_On" 0 "Gear_Lock_Off" 
+def : format - dbc - load - LOOP : VAL_ : 1  - Gear_Lock_On
+def : canmatrix - Signal - add_values - [1 ,Gear_Lock_On]
+def : format - dbc - load - LOOP : VAL_ :  0  - Gear_Lock_Off
+def : canmatrix - Signal - add_values - [ 0 ,Gear_Lock_Off]
+def : format - dbc - load - SIG_VALTYPE_ : SIG_VALTYPE_ 102 EngSpeed : 1;
+def : canmatrix - Frame - signal_by_name - [EngSpeed]
+error with line no: 2
+b'SIG_VALTYPE_ 102 EngSpeed : 1;\r\n'
+def : format - dbc - load - SIG_VALTYPE_ : SIG_VALTYPE_ 102 EngForce : 1;
+def : canmatrix - Frame - signal_by_name - [EngForce]
+error with line no: 3
+b'SIG_VALTYPE_ 102 EngForce : 1;\r\n'
+def : canmatrix - Signal - attribute - [StarterKey]
+def : canmatrix - Signal - attribute - [SleepInd]
+def : canmatrix - Signal - attribute - [SleepInd]
+def : canmatrix - Signal - attribute - [EcoMode]
+def : canmatrix - Signal - attribute - [ShiftRequest]
+def : canmatrix - Signal - attribute - [Gear]
+def : canmatrix - Signal - attribute - [ErrorCode]
+def : canmatrix - Signal - attribute - [Status]
+def : canmatrix - Signal - attribute - [EngSpeed]
+def : canmatrix - Signal - attribute - [EngForce]
+def : canmatrix - Signal - attribute - [PetrolLevel]
+def : canmatrix - Signal - attribute - [EngPower]
+def : canmatrix - Signal - attribute - [EngForce]
+def : canmatrix - Signal - attribute - [IdleRunning]
+def : canmatrix - Signal - attribute - [EngTemp]
+def : canmatrix - Signal - attribute - [EngSpeed]
+def : canmatrix - Signal - attribute - [AccelerationForce]
+def : canmatrix - Signal - attribute - [Diagnostics]
+def : canmatrix - Signal - attribute - [GearLock]
+def : canmatrix - Signal - attribute - [CarSpeed]
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpAddressingMode
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - ILUsed
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - GenNodAutoGenDsp
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - GenNodAutoGenSnd
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - GenNodSleepTime
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - NmNode
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - NmStationAddress
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpNodeBaseAddress
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpUseFC
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpCanBus
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpRxMask
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - Diagnose-Stationsadresse
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpRxIdentifier
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - TpTxIdentifier
+def : canmatrix - CanMatrix - enum_attribs_to_values - ECU DEFINE - NodeLayerModules
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgStartDelayTime
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgFastOnStart
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgILSupport
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgCycleTimeFast
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgNrOfRepetition
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgAltSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgPostIfSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgPreIfSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgConditionalSend
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgPostSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgPreSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgEVName
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgAutoGenDsp
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgAutoGenSnd
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgDelayTime
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgCycleTime
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - GenMsgSendType
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - DiagRequest
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - DiagResponse
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - NmMessage
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - NWM-WakeupAllowed
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigAltSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigPostIfSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigPreIfSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigConditionalSend
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigAssignSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigPostSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigPreSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigReceiveSetting
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigAutoGenDsp
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigInactiveValue
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigAutoGenSnd
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigSendType
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigStartValue
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigEnvVarType
+def : canmatrix - CanMatrix - enum_attribs_to_values - SIGNAL DEFINE - GenSigEVName
 def : format - __init__ - dumpp
 def : format - __init__ - dump
-def : format - dbc - dump
-def : canmatrix - CanMatrix - contains_fd
-def : canmatrix - CanMatrix - contains_fd
-def : canmatrix - CanMatrix - contains_j1939
-def : canmatrix - CanMatrix - contains_fd
-def : canmatrix - CanMatrix - contains_j1939
-def : format - dbc - dump - HEADER : b'VERSION "Excel 2 DBC"\n\n\nNS_ :\n\tNS_DESC_\n\tCM_\n\tBA_DEF_\n\tBA_\n\tVAL_\n\tCAT_DEF_\n\tCAT_\n\tFILTER\n\tBA_DEF_DEF_\n\tEV_DATA_\n\tENVVAR_DATA_\n\tSGTYPE_\n\tSGTYPE_VAL_\n\tBA_DEF_SGTYPE_\n\tBA_SGTYPE_\n\tSIG_TYPE_REF_\n\tVAL_TABLE_\n\tSIG_GROUP_\n\tSIG_VALTYPE_\n\tSIGTYPE_VALTYPE_\n\tBO_TX_BU_\n\tBA_DEF_REL_\n\tBA_REL_\n\tBA_DEF_DEF_REL_\n\tBU_SG_REL_\n\tBU_EV_REL_\n\tBU_BO_REL_\n\tSG_MUL_VAL_\nBS_:\n\n'
-def : format - dbc - dump - ECU : Engine
-def : format - dbc - dump - ECU : Gateway
-def : canmatrix - Signal - phys2raw - StarterKey,0
-def : canmatrix - Signal - phys2raw - SleepInd,0
-def : canmatrix - Signal - phys2raw - SleepInd,0
-def : canmatrix - Signal - phys2raw - EcoMode,0
-def : canmatrix - Signal - phys2raw - ShiftRequest,0
-def : canmatrix - Signal - phys2raw - Gear,0
-def : canmatrix - Signal - phys2raw - ErrorCode,0
-def : canmatrix - Signal - phys2raw - Status,0
-def : canmatrix - Signal - phys2raw - EngSpeed,0
-def : canmatrix - Signal - phys2raw - EngForce,0
-def : canmatrix - Signal - phys2raw - PetrolLevel,0
-def : canmatrix - Signal - phys2raw - EngPower,0
-def : canmatrix - Signal - phys2raw - EngForce,0
-def : canmatrix - Signal - phys2raw - IdleRunning,0
-def : canmatrix - Signal - phys2raw - EngTemp,25
-def : canmatrix - Signal - phys2raw - EngSpeed,0
-def : canmatrix - Signal - phys2raw - AccelerationForce,10000
-def : canmatrix - Signal - phys2raw - Diagnostics,0
-def : canmatrix - Signal - phys2raw - GearLock,0
-def : canmatrix - Signal - phys2raw - CarSpeed,0
-def : canmatrix - Signal - phys2raw - StarterKey,0
-def : canmatrix - Signal - phys2raw - SleepInd,0
-def : canmatrix - Signal - phys2raw - SleepInd,0
-def : canmatrix - Signal - phys2raw - EcoMode,0
-def : canmatrix - Signal - phys2raw - ShiftRequest,0
-def : canmatrix - Signal - phys2raw - Gear,0
-def : canmatrix - Signal - phys2raw - ErrorCode,0
-def : canmatrix - Signal - phys2raw - Status,0
-def : canmatrix - Signal - phys2raw - EngSpeed,0
-def : canmatrix - Signal - phys2raw - EngForce,0
-def : canmatrix - Signal - phys2raw - PetrolLevel,0
-def : canmatrix - Signal - phys2raw - EngPower,0
-def : canmatrix - Signal - phys2raw - EngForce,0
-def : canmatrix - Signal - phys2raw - IdleRunning,0
-def : canmatrix - Signal - phys2raw - EngTemp,25
-def : canmatrix - Signal - phys2raw - EngSpeed,0
-def : canmatrix - Signal - phys2raw - AccelerationForce,10000
-def : canmatrix - Signal - phys2raw - Diagnostics,0
-def : canmatrix - Signal - phys2raw - GearLock,0
-def : canmatrix - Signal - phys2raw - CarSpeed,0
-def : format - dbc - dump - FRAME : ArbitrationId(id=103, extended=False) , Ignition_Info , 2 , ['Gateway']
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ StarterKey : 0|1@1+ (1,0) [0|1] "" Engine\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=1307, extended=False) , NM_Engine , 4 , ['Engine']
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SleepInd : 12|1@1+ (1,0) [0|1] "" Vector__XXX\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=1306, extended=False) , NM_Gateway_PowerTrain , 4 , ['Gateway']
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SleepInd : 12|1@1+ (1,0) [0|1] "" Vector__XXX\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=1020, extended=False) , GearBoxInfo , 1 , ['Engine']
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EcoMode : 6|2@1+ (1,0) [0|1] "" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ ShiftRequest : 3|1@1+ (1,0) [0|0] "" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Gear : 0|3@1+ (1,0) [0|5] "" Gateway\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=101, extended=False) , EngineStatus , 1 , ['Engine']
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ ErrorCode : 2|6@1+ (1,0) [0|0] "" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Status : 0|2@1+ (1,0) [0|0] "" Vector__XXX\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=102, extended=False) , EngineDataIEEE , 8 , ['Engine']
-def : format - dbc - dump - SIGNAL : rpm
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngSpeed : 0|32@1- (1,0) [0|8000] "rpm" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : N
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngForce : 32|32@1- (1,0) [0|0] "N" Vector__XXX\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=100, extended=False) , EngineData , 8 , ['Engine']
-def : format - dbc - dump - SIGNAL : l
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ PetrolLevel : 24|8@1+ (1,0) [0|255] "l" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : kW
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngPower : 48|16@1+ (0.01,0) [0|150] "kW" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : N
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngForce : 32|16@1+ (1,0) [0|0] "N" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ IdleRunning : 23|1@1+ (1,0) [0|0] "" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : degC
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngTemp : 16|7@1+ (2,-50) [-50|150] "degC" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : rpm
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngSpeed : 0|16@1+ (1,0) [0|8000] "rpm" Vector__XXX\n'
-def : format - dbc - dump - FRAME : ArbitrationId(id=201, extended=False) , ABSdata , 6 , ['Engine']
-def : format - dbc - dump - SIGNAL : N
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ AccelerationForce : 32|16@1+ (1,-10000) [0|0] "N" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Diagnostics : 16|8@1+ (1,0) [0|0] "" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : 
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ GearLock : 15|1@1+ (1,0) [0|0] "" Vector__XXX\n'
-def : format - dbc - dump - SIGNAL : mph
-def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CarSpeed : 0|10@1+ (0.5,0) [0|300] "mph" Vector__XXX\n'
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - dump
+def : format - xlsx - write_excel_line - ['Result', 'No.', 'Transmitter', 'Receiver', 'Signal Name', 'ASIL Level', 'Signal Description', 'Used by function', 'Message Name', 'Message ID', 'Message Type', 'Signal Type', 'Detailed description \nof E/M Message sending \nbehavior Tx', 'Detailed description \nof E/M Message sending \nbehavior Rx', 'Period [ms]', 'Signal latency budget \nTx [ms]', 'Signal latency budget \nRx [ms]', 'DLC [Byte]', 'MSB', 'LSB', 'Size [Bit] ', 'Byte Order', 'Datatype', 'First valid signal \nduration Tx[ms]', 'First valid signal \nduration Rx[ms]', 'Default Initialized Value', 'Alternative value', 'Factor', 'Measured Resolution Tx', 'Measured Resolution Rx', 'Accuracy Tx', 'Offset', 'P-Minimum', 'P-Maximum', 'Unit', 'Coding', 'Signal Group', 'Message Segment', 'Variant and options', 'Comment', 'Engine', 'Gateway']
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Ignition_Info,StarterKey,False,ArbitrationId(id=103, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 67
+def : format - xlsx - write_excel_line - ['/', '/', 'Gateway', 'Engine', 'StarterKey', '/', '/', '/', 'Ignition_Info', '0x 67', '/', '/', '/', '/', 20, '/', '/', 2, 0, 0, 1, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 1.0, '/', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line - X
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [NM_Engine,SleepInd,False,ArbitrationId(id=1307, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x51B
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'SleepInd', '/', '/', '/', 'NM_Engine', '0x51B', '/', '/', '/', '/', 0, '/', '/', 4, 12, 12, 1, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 1.0, '/', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [NM_Gateway_PowerTrain,SleepInd,False,ArbitrationId(id=1306, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x51A
+def : format - xlsx - write_excel_line - ['/', '/', 'Gateway', 'Vector__XXX', 'SleepInd', '/', '/', '/', 'NM_Gateway_PowerTrain', '0x51A', '/', '/', '/', '/', 0, '/', '/', 4, 12, 12, 1, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 1.0, '/', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [GearBoxInfo,EcoMode,False,ArbitrationId(id=1020, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x3FC
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EcoMode', '/', '/', '/', 'GearBoxInfo', '0x3FC', '/', '/', '/', '/', 50, '/', '/', 1, 6, 5, 2, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 1.0, '/', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [GearBoxInfo,ShiftRequest,False,ArbitrationId(id=1020, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x3FC
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'ShiftRequest', '/', '/', '/', 'GearBoxInfo', '0x3FC', '/', '/', '/', '/', 50, '/', '/', 1, 3, 3, 1, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '/', '0:Shift_Request_Off\n1:Shift_Request_On', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [GearBoxInfo,Gear,False,ArbitrationId(id=1020, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x3FC
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Gateway', 'Gear', '/', '/', '/', 'GearBoxInfo', '0x3FC', '/', '/', '/', '/', 50, '/', '/', 1, 0, 14, 3, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 5.0, '/', '0:Idle\n1:Gear_1\n2:Gear_2\n3:Gear_3\n4:Gear_4\n5:Gear_5', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line - X
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineStatus,ErrorCode,False,ArbitrationId(id=101, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 65
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'ErrorCode', '/', '/', '/', 'EngineStatus', '0x 65', '/', '/', '/', '/', 0, '/', '/', 1, 2, 13, 6, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '/', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineStatus,Status,False,ArbitrationId(id=101, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 65
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'Status', '/', '/', '/', 'EngineStatus', '0x 65', '/', '/', '/', '/', 0, '/', '/', 1, 0, 15, 2, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '/', '0:WakeUp\n1:Running\n2:GoSleep\n3:Error', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineDataIEEE,EngSpeed,True,ArbitrationId(id=102, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 66
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EngSpeed', '/', '/', '/', 'EngineDataIEEE', '0x 66', '/', '/', '/', '/', 50, '/', '/', 8, 0, 33, 32, 'intel', 'Signed', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 8000.0, 'rpm', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineDataIEEE,EngForce,True,ArbitrationId(id=102, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 66
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EngForce', '/', '/', '/', 'EngineDataIEEE', '0x 66', '/', '/', '/', '/', 50, '/', '/', 8, 32, 65, 32, 'intel', 'Signed', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'N', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineData,PetrolLevel,False,ArbitrationId(id=100, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 64
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'PetrolLevel', '/', '/', '/', 'EngineData', '0x 64', '/', '/', '/', '/', 50, '/', '/', 8, 24, 33, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 255.0, 'l', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineData,EngPower,False,ArbitrationId(id=100, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 64
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EngPower', '/', '/', '/', 'EngineData', '0x 64', '/', '/', '/', '/', 50, '/', '/', 8, 48, 65, 16, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.0, 150.0, 'kW', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineData,EngForce,False,ArbitrationId(id=100, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 64
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EngForce', '/', '/', '/', 'EngineData', '0x 64', '/', '/', '/', '/', 50, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'N', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineData,IdleRunning,False,ArbitrationId(id=100, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 64
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'IdleRunning', '/', '/', '/', 'EngineData', '0x 64', '/', '/', '/', '/', 50, '/', '/', 8, 23, 23, 1, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '/', '0:Running\n1:Idle', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineData,EngTemp,False,ArbitrationId(id=100, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 64
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EngTemp', '/', '/', '/', 'EngineData', '0x 64', '/', '/', '/', '/', 50, '/', '/', 8, 16, 26, 7, 'intel', 'Unsigned', '/', '/', Decimal('-50'), '/', 2.0, '/', '/', '/', -50.0, -50.0, 150.0, 'degC', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [EngineData,EngSpeed,False,ArbitrationId(id=100, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 64
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'EngSpeed', '/', '/', '/', 'EngineData', '0x 64', '/', '/', '/', '/', 50, '/', '/', 8, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 8000.0, 'rpm', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [ABSdata,AccelerationForce,False,ArbitrationId(id=201, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x C9
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'AccelerationForce', '/', '/', '/', 'ABSdata', '0x C9', '/', '/', '/', '/', 50, '/', '/', 6, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('-10000'), '/', 1.0, '/', '/', '/', -10000.0, 0.0, 0.0, 'N', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [ABSdata,Diagnostics,False,ArbitrationId(id=201, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x C9
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'Diagnostics', '/', '/', '/', 'ABSdata', '0x C9', '/', '/', '/', '/', 50, '/', '/', 6, 16, 25, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '/', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [ABSdata,GearLock,False,ArbitrationId(id=201, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x C9
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'GearLock', '/', '/', '/', 'ABSdata', '0x C9', '/', '/', '/', '/', 50, '/', '/', 6, 15, 15, 1, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '/', '0:Gear_Lock_Off\n1:Gear_Lock_On', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [ABSdata,CarSpeed,False,ArbitrationId(id=201, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x C9
+def : format - xlsx - write_excel_line - ['/', '/', 'Engine', 'Vector__XXX', 'CarSpeed', '/', '/', '/', 'ABSdata', '0x C9', '/', '/', '/', '/', 50, '/', '/', 6, 0, 23, 10, 'intel', 'Unsigned', '/', '/', Decimal('0.0'), '/', 0.5, '/', '/', '/', 0.0, 0.0, 300.0, 'mph', '/', '/', '/', '/', '/']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - write_excel_line -  
