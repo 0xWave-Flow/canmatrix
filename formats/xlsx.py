@@ -200,24 +200,31 @@ def dump(db, filename, **options):
             curr_frame = signal.frames[0]
 
         frame = signal.frames[0]
-        print("def : format - xlsx - dump - FRAME ATTRIBUTES : {}".format(frame.attributes))
 
-        # get data from xls_common.py
-        frontRow = canmatrix.formats.xls_common.get_signal(db, frame, signal, motorola_bit_format)
 
-        # write excel lines and return col
-        col = write_excel_line(worksheet, row, 0, frontRow, signal_style)
 
-        # add ecu receivers
-        for receiver in signal.receivers:
-            for [idx, name] in enumerate(ecu_list):
-                if name == receiver:
-                    write_excel_line(worksheet, row, col + idx, "X", signal_style)
-                else:
-                    write_excel_line(worksheet, row, col + idx, " ", signal_style)
-        row += 1
-        signal_style = sty_norm
-        # loop over values ends here
+        if frame.arbitration_id.extended == False:
+
+            # get data from xls_common.py
+            frontRow = canmatrix.formats.xls_common.get_signal(db, frame, signal, motorola_bit_format)
+
+            print("def : format - xlsx - dump - FRAME STRUCT : {}".format(frontRow[9]))
+
+            #if not (int(frontRow[9],16) >= 0x80000000):
+
+            # write excel lines and return col
+            col = write_excel_line(worksheet, row, 0, frontRow, signal_style)
+
+            # add ecu receivers
+            for receiver in signal.receivers:
+                for [idx, name] in enumerate(ecu_list):
+                    if name == receiver:
+                        write_excel_line(worksheet, row, col + idx, "X", signal_style)
+                    else:
+                        write_excel_line(worksheet, row, col + idx, " ", signal_style)
+            row += 1
+            signal_style = sty_norm
+            # loop over values ends here
 
     # add filter and freeze head_top
     worksheet.autofilter(0, 0, row, len(head_top) - 1)

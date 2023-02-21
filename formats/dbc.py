@@ -649,10 +649,17 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                 regexp = re.compile(r"^BO_ ([^\ ]+) ([^\ ]+) *: ([^\ ]+) ([^\ ]+)")
                 temp = regexp.match(decoded)
-                frame = canmatrix.Frame(temp.group(2), arbitration_id=int(temp.group(1)),
-                                        size=int(temp.group(3)), transmitters=temp.group(4).split())
 
-                # print("FIND FRAME : " + frame)
+                #print("def : format - dbc - load - BO_ SPLIT : {} - {} - {} - {} - {}".format(temp.group(0),temp.group(1),temp.group(2),temp.group(3),temp.group(4)))
+
+                frame = canmatrix.Frame(temp.group(2), arbitration_id=int(temp.group(1)),
+                                    size=int(temp.group(3)), transmitters=temp.group(4).split())
+
+                if int(temp.group(1)) >= 0x80000000:
+                    frame.arbitration_id.id = (int(temp.group(1)) - 0x80000000)
+                    frame.arbitration_id.extended = True
+
+                print("FIND FRAME : {} , {} , {} , {}".format(frame.name,frame.arbitration_id,temp.group(1),int(temp.group(1))))
                 print("def : format - dbc - load - BO_ FRAME : {}".format(frame))
                 add_frame_by_id(frame)
 

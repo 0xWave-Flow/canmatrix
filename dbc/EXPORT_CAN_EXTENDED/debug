@@ -1,0 +1,733 @@
+def : _version - get_versions
+def : cli - convert - get_formats
+INPUT : dbc
+xls
+xlsx
+
+OUTPUT : dbc
+xls
+xlsx
+
+def : cli - convert - get_formats
+INPUT : dbc
+xls
+xlsx
+
+OUTPUT : dbc
+xls
+xlsx
+
+def : cli - convert - cli_convert
+def : log - setup_logger
+def : log - set_log_level
+def : convert - convert
+def : format - dbc - load - BU_ : BU_: Stress
+def : format - dbc - load - BO_ : BO_ 2236372536 StressExtended1: 8 Stress
+FIND FRAME : StressExtended1 , ArbitrationId(id=88888888, extended=True) , 2236372536 , 2236372536
+def : format - dbc - load - BO_ FRAME : StressExtended1
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 1541 Info5: 8 Stress
+FIND FRAME : Info5 , ArbitrationId(id=1541, extended=False) , 1541 , 1541
+def : format - dbc - load - BO_ FRAME : Info5
+def : format - dbc - load - SG_ : SG_ Counter : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - SG_ : SG_ CurrentCycle : 0|32@1+ (0.01,0) [0.5|1000] "ms" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CurrentCycle - False
+def : format - dbc - load - BO_ : BO_ 1540 Info4: 8 Stress
+FIND FRAME : Info4 , ArbitrationId(id=1540, extended=False) , 1540 , 1540
+def : format - dbc - load - BO_ FRAME : Info4
+def : format - dbc - load - SG_ : SG_ Counter : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - SG_ : SG_ CurrentCycle : 0|32@1+ (0.01,0) [0.5|1000] "ms" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CurrentCycle - False
+def : format - dbc - load - BO_ : BO_ 1539 Info3: 8 Stress
+FIND FRAME : Info3 , ArbitrationId(id=1539, extended=False) , 1539 , 1539
+def : format - dbc - load - BO_ FRAME : Info3
+def : format - dbc - load - SG_ : SG_ Counter : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - SG_ : SG_ CurrentCycle : 0|32@1+ (0.01,0) [0.5|1000] "ms" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CurrentCycle - False
+def : format - dbc - load - BO_ : BO_ 1538 Info2: 8 Stress
+FIND FRAME : Info2 , ArbitrationId(id=1538, extended=False) , 1538 , 1538
+def : format - dbc - load - BO_ FRAME : Info2
+def : format - dbc - load - SG_ : SG_ Counter : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - SG_ : SG_ CurrentCycle : 0|32@1+ (0.01,0) [0.5|1000] "ms" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CurrentCycle - False
+def : format - dbc - load - BO_ : BO_ 1537 Info1: 8 Stress
+FIND FRAME : Info1 , ArbitrationId(id=1537, extended=False) , 1537 , 1537
+def : format - dbc - load - BO_ FRAME : Info1
+def : format - dbc - load - SG_ : SG_ Counter : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - SG_ : SG_ CurrentCycle : 0|32@1+ (0.01,0) [0.5|1000] "ms" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CurrentCycle - False
+def : format - dbc - load - BO_ : BO_ 1536 InfoStress1: 8 Stress
+FIND FRAME : InfoStress1 , ArbitrationId(id=1536, extended=False) , 1536 , 1536
+def : format - dbc - load - BO_ FRAME : InfoStress1
+def : format - dbc - load - SG_ : SG_ Counter : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - SG_ : SG_ CurrentCycle : 0|32@1+ (0.01,0) [0.5|1000] "ms" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CurrentCycle - False
+def : format - dbc - load - BO_ : BO_ 289 Stress4: 5 Stress
+FIND FRAME : Stress4 , ArbitrationId(id=289, extended=False) , 289 , 289
+def : format - dbc - load - BO_ FRAME : Stress4
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 288 Stress3: 5 Stress
+FIND FRAME : Stress3 , ArbitrationId(id=288, extended=False) , 288 , 288
+def : format - dbc - load - BO_ FRAME : Stress3
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 255 StressData2: 7 Stress
+FIND FRAME : StressData2 , ArbitrationId(id=255, extended=False) , 255 , 255
+def : format - dbc - load - BO_ FRAME : StressData2
+def : format - dbc - load - SG_ : SG_ CounterMirror : 37|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CounterMirror - False
+def : format - dbc - load - SG_ : SG_ DataMirror : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: DataMirror - False
+def : format - dbc - load - SG_ : SG_ Data : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Data - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 52 Stress5: 5 Stress
+FIND FRAME : Stress5 , ArbitrationId(id=52, extended=False) , 52 , 52
+def : format - dbc - load - BO_ FRAME : Stress5
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 42 Stress20: 5 Stress
+FIND FRAME : Stress20 , ArbitrationId(id=42, extended=False) , 42 , 42
+def : format - dbc - load - BO_ FRAME : Stress20
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 41 Stress19: 5 Stress
+FIND FRAME : Stress19 , ArbitrationId(id=41, extended=False) , 41 , 41
+def : format - dbc - load - BO_ FRAME : Stress19
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 40 Stress18: 5 Stress
+FIND FRAME : Stress18 , ArbitrationId(id=40, extended=False) , 40 , 40
+def : format - dbc - load - BO_ FRAME : Stress18
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 39 Stress17: 5 Stress
+FIND FRAME : Stress17 , ArbitrationId(id=39, extended=False) , 39 , 39
+def : format - dbc - load - BO_ FRAME : Stress17
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 38 Stress16: 5 Stress
+FIND FRAME : Stress16 , ArbitrationId(id=38, extended=False) , 38 , 38
+def : format - dbc - load - BO_ FRAME : Stress16
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 37 Stress15: 5 Stress
+FIND FRAME : Stress15 , ArbitrationId(id=37, extended=False) , 37 , 37
+def : format - dbc - load - BO_ FRAME : Stress15
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 36 Stress14: 5 Stress
+FIND FRAME : Stress14 , ArbitrationId(id=36, extended=False) , 36 , 36
+def : format - dbc - load - BO_ FRAME : Stress14
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 35 Stress13: 5 Stress
+FIND FRAME : Stress13 , ArbitrationId(id=35, extended=False) , 35 , 35
+def : format - dbc - load - BO_ FRAME : Stress13
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 34 Stress12: 5 Stress
+FIND FRAME : Stress12 , ArbitrationId(id=34, extended=False) , 34 , 34
+def : format - dbc - load - BO_ FRAME : Stress12
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 33 Stress11: 5 Stress
+FIND FRAME : Stress11 , ArbitrationId(id=33, extended=False) , 33 , 33
+def : format - dbc - load - BO_ FRAME : Stress11
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 32 Stress10: 5 Stress
+FIND FRAME : Stress10 , ArbitrationId(id=32, extended=False) , 32 , 32
+def : format - dbc - load - BO_ FRAME : Stress10
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 25 Stress9: 5 Stress
+FIND FRAME : Stress9 , ArbitrationId(id=25, extended=False) , 25 , 25
+def : format - dbc - load - BO_ FRAME : Stress9
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 24 Stress8: 5 Stress
+FIND FRAME : Stress8 , ArbitrationId(id=24, extended=False) , 24 , 24
+def : format - dbc - load - BO_ FRAME : Stress8
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 23 Stress7: 5 Stress
+FIND FRAME : Stress7 , ArbitrationId(id=23, extended=False) , 23 , 23
+def : format - dbc - load - BO_ FRAME : Stress7
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 22 Stress6: 5 Stress
+FIND FRAME : Stress6 , ArbitrationId(id=22, extended=False) , 22 , 22
+def : format - dbc - load - BO_ FRAME : Stress6
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 18 Stress2: 5 Stress
+FIND FRAME : Stress2 , ArbitrationId(id=18, extended=False) , 18 , 18
+def : format - dbc - load - BO_ FRAME : Stress2
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 13 Stress1: 5 Stress
+FIND FRAME : Stress1 , ArbitrationId(id=13, extended=False) , 13 , 13
+def : format - dbc - load - BO_ FRAME : Stress1
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 12 HiPrStress3: 6 Stress
+FIND FRAME : HiPrStress3 , ArbitrationId(id=12, extended=False) , 12 , 12
+def : format - dbc - load - BO_ FRAME : HiPrStress3
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 11 HiPrStress2: 6 Stress
+FIND FRAME : HiPrStress2 , ArbitrationId(id=11, extended=False) , 11 , 11
+def : format - dbc - load - BO_ FRAME : HiPrStress2
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 10 HiPrStress1: 5 Stress
+FIND FRAME : HiPrStress1 , ArbitrationId(id=10, extended=False) , 10 , 10
+def : format - dbc - load - BO_ FRAME : HiPrStress1
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "NUMS" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 3 StressData4: 1 Stress
+FIND FRAME : StressData4 , ArbitrationId(id=3, extended=False) , 3 , 3
+def : format - dbc - load - BO_ FRAME : StressData4
+def : format - dbc - load - SG_ : SG_ CounterMirror : 4|4@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CounterMirror - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|4@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 1 StressData3: 8 Stress
+FIND FRAME : StressData3 , ArbitrationId(id=1, extended=False) , 1 , 1
+def : format - dbc - load - BO_ FRAME : StressData3
+def : format - dbc - load - SG_ : SG_ CounterMirror : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CounterMirror - False
+def : format - dbc - load - SG_ : SG_ DataMirror : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: DataMirror - False
+def : format - dbc - load - SG_ : SG_ Data : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Data - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 2147483733 StressExtended2: 4 Stress
+FIND FRAME : StressExtended2 , ArbitrationId(id=85, extended=True) , 2147483733 , 2147483733
+def : format - dbc - load - BO_ FRAME : StressExtended2
+def : format - dbc - load - SG_ : SG_ Counter : 0|32@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BO_ : BO_ 0 StressData1: 8 Stress
+FIND FRAME : StressData1 , ArbitrationId(id=0, extended=False) , 0 , 0
+def : format - dbc - load - BO_ FRAME : StressData1
+def : format - dbc - load - SG_ : SG_ CounterMirror : 45|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: CounterMirror - False
+def : format - dbc - load - SG_ : SG_ BurstCount : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: BurstCount - False
+def : format - dbc - load - SG_ : SG_ DataMirror : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: DataMirror - False
+def : format - dbc - load - SG_ : SG_ Data : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Data - False
+def : format - dbc - load - SG_ : SG_ Counter : 0|16@1+ (1,0) [0|0] "" Vector__XXX
+def : format - dbc - load - SG_ IS SIGNED: Counter - False
+def : format - dbc - load - BA_DEF_ : BA_DEF_ BO_  "CycleTime" INT 5 1000;
+def : canmatrix - CanMatrix - add_frame_defines - [[],CycleTime,INT 5 1000]
+def : format - dbc - load - BA_DEF_DEF_ : BA_DEF_DEF_  "CycleTime" 100;
+def : canmatrix - CanMatrix - add_define_default
+def : canmatrix - Define - set_default
+def : format - dbc - load - BA_ : BA_ "CycleTime" BO_ 13 5;
+def : canmatrix - Frame - add_attribute - [Stress1,CycleTime,5]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CurrentCycle]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CurrentCycle]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CurrentCycle]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CurrentCycle]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CurrentCycle]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CurrentCycle]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CounterMirror]
+def : canmatrix - Signal - attribute - [DataMirror]
+def : canmatrix - Signal - attribute - [Data]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CounterMirror]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CounterMirror]
+def : canmatrix - Signal - attribute - [DataMirror]
+def : canmatrix - Signal - attribute - [Data]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - Signal - attribute - [CounterMirror]
+def : canmatrix - Signal - attribute - [BurstCount]
+def : canmatrix - Signal - attribute - [DataMirror]
+def : canmatrix - Signal - attribute - [Data]
+def : canmatrix - Signal - attribute - [Counter]
+def : canmatrix - CanMatrix - enum_attribs_to_values - FRAME DEFINE - CycleTime
+def : format - __init__ - dumpp
+def : format - __init__ - dump
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - dump
+def : format - xlsx - write_excel_line - ['Result', 'No.', 'Transmitter', 'Receiver', 'Signal Name', 'ASIL Level', 'Signal Description', 'Used by function', 'Message Name', 'Message ID', 'Message Type', 'Signal Type', 'Detailed description \nof E/M Message sending \nbehavior Tx', 'Detailed description \nof E/M Message sending \nbehavior Rx', 'Period [ms]', 'Signal latency budget \nTx [ms]', 'Signal latency budget \nRx [ms]', 'DLC [Byte]', 'MSB', 'LSB', 'Size [Bit] ', 'Byte Order', 'Datatype', 'First valid signal \nduration Tx[ms]', 'First valid signal \nduration Rx[ms]', 'Default Initialized Value', 'Alternative value', 'Factor', 'Measured Resolution Tx', 'Measured Resolution Rx', 'Accuracy Tx', 'Offset', 'P-Minimum', 'P-Maximum', 'Unit', 'Coding', 'Signal Group', 'Message Segment', 'Variant and options', 'Comment', 'Stress']
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info5,Counter,False,ArbitrationId(id=1541, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x605
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Info5', '0x605', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info5,CurrentCycle,False,ArbitrationId(id=1541, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x605
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CurrentCycle', '/', '/', '/', 'Info5', '0x605', '/', '/', '/', '/', 0, '/', '/', 8, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.5, 1000.0, 'ms', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info4,Counter,False,ArbitrationId(id=1540, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x604
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Info4', '0x604', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info4,CurrentCycle,False,ArbitrationId(id=1540, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x604
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CurrentCycle', '/', '/', '/', 'Info4', '0x604', '/', '/', '/', '/', 0, '/', '/', 8, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.5, 1000.0, 'ms', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info3,Counter,False,ArbitrationId(id=1539, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x603
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Info3', '0x603', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info3,CurrentCycle,False,ArbitrationId(id=1539, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x603
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CurrentCycle', '/', '/', '/', 'Info3', '0x603', '/', '/', '/', '/', 0, '/', '/', 8, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.5, 1000.0, 'ms', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info2,Counter,False,ArbitrationId(id=1538, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x602
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Info2', '0x602', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info2,CurrentCycle,False,ArbitrationId(id=1538, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x602
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CurrentCycle', '/', '/', '/', 'Info2', '0x602', '/', '/', '/', '/', 0, '/', '/', 8, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.5, 1000.0, 'ms', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info1,Counter,False,ArbitrationId(id=1537, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x601
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Info1', '0x601', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Info1,CurrentCycle,False,ArbitrationId(id=1537, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x601
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CurrentCycle', '/', '/', '/', 'Info1', '0x601', '/', '/', '/', '/', 0, '/', '/', 8, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.5, 1000.0, 'ms', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [InfoStress1,Counter,False,ArbitrationId(id=1536, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x600
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'InfoStress1', '0x600', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [InfoStress1,CurrentCycle,False,ArbitrationId(id=1536, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x600
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CurrentCycle', '/', '/', '/', 'InfoStress1', '0x600', '/', '/', '/', '/', 0, '/', '/', 8, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0.00'), '/', 0.01, '/', '/', '/', 0.0, 0.5, 1000.0, 'ms', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress4,BurstCount,False,ArbitrationId(id=289, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x121
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress4', '0x121', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress4,Counter,False,ArbitrationId(id=289, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x121
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress4', '0x121', '/', '/', '/', '/', 0, '/', '/', 5, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress3,BurstCount,False,ArbitrationId(id=288, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x120
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress3', '0x120', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress3,Counter,False,ArbitrationId(id=288, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x120
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress3', '0x120', '/', '/', '/', '/', 0, '/', '/', 5, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData2,CounterMirror,False,ArbitrationId(id=255, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x FF
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CounterMirror', '/', '/', '/', 'StressData2', '0x FF', '/', '/', '/', '/', 0, '/', '/', 7, 37, 54, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData2,DataMirror,False,ArbitrationId(id=255, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x FF
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'DataMirror', '/', '/', '/', 'StressData2', '0x FF', '/', '/', '/', '/', 0, '/', '/', 7, 24, 33, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData2,Data,False,ArbitrationId(id=255, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x FF
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Data', '/', '/', '/', 'StressData2', '0x FF', '/', '/', '/', '/', 0, '/', '/', 7, 16, 25, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData2,Counter,False,ArbitrationId(id=255, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x FF
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'StressData2', '0x FF', '/', '/', '/', '/', 0, '/', '/', 7, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress5,BurstCount,False,ArbitrationId(id=52, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 34
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress5', '0x 34', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress5,Counter,False,ArbitrationId(id=52, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 34
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress5', '0x 34', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress20,BurstCount,False,ArbitrationId(id=42, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 2A
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress20', '0x 2A', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress20,Counter,False,ArbitrationId(id=42, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 2A
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress20', '0x 2A', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress19,BurstCount,False,ArbitrationId(id=41, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 29
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress19', '0x 29', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress19,Counter,False,ArbitrationId(id=41, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 29
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress19', '0x 29', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress18,BurstCount,False,ArbitrationId(id=40, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 28
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress18', '0x 28', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress18,Counter,False,ArbitrationId(id=40, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 28
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress18', '0x 28', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress17,BurstCount,False,ArbitrationId(id=39, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 27
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress17', '0x 27', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress17,Counter,False,ArbitrationId(id=39, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 27
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress17', '0x 27', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress16,BurstCount,False,ArbitrationId(id=38, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 26
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress16', '0x 26', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress16,Counter,False,ArbitrationId(id=38, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 26
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress16', '0x 26', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress15,BurstCount,False,ArbitrationId(id=37, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 25
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress15', '0x 25', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress15,Counter,False,ArbitrationId(id=37, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 25
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress15', '0x 25', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress14,BurstCount,False,ArbitrationId(id=36, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 24
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress14', '0x 24', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress14,Counter,False,ArbitrationId(id=36, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 24
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress14', '0x 24', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress13,BurstCount,False,ArbitrationId(id=35, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 23
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress13', '0x 23', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress13,Counter,False,ArbitrationId(id=35, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 23
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress13', '0x 23', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress12,BurstCount,False,ArbitrationId(id=34, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 22
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress12', '0x 22', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress12,Counter,False,ArbitrationId(id=34, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 22
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress12', '0x 22', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress11,BurstCount,False,ArbitrationId(id=33, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 21
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress11', '0x 21', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress11,Counter,False,ArbitrationId(id=33, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 21
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress11', '0x 21', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress10,BurstCount,False,ArbitrationId(id=32, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 20
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress10', '0x 20', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress10,Counter,False,ArbitrationId(id=32, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 20
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress10', '0x 20', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress9,BurstCount,False,ArbitrationId(id=25, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 19
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress9', '0x 19', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress9,Counter,False,ArbitrationId(id=25, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 19
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress9', '0x 19', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress8,BurstCount,False,ArbitrationId(id=24, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 18
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress8', '0x 18', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress8,Counter,False,ArbitrationId(id=24, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 18
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress8', '0x 18', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress7,BurstCount,False,ArbitrationId(id=23, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 17
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress7', '0x 17', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress7,Counter,False,ArbitrationId(id=23, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 17
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress7', '0x 17', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress6,BurstCount,False,ArbitrationId(id=22, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 16
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress6', '0x 16', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress6,Counter,False,ArbitrationId(id=22, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 16
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress6', '0x 16', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress2,BurstCount,False,ArbitrationId(id=18, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 12
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress2', '0x 12', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress2,Counter,False,ArbitrationId(id=18, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x 12
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress2', '0x 12', '/', '/', '/', '/', 0, '/', '/', 5, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress1,BurstCount,False,ArbitrationId(id=13, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  D
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'Stress1', '0x  D', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [Stress1,Counter,False,ArbitrationId(id=13, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  D
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'Stress1', '0x  D', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [HiPrStress3,BurstCount,False,ArbitrationId(id=12, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  C
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'HiPrStress3', '0x  C', '/', '/', '/', '/', 0, '/', '/', 6, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [HiPrStress3,Counter,False,ArbitrationId(id=12, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  C
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'HiPrStress3', '0x  C', '/', '/', '/', '/', 0, '/', '/', 6, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [HiPrStress2,BurstCount,False,ArbitrationId(id=11, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  B
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'HiPrStress2', '0x  B', '/', '/', '/', '/', 0, '/', '/', 6, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [HiPrStress2,Counter,False,ArbitrationId(id=11, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  B
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'HiPrStress2', '0x  B', '/', '/', '/', '/', 0, '/', '/', 6, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [HiPrStress1,BurstCount,False,ArbitrationId(id=10, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  A
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'HiPrStress1', '0x  A', '/', '/', '/', '/', 0, '/', '/', 5, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [HiPrStress1,Counter,False,ArbitrationId(id=10, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  A
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'HiPrStress1', '0x  A', '/', '/', '/', '/', 0, '/', '/', 5, 0, 33, 32, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, 'NUMS', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData4,CounterMirror,False,ArbitrationId(id=3, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  3
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CounterMirror', '/', '/', '/', 'StressData4', '0x  3', '/', '/', '/', '/', 0, '/', '/', 1, 4, 1, 4, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData4,Counter,False,ArbitrationId(id=3, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  3
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'StressData4', '0x  3', '/', '/', '/', '/', 0, '/', '/', 1, 0, 13, 4, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData3,CounterMirror,False,ArbitrationId(id=1, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  1
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CounterMirror', '/', '/', '/', 'StressData3', '0x  1', '/', '/', '/', '/', 0, '/', '/', 8, 48, 65, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData3,DataMirror,False,ArbitrationId(id=1, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  1
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'DataMirror', '/', '/', '/', 'StressData3', '0x  1', '/', '/', '/', '/', 0, '/', '/', 8, 32, 49, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData3,Data,False,ArbitrationId(id=1, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  1
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Data', '/', '/', '/', 'StressData3', '0x  1', '/', '/', '/', '/', 0, '/', '/', 8, 16, 33, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData3,Counter,False,ArbitrationId(id=1, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  1
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'StressData3', '0x  1', '/', '/', '/', '/', 0, '/', '/', 8, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData1,CounterMirror,False,ArbitrationId(id=0, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  0
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'CounterMirror', '/', '/', '/', 'StressData1', '0x  0', '/', '/', '/', '/', 0, '/', '/', 8, 45, 62, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData1,BurstCount,False,ArbitrationId(id=0, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  0
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'BurstCount', '/', '/', '/', 'StressData1', '0x  0', '/', '/', '/', '/', 0, '/', '/', 8, 32, 41, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData1,DataMirror,False,ArbitrationId(id=0, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  0
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'DataMirror', '/', '/', '/', 'StressData1', '0x  0', '/', '/', '/', '/', 0, '/', '/', 8, 24, 33, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData1,Data,False,ArbitrationId(id=0, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  0
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Data', '/', '/', '/', 'StressData1', '0x  0', '/', '/', '/', '/', 0, '/', '/', 8, 16, 25, 8, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
+def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}
+def : format - xls_common - get_signal - [StressData1,Counter,False,ArbitrationId(id=0, extended=False)]
+def : format - xlsx - dump - FRAME STRUCT : 0x  0
+def : format - xlsx - write_excel_line - ['/', '/', 'Stress', 'Vector__XXX', 'Counter', '/', '/', '/', 'StressData1', '0x  0', '/', '/', '/', '/', 0, '/', '/', 8, 0, 17, 16, 'intel', 'Unsigned', '/', '/', Decimal('0'), '/', 1.0, '/', '/', '/', 0.0, 0.0, 0.0, '', '', '/', '/', '/', '']
+def : format - xlsx - write_excel_line -  
