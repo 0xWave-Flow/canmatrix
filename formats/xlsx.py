@@ -202,10 +202,12 @@ def dump(db, filename, **options):
         frame = signal.frames[0]
 
 
-
-        if frame.arbitration_id.extended == False:
+        if (frame.arbitration_id.extended == False) or (signal.is_multiplexed == False):
 
             # get data from xls_common.py
+
+            print("def : format - xlsx - dump - TOTAL SIGNAL DUMP : {}".format(signal))
+
             frontRow = canmatrix.formats.xls_common.get_signal(db, frame, signal, motorola_bit_format)
 
             print("def : format - xlsx - dump - FRAME STRUCT : {}".format(frontRow[9]))

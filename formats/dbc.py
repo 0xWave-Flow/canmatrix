@@ -739,19 +739,8 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     receiver = [b.strip() for b in temp.group(12).split(',')]
                     multiplex = temp.group(2)  # type: str
 
-                    is_complex_multiplexed = False
+                    print("def : format - dbc - load - SG_ PRINT M : {}".format(multiplex))
 
-                    if multiplex == 'M':
-                        multiplex = 'Multiplexor'
-                    elif multiplex.endswith('M'):
-                        is_complex_multiplexed = True
-                        multiplex = multiplex[:-1]
-
-                    if multiplex != 'Multiplexor':
-                        try:
-                            multiplex = int(multiplex[1:])
-                        except:
-                            raise Exception('error decoding line', line)
 
                     extras = {}
 
@@ -767,15 +756,40 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                         max=temp.group(10),
                         unit=temp_raw.group(11).decode(dbc_import_encoding),
                         receivers=receiver,
+                        frames=list(),
                         multiplex=multiplex,
                         **extras
                     )
+
+                    is_complex_multiplexed = False
+
+                    if multiplex == 'M' or multiplex == 'm':
+                        multiplex = 'Multiplexor'
+                        temp_signal.is_multiplexer = True
+                    elif multiplex.endswith('M'):
+                        is_complex_multiplexed = True
+                        multiplex = multiplex[:-1]
+
+                    if multiplex != 'Multiplexor':
+                        try:
+                            multiplex = int(multiplex[1:])
+                        except:
+                            raise Exception('error decoding line', line)
+
+                    print("def : format - dbc - load - SG M : {} - {}".format(temp_signal.name,temp_signal.multiplex))
 
                     if is_complex_multiplexed:
                         temp_signal.is_multiplexer = True
                         temp_signal.multiplex = 'Multiplexor'
                         frame.is_complex_multiplexed = True
+
+                    print("def : format - dbc - load - SG M : PRE END - {}".format(frame.name))
+                    #frame.add_signal(temp_signal)
                     temp_signal.add_frame(frame)
+                    print("def : format - dbc - load - SG M : END 1")
+                    db.add_signal(temp_signal)
+                    print("def : format - dbc - load - SG M : END 2")
+
 
             # decode other define or comment
             elif decoded.startswith("BO_TX_BU_ "):
