@@ -67,7 +67,7 @@ def removesuffix(input_string, suffix):
 
 def get_signal(db, frame, sig, motorola_bit_format):
 
-    print("def : format - xls_common - get_signal - [{},{},{},{}]".format(frame.name,sig.name,sig.is_signed,frame.arbitration_id))
+    print("def : format - xls_common - get_signal - [{},{}]".format(sig.name,sig.comment))
     # print("def : format - xls_common - get_signal - [{},{},{}]".format(db,frame,sig))
 
     # type: (canmatrix.CanMatrix, canmatrix.Frame, canmatrix.Signal, str) -> typing.Tuple[typing.List, typing.List]

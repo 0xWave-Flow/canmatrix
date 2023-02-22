@@ -806,7 +806,7 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             # decode signal comment
             elif decoded.startswith("CM_ SG_ "):
 
-                print("def : format - dbc - load - CM_ SG_ : {}".format(decoded))
+                #print("def : format - dbc - load - CM_ SG_ : {}".format(decoded))
 
                 pattern = r"^CM_ +SG_ +(\w+) +(\w+) +\"(.*)\" *;"
                 regexp = re.compile(pattern)
@@ -816,17 +816,40 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                 #print("def : format - dbc - load - CM_ SG_ : {}".format(str(temp.group(2))))
 
+
                 if temp:
+                    print("def : format - dbc - load - CM_ SG_- 1")
                     frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
-                    signal = frame.signal_by_name(temp.group(2))
-                    if signal:
-                        try:
-                            signal.add_comment(temp_raw.group(3).decode(
-                                dbc_comment_encoding).replace('\\"', '"'))
-                        except:
-                            logger.error(
-                                "Error decoding line: %d (%s)" %
-                                (i, line))
+                    print("def : format - dbc - load - CM_ SG_- 2")
+
+                    #signal = frame.signal_by_name(temp.group(2))
+                    for signal in db.signals:
+                        if signal.name == temp.group(2):
+                            try:
+                                print("def : format - dbc - load - CM_ SG_ : {}".format(temp_raw.group(3)))
+
+                                signal.add_comment(temp_raw.group(3).decode(dbc_comment_encoding).replace('\\"', '"'))
+
+                                #signal.add_comment("HELLO")
+                            except:
+                                logger.error(
+                                    "Error decoding line: %d (%s)" %
+                                    (i, line))
+
+                    # print("def : format - dbc - load - CM_ SG_- 3")
+                    # if signal:
+                    #     try:
+                    #
+                    #     print("def : format - dbc - load - CM_ SG_ : {}".format(temp_raw.group(3)))
+                    #
+                    #     # signal.add_comment(temp_raw.group(3).decode(
+                    #     #     dbc_comment_encoding).replace('\\"', '"'))
+                    #
+                    #     signal.add_comment("HELLO")
+                    #     except:
+                    #         logger.error(
+                    #             "Error decoding line: %d (%s)" %
+                    #             (i, line))
                 else:
                     pattern = r"^CM_ +SG_ +(\w+) +(\w+) +\"(.*)"
                     regexp = re.compile(pattern)
@@ -848,13 +871,15 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             # decode message comment
             elif decoded.startswith("CM_ BO_ "):
 
-                print("def : format - dbc - load - CM_ BO_ : {}".format(decoded))
-
                 pattern = r"^CM_ +BO_ +(\w+) +\"(.*)\" *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
                 temp = regexp.match(decoded)
                 temp_raw = regexp_raw.match(l)
+
+                print("def : format - dbc - load - CM_ BO_ : {}".format(temp_raw.group(2).decode(
+                    dbc_comment_encoding).replace('\\"', '"')))
+
                 if temp:
                     frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
                     if frame:
@@ -885,13 +910,17 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             # decode ecu comment
             elif decoded.startswith("CM_ BU_ "):
 
-                print("def : format - dbc - load - CM_ BU_ : {}".format(decoded))
+                #print("def : format - dbc - load - CM_ BU_ : {}".format(decoded))
 
                 pattern = r"^CM_ +BU_ +(\w+) +\"(.*)\" *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
                 temp = regexp.match(decoded)
                 temp_raw = regexp_raw.match(l)
+
+                print("def : format - dbc - load - CM_ BU_ : {}".format(temp_raw.group(2).decode(
+                                dbc_comment_encoding).replace('\\"', '"')))
+
                 if temp:
                     board_unit = db.ecu_by_name(temp.group(1))
                     if board_unit:

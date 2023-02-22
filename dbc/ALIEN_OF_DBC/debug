@@ -29,55 +29,55 @@ def : canmatrix - CanMatrix - add_ecu - Ecu(name='ADAS_ECU', comment=None)
 def : canmatrix - CanMatrix - add_ecu - Ecu(name='ExternalUnit', comment=None)
 def : canmatrix - CanMatrix - add_ecu - Ecu(name='ARS_ISF', comment=None)
 def : format - xls - load - unit : 1 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object probability of existence
 def : format - xls - load - SIGNAL - Obj_ProbOfExist - {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
 def : format - xls - load - unit : 2 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object measurement status
 def : format - xls - load - SIGNAL - Obj_MeasState - {0: 'Deleted', 1: 'New', 2: 'Measured', 3: 'Predicted', 4: 'Deleted for merge', 5: 'New from merge'}
 def : format - xls - load - unit : 3 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative longitudinal acceleration standard deviation
 def : format - xls - load - SIGNAL - Obj_ArelLong_rms - {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
 def : format - xls - load - unit : 4 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative lateral acceleration standard deviation
 def : format - xls - load - SIGNAL - Obj_ArelLat_rms - {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
 def : format - xls - load - unit : 5 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative longitudinal velocity standard deviation
 def : format - xls - load - SIGNAL - Obj_VrelLong_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
 def : format - xls - load - unit : 6 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative lateral velocity standard deviation
 def : format - xls - load - SIGNAL - Obj_VrelLat_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
 def : format - xls - load - unit : 7 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object orientation angle
 def : format - xls - load - SIGNAL - Obj_Orientation_rms - {0: '<0.005 deg', 1: '<0.007 deg', 2: '<0.010 deg', 3: '<0.014 deg', 4: '<0.020 deg', 5: '<0.029 deg', 6: '<0.041 deg', 7: '<0.058 deg', 8: '<0.082 deg', 9: '<0.116 deg', 10: '<0.165 deg', 11: '<0.234 deg', 12: '<0.332 deg', 13: '<0.471 deg', 14: '<0.669 deg', 15: '<0.949 deg', 16: '<1.346 deg', 17: '<1.909 deg', 18: '<2.709 deg', 19: '<3.843 deg', 20: '<5.451 deg', 21: '<7.734 deg', 22: '<10.971 deg', 23: '<15.565 deg', 24: '<22.081 deg', 25: '<31.325 deg', 26: '<44.439 deg', 27: '<63.044 deg', 28: '<89.437 deg', 29: '<126.881 deg', 30: '<180.000 deg', 31: 'Invalid'}
 def : format - xls - load - unit : 8 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object longitudinal distance standard deviation
 def : format - xls - load - SIGNAL - Obj_DistLong_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
 def : format - xls - load - unit : 9 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object lateral distance standard deviation
 def : format - xls - load - SIGNAL - Obj_DistLat_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
 def : format - xls - load - unit : 10 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object ID
 def : format - xls - load - SIGNAL - Obj_ID_Quality - {}
 def : format - xls - load - unit : 11 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object classification
 def : format - xls - load - SIGNAL - Obj_Class - {0: 'Point', 1: 'Car', 2: 'Truck', 3: 'Pedestrian', 4: 'Motorcycle', 5: 'Bicycle', 6: 'Wide', 7: "Description for the value '0x7'"}
 def : format - xls - load - unit : 12 - m/s² - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative lateral acceleration
 def : format - xls - load - SIGNAL - Obj_ArelLat - {}
 def : format - xls - load - unit : 13 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object ID
 def : format - xls - load - SIGNAL - Obj_ID_extended - {}
 def : format - xls - load - unit : 14 - deg - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object orientation angle
 def : format - xls - load - SIGNAL - Obj_OrientationAngle - {}
 def : format - xls - load - unit : 15 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object width
 def : format - xls - load - SIGNAL - Obj_Width - {}
 def : format - xls - load - unit : 16 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object length
 def : format - xls - load - SIGNAL - Obj_Length - {}
 def : format - xls - load - unit : 17 - m/s² - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative longitudinal acceleration
 def : format - xls - load - SIGNAL - Obj_ArelLong - {}
 def : format - xls - load - unit : 18 - / - 34
 def : canmatrix - Signal - add_comment - /
@@ -101,13 +101,13 @@ def : format - xls - load - unit : 24 - m - 34
 def : canmatrix - Signal - add_comment - /
 def : format - xls - load - SIGNAL - CollDetRegState_Point1X - {}
 def : format - xls - load - unit : 25 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Region bit field with collision detection
 def : format - xls - load - SIGNAL - Obj_CollDetRegionBitfield - {}
 def : format - xls - load - unit : 26 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object ID
 def : format - xls - load - SIGNAL - Obj_ID - {}
 def : format - xls - load - unit : 27 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Region bit field for control relay
 def : format - xls - load - SIGNAL - CollDetRelayCtrl_Param - {}
 def : format - xls - load - unit : 28 - / - 34
 def : canmatrix - Signal - add_comment - /
@@ -131,64 +131,64 @@ def : format - xls - load - unit : 34 - / - 34
 def : canmatrix - Signal - add_comment - /
 def : format - xls - load - SIGNAL - FilterCfg_Type - {0: 'Cluster filter', 1: 'Object filter'}
 def : format - xls - load - unit : 35 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the RCS_Threshold parameter
 def : format - xls - load - SIGNAL - RadarCfg_RCS_Threshold_Valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 36 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Standard or high sensitivity for cluster list output
 def : format - xls - load - SIGNAL - RadarCfg_RCS_Threshold - {0: 'Standard', 1: 'High Sensitivity', 2: 'Reserved', 3: 'Reserved', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
 def : format - xls - load - unit : 37 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the StoreInNvm parameter
 def : format - xls - load - SIGNAL - RadarCfg_StoreInNVM_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 38 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the SortIndex parameter
 def : format - xls - load - SIGNAL - RadarCfg_SortIndex_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 39 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object sort index
 def : format - xls - load - SIGNAL - RadarCfg_SortIndex - {0: 'No sorting', 1: 'Sorted by range', 2: 'Sorted by RCS'}
 def : format - xls - load - unit : 40 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Store configuration in Nvm
 def : format - xls - load - SIGNAL - RadarCfg_StoreInNVM - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 41 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the SendExtInfo parameter
 def : format - xls - load - SIGNAL - RadarCfg_SendExtInfo_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 42 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Enables output of extended message
 def : format - xls - load - SIGNAL - RadarCfg_SendExtInfo - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 43 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the CtrlRelay parameter
 def : format - xls - load - SIGNAL - RadarCfg_CtrlRelay_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 44 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Enables output of CtrlRelay message if CollDet is active
 def : format - xls - load - SIGNAL - RadarCfg_CtrlRelay - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 45 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the SendQuality parameter
 def : format - xls - load - SIGNAL - RadarCfg_SendQuality_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 46 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Enables output of quality message
 def : format - xls - load - SIGNAL - RadarCfg_SendQuality - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 47 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the MaxDistance parameter
 def : format - xls - load - SIGNAL - RadarCfg_MaxDistance_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 48 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the RadarPower parameter
 def : format - xls - load - SIGNAL - RadarCfg_RadarPower_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 49 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the OutputType parameter
 def : format - xls - load - SIGNAL - RadarCfg_OutputType_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 50 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Allows changing the SensorId parameter
 def : format - xls - load - SIGNAL - RadarCfg_SensorID_valid - {0: 'Invalid', 1: 'Valid'}
 def : format - xls - load - unit : 51 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Maximum distance of far scan
 def : format - xls - load - SIGNAL - RadarCfg_MaxDistance - {}
 def : format - xls - load - unit : 52 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Radar Tx output power reduction (Tx attenuation)
 def : format - xls - load - SIGNAL - RadarCfg_RadarPower - {0: 'Standard', 1: '-3 dB Tx gain', 2: '-6 dB Tx gain', 3: '-9 dB Tx gain', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
 def : format - xls - load - unit : 53 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Data output type
 def : format - xls - load - SIGNAL - RadarCfg_OutputType - {0: 'None', 1: 'SendObjects', 2: 'SendClusters', 3: 'reserved 2'}
 def : format - xls - load - unit : 54 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Sensor ID (0 to 7)
 def : format - xls - load - SIGNAL - RadarCfg_SensorID - {}
 def : format - xls - load - unit : 55 - / - 34
 def : canmatrix - Signal - add_comment - /
@@ -206,49 +206,49 @@ def : format - xls - load - unit : 59 - / - 34
 def : canmatrix - Signal - add_comment - /
 def : format - xls - load - SIGNAL - RadarState_Persistent_Error - {0: 'No error', 1: 'Error active'}
 def : format - xls - load - unit : 60 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Current sorting of object list
 def : format - xls - load - SIGNAL - RadarState_SortIndex - {}
 def : format - xls - load - unit : 61 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Current sensitivity mode
 def : format - xls - load - SIGNAL - RadarState_RCS_Threshold - {0: 'Standard', 1: 'High Sensitivity', 2: 'Reserved', 3: 'Reserved', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
 def : format - xls - load - unit : 62 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Status of control relay message output
 def : format - xls - load - SIGNAL - RadarState_CtrlRelayCfg - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 63 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Status of quality information output
 def : format - xls - load - SIGNAL - RadarState_SendQualityCfg - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 64 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Status of extended information output
 def : format - xls - load - SIGNAL - RadarState_SendExtInfoCfg - {0: 'Inactive', 1: 'Active'}
 def : format - xls - load - unit : 65 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Status of motion input signals
 def : format - xls - load - SIGNAL - RadarState_MotionRxState - {0: 'Input ok', 1: 'Speed missing', 2: 'Yaw rate missing', 3: 'Speed and yaw rate missing'}
 def : format - xls - load - unit : 66 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Sensor ID (0 to 7)
 def : format - xls - load - SIGNAL - RadarState_SensorID - {}
 def : format - xls - load - unit : 67 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Current output list type
 def : format - xls - load - SIGNAL - RadarState_OutputTypeCfg - {0: 'None', 1: 'SendObjects', 2: 'SendClusters', 3: 'reserved 2'}
 def : format - xls - load - unit : 68 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Radar Tx output level (Tx attenuation)
 def : format - xls - load - SIGNAL - RadarState_RadarPowerCfg - {0: 'Standard', 1: '-3 dB Tx gain', 2: '-6 dB Tx gain', 3: '-9 dB Tx gain', 4: 'Reserved', 5: 'Reserved', 6: 'Reserved', 7: 'Reserved'}
 def : format - xls - load - unit : 69 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Gives the status of reading the radar configuration from EEPROM
 def : format - xls - load - SIGNAL - RadarState_NVMReadStatus - {0: 'pending', 1: 'successful'}
 def : format - xls - load - unit : 70 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Gives the status of writing the radar configuration from EEPROM
 def : format - xls - load - SIGNAL - RadarState_NVMwriteStatus - {0: 'failed', 1: 'successful'}
 def : format - xls - load - unit : 71 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Currently configured maximum distance of far scan
 def : format - xls - load - SIGNAL - RadarState_MaxDistanceCfg - {}
 def : format - xls - load - unit : 72 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Speed of the radar unit
 def : format - xls - load - SIGNAL - RadarDevice_Speed - {}
 def : format - xls - load - unit : 73 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Speed direction of the radar unit
 def : format - xls - load - SIGNAL - RadarDevice_SpeedDirection - {0: 'standstill', 1: 'forward', 2: 'reverse', 3: 'reserved'}
 def : format - xls - load - unit : 74 - °/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Yaw rate of the radar unit
 def : format - xls - load - SIGNAL - RadarDevice_YawRate - {}
 def : format - xls - load - unit : 75 - / - 34
 def : canmatrix - Signal - add_comment - /
@@ -299,46 +299,46 @@ def : format - xls - load - unit : 90 - s - 34
 def : canmatrix - Signal - add_comment - /
 def : format - xls - load - SIGNAL - CollDetState_MinDetectTime - {}
 def : format - xls - load - unit : 91 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Measurement counter
 def : format - xls - load - SIGNAL - Cluster_MeasCounter - {}
 def : format - xls - load - unit : 92 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Number of valid Clusters in near range scan
 def : format - xls - load - SIGNAL - Cluster_NofClustersNear - {}
 def : format - xls - load - unit : 93 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Number of valid Clusters in far range scan
 def : format - xls - load - SIGNAL - Cluster_NofClustersFar - {}
 def : format - xls - load - unit : 94 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster CAN Interface Version Number
 def : format - xls - load - SIGNAL - Cluster_InterfaceVersion - {}
 def : format - xls - load - unit : 95 - 1 - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Number of Objects sent
 def : format - xls - load - SIGNAL - Obj_NofObjects - {}
 def : format - xls - load - unit : 96 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Measurement Counter
 def : format - xls - load - SIGNAL - Obj_MeasCounter - {}
 def : format - xls - load - unit : 97 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object CAN Interface Version Number
 def : format - xls - load - SIGNAL - Obj_InterfaceVersion - {}
 def : format - xls - load - unit : 98 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object dynamic property
 def : format - xls - load - SIGNAL - Obj_DynProp - {0: 'Moving', 1: 'Stationary', 2: 'Oncoming', 3: 'Stationary candidate', 4: 'Unknown', 5: 'Crossing stationary', 6: 'Crossing moving', 7: 'Stopped'}
 def : format - xls - load - unit : 99 - dBm² - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object RCS value (radar cross section)
 def : format - xls - load - SIGNAL - Obj_RCS - {}
 def : format - xls - load - unit : 100 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative lateral velocity
 def : format - xls - load - SIGNAL - Obj_VrelLat - {}
 def : format - xls - load - unit : 101 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object ID
 def : format - xls - load - SIGNAL - Obj_ID - {}
 def : format - xls - load - unit : 102 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object longitudinal displacement
 def : format - xls - load - SIGNAL - Obj_DistLong - {}
 def : format - xls - load - unit : 103 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object relative longitudinal velocity
 def : format - xls - load - SIGNAL - Obj_VrelLong - {}
 def : format - xls - load - unit : 104 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Object lateral displacement
 def : format - xls - load - SIGNAL - Obj_DistLat - {}
 def : format - xls - load - unit : 105 - / - 34
 def : canmatrix - Signal - add_comment - /
@@ -347,58 +347,58 @@ def : format - xls - load - unit : 106 - / - 34
 def : canmatrix - Signal - add_comment - /
 def : format - xls - load - SIGNAL - Version_CountryCode - {0: 'International version', 1: 'South Korea, Japan'}
 def : format - xls - load - unit : 107 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Major Release Number
 def : format - xls - load - SIGNAL - Version_MajorRelease - {}
 def : format - xls - load - unit : 108 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Minor Release Number
 def : format - xls - load - SIGNAL - Version_MinorRelease - {}
 def : format - xls - load - unit : 109 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Patch Level
 def : format - xls - load - SIGNAL - Version_PatchLevel - {}
 def : format - xls - load - unit : 110 - 1 - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster dynamic property
 def : format - xls - load - SIGNAL - Cluster_DynProp - {0: 'Moving', 1: 'Stationary', 2: 'Oncoming', 3: 'Stationary candidate', 4: 'Unknown', 5: 'Crossing stationary', 6: 'Crossing moving', 7: 'Stopped'}
 def : format - xls - load - unit : 111 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster relative lateral velocity
 def : format - xls - load - SIGNAL - Cluster_VrelLat - {}
 def : format - xls - load - unit : 112 - dBm² - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster RCS value (Radar cross section)
 def : format - xls - load - SIGNAL - Cluster_RCS - {}
 def : format - xls - load - unit : 113 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster longitudinal distance
 def : format - xls - load - SIGNAL - Cluster_DistLong - {}
 def : format - xls - load - unit : 114 - 1 - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster number
 def : format - xls - load - SIGNAL - Cluster_ID - {}
 def : format - xls - load - unit : 115 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster relative longitudinal velocity
 def : format - xls - load - SIGNAL - Cluster_VrelLong - {}
 def : format - xls - load - unit : 116 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster lateral distance
 def : format - xls - load - SIGNAL - Cluster_DistLat - {}
 def : format - xls - load - unit : 117 - 1 - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster number
 def : format - xls - load - SIGNAL - Cluster_ID - {}
 def : format - xls - load - unit : 118 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster relative lateral velocity standard deviation
 def : format - xls - load - SIGNAL - Cluster_VrelLat_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
 def : format - xls - load - unit : 119 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster invalid state
 def : format - xls - load - SIGNAL - Cluster_InvalidState - {0: 'Valid', 1: 'Invalid with too low RCS', 2: 'Invalid nearfield', 3: 'Invalid far not confirmed', 4: 'Valid with low RCS', 5: 'reserved', 6: 'Invalid mirror', 7: 'Invalid outside field of view', 8: 'Valid with elevation', 9: 'Valid child', 10: 'Valid 50 deg artefact', 11: 'Valid but no local maximum', 12: 'Valid artefact ', 13: 'reserved', 14: 'Invalid harmonics ', 15: 'Valid near above 95 m', 16: 'Valid multi-target', 17: 'Valid suspicious angle'}
 def : format - xls - load - unit : 120 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster lateral distance standard deviation
 def : format - xls - load - SIGNAL - Cluster_DistLat_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
 def : format - xls - load - unit : 121 - m - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster longitudinal distance standard deviation
 def : format - xls - load - SIGNAL - Cluster_DistLong_rms - {0: '<0.005 m', 1: '<0.006 m', 2: '<0.008 m', 3: '<0.011 m', 4: '<0.014 m', 5: '<0.018 m', 6: '<0.023 m', 7: '<0.029 m', 8: '<0.038 m', 9: '<0.049 m', 10: '<0.063 m', 11: '<0.081 m', 12: '<0.105 m', 13: '<0.135 m', 14: '<0.174 m', 15: '<0.224 m', 16: '<0.288 m', 17: '<0.371 m', 18: '<0.478 m', 19: '<0.616 m', 20: '<0.794 m', 21: '<1.023 m', 22: '<1.317 m', 23: '<1.697 m', 24: '<2.187 m', 25: '<2.817 m', 26: '<3.630 m', 27: '<4.676 m', 28: '<6.025 m', 29: '<7.762 m', 30: '<10.000 m', 31: 'Invalid'}
 def : format - xls - load - unit : 122 - m/s - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster relative longitudinal velocity standard deviation
 def : format - xls - load - SIGNAL - Cluster_VrelLong_rms - {0: '<0.005 m/s', 1: '<0.006 m/s', 2: '<0.008 m/s', 3: '<0.011 m/s', 4: '<0.014 m/s', 5: '<0.018 m/s', 6: '<0.023 m/s', 7: '<0.029 m/s', 8: '<0.038 m/s', 9: '<0.049 m/s', 10: '<0.063 m/s', 11: '<0.081 m/s', 12: '<0.105 m/s', 13: '<0.135 m/s', 14: '<0.174 m/s', 15: '<0.224 m/s', 16: '<0.288 m/s', 17: '<0.371 m/s', 18: '<0.478 m/s', 19: '<0.616 m/s', 20: '<0.794 m/s', 21: '<1.023 m/s', 22: '<1.317 m/s', 23: '<1.697 m/s', 24: '<2.187 m/s', 25: '<2.817 m/s', 26: '<3.630 m/s', 27: '<4.676 m/s', 28: '<6.025 m/s', 29: '<7.762 m/s', 30: '<10.000 m/s', 31: 'Invalid'}
 def : format - xls - load - unit : 123 - / - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster false alarm probability
 def : format - xls - load - SIGNAL - Cluster_PdH0 - {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
 def : format - xls - load - unit : 124 - 1 - 34
-def : canmatrix - Signal - add_comment - /
+def : canmatrix - Signal - add_comment - Cluster Doppler ambiguity status
 def : format - xls - load - SIGNAL - Cluster_AmbigState - {0: 'Invalid', 1: 'Ambiguous', 2: 'Staggered ramp', 3: 'Unambiguous', 4: 'Stationary candidate'}
 def : format - __init__ - dumpp
 def : format - __init__ - dump
@@ -929,6 +929,93 @@ def : format - dbc - dump - SIGNAL :
 def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_PdH0 : 26|3@0+ (1,0) [0|7] ""  ExternalUnit\n'
 def : format - dbc - dump - SIGNAL : 1
 def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Cluster_AmbigState : 34|3@0+ (1,0) [0|7] "1"  ExternalUnit\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_ProbOfExist "Object probability of existence";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_MeasState "Object measurement status";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_ArelLong_rms "Object relative longitudinal acceleration standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_ArelLat_rms "Object relative lateral acceleration standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_VrelLong_rms "Object relative longitudinal velocity standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_VrelLat_rms "Object relative lateral velocity standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_Orientation_rms "Object orientation angle";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_DistLong_rms "Object longitudinal distance standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_DistLat_rms "Object lateral distance standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1548 Obj_ID_Quality "Object ID";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_Class "Object classification";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_ArelLat "Object relative lateral acceleration";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_ID_extended "Object ID";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_OrientationAngle "Object orientation angle";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_Width "Object width";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_Length "Object length";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1549 Obj_ArelLong "Object relative longitudinal acceleration";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1550 Obj_CollDetRegionBitfield "Region bit field with collision detection";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1550 Obj_ID "Object ID";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 8 CollDetRelayCtrl_Param "Region bit field for control relay";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_RCS_Threshold_Valid "Allows changing the RCS_Threshold parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_RCS_Threshold "Standard or high sensitivity for cluster list output";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_StoreInNVM_valid "Allows changing the StoreInNvm parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SortIndex_valid "Allows changing the SortIndex parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SortIndex "Object sort index";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_StoreInNVM "Store configuration in Nvm";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SendExtInfo_valid "Allows changing the SendExtInfo parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SendExtInfo "Enables output of extended message";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_CtrlRelay_valid "Allows changing the CtrlRelay parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_CtrlRelay "Enables output of CtrlRelay message if CollDet is active";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SendQuality_valid "Allows changing the SendQuality parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SendQuality "Enables output of quality message";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_MaxDistance_valid "Allows changing the MaxDistance parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_RadarPower_valid "Allows changing the RadarPower parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_OutputType_valid "Allows changing the OutputType parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SensorID_valid "Allows changing the SensorId parameter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_MaxDistance "Maximum distance of far scan";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_RadarPower "Radar Tx output power reduction (Tx attenuation)";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_OutputType "Data output type";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 512 RadarCfg_SensorID "Sensor ID (0 to 7)";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_SortIndex "Current sorting of object list";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_RCS_Threshold "Current sensitivity mode";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_CtrlRelayCfg "Status of control relay message output";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_SendQualityCfg "Status of quality information output";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_SendExtInfoCfg "Status of extended information output";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_MotionRxState "Status of motion input signals";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_SensorID "Sensor ID (0 to 7)";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_OutputTypeCfg "Current output list type";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_RadarPowerCfg "Radar Tx output level (Tx attenuation)";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_NVMReadStatus "Gives the status of reading the radar configuration from EEPROM";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_NVMwriteStatus "Gives the status of writing the radar configuration from EEPROM";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 513 RadarState_MaxDistanceCfg "Currently configured maximum distance of far scan";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 768 RadarDevice_Speed "Speed of the radar unit";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 768 RadarDevice_SpeedDirection "Speed direction of the radar unit";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 769 RadarDevice_YawRate "Yaw rate of the radar unit";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1536 Cluster_MeasCounter "Measurement counter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1536 Cluster_NofClustersNear "Number of valid Clusters in near range scan";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1536 Cluster_NofClustersFar "Number of valid Clusters in far range scan";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1536 Cluster_InterfaceVersion "Cluster CAN Interface Version Number";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1546 Obj_NofObjects "Number of Objects sent";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1546 Obj_MeasCounter "Measurement Counter";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1546 Obj_InterfaceVersion "Object CAN Interface Version Number";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_DynProp "Object dynamic property";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_RCS "Object RCS value (radar cross section)";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_VrelLat "Object relative lateral velocity";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_ID "Object ID";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_DistLong "Object longitudinal displacement";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_VrelLong "Object relative longitudinal velocity";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1547 Obj_DistLat "Object lateral displacement";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1792 Version_MajorRelease "Major Release Number";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1792 Version_MinorRelease "Minor Release Number";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1792 Version_PatchLevel "Patch Level";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_DynProp "Cluster dynamic property";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_VrelLat "Cluster relative lateral velocity";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_RCS "Cluster RCS value (Radar cross section)";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_DistLong "Cluster longitudinal distance";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_ID "Cluster number";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_VrelLong "Cluster relative longitudinal velocity";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1793 Cluster_DistLat "Cluster lateral distance";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_ID "Cluster number";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_VrelLat_rms "Cluster relative lateral velocity standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_InvalidState "Cluster invalid state";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_DistLat_rms "Cluster lateral distance standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_DistLong_rms "Cluster longitudinal distance standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_VrelLong_rms "Cluster relative longitudinal velocity standard deviation";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_PdH0 "Cluster false alarm probability";\n'
+def : format - dbc - create_comment_string - b'CM_ SG_ 1794 Cluster_AmbigState "Cluster Doppler ambiguity status";\n'
 def : format - dbc - dump - VAL : {0: 'invalid', 1: '<25%', 2: '<50%', 3: '<75%', 4: '<90%', 5: '<99%', 6: '<99.9%', 7: '<=100%'}
 def : format - dbc - dump - VAL : {0: 'Deleted', 1: 'New', 2: 'Measured', 3: 'Predicted', 4: 'Deleted for merge', 5: 'New from merge'}
 def : format - dbc - dump - VAL : {0: '<0.005 m/s²', 1: '<0.006 m/s²', 2: '<0.008 m/s²', 3: '<0.011 m/s²', 4: '<0.014 m/s²', 5: '<0.018 m/s²', 6: '<0.023 m/s²', 7: '<0.029 m/s²', 8: '<0.038 m/s²', 9: '<0.049 m/s²', 10: '<0.063 m/s²', 11: '<0.081 m/s²', 12: '<0.105 m/s²', 13: '<0.135 m/s²', 14: '<0.174 m/s²', 15: '<0.224 m/s²', 16: '<0.288 m/s²', 17: '<0.371 m/s²', 18: '<0.478 m/s²', 19: '<0.616 m/s²', 20: '<0.794 m/s²', 21: '<1.023 m/s²', 22: '<1.317 m/s²', 23: '<1.697 m/s²', 24: '<2.187 m/s²', 25: '<2.817 m/s²', 26: '<3.630 m/s²', 27: '<4.676 m/s²', 28: '<6.025 m/s²', 29: '<7.762 m/s²', 30: '<10.000 m/s²', 31: 'Invalid'}
