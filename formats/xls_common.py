@@ -66,8 +66,9 @@ def removesuffix(input_string, suffix):
 
 
 def get_signal(db, frame, sig, motorola_bit_format):
-
-    print("def : format - xls_common - get_signal - [{},{}]".format(sig.name,sig.comment))
+    if frame.signalGroups:
+        print("def : format - xls_common - get_signal - SIG GROUP : {}".format(frame.signalGroups[0].name))
+    print("def : format - xls_common - get_signal - [ {} , {} ]".format(sig.name,sig.comment))
     # print("def : format - xls_common - get_signal - [{},{},{}]".format(db,frame,sig))
 
     # type: (canmatrix.CanMatrix, canmatrix.Frame, canmatrix.Signal, str) -> typing.Tuple[typing.List, typing.List]
@@ -102,6 +103,7 @@ def get_signal(db, frame, sig, motorola_bit_format):
     #front_array.append(sig.)
     # Signal Description
     front_array.append('/')
+    #front_array.append(sig.)
     # Used by function
     front_array.append('/')
 
