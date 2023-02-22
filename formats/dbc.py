@@ -739,8 +739,22 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     receiver = [b.strip() for b in temp.group(12).split(',')]
                     multiplex = temp.group(2)  # type: str
 
-                    print("def : format - dbc - load - SG_ PRINT M : {}".format(multiplex))
+                    is_complex_multiplexed = False
 
+                    if multiplex == 'M' or multiplex == 'm':
+                        multiplex = 'Multiplexor'
+                        #temp_signal.is_multiplexer = True
+
+                    elif multiplex.endswith('M'):
+                        is_complex_multiplexed = True
+                        multiplex = multiplex[:-1]
+                    if multiplex != 'Multiplexor':
+                        try:
+                            multiplex = int(multiplex[1:])
+                        except:
+                            raise Exception('error decoding line', line)
+
+                    print("def : format - dbc - load - SG_ PRINT M : {}".format(multiplex))
 
                     extras = {}
 
@@ -761,20 +775,7 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                         **extras
                     )
 
-                    is_complex_multiplexed = False
-
-                    if multiplex == 'M' or multiplex == 'm':
-                        multiplex = 'Multiplexor'
-                        temp_signal.is_multiplexer = True
-                    elif multiplex.endswith('M'):
-                        is_complex_multiplexed = True
-                        multiplex = multiplex[:-1]
-
-                    if multiplex != 'Multiplexor':
-                        try:
-                            multiplex = int(multiplex[1:])
-                        except:
-                            raise Exception('error decoding line', line)
+                    temp_signal.is_multiplexer = True
 
                     print("def : format - dbc - load - SG M : {} - {}".format(temp_signal.name,temp_signal.multiplex))
 

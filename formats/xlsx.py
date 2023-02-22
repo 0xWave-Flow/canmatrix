@@ -112,7 +112,8 @@ def dump(db, filename, **options):
         'Signal Group',
         'Message Segment',
         'Variant and options',
-        'Comment'
+        'Comment',
+        'Multiplexer'
     ]
 
     workbook = xlsxwriter.Workbook(filename)
@@ -202,7 +203,8 @@ def dump(db, filename, **options):
         frame = signal.frames[0]
 
 
-        if (frame.arbitration_id.extended == False) or (signal.is_multiplexed == False):
+        #if (frame.arbitration_id.extended == False) or (signal.is_multiplexed == False):
+        if frame.arbitration_id.extended == False:
 
             # get data from xls_common.py
 
@@ -310,7 +312,7 @@ def get_if_possible(row, value, default=None):
 
 def load(filename, **options):
 
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>def : format - xlsx - load")
+    print("def : format - xlsx - load")
 
     # type: (typing.BinaryIO, **str) -> canmatrix.CanMatrix
     # use xlrd excel reader if available, because its more robust
@@ -355,6 +357,8 @@ def load(filename, **options):
 
     # ECUs:
     for x in range(ecu_start, ecu_end):
+        print("def : format - xlsx - load - ECU : {} - {} - {} - {}".format(
+            ecu_start,ecu_end,x,sheet[0][letter_index[x]]))
         db.add_ecu(canmatrix.Ecu(sheet[0][letter_index[x]]))
 
     # initialize:

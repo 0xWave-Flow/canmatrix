@@ -420,12 +420,16 @@ def load(file, **options):
             index['Coding'] = i
         elif "Comment" in value:
             index['Comment'] = i
+        elif "Multiplexer" in value:
+            print("def : format - xls - load - MULTIPLEXER INDEX: {} ".format(i))
+            index['Multiplexer'] = i
 
-    index['ECUstart'] = index['Comment'] + 1
+    index['ECUstart'] = index['Multiplexer'] + 1
     index['ECUend'] = sh.ncols
 
     # ECUs:
     for x in range(index['ECUstart'], index['ECUend']):
+        print("def : format - xls - load - ECU : {}".format(sh.cell(0, x).value))
         db.add_ecu(canmatrix.Ecu(sh.cell(0, x).value))
 
     # initialize:
@@ -508,26 +512,82 @@ def load(file, **options):
             # comment
             signal_comment = sh.cell(row_num, index['Comment']).value.strip()
 
-            # create Canmatrix signal and add to db
-            new_signal = canmatrix.Signal(
-                name=signal_name,
-                msb=msb,
-                lsb=lsb,
-                size=int(signal_length),
-                cycle_time=cycle_time,
-                is_little_endian=is_little_endian,
-                is_signed=is_signed,
-                offset=offset,
-                factor=factor,
-                receivers=receiver,
-                unit=unit,
-                min=pminimum,
-                max=pmaximum,
-                values=value_table)
-            new_signal.add_comment(signal_comment)
+            signal_multiplexer = sh.cell(row_num, index['Multiplexer']).value
 
-            print("def : format - xls - load - SIGNAL - {} - {}".format(new_signal.name,new_signal.values))
-            db.add_signal(new_signal)
+            if signal_multiplexer == '/':
+
+                # create Canmatrix signal and add to db
+                new_signal = canmatrix.Signal(
+                    name=signal_name,
+                    msb=msb,
+                    lsb=lsb,
+                    size=int(signal_length),
+                    cycle_time=cycle_time,
+                    is_little_endian=is_little_endian,
+                    is_signed=is_signed,
+                    offset=offset,
+                    factor=factor,
+                    receivers=receiver,
+                    unit=unit,
+                    min=pminimum,
+                    max=pmaximum,
+                    values=value_table)
+
+                new_signal.add_comment(signal_comment)
+
+                print("def : format - xls - load - SIGNAL - {} - {}".format(new_signal.name,new_signal.values))
+                db.add_signal(new_signal)
+
+            else:
+
+                if signal_multiplexer != "Multiplexor":
+                    # create Canmatrix signal and add to db
+                    new_signal = canmatrix.Signal(
+                        name=signal_name,
+                        msb=msb,
+                        lsb=lsb,
+                        size=int(signal_length),
+                        cycle_time=cycle_time,
+                        is_little_endian=is_little_endian,
+                        is_signed=is_signed,
+                        offset=offset,
+                        factor=factor,
+                        receivers=receiver,
+                        unit=unit,
+                        min=pminimum,
+                        max=pmaximum,
+                        multiplex=int(signal_multiplexer),
+                        values=value_table)
+
+                    new_signal.is_multiplexer = True
+                    new_signal.add_comment(signal_comment)
+
+                    print("def : format - xls - load - SIGNAL - {} - {}".format(new_signal.name, new_signal.values))
+                    db.add_signal(new_signal)
+                else:
+                    # create Canmatrix signal and add to db
+                    new_signal = canmatrix.Signal(
+                        name=signal_name,
+                        msb=msb,
+                        lsb=lsb,
+                        size=int(signal_length),
+                        cycle_time=cycle_time,
+                        is_little_endian=is_little_endian,
+                        is_signed=is_signed,
+                        offset=offset,
+                        factor=factor,
+                        receivers=receiver,
+                        unit=unit,
+                        min=pminimum,
+                        max=pmaximum,
+                        values=value_table)
+
+                    new_signal.is_multiplexer = True
+                    new_signal.multiplex = 'Multiplexor'
+                    new_signal.add_comment(signal_comment)
+
+                    print("def : format - xls - load - SIGNAL - {} - {}".format(new_signal.name, new_signal.values))
+                    db.add_signal(new_signal)
 
             # Frame information for new signal
 

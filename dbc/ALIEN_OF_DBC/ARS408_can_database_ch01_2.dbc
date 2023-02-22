@@ -74,7 +74,40 @@ BO_ 8 CollDetRelayCtrl: 1 ARS_ISF
  SG_ CollDetRelayCtrl_Param : 7|8@0+ (1,0) [0|255] ""  ExternalUnit
 
 BO_ 516 FilterState_Cfg: 5 ARS_ISF
+ SG_ FilterState_Max_Class m15 : 39|8@0+ (1,0) [0|255] ""  ExternalUnit
+ SG_ FilterState_Min_Class m15 : 23|8@0+ (1,0) [0|255] ""  ExternalUnit
+ SG_ FilterState_Min_Y m9 : 11|12@0+ (0.2,-409.5) [-409.5|409.5] "m"  ExternalUnit
+ SG_ FilterState_Min_X m10 : 12|13@0+ (0.2,-500) [-500|1138.2] "m"  ExternalUnit
+ SG_ FilterState_Min_VYRightLeft m13 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Min_VYLeftRight m11 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Min_VXOncome m12 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Min_VXDepart m14 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Max_Y m9 : 27|12@0+ (0.2,-409.5) [-409.5|409.5] "m"  ExternalUnit
+ SG_ FilterState_Max_X m10 : 28|13@0+ (0.2,-500) [-500|1138.2] "m"  ExternalUnit
+ SG_ FilterState_Max_VYRightLeft m13 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Max_VYLeftRight m11 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Max_VXOncome m12 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Max_VXDepart m14 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
  SG_ FilterState_Type : 7|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ FilterState_Min_VrelOncome m3 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Min_VrelDepart m4 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Min_Size m7 : 11|12@0+ (0.025,0) [0|102.375] "m2"  ExternalUnit
+ SG_ FilterState_Min_RCS m5 : 11|12@0+ (0.025,-50) [-50|52.375] "dB"  ExternalUnit
+ SG_ FilterState_Min_ProbExists m8 : 11|12@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ FilterState_Min_NofObj m0 : 11|12@0+ (1,0) [0|4095] ""  ExternalUnit
+ SG_ FilterState_Min_Lifetime m6 : 11|12@0+ (0.1,0) [0|409.5] "s"  ExternalUnit
+ SG_ FilterState_Min_Distance m1 : 11|12@0+ (0.1,0) [0|409.5] "m"  ExternalUnit
+ SG_ FilterState_Min_Azimuth m2 : 11|12@0+ (0.025,-50) [-50|52.375] "deg"  ExternalUnit
+ SG_ FilterState_Max_VrelOncome m3 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Max_VrelDepart m4 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ExternalUnit
+ SG_ FilterState_Max_Size m7 : 27|12@0+ (0.025,0) [0|102.375] "m2"  ExternalUnit
+ SG_ FilterState_Max_RCS m5 : 27|12@0+ (0.025,-50) [-50|52.375] "dB"  ExternalUnit
+ SG_ FilterState_Max_ProbExists m8 : 27|12@0+ (1,0) [0|4095] ""  ExternalUnit
+ SG_ FilterState_Max_NofObj m0 : 27|12@0+ (1,0) [0|4095] ""  ExternalUnit
+ SG_ FilterState_Max_Lifetime m6 : 27|12@0+ (0.1,0) [0|409.5] "s"  ExternalUnit
+ SG_ FilterState_Max_Distance m1 : 27|12@0+ (0.1,0) [0|409.5] "m"  ExternalUnit
+ SG_ FilterState_Max_Azimuth m2 : 27|12@0+ (0.025,-50) [-50|52.375] "deg"  ExternalUnit
+ SG_ FilterState_Index M : 6|4@0+ (1,0) [0|15] ""  ExternalUnit
  SG_ FilterState_Active : 2|1@0+ (1,0) [0|1] ""  ExternalUnit
 
 BO_ 515 FilterState_Header: 2 ARS_ISF
@@ -82,8 +115,41 @@ BO_ 515 FilterState_Header: 2 ARS_ISF
  SG_ FilterState_NofClusterFilterCfg : 7|5@0+ (1,0) [0|31] ""  ExternalUnit
 
 BO_ 514 FilterCfg: 5 ExternalUnit
+ SG_ FilterCfg_Min_Class m15 : 23|8@0+ (1,0) [0|255] ""  ARS_ISF
+ SG_ FilterCfg_Max_Class m15 : 39|8@0+ (1,0) [0|255] ""  ARS_ISF
+ SG_ FilterCfg_Min_Y m9 : 11|12@0+ (0.2,-409.5) [-409.5|409.5] "m"  ARS_ISF
+ SG_ FilterCfg_Min_X m10 : 12|13@0+ (0.2,-500) [-500|1138.2] "m"  ARS_ISF
+ SG_ FilterCfg_Min_VYRightLeft m13 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Min_VYLeftRight m11 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Min_VXOncome m12 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Min_VXDepart m14 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Max_Y m9 : 27|12@0+ (0.2,-409.5) [-409.5|409.5] "m"  ARS_ISF
+ SG_ FilterCfg_Max_X m10 : 28|13@0+ (0.2,-500) [-500|1138.2] "m"  ARS_ISF
+ SG_ FilterCfg_Max_VYRightLeft m13 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Max_VXOncome m12 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Max_VYLeftRight m11 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Max_VXDepart m14 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
  SG_ FilterCfg_Valid : 1|1@0+ (1,0) [0|1] ""  ARS_ISF
  SG_ FilterCfg_Active : 2|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ FilterCfg_Max_VrelOncome m3 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Max_VrelDepart m4 : 27|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Max_Size m7 : 27|12@0+ (0.025,0) [0|102.375] "m2"  ARS_ISF
+ SG_ FilterCfg_Max_RCS m5 : 27|12@0+ (0.025,-50) [-50|52.375] "dB"  ARS_ISF
+ SG_ FilterCfg_Max_ProbExists m8 : 27|12@0+ (1,0) [0|7] ""  ARS_ISF
+ SG_ FilterCfg_Max_NofObj m0 : 27|12@0+ (1,0) [0|4095] ""  ARS_ISF
+ SG_ FilterCfg_Max_Lifetime m6 : 27|12@0+ (0.1,0) [0|409.5] "s"  ARS_ISF
+ SG_ FilterCfg_Max_Distance m1 : 27|12@0+ (0.1,0) [0|409.5] "m"  ARS_ISF
+ SG_ FilterCfg_Max_Azimuth m2 : 27|12@0+ (0.025,-50) [-50|52.375] "deg"  ARS_ISF
+ SG_ FilterCfg_Min_VrelOncome m3 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Min_VrelDepart m4 : 11|12@0+ (0.0315,0) [0|128.9925] "m/s"  ARS_ISF
+ SG_ FilterCfg_Min_Size m7 : 11|12@0+ (0.025,0) [0|102.375] "m2"  ARS_ISF
+ SG_ FilterCfg_Min_RCS m5 : 11|12@0+ (0.025,-50) [-50|52.375] "dB"  ARS_ISF
+ SG_ FilterCfg_Min_ProbExists m8 : 11|12@0+ (1,0) [0|4095] ""  ARS_ISF
+ SG_ FilterCfg_Min_Lifetime m6 : 11|12@0+ (0.1,0) [0|409.5] "s"  ARS_ISF
+ SG_ FilterCfg_Min_Azimuth m2 : 11|12@0+ (0.025,-50) [-50|52.375] "deg"  ARS_ISF
+ SG_ FilterCfg_Min_NofObj m0 : 11|12@0+ (1,0) [0|4095] ""  ARS_ISF
+ SG_ FilterCfg_Min_Distance m1 : 11|12@0+ (0.1,0) [0|409.5] "m"  ARS_ISF
+ SG_ FilterCfg_Index M : 6|4@0+ (1,0) [0|15] ""  ARS_ISF
  SG_ FilterCfg_Type : 7|1@0+ (1,0) [0|1] ""  ARS_ISF
 
 BO_ 512 RadarConfiguration: 8 ExternalUnit
@@ -302,9 +368,13 @@ VAL_ 1548 Obj_DistLat_rms 31 "Invalid" 30 "<10.000 m" 29 "<7.762 m" 28 "<6.025 m
 VAL_ 1549 Obj_Class 7 "Description for the value '0x7'" 6 "Wide" 5 "Bicycle" 4 "Motorcycle" 3 "Pedestrian" 2 "Truck" 1 "Car" 0 "Point";
 VAL_ 1026 CollDetRegState_WarningLevel 3 "Warning deactivated" 2 "Preliminary warning" 1 "Object warning" 0 "No warning";
 VAL_ 516 FilterState_Type 1 "Object filter" 0 "Cluster filter";
+VAL_ 516 FilterState_Min_ProbExists 7 "100%" 6 ">=99.9%" 5 ">=99%" 4 ">=90%" 3 ">=75%" 2 ">=50%" 1 ">=25%" 0 "invalid";
+VAL_ 516 FilterState_Max_ProbExists 7 "<=100%" 6 "<99.9%" 5 "<99%" 4 "<90%" 3 "<75%" 2 "<50%" 1 "<25%" 0 "invalid";
 VAL_ 516 FilterState_Active 1 "active" 0 "inactive";
 VAL_ 514 FilterCfg_Valid 1 "valid" 0 "invalid";
 VAL_ 514 FilterCfg_Active 1 "active" 0 "inactive";
+VAL_ 514 FilterCfg_Max_ProbExists 7 "<=100%" 6 "<99.9%" 5 "<99%" 4 "<90%" 3 "<75%" 2 "<50%" 1 "<25%" 0 "invalid";
+VAL_ 514 FilterCfg_Min_ProbExists 7 "100%" 6 ">=99.9%" 5 ">=99%" 4 ">=90%" 3 ">=75%" 2 ">=50%" 1 ">=25%" 0 "invalid";
 VAL_ 514 FilterCfg_Type 1 "Object filter" 0 "Cluster filter";
 VAL_ 512 RadarCfg_RCS_Threshold_Valid 1 "Valid" 0 "Invalid";
 VAL_ 512 RadarCfg_RCS_Threshold 7 "Reserved" 6 "Reserved" 5 "Reserved" 4 "Reserved" 3 "Reserved" 2 "Reserved" 1 "High Sensitivity" 0 "Standard";
