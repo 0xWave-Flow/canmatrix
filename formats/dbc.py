@@ -204,11 +204,11 @@ def dump(in_db, f, **options):
     NS_list = ['NS_DESC_', 'CM_', 'BA_DEF_', 'BA_', 'VAL_', 'CAT_DEF_', 'CAT_', 'FILTER', 'BA_DEF_DEF_',
                'EV_DATA_', 'ENVVAR_DATA_', 'SGTYPE_', 'SGTYPE_VAL_', 'BA_DEF_SGTYPE_', 'BA_SGTYPE_',
                'SIG_TYPE_REF_', 'VAL_TABLE_', 'SIG_GROUP_', 'SIG_VALTYPE_', 'SIGTYPE_VALTYPE_', 'BO_TX_BU_',
-               'BA_DEF_REL_', 'BA_REL_', 'BA_DEF_DEF_REL_', 'BU_SG_REL_', 'BU_EV_REL_', 'BU_BO_REL_', 'SG_MUL_VAL_']
+               'BA_DEF_REL_', 'BA_REL_', 'BA_DEF_DEF_REL_', 'BU_SG_REL_', 'BU_EV_REL_', 'BU_BO_REL_', 'SG_MUL_VAL_\r\n']
 
-    header = "VERSION \"Excel 2 DBC\"\n\n\nNS_ :\n"
+    header = "VERSION \"TOOL OF INVENTEC AND KOSTAL\"\n\n\nNS_ : \r\n"
     for NS in NS_list:
-        header += "\t" + NS + "\n"
+        header += "\t" + NS + "\r\n"
 
     header += 'BS_:\n\n'
     print("def : format - dbc - dump - HEADER : {}".format(header.encode(dbc_export_encoding, ignore_encoding_errors)))
@@ -228,7 +228,7 @@ def dump(in_db, f, **options):
 
         print("def : format - dbc - dump - ECU : {}".format(ecu.name))
         f.write((ecu.name + " ").encode(dbc_export_encoding, ignore_encoding_errors))
-    f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
+    f.write("\r\n".encode(dbc_export_encoding, ignore_encoding_errors))
 
     # write value table VAL_TABLE_
     if write_val_table:
@@ -364,7 +364,7 @@ def dump(in_db, f, **options):
 
 
         signal_line += signal.unit
-        signal_line += '" '
+        signal_line += '"  '
 
         if len(signal.receivers) == 0:
             signal.add_receiver('Vector__XXX')
@@ -377,7 +377,7 @@ def dump(in_db, f, **options):
 
         f.write(signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
 
-    f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
+    f.write("\r\n".encode(dbc_export_encoding, ignore_encoding_errors))
 
     # second Sender:
     for signal in db.signals:
@@ -799,6 +799,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
                 temp = regexp.match(decoded)
                 temp_raw = regexp_raw.match(l)
+
+                #print("def : format - dbc - load - CM_ SG_ : {}".format(str(temp.group(2))))
+
                 if temp:
                     frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
                     signal = frame.signal_by_name(temp.group(2))
@@ -1022,10 +1025,45 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 elif tempba.group(1).strip().startswith("SG_ "):
                     regexp = re.compile(r"^BA_ +\"(.+?)\" +SG_ +(\d+) +(\w+) +(.+) *; *")
                     temp = regexp.match(decoded)
+
+                    print("def : format - dbc - load - BA_ OF SG : {} - {} - {} - {}".format(temp.group(1),temp.group(2),temp.group(3),temp.group(4)))
+
                     if temp is not None:
-                        get_frame_by_id(
-                            canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))).signal_by_name(
-                            temp.group(3)).add_attribute(temp.group(1), temp.group(4))
+
+                        for signal in db.signals:
+                            #print("def : format - dbc - load - LOOP SIG - {}".format(signal.name))
+                            if signal.name == temp.group(3):
+                                #print("def : format - dbc - load - FIND- {}".format(signal.name))
+                                signal.add_attribute(temp.group(1),temp.group(4))
+                                print("def : format - dbc - load - ATTR- {}".format(signal.attributes))
+
+                        # FrameTemp = get_frame_by_id(
+                        #     canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))).signal_by_name(
+                        #     temp.group(3)).add_attribute(temp.group(1), temp.group(4))
+                        #print("def : format - dbc - load - BA_ OF SG - ATTRIBUTES - 2")
+
+                    #frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2))))
+                    #print("def : format - dbc - load - BA_ OF SG - ATTRIBUTES - 1 {}".format(frame.signals))
+
+                    #signal = frame.signal_by_name("AK")
+                    #print("def : format - dbc - load - BA_ OF SG - ATTRIBUTES - 2")
+                    #signal.add_attribute(temp.group(1),temp.group(4))
+
+
+                    #FrameTemp = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2))))
+                    #print("def : format - dbc - load - BA_ OF SG - INDEX 3 : {}".format(temp.group(3)))
+                    #SignalTemp = FrameTemp.signal_by_name(temp.group(3))
+                    print("def : format - dbc - load - BA_ OF SG - ATTRIBUTES : {}".format(signal.attributes))
+
+                    #SignalTemp = FrameTemp.signal_by_name(temp.group(3))
+
+                    #print("WHAT IS ",type(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))))
+                    #canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))).signal_by_name(temp.group(3)).add_attribute(temp.group(1), temp.group(4))
+                    #SignalTemp.add_attribute("GenSigStartValue", int(temp.group(4)))
+                    #signal.attributes.get("GenSigStartValue", "0")
+                    #print("def : format - dbc - load - BA_ OF SG - ATTRIBUTES : {}".format(SignalTemp))
+
+
                 elif tempba.group(1).strip().startswith("EV_ "):
                     regexp = re.compile(r"^BA_ +\"(.+?)\" +EV_ +(\w+) +(.*) *; *")
                     temp = regexp.match(decoded)
@@ -1042,6 +1080,8 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     regexp = re.compile(
                         r"^BA_ +\"([A-Za-z0-9\-_]+)\" +([\"\w\-\.]+) *; *")
                     temp = regexp.match(decoded)
+
+                    #print("def : format - dbc - load - BA_ OF INIT VALUE: {} - {}".format(temp.group(1),temp.group(2)))
                     if temp:
                         db.add_attribute(temp.group(1), temp.group(2))
 
@@ -1159,7 +1199,14 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
         # frame.update_receiver()
 
         gen_sig_start_value = float_factory(signal.attributes.get("GenSigStartValue", "0"))
+
+        print("def : format - dbc - load - ATTRIBUTES : {}".format(signal.attributes.items()))
+
         signal.initial_value = (gen_sig_start_value * signal.factor) + signal.offset
+
+        print("def : format - dbc - load - WHERE IS INIT VALUE {} : {} * {} + {} = {}".format(
+            signal.name,gen_sig_start_value,signal.factor,signal.offset,signal.initial_value))
+
         signal.cycle_time = int(signal.attributes.get("GenSigCycleTime", 0))
         if signal.attribute("SystemSignalLongSymbol") is not None:
             signal.name = signal.attribute("SystemSignalLongSymbol")[1:-1]

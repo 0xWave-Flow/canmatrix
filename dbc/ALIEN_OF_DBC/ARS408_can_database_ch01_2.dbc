@@ -1,7 +1,7 @@
-VERSION "Excel 2 DBC"
+VERSION "TOOL OF INVENTEC AND KOSTAL"
 
 
-NS_ :
+NS_ : 
 	NS_DESC_
 	CM_
 	BA_DEF_
@@ -30,176 +30,177 @@ NS_ :
 	BU_EV_REL_
 	BU_BO_REL_
 	SG_MUL_VAL_
+
 BS_:
 
 BU_: ADAS_ECU ExternalUnit ARS_ISF 
 
 
 BO_ 1548 Obj_2_Quality: 7 ARS_ISF
- SG_ Obj_ProbOfExist : 55|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ Obj_MeasState : 52|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ Obj_ArelLong_rms : 27|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit
- SG_ Obj_ArelLat_rms : 38|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit
- SG_ Obj_VrelLong_rms : 21|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit
- SG_ Obj_VrelLat_rms : 16|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit
- SG_ Obj_Orientation_rms : 33|5@0+ (1,0) [0|31] "" ExternalUnit
- SG_ Obj_DistLong_rms : 15|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit
- SG_ Obj_DistLat_rms : 10|5@0+ (1,0) [0|31] "" ADAS_ECU,ExternalUnit
- SG_ Obj_ID_Quality : 7|8@0+ (1,0) [0|255] "" ADAS_ECU,ExternalUnit
+ SG_ Obj_ProbOfExist : 55|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ Obj_MeasState : 52|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ Obj_ArelLong_rms : 27|5@0+ (1,0) [0|31] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_ArelLat_rms : 38|5@0+ (1,0) [0|31] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_VrelLong_rms : 21|5@0+ (1,0) [0|31] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_VrelLat_rms : 16|5@0+ (1,0) [0|31] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_Orientation_rms : 33|5@0+ (1,0) [0|31] ""  ExternalUnit
+ SG_ Obj_DistLong_rms : 15|5@0+ (1,0) [0|31] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_DistLat_rms : 10|5@0+ (1,0) [0|31] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_ID_Quality : 7|8@0+ (1,0) [0|255] ""  ADAS_ECU,ExternalUnit
 
 BO_ 1549 Obj_3_Extended: 8 ARS_ISF
- SG_ Obj_Class : 26|3@0+ (1,0) [0|7] "" ADAS_ECU,ExternalUnit
- SG_ Obj_ArelLat : 20|9@0+ (0.01,-2.5) [-2.5|2.61] "m/s²" ExternalUnit
- SG_ Obj_ID_extended : 7|8@0+ (1,0) [0|255] "" ADAS_ECU,ExternalUnit
- SG_ Obj_OrientationAngle : 39|10@0+ (0.4,-180) [-180|229.2] "deg" ExternalUnit
- SG_ Obj_Width : 63|8@0+ (0.2,0) [0|51] "m" ExternalUnit
- SG_ Obj_Length : 55|8@0+ (0.2,0) [0|51] "m" ExternalUnit
- SG_ Obj_ArelLong : 15|11@0+ (0.01,-10) [-10|10.47] "m/s²" ExternalUnit
+ SG_ Obj_Class : 26|3@0+ (1,0) [0|7] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_ArelLat : 20|9@0+ (0.01,-2.5) [-2.5|2.61] "m/s²"  ExternalUnit
+ SG_ Obj_ID_extended : 7|8@0+ (1,0) [0|255] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_OrientationAngle : 39|10@0+ (0.4,-180) [-180|229.2] "deg"  ExternalUnit
+ SG_ Obj_Width : 63|8@0+ (0.2,0) [0|51] "m"  ExternalUnit
+ SG_ Obj_Length : 55|8@0+ (0.2,0) [0|51] "m"  ExternalUnit
+ SG_ Obj_ArelLong : 15|11@0+ (0.01,-10) [-10|10.47] "m/s²"  ExternalUnit
 
 BO_ 1026 CollDetRegionState: 8 ARS_ISF
- SG_ CollDetRegState_WarningLevel : 4|2@0+ (1,0) [0|3] "" ExternalUnit
- SG_ CollDetRegState_NofObjects : 63|8@0+ (1,0) [0|255] "" ExternalUnit
- SG_ CollDetRegState_RegionID : 7|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ CollDetRegState_Point2Y : 42|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ExternalUnit
- SG_ CollDetRegState_Point2X : 39|13@0+ (0.2,-500) [-500|1138.2] "m" ExternalUnit
- SG_ CollDetRegState_Point1Y : 18|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ExternalUnit
- SG_ CollDetRegState_Point1X : 15|13@0+ (0.2,-500) [-500|1138.2] "m" ExternalUnit
+ SG_ CollDetRegState_WarningLevel : 4|2@0+ (1,0) [0|3] ""  ExternalUnit
+ SG_ CollDetRegState_NofObjects : 63|8@0+ (1,0) [0|255] ""  ExternalUnit
+ SG_ CollDetRegState_RegionID : 7|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ CollDetRegState_Point2Y : 42|11@0+ (0.2,-204.6) [-204.6|204.8] "m"  ExternalUnit
+ SG_ CollDetRegState_Point2X : 39|13@0+ (0.2,-500) [-500|1138.2] "m"  ExternalUnit
+ SG_ CollDetRegState_Point1Y : 18|11@0+ (0.2,-204.6) [-204.6|204.8] "m"  ExternalUnit
+ SG_ CollDetRegState_Point1X : 15|13@0+ (0.2,-500) [-500|1138.2] "m"  ExternalUnit
 
 BO_ 1550 Obj_4_Warning: 4 ARS_ISF
- SG_ Obj_CollDetRegionBitfield : 15|8@0+ (1,0) [0|255] "" ExternalUnit
- SG_ Obj_ID : 7|8@0+ (1,0) [0|255] "" ExternalUnit
+ SG_ Obj_CollDetRegionBitfield : 15|8@0+ (1,0) [0|255] ""  ExternalUnit
+ SG_ Obj_ID : 7|8@0+ (1,0) [0|255] ""  ExternalUnit
 
 BO_ 8 CollDetRelayCtrl: 1 ARS_ISF
- SG_ CollDetRelayCtrl_Param : 7|8@0+ (1,0) [0|255] "" ExternalUnit
+ SG_ CollDetRelayCtrl_Param : 7|8@0+ (1,0) [0|255] ""  ExternalUnit
 
 BO_ 516 FilterState_Cfg: 5 ARS_ISF
- SG_ FilterState_Type : 7|1@0+ (1,0) [0|1] "" ExternalUnit
- SG_ FilterState_Active : 2|1@0+ (1,0) [0|1] "" ExternalUnit
+ SG_ FilterState_Type : 7|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ FilterState_Active : 2|1@0+ (1,0) [0|1] ""  ExternalUnit
 
 BO_ 515 FilterState_Header: 2 ARS_ISF
- SG_ FilterState_NofObjectFilterCfg : 15|5@0+ (1,0) [0|31] "" ExternalUnit
- SG_ FilterState_NofClusterFilterCfg : 7|5@0+ (1,0) [0|31] "" ExternalUnit
+ SG_ FilterState_NofObjectFilterCfg : 15|5@0+ (1,0) [0|31] ""  ExternalUnit
+ SG_ FilterState_NofClusterFilterCfg : 7|5@0+ (1,0) [0|31] ""  ExternalUnit
 
 BO_ 514 FilterCfg: 5 ExternalUnit
- SG_ FilterCfg_Valid : 1|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ FilterCfg_Active : 2|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ FilterCfg_Type : 7|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ FilterCfg_Valid : 1|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ FilterCfg_Active : 2|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ FilterCfg_Type : 7|1@0+ (1,0) [0|1] ""  ARS_ISF
 
 BO_ 512 RadarConfiguration: 8 ExternalUnit
- SG_ RadarCfg_RCS_Threshold_Valid : 48|1@0+ (1,0) [0|1] "" Vector__XXX
- SG_ RadarCfg_RCS_Threshold : 51|3@0+ (1,0) [0|7] "" Vector__XXX
- SG_ RadarCfg_StoreInNVM_valid : 7|1@0+ (1,0) [0|1] "" Vector__XXX
- SG_ RadarCfg_SortIndex_valid : 6|1@0+ (1,0) [0|1] "" Vector__XXX
- SG_ RadarCfg_SortIndex : 46|3@0+ (1,0) [0|7] "" Vector__XXX
- SG_ RadarCfg_StoreInNVM : 47|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_SendExtInfo_valid : 5|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_SendExtInfo : 43|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_CtrlRelay_valid : 40|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_CtrlRelay : 41|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_SendQuality_valid : 4|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_SendQuality : 42|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_MaxDistance_valid : 0|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_RadarPower_valid : 2|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_OutputType_valid : 3|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_SensorID_valid : 1|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ RadarCfg_MaxDistance : 15|10@0+ (2,0) [0|2046] "m" ARS_ISF
- SG_ RadarCfg_RadarPower : 39|3@0+ (1,0) [0|7] "" ARS_ISF
- SG_ RadarCfg_OutputType : 36|2@0+ (1,0) [0|2] "" ARS_ISF
- SG_ RadarCfg_SensorID : 34|3@0+ (1,0) [0|7] "" ARS_ISF
+ SG_ RadarCfg_RCS_Threshold_Valid : 48|1@0+ (1,0) [0|1] ""  Vector__XXX
+ SG_ RadarCfg_RCS_Threshold : 51|3@0+ (1,0) [0|7] ""  Vector__XXX
+ SG_ RadarCfg_StoreInNVM_valid : 7|1@0+ (1,0) [0|1] ""  Vector__XXX
+ SG_ RadarCfg_SortIndex_valid : 6|1@0+ (1,0) [0|1] ""  Vector__XXX
+ SG_ RadarCfg_SortIndex : 46|3@0+ (1,0) [0|7] ""  Vector__XXX
+ SG_ RadarCfg_StoreInNVM : 47|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_SendExtInfo_valid : 5|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_SendExtInfo : 43|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_CtrlRelay_valid : 40|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_CtrlRelay : 41|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_SendQuality_valid : 4|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_SendQuality : 42|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_MaxDistance_valid : 0|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_RadarPower_valid : 2|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_OutputType_valid : 3|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_SensorID_valid : 1|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ RadarCfg_MaxDistance : 15|10@0+ (2,0) [0|2046] "m"  ARS_ISF
+ SG_ RadarCfg_RadarPower : 39|3@0+ (1,0) [0|7] ""  ARS_ISF
+ SG_ RadarCfg_OutputType : 36|2@0+ (1,0) [0|2] ""  ARS_ISF
+ SG_ RadarCfg_SensorID : 34|3@0+ (1,0) [0|7] ""  ARS_ISF
 
 BO_ 513 RadarState: 8 ARS_ISF
- SG_ RadarState_Voltage_Error : 17|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RadarState_Temporary_Error : 18|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RadarState_Temperature_Error : 19|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RadarState_Interference : 20|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RadarState_Persistent_Error : 21|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RadarState_SortIndex : 38|3@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RadarState_RCS_Threshold : 60|3@0+ (1,0) [0|7] "" Vector__XXX
- SG_ RadarState_CtrlRelayCfg : 41|1@0+ (1,0) [0|1] "" ExternalUnit
- SG_ RadarState_SendQualityCfg : 44|1@0+ (1,0) [0|1] "" ExternalUnit
- SG_ RadarState_SendExtInfoCfg : 45|1@0+ (1,0) [0|1] "" ExternalUnit
- SG_ RadarState_MotionRxState : 47|2@0+ (1,0) [0|3] "" ExternalUnit
- SG_ RadarState_SensorID : 34|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ RadarState_OutputTypeCfg : 43|2@0+ (1,0) [0|3] "" ExternalUnit
- SG_ RadarState_RadarPowerCfg : 25|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ RadarState_NVMReadStatus : 6|1@0+ (1,0) [0|1] "" ExternalUnit
- SG_ RadarState_NVMwriteStatus : 7|1@0+ (1,0) [0|1] "" ExternalUnit
- SG_ RadarState_MaxDistanceCfg : 15|10@0+ (2,0) [0|2046] "" ExternalUnit
+ SG_ RadarState_Voltage_Error : 17|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ RadarState_Temporary_Error : 18|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ RadarState_Temperature_Error : 19|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ RadarState_Interference : 20|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ RadarState_Persistent_Error : 21|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ RadarState_SortIndex : 38|3@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ RadarState_RCS_Threshold : 60|3@0+ (1,0) [0|7] ""  Vector__XXX
+ SG_ RadarState_CtrlRelayCfg : 41|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ RadarState_SendQualityCfg : 44|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ RadarState_SendExtInfoCfg : 45|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ RadarState_MotionRxState : 47|2@0+ (1,0) [0|3] ""  ExternalUnit
+ SG_ RadarState_SensorID : 34|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ RadarState_OutputTypeCfg : 43|2@0+ (1,0) [0|3] ""  ExternalUnit
+ SG_ RadarState_RadarPowerCfg : 25|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ RadarState_NVMReadStatus : 6|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ RadarState_NVMwriteStatus : 7|1@0+ (1,0) [0|1] ""  ExternalUnit
+ SG_ RadarState_MaxDistanceCfg : 15|10@0+ (2,0) [0|2046] ""  ExternalUnit
 
 BO_ 768 SpeedInformation: 2 ExternalUnit
- SG_ RadarDevice_Speed : 4|13@0+ (0.02,0) [0|163.8] "m/s" ARS_ISF
- SG_ RadarDevice_SpeedDirection : 7|2@0+ (1,0) [0|2] "" ARS_ISF
+ SG_ RadarDevice_Speed : 4|13@0+ (0.02,0) [0|163.8] "m/s"  ARS_ISF
+ SG_ RadarDevice_SpeedDirection : 7|2@0+ (1,0) [0|2] ""  ARS_ISF
 
 BO_ 769 YawRateInformation: 2 ExternalUnit
- SG_ RadarDevice_YawRate : 7|16@0+ (0.01,-327.68) [-327.68|327.66] "°/s" ARS_ISF
+ SG_ RadarDevice_YawRate : 7|16@0+ (0.01,-327.68) [-327.68|327.66] "°/s"  ARS_ISF
 
 BO_ 1024 CollDetCfg: 2 ExternalUnit
- SG_ CollDetCfg_ClearRegions : 7|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ CollDetCfg_WarningReset : 0|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ CollDetCfg_Activate : 1|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ CollDetCfg_MinTime_valid : 3|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ CollDetCfg_MinDetectTime : 15|8@0+ (0.1,0) [0|25.5] "s" ARS_ISF
+ SG_ CollDetCfg_ClearRegions : 7|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ CollDetCfg_WarningReset : 0|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ CollDetCfg_Activate : 1|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ CollDetCfg_MinTime_valid : 3|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ CollDetCfg_MinDetectTime : 15|8@0+ (0.1,0) [0|25.5] "s"  ARS_ISF
 
 BO_ 1025 CollDetRegionCfg: 8 ExternalUnit
- SG_ CollDetRegCfg_Activate : 1|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ CollDetRegCfg_Coordinates_valid : 2|1@0+ (1,0) [0|1] "" ARS_ISF
- SG_ CollDetRegCfg_RegionID : 10|3@0+ (1,0) [0|7] "" ARS_ISF
- SG_ CollDetRegCfg_Point1X : 23|13@0+ (0.2,-500) [-500|1138.2] "m" ARS_ISF
- SG_ CollDetRegCfg_Point1Y : 26|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ARS_ISF
- SG_ CollDetRegCfg_Point2X : 47|13@0+ (0.2,-500) [-500|1138.2] "m" ARS_ISF
- SG_ CollDetRegCfg_Point2Y : 50|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ARS_ISF
+ SG_ CollDetRegCfg_Activate : 1|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ CollDetRegCfg_Coordinates_valid : 2|1@0+ (1,0) [0|1] ""  ARS_ISF
+ SG_ CollDetRegCfg_RegionID : 10|3@0+ (1,0) [0|7] ""  ARS_ISF
+ SG_ CollDetRegCfg_Point1X : 23|13@0+ (0.2,-500) [-500|1138.2] "m"  ARS_ISF
+ SG_ CollDetRegCfg_Point1Y : 26|11@0+ (0.2,-204.6) [-204.6|204.8] "m"  ARS_ISF
+ SG_ CollDetRegCfg_Point2X : 47|13@0+ (0.2,-500) [-500|1138.2] "m"  ARS_ISF
+ SG_ CollDetRegCfg_Point2Y : 50|11@0+ (0.2,-204.6) [-204.6|204.8] "m"  ARS_ISF
 
 BO_ 1032 CollDetState: 4 ARS_ISF
- SG_ CollDetState_MeasCounter : 23|16@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ CollDetState_Active : 1|1@0+ (1,0) [0|1] "" Vector__XXX
- SG_ CollDetState_NofRegions : 7|4@0+ (1,0) [0|15] "" ExternalUnit
- SG_ CollDetState_MinDetectTime : 15|8@0+ (0.1,0) [0|25.5] "s" ExternalUnit
+ SG_ CollDetState_MeasCounter : 23|16@0+ (1,0) [0|65535] ""  Vector__XXX
+ SG_ CollDetState_Active : 1|1@0+ (1,0) [0|1] ""  Vector__XXX
+ SG_ CollDetState_NofRegions : 7|4@0+ (1,0) [0|15] ""  ExternalUnit
+ SG_ CollDetState_MinDetectTime : 15|8@0+ (0.1,0) [0|25.5] "s"  ExternalUnit
 
 BO_ 1536 Cluster_0_Status: 5 ARS_ISF
- SG_ Cluster_MeasCounter : 23|16@0+ (1,0) [0|65535] "" ExternalUnit
- SG_ Cluster_NofClustersNear : 7|8@0+ (1,0) [0|255] "" ExternalUnit
- SG_ Cluster_NofClustersFar : 15|8@0+ (1,0) [0|255] "" ExternalUnit
- SG_ Cluster_InterfaceVersion : 39|4@0+ (1,0) [0|15] "" ExternalUnit
+ SG_ Cluster_MeasCounter : 23|16@0+ (1,0) [0|65535] ""  ExternalUnit
+ SG_ Cluster_NofClustersNear : 7|8@0+ (1,0) [0|255] ""  ExternalUnit
+ SG_ Cluster_NofClustersFar : 15|8@0+ (1,0) [0|255] ""  ExternalUnit
+ SG_ Cluster_InterfaceVersion : 39|4@0+ (1,0) [0|15] ""  ExternalUnit
 
 BO_ 1546 Obj_0_Status: 4 ARS_ISF
- SG_ Obj_NofObjects : 7|8@0+ (1,0) [0|255] "1" ADAS_ECU,ExternalUnit
- SG_ Obj_MeasCounter : 15|16@0+ (1,0) [0|65535] "" ExternalUnit
- SG_ Obj_InterfaceVersion : 31|4@0+ (1,0) [0|16] "" ExternalUnit
+ SG_ Obj_NofObjects : 7|8@0+ (1,0) [0|255] "1"  ADAS_ECU,ExternalUnit
+ SG_ Obj_MeasCounter : 15|16@0+ (1,0) [0|65535] ""  ExternalUnit
+ SG_ Obj_InterfaceVersion : 31|4@0+ (1,0) [0|16] ""  ExternalUnit
 
 BO_ 1547 Obj_1_General: 8 ARS_ISF
- SG_ Obj_DynProp : 50|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ Obj_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm²" ADAS_ECU,ExternalUnit
- SG_ Obj_VrelLat : 45|9@0+ (0.25,-64) [-64|63.75] "m/s" ADAS_ECU,ExternalUnit
- SG_ Obj_ID : 7|8@0+ (1,0) [0|255] "" ADAS_ECU,ExternalUnit
- SG_ Obj_DistLong : 15|13@0+ (0.2,-500) [-500|1138.2] "m" ADAS_ECU,ExternalUnit
- SG_ Obj_VrelLong : 39|10@0+ (0.25,-128) [-128|127.75] "m/s" ADAS_ECU,ExternalUnit
- SG_ Obj_DistLat : 18|11@0+ (0.2,-204.6) [-204.6|204.8] "m" ADAS_ECU,ExternalUnit
+ SG_ Obj_DynProp : 50|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ Obj_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm²"  ADAS_ECU,ExternalUnit
+ SG_ Obj_VrelLat : 45|9@0+ (0.25,-64) [-64|63.75] "m/s"  ADAS_ECU,ExternalUnit
+ SG_ Obj_ID : 7|8@0+ (1,0) [0|255] ""  ADAS_ECU,ExternalUnit
+ SG_ Obj_DistLong : 15|13@0+ (0.2,-500) [-500|1138.2] "m"  ADAS_ECU,ExternalUnit
+ SG_ Obj_VrelLong : 39|10@0+ (0.25,-128) [-128|127.75] "m/s"  ADAS_ECU,ExternalUnit
+ SG_ Obj_DistLat : 18|11@0+ (0.2,-204.6) [-204.6|204.8] "m"  ADAS_ECU,ExternalUnit
 
 BO_ 1792 VersionID: 4 ARS_ISF
- SG_ Version_ExtendedRange : 25|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ Version_CountryCode : 24|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ Version_MajorRelease : 7|8@0+ (1,0) [0|256] "" ExternalUnit
- SG_ Version_MinorRelease : 15|8@0+ (1,0) [0|256] "" ExternalUnit
- SG_ Version_PatchLevel : 23|8@0+ (1,0) [0|256] "" ExternalUnit
+ SG_ Version_ExtendedRange : 25|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ Version_CountryCode : 24|1@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ Version_MajorRelease : 7|8@0+ (1,0) [0|256] ""  ExternalUnit
+ SG_ Version_MinorRelease : 15|8@0+ (1,0) [0|256] ""  ExternalUnit
+ SG_ Version_PatchLevel : 23|8@0+ (1,0) [0|256] ""  ExternalUnit
 
 BO_ 1793 Cluster_1_General: 8 ARS_ISF
- SG_ Cluster_DynProp : 50|3@0+ (1,0) [0|7] "1" ExternalUnit
- SG_ Cluster_VrelLat : 45|9@0+ (0.25,-64) [-64|63.75] "m/s" ExternalUnit
- SG_ Cluster_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm²" ExternalUnit
- SG_ Cluster_DistLong : 15|13@0+ (0.2,-500) [-500|1138.2] "m" ExternalUnit
- SG_ Cluster_ID : 7|8@0+ (1,0) [0|255] "1" ExternalUnit
- SG_ Cluster_VrelLong : 39|10@0+ (0.25,-128) [-128|127.75] "m/s" ExternalUnit
- SG_ Cluster_DistLat : 17|10@0+ (0.2,-102.3) [-102.3|102.3] "m" ExternalUnit
+ SG_ Cluster_DynProp : 50|3@0+ (1,0) [0|7] "1"  ExternalUnit
+ SG_ Cluster_VrelLat : 45|9@0+ (0.25,-64) [-64|63.75] "m/s"  ExternalUnit
+ SG_ Cluster_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm²"  ExternalUnit
+ SG_ Cluster_DistLong : 15|13@0+ (0.2,-500) [-500|1138.2] "m"  ExternalUnit
+ SG_ Cluster_ID : 7|8@0+ (1,0) [0|255] "1"  ExternalUnit
+ SG_ Cluster_VrelLong : 39|10@0+ (0.25,-128) [-128|127.75] "m/s"  ExternalUnit
+ SG_ Cluster_DistLat : 17|10@0+ (0.2,-102.3) [-102.3|102.3] "m"  ExternalUnit
 
 BO_ 1794 Cluster_2_Quality: 5 ARS_ISF
- SG_ Cluster_ID : 7|8@0+ (1,0) [0|255] "1" ExternalUnit
- SG_ Cluster_VrelLat_rms : 16|5@0+ (1,0) [0|31] "m/s" ExternalUnit
- SG_ Cluster_InvalidState : 39|5@0+ (1,0) [0|31] "" ExternalUnit
- SG_ Cluster_DistLat_rms : 10|5@0+ (1,0) [0|31] "m" ExternalUnit
- SG_ Cluster_DistLong_rms : 15|5@0+ (1,0) [0|31] "m" ExternalUnit
- SG_ Cluster_VrelLong_rms : 21|5@0+ (1,0) [0|31] "m/s" ExternalUnit
- SG_ Cluster_PdH0 : 26|3@0+ (1,0) [0|7] "" ExternalUnit
- SG_ Cluster_AmbigState : 34|3@0+ (1,0) [0|7] "1" ExternalUnit
+ SG_ Cluster_ID : 7|8@0+ (1,0) [0|255] "1"  ExternalUnit
+ SG_ Cluster_VrelLat_rms : 16|5@0+ (1,0) [0|31] "m/s"  ExternalUnit
+ SG_ Cluster_InvalidState : 39|5@0+ (1,0) [0|31] ""  ExternalUnit
+ SG_ Cluster_DistLat_rms : 10|5@0+ (1,0) [0|31] "m"  ExternalUnit
+ SG_ Cluster_DistLong_rms : 15|5@0+ (1,0) [0|31] "m"  ExternalUnit
+ SG_ Cluster_VrelLong_rms : 21|5@0+ (1,0) [0|31] "m/s"  ExternalUnit
+ SG_ Cluster_PdH0 : 26|3@0+ (1,0) [0|7] ""  ExternalUnit
+ SG_ Cluster_AmbigState : 34|3@0+ (1,0) [0|7] "1"  ExternalUnit
 
 
 VAL_ 1548 Obj_ProbOfExist 7 "<=100%" 6 "<99.9%" 5 "<99%" 4 "<90%" 3 "<75%" 2 "<50%" 1 "<25%" 0 "invalid";

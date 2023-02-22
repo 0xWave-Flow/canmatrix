@@ -1356,9 +1356,7 @@ class Frame(object):
 
     def signal_by_name(self, name):
 
-        print("def : canmatrix - Frame - signal_by_name - [{}]".format(name))
-
-        # type: (str) -> typing.Union[Signal, None]
+        #print("def : canmatrix - Frame - signal_by_name - [{}]".format(name))
         """
         Get signal by name.
 
@@ -1366,6 +1364,7 @@ class Frame(object):
         :return: signal with given name or None if not found
         """
         for signal in self.signals:
+            #print("def : canmatrix - Frame - signal_by_name SEARCH - ")
             if signal.name == name:
                 return signal
         return None
