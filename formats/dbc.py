@@ -253,50 +253,54 @@ def dump(in_db, f, **options):
     # eval signals/frames name and cycle time, add some defines
 
     for signal in db.signals:
-        # fix long frame names
-        if len(signal.frames.name) > 32:
-            #signal.frames.add_attribute("SystemMessageLongSymbol", signal.frames.name)
-            signal.frames.name = signal.frames.name[0:32]
-            #db.add_frame_defines("SystemMessageLongSymbol", "STRING")
+        print("def : format - dbc - dump - EVAL : {}".format(signal.name))
+        if signal.name != '/':
+            # fix long frame names
+            if len(signal.frames.name) > 32:
+                #signal.frames.add_attribute("SystemMessageLongSymbol", signal.frames.name)
+                signal.frames.name = signal.frames.name[0:32]
+                #db.add_frame_defines("SystemMessageLongSymbol", "STRING")
 
-        # fix long signal names
-        if len(signal.name) > 32:
-            #signal.add_attribute("SystemSignalLongSymbol", signal.name)
-            signal.name = signal.name[0:32]
-            #db.add_signal_defines("SystemSignalLongSymbol", "STRING")
+            # fix long signal names
+            if len(signal.name) > 32:
+                #signal.add_attribute("SystemSignalLongSymbol", signal.name)
+                signal.name = signal.name[0:32]
+                #db.add_signal_defines("SystemSignalLongSymbol", "STRING")
 
-        if signal.frames.cycle_time != 0:
-            pass
-            #signal.frames.add_attribute("GenMsgCycleTime", signal.frames.cycle_time)
+            if signal.frames.cycle_time != 0:
+                pass
+                #signal.frames.add_attribute("GenMsgCycleTime", signal.frames.cycle_time)
 
-        if signal.cycle_time != 0:
-            pass
-            #signal.add_attribute("GenSigCycleTime", signal.cycle_time)
-        if signal.phys2raw(None) != 0:
-            pass
-            #signal.add_attribute("GenSigStartValue", signal.phys2raw(None))
+            if signal.cycle_time != 0:
+                pass
+                #signal.add_attribute("GenSigCycleTime", signal.cycle_time)
+            if signal.phys2raw(None) != 0:
+                pass
+                #signal.add_attribute("GenSigStartValue", signal.phys2raw(None))
 
-        name = signal.name
+            name = signal.name
 
-        if compatibility:
-            name = re.sub("[^A-Za-z0-9]", whitespace_replacement, name)
-            if name[0].isdigit():
-                name = whitespace_replacement + name
-
-        output_names[signal.frames][signal] = name
+            if compatibility:
+                name = re.sub("[^A-Za-z0-9]", whitespace_replacement, name)
+                if name[0].isdigit():
+                    name = whitespace_replacement + name
+            # if signal == '/':
+            #     output_names[signal.frames]["NO_SIGNAL"] = name
+            # else:
+            output_names[signal.frames][signal] = name
 
     # add signal/message cycle time and signal startvalue define
     if len(db.signals) > 0:
-        if max([x.frames.cycle_time for x in db.signals]) > 0:
+        if max([x.frames.cycle_time for x in db.signals if x.name != '/' ]) > 0:
             pass
             #db.add_frame_defines("GenMsgCycleTime", 'INT 0 65535')
-        if len([x.cycle_time for x in db.signals]) > 0:
-            if max([x.cycle_time for x in db.signals]) > 0:
+        if len([x.cycle_time for x in db.signals if x.name != '/' ]) > 0:
+            if max([x.cycle_time for x in db.signals if x.name != '/' ]) > 0:
                 pass
                 #db.add_signal_defines("GenSigCycleTime", 'INT 0 65535')
 
-            if max([x.phys2raw(None) for x in db.signals]) > 0 or min(
-                    [y.phys2raw(None) for y in db.signals]) < 0:
+            if max([x.phys2raw(None) for x in db.signals if x.name != '/' ]) > 0 or min(
+                    [y.phys2raw(None) for y in db.signals if y.name != '/' ]) < 0:
                 pass
                 #db.add_signal_defines("GenSigStartValue", 'FLOAT 0 100000000000')
 
@@ -306,6 +310,7 @@ def dump(in_db, f, **options):
         frame = signal.frames
         # new frame detect
         if frame.name != curr_frame:
+
             f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
             curr_frame = frame.name
             multiplex_written = False
@@ -332,50 +337,50 @@ def dump(in_db, f, **options):
         if signal.multiplex == 'Multiplexor' and multiplex_written and not frame.is_complex_multiplexed:
             continue
 
-        # create signal information in dbc format SG_
-        signal_line = " SG_ " + output_names[frame][signal] + " "
+        #print("def : format - dbc - dump - BUG : {} - {} - {}".format(frame,signal,type(output_names[frame][signal])))
+        if signal.name != '/':
 
-        if signal.mux_val is not None:
-            signal_line += "m{}".format(int(signal.mux_val))
-            if signal.multiplex != 'Multiplexor':
-                signal_line += " "
+            # create signal information in dbc format SG_
+            signal_line = " SG_ " + output_names[frame][signal] + " "
 
-        if signal.multiplex == 'Multiplexor':
-            signal_line += "M "
-            multiplex_written = True
+            if signal.mux_val is not None:
+                signal_line += "m{}".format(int(signal.mux_val))
+                if signal.multiplex != 'Multiplexor':
+                    signal_line += " "
 
-        # eval signal is_signed
-        if signal.is_signed == 'Signed':
-            sign = '-'
-        else:
-            sign = '+'
+            if signal.multiplex == 'Multiplexor':
+                signal_line += "M "
+                multiplex_written = True
 
-        signal_line += (": %d|%d@%d%c" %
-                        (signal.msb,
-                         signal.size,
-                         signal.is_little_endian,
-                         sign))
-        signal_line += " (%s,%s)" % (format_float(signal.factor), format_float(signal.offset))
-        signal_line += " [{}|{}]".format(format_float(signal.min), format_float(signal.max))
-        signal_line += ' "'
+            # eval signal is_signed
+            if signal.is_signed == 'Signed':
+                sign = '-'
+            else:
+                sign = '+'
 
-        if signal.unit is None or signal.unit is '/':
-            signal.unit = ""
+            signal_line += (": %d|%d@%d%c" %
+                            (signal.msb,
+                             signal.size,
+                             signal.is_little_endian,
+                             sign))
+            signal_line += " (%s,%s)" % (format_float(signal.factor), format_float(signal.offset))
+            signal_line += " [{}|{}]".format(format_float(signal.min), format_float(signal.max))
+            signal_line += ' "'
 
+            if signal.unit is None or signal.unit is '/':
+                signal.unit = ""
 
-        signal_line += signal.unit
-        signal_line += '"  '
+            signal_line += signal.unit
+            signal_line += '"  '
 
-        if len(signal.receivers) == 0:
-            signal.add_receiver('Vector__XXX')
-        signal_line += ','.join(signal.receivers) + "\n"
+            if len(signal.receivers) == 0:
+                signal.add_receiver('Vector__XXX')
+            signal_line += ','.join(signal.receivers) + "\n"
 
-        print("def : format - dbc - dump - SIGNAL : {}".format(signal.unit))
+            print("def : format - dbc - dump - SIGNAL : {}".format(signal.unit))
+            print("def : format - dbc - dump - SIGNAL - BUG : {}",signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
 
-
-        print("def : format - dbc - dump - SIGNAL - BUG : {}",signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
-
-        f.write(signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
+            f.write(signal_line.encode(dbc_export_encoding, ignore_encoding_errors))
 
     f.write("\r\n".encode(dbc_export_encoding, ignore_encoding_errors))
 
@@ -391,9 +396,11 @@ def dump(in_db, f, **options):
     # frame comments CM_BO_
     # wow, there are dbcs where comments are encoded with other coding than rest of dbc...
     for signal in db.signals:
+        # print("def : format - dbc - dump - FIND BO_ BUG : {}".format(create_comment_string("BO_", "%d " % frame.arbitration_id.to_compound_integer(), frame.comment,
+        #                                   dbc_export_encoding, dbc_export_comment_encoding, dbc_export_encoding)))
         frame = signal.frames
         f.write(create_comment_string("BO_", "%d " % frame.arbitration_id.to_compound_integer(), frame.comment,
-                                      dbc_export_encoding, dbc_export_comment_encoding, dbc_export_encoding))
+                                          dbc_export_encoding, dbc_export_comment_encoding, dbc_export_encoding))
     f.write("\n".encode(dbc_export_encoding, ignore_encoding_errors))
 
     # signal comments CM_SG_
@@ -648,6 +655,8 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
     frame = None
     board_unit = None
     db = canmatrix.CanMatrix()
+
+    db_Frame = []
     frames_by_id = {}  # type: typing.Dict[int, canmatrix.Frame]
 
     def hash_arbitration_id(arbitration_id):  # type: (canmatrix.ArbitrationId) -> int
@@ -661,6 +670,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
     def add_frame_by_id(new_frame):  # type: (canmatrix.Frame) -> None
         frames_by_id[hash_arbitration_id(new_frame.arbitration_id)] = new_frame
+
+
+    # FrameOnly = []
 
     # read line by line
     for line in f:
@@ -735,6 +747,11 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                 if frame.name == "VECTOR__INDEPENDENT_SIG_MSG" and frame.arbitration_id.id == 0:
                     frame.arbitration_id.id = 3221225472
+
+                db_Frame.append(frame)
+
+                # FrameOnly.append(frame)
+                # frame.
 
             # decoded signal
             elif decoded.startswith("SG_ "):
@@ -1091,12 +1108,16 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 temp_raw = regexp_raw.match(substring_line)
                 if temp:
                     if define_type == "SG_":
+                        print("def : format - dbc - load - BA_DEF_ SG_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_signal_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
                     elif define_type == "BO_":
+                        print("def : format - dbc - load - BA_DEF_ BO_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_frame_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
                     elif define_type == "BU_":
+                        print("def : format - dbc - load - BA_DEF_ BU_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_ecu_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
                     elif define_type == "EV_":
+                        print("def : format - dbc - load - BA_DEF_ EV_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_env_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
 
             # decode define
@@ -1290,6 +1311,45 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             print("error with line no: %d" % i)
             print(line)
 
+            # print("def : format - dbc - load - SG_ RECEIVER : {}".format(receiver))
+
+    EMPTY_FRAME_FLAG = False
+    for frameEmp in db_Frame:
+        EMPTY_FRAME_FLAG = False
+        #print("LOOK FRAME : ",frameEmp.name)
+        for signal in db.signals:
+            #print("LOOK SIGNAL : ",type(signal.frames[0]),type(frameEmp.name))
+            if signal.frames[0].name == frameEmp.name:
+                #print("def : format - dbc - load - NOT EMPTY FRAME : {}".format(frameEmp.name))
+                EMPTY_FRAME_FLAG = True
+                #print("def : format - dbc - load - NOT EMPTY FRAME : {}".format(frameEmp.name))
+            # else:
+            #     print("def : format - dbc - load - WHY: {}")
+        if EMPTY_FRAME_FLAG == False:
+            #print("LOOK FRAME : ", frameEmp.name)
+            temp_signal_fake = canmatrix.Signal(
+                        "/",
+                        msb=0,
+                        size=0,
+                        is_little_endian=False,
+                        is_signed=False,
+                        factor=0,
+                        offset=0,
+                        min=0,
+                        max=0,
+                        unit='/',
+                        receivers='/',
+                        frames=list(),
+                        **extras
+                    )
+
+            temp_signal_fake.add_frame(frameEmp)
+            db.add_signal(temp_signal_fake)
+
+    # temp_signal = canmatrix.Signal("NO_SIGNAL")
+    # temp_signal.add_frame(frame)
+    # db.add_signal(temp_signal)
+
     # Backtracking
     env_var_names = list(db.env_vars.keys())
     for env_var_name in env_var_names:
@@ -1347,7 +1407,7 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 if define in signal.attributes:
                     signal.attributes[define] = signal.attributes[define][1:-1]
 
-    db.enum_attribs_to_values()
+    #db.enum_attribs_to_values()
     for signal in db.signals:
         frame = signal.frames[0]
         if "_FD" in frame.attributes.get("VFrameFormat", ""):

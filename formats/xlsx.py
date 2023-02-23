@@ -194,14 +194,14 @@ def dump(db, filename, **options):
 
     # iterate over the frames
     curr_frame = ''
+    FrameOnly = []
     for signal in db.signals:
-        print("def : format - xlsx - dump - SIGNAL ATTRIBUTES : {}".format(signal.attributes))
+        print("def : format - xlsx - dump - LOOP OF SIGNAL : {}".format(signal))
         if signal.frames[0] != curr_frame:
             signal_style = sty_first_frame
             curr_frame = signal.frames[0]
 
         frame = signal.frames[0]
-
 
         #if (frame.arbitration_id.extended == False) or (signal.is_multiplexed == False):
         if frame.arbitration_id.extended == False:

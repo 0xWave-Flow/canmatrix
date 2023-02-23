@@ -149,6 +149,8 @@ def dumpp(can_cluster, path, export_type=None, **options):
                     outfile = path
                 db = can_cluster[name]
                 file_object = open(outfile, "wb")
+
+                print("def : format - __init__ - dumpp - here",db.frames)
                 dump(db, file_object, export_type, **options)
                 file_object.close()
     else:

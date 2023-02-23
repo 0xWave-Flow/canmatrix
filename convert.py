@@ -304,7 +304,7 @@ def convert(infile, out_file_name, **options):  # type: (str, str, **str) -> Non
 
             db.recalc_dlc(options['recalcDLC'])
 
-        # PDU contained frames handling
+        #PDU contained frames handling
         frame_pdu_container_list = [
             frame
             for frame in db.frames

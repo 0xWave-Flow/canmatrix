@@ -1,0 +1,69 @@
+VERSION "TOOL OF INVENTEC AND KOSTAL"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: IOM_APP2 IOM_APP1 
+
+
+BO_ 20654972 DEMOMSG_GPS: 88 IOM_APP1
+ SG_ Demo_Switch_long : 551|32@0- (1,0) [0|0] ""  IOM_APP2
+ SG_ Demo_Switch_MsgCode : 583|32@0- (1,0) [0|0] ""  IOM_APP2
+ SG_ Demo_Switch_ServiceCode : 615|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_Switch_TxNodeID : 647|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ FS_FDS_Demo_Switch : 63|8@0+ (1,0) [0|0] ""  IOM_APP2
+ SG_ Demo_Long_float : 71|32@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_Long_MsgCode : 103|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_Long_ServiceCode : 135|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_Long_TxNodeID : 167|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ FS_FDS_Demo_LONG : 39|8@0+ (1,0) [0|0] ""  IOM_APP2
+ SG_ Demo_LAT_float : 231|32@0+ (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_LAT_MsgCode : 263|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_LAT_ServiceCode : 295|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_LAT_TxNodeID : 327|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ FS_FDS_Demo_Lat : 47|8@0+ (1,0) [0|0] ""  IOM_APP2
+ SG_ Demo_ALT_float : 391|32@0+ (1,0) [0|0] ""  IOM_APP2
+ SG_ Demo_ALT_MsgCode : 423|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Demo_ALT_ServiceCode : 455|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ TxNodeID : 487|32@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ FS_New_Signal3 : 55|8@0+ (1,0) [0|0] ""  IOM_APP2
+
+
+BA_DEF_ BO_ "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
+BA_DEF_  "BusType" STRING;
+BA_ "BusType"   "CAN FD";
+BA_ "VFrameFormat" BO_ 20654972 14;
+VAL_ 20654972 FS_FDS_Demo_Switch 48 "NCD" 12 "FT" 3 "NO" 0 "ND";
+VAL_ 20654972 FS_FDS_Demo_LONG 48 "NCD" 12 "FT" 3 "NO" 0 "ND";
+VAL_ 20654972 FS_FDS_Demo_Lat 48 "NCD" 12 "FT" 3 "NO" 0 "ND";
+VAL_ 20654972 FS_New_Signal3 48 "NCD" 12 "FT" 3 "NO" 0 "ND";
