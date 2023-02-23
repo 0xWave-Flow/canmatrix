@@ -217,6 +217,7 @@ def dump(db, filename, **options):
             #if not (int(frontRow[9],16) >= 0x80000000):
 
             # write excel lines and return col
+            print("def : format - xlsx - dump - ROW : {}".format(frontRow))
             col = write_excel_line(worksheet, row, 0, frontRow, signal_style)
 
             # add ecu receivers
@@ -229,6 +230,47 @@ def dump(db, filename, **options):
             row += 1
             signal_style = sty_norm
             # loop over values ends here
+
+    head_top = [
+        'DEF TYPE',
+        'VALUE',
+        'TYPE'
+    ]
+    worksheet_def = workbook.add_worksheet('DEF')
+
+    write_excel_line(worksheet_def, 0, 0, head_top, sty_header)
+
+    # WRITE DEFINE
+    row = 1
+    for ENV_Define in db.env_defines:
+        #print("def : format - xls_common - get_signal - ENV DEF : ",type(ENV_Define),type((db.env_defines.get(ENV_Define).type)))
+        frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+
+    for GLO_Define in db.global_defines:
+        #print("def : format - xls_common - get_signal - GLO DEF : {} - {} ".format(GLO_Define,db.global_defines.get(GLO_Define).type))
+        frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+
+    for ECU_Define in db.ecu_defines:
+        #print("def : format - xls_common - get_signal - ECU DEF : {} - {} ".format(ECU_Define,db.ecu_defines.get(ECU_Define).type))
+        frontRow = ["ECU DEF",ECU_Define,db.ecu_defines.get(ECU_Define).type]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+
+    for FRM_Define in db.frame_defines:
+        #print("def : format - xls_common - get_signal - FRM DEF : {} - {} ".format(FRM_Define,db.frame_defines.get(FRM_Define).type))
+        frontRow = ["FRM DEF",FRM_Define,db.frame_defines.get(FRM_Define).type]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+
+    for SIG_Define in db.signal_defines:
+        #print("def : format - xls_common - get_signal - SIG DEF : {} - {} ".format(SIG_Define,db.signal_defines.get(SIG_Define).type))
+        frontRow = ["SIG DEF",SIG_Define,db.signal_defines.get(SIG_Define).type]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
 
     # add filter and freeze head_top
     worksheet.autofilter(0, 0, row, len(head_top) - 1)

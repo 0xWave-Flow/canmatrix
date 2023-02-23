@@ -1113,9 +1113,19 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     elif define_type == "BO_":
                         print("def : format - dbc - load - BA_DEF_ BO_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_frame_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
+
+                        for e in db.frame_defines:
+                            print("def : format - dbc - load - BA_DEF_ BO_- ITEM : {} - {}".format(e, db.frame_defines.get(
+                                e).type))
+
                     elif define_type == "BU_":
                         print("def : format - dbc - load - BA_DEF_ BU_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_ecu_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
+
+                        for e in db.ecu_defines:
+
+                            print("def : format - dbc - load - BA_DEF_ BU_- ITEM : {} - {}".format(e,db.ecu_defines.get(e).type))
+
                     elif define_type == "EV_":
                         print("def : format - dbc - load - BA_DEF_ EV_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_env_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
