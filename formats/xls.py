@@ -374,6 +374,9 @@ def load(file, **options):
     # add_signal_defines BA_DEF_ SG_
     #db.add_signal_defines("GenSigSNA", 'STRING')
 
+    SignalGroupTemp = []
+    FrameTemp = []
+
     # eval search for correct columns:
     index = {}
     for i in range(sh.ncols):
@@ -418,6 +421,8 @@ def load(file, **options):
             index['Unit'] = i
         elif "Coding" in value:
             index['Coding'] = i
+        elif "Signal Group" in value:
+            index['Signal Group'] = i
         elif "Comment" in value:
             index['Comment'] = i
         elif "Multiplexer" in value:
@@ -509,6 +514,25 @@ def load(file, **options):
                 else:
                     pass
 
+
+            # # message name
+            # frame_name = sh.cell(row_num, index['MessageName']).value
+            #
+            # signal_group = sh.cell(row_num, index['Signal Group']).value
+            # signal_group_find = False
+            # # Frame Name = 0 , Signal Group Name = 1 , Signal Group ID = 2 , Signals = 3
+            # if signal_group != '/':
+            #     for each in SignalGroupTemp:
+            #         if each[1] == signal_group:
+            #             signal_group_find = True
+            #             if len(each[3]) == 0:
+            #                 each[3] = []
+            #                 each[3].append(signal_name)
+            #             else:
+            #                 each[3].append(signal_name)
+            #     if signal_group_find == False:
+            #         SignalGroupTemp.append([frame_name,signal_group,1,[signal_name]])
+
             # comment
             signal_comment = sh.cell(row_num, index['Comment']).value.strip()
 
@@ -594,6 +618,21 @@ def load(file, **options):
             # message name
             frame_name = sh.cell(row_num, index['MessageName']).value
 
+            signal_group = sh.cell(row_num, index['Signal Group']).value
+            signal_group_find = False
+            # Frame Name = 0 , Signal Group Name = 1 , Signal Group ID = 2 , Signals = 3
+            if signal_group != '/':
+                for each in SignalGroupTemp:
+                    if each[1] == signal_group:
+                        signal_group_find = True
+                        if len(each[3]) == 0:
+                            each[3] = []
+                            each[3].append(new_signal)
+                        else:
+                            each[3].append(new_signal)
+                if signal_group_find == False:
+                    SignalGroupTemp.append([frame_name,signal_group,1,[new_signal]])
+
             # message id
             frame_id = sh.cell(row_num, index['MessageID']).value
 
@@ -621,10 +660,26 @@ def load(file, **options):
 
             # add frame information to signal
             new_signal.frames = new_frame
+            FrameTemp.append(new_frame)
     # read rows values loop end
 
     # add vframeformat
     for signal in db.signals:
         signal.frames.set_fd_type()
+
+    SkipUsedFrame = []
+    for each in  SignalGroupTemp:
+        #print("def : format - xls - load - SIGNAL GROUP - START - {}".format(each[0]))
+        #print("def : format - xls - load - SIGNAL GROUP - START - ",db.signals)
+        for each_frame in FrameTemp:
+            #print("def : format - xls - load - SIGNAL GROUP - SCAN FRAME - {} - {}".format(each[0],each_frame.name))
+            if each_frame.name == each[0] and each_frame.name not in SkipUsedFrame:
+                SkipUsedFrame.append(each_frame.name)
+                print("def : format - xls - load - SIGNAL GROUP - SCAN FRAME - {} - {}".format(each[1], each[0]))
+                each_frame.add_signal_group(each[1],1,each[3])
+                print("def : format - xls - load - SIGNAL GROUP - ", each[3])
+
+            #print("def : format - xls - load - SIGNAL GROUP - {}".format(each_frame))
+            #each_frame.add_signal_group("A",1,["Hello"])
 
     return db

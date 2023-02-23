@@ -539,14 +539,74 @@ def dump(in_db, f, **options):
                     dbc_export_encoding, ignore_encoding_errors))
 
     # signal-groups:
+
+    TotalSignalGroup = []
+    Skip_Frame = []
     for signal in db.signals:
         frame = signal.frames
-        for sigGroup in frame.signalGroups:
-            f.write(("SIG_GROUP_ " + str(frame.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
-                     " " + str(sigGroup.id) + " :").encode(dbc_export_encoding, ignore_encoding_errors))
-            for s in sigGroup.signals:
-                f.write((" " + output_names[frame][s]).encode(dbc_export_encoding, ignore_encoding_errors))
-            f.write(";\n".encode(dbc_export_encoding, ignore_encoding_errors))
+        if frame.name not in Skip_Frame:
+            Skip_Frame.append(frame.name)
+            for sigGroup in frame.signalGroups:
+                TotalSignalGroup.append(sigGroup)
+                print("def : format - dbc - dump - CATCH SIG_GROUP_ : {}".format(sigGroup.name))
+
+    for sigGroup in TotalSignalGroup:
+        print("def : format - dbc - dump - SIG_GROUP_ NAME - {}".format(sigGroup.name))
+        FrameT = None
+        TempFor_SIG_GROUP_ = []
+        for signal in db.signals:
+            #frame = signal.frames
+            #print("def : format - dbc - dump - SIG_GROUP_ - {}".format(frame.signalGroups))
+            # print("def : format - dbc - dump - SIG_GROUP_ : {}".format(sigGroup))
+            # print(("SIG_GROUP_ " + str(frame.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
+            #           " " + str(sigGroup.id) + " :").encode(dbc_export_encoding, ignore_encoding_errors))
+
+            if sigGroup.by_name(signal.name) != None:
+                TempFor_SIG_GROUP_.append(signal.name)
+                #if FrameT == None:
+                FrameT = signal.frames
+                #print("def : format - dbc - dump - SIG_GROUP_ SIG - {}".format(sigGroup.by_name(signal.name)))
+
+        print("def : format - dbc - dump - SIG_GROUP_ FRAME NAME - {}".format(FrameT.name))
+        print(("SIG_GROUP_ " + str(FrameT.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
+                      " " + str(sigGroup.id) + " : " + ' '.join(TempFor_SIG_GROUP_) + ";").encode(dbc_export_encoding, ignore_encoding_errors))
+
+        f.write(("SIG_GROUP_ " + str(FrameT.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
+                      " " + str(sigGroup.id) + " : " + ' '.join(TempFor_SIG_GROUP_)).encode(dbc_export_encoding, ignore_encoding_errors))
+        f.write(";\n".encode(dbc_export_encoding, ignore_encoding_errors))
+        #print("def : format - dbc - dump - SIG_GROUP_ - ",sigGroup.name,TempFor_SIG_GROUP_)
+
+
+    # for signal in db.signals:
+    #     frame = signal.frames
+    #     print("def : format - dbc - dump - SIG_GROUP_ - {}".format(frame.signalGroups))
+    #     for sigGroup in frame.signalGroups:
+    #         # print("def : format - dbc - dump - SIG_GROUP_ : {}".format(sigGroup))
+    #         # print(("SIG_GROUP_ " + str(frame.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
+    #         #           " " + str(sigGroup.id) + " :").encode(dbc_export_encoding, ignore_encoding_errors))
+    #
+    #         if sigGroup.by_name(signal.name) != None:
+    #             #print("def : format - dbc - dump - SIG_GROUP_ SIG - {}".format(sigGroup.by_name(signal.name)))
+    #
+
+            #for s in sigGroup.signals:
+                #print((" " + output_names[frame][s]).encode(dbc_export_encoding, ignore_encoding_errors))
+            # f.write(("SIG_GROUP_ " + str(frame.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
+            #          " " + str(sigGroup.id) + " :").encode(dbc_export_encoding, ignore_encoding_errors))
+            # for s in sigGroup.signals:
+            #     f.write((" " + output_names[frame][s]).encode(dbc_export_encoding, ignore_encoding_errors))
+            #f.write(";\n".encode(dbc_export_encoding, ignore_encoding_errors))
+
+    # for signal in db.signals:
+    #     frame = signal.frames
+    #     print("def : format - dbc - dump - SIG_GROUP_ - {}".format(frame.signalGroups))
+    #     for sigGroup in frame.signalGroups:
+    #         print("def : format - dbc - dump - SIG_GROUP_ 2 : {}".format(sigGroup))
+    #         f.write(("SIG_GROUP_ " + str(frame.arbitration_id.to_compound_integer()) + " " + sigGroup.name +
+    #                  " " + str(sigGroup.id) + " :").encode(dbc_export_encoding, ignore_encoding_errors))
+    #         for s in sigGroup.signals:
+    #             f.write((" " + output_names[frame][s]).encode(dbc_export_encoding, ignore_encoding_errors))
+    #         f.write(";\n".encode(dbc_export_encoding, ignore_encoding_errors))
 
     for signal in db.signals:
         frame = signal.frames
@@ -1139,9 +1199,19 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
                 if frame is not None:
                     signal_array = temp.group(4).split(' ')
-                    frame.add_signal_group(temp.group(2), temp.group(3),
-                                           signal_array)  # todo wrong annotation in canmatrix? Id is a string?
+                    Temp_Signal_Array = []
 
+                    for each_signal in db.signals:
+                        for each in signal_array:
+                            if each_signal.name == each:
+                                Temp_Signal_Array.append(each_signal)
+
+
+
+                    print("def : format - dbc - load - SIG_GROUP_ : {} - {} - {}".format(temp.group(2),temp.group(3),signal_array))
+                    # frame.add_signal_group(temp.group(2), temp.group(3),
+                    #                        signal_array)  # todo wrong annotation in canmatrix? Id is a string?
+                    frame.add_signal_group(temp.group(2), temp.group(3),Temp_Signal_Array)
             # decode signal value type
             elif decoded.startswith("SIG_VALTYPE_ "):
 

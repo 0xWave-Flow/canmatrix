@@ -575,7 +575,7 @@ class SignalGroup(object):
 
     def by_name(self, name):  # type: (str) -> typing.Union[Signal, None]
 
-        print("def : canmatrix - SignalGroup - by_name")
+        print("def : canmatrix - SignalGroup - by_name - ",self.signals)
 
         """
         Find a Signal in the group by Signal name.
@@ -585,6 +585,7 @@ class SignalGroup(object):
         :rtype: Signal
         """
         for test in self.signals:
+            print("def : canmatrix - SignalGroup - by_name - SCAN : {}".format(test))
             if test.name == name:
                 return test
         return None
@@ -1233,14 +1234,37 @@ class Frame(object):
         :param list of str signalNames: list of Signal names to add. Non existing names are ignored.
         """
         newGroup = SignalGroup(Name, Id, e2e_trans=e2e_trans)
+        #print("def : canmatrix - Frame - add_signal_group - 1")
         self.signalGroups.append(newGroup)
+        #print("def : canmatrix - Frame - add_signal_group - 2")
+
         for signal in signalNames:
-            signal = signal.strip()
-            if signal.__len__() == 0:
-                continue
-            signalId = self.signal_by_name(signal)
-            if signalId is not None:
-                newGroup.add_signal(signalId)
+            #print("def : canmatrix - Frame - add_signal_group - 3")
+            # signal = signal.strip()
+            # if signal.__len__() == 0:
+            #     continue
+            #
+            # signalId = self.signal_by_name(signal)
+
+            print("def : canmatrix - Frame - add_signal_group - FILL : {}".format(signal))
+            newGroup.add_signal(signal)
+            # if signalId is not None:
+            #     newGroup.add_signal(signalId)
+            #     print("def : canmatrix - Frame - add_signal_group - end")
+
+        # for signal in signalNames:
+        #     #print("def : canmatrix - Frame - add_signal_group - 3")
+        #     signal = signal.strip()
+        #     if signal.__len__() == 0:
+        #         continue
+        #
+        #     signalId = self.signal_by_name(signal)
+        #
+        #     print("def : canmatrix - Frame - add_signal_group - FILL : {}".format(signal))
+        #
+        #     if signalId is not None:
+        #         newGroup.add_signal(signalId)
+        #         print("def : canmatrix - Frame - add_signal_group - end")
 
     def signal_group_by_name(self, name):
 
@@ -1356,7 +1380,7 @@ class Frame(object):
 
     def signal_by_name(self, name):
 
-        #print("def : canmatrix - Frame - signal_by_name - [{}]".format(name))
+        print("def : canmatrix - Frame - signal_by_name - [{}]".format(name))
         """
         Get signal by name.
 

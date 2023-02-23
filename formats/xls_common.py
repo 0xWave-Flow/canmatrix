@@ -223,7 +223,17 @@ def get_signal(db, frame, sig, motorola_bit_format):
         front_array.append('/')
 
     # Signal Group
-    front_array.append('/')
+    if frame.signalGroups:
+        for each in frame.signalGroups:
+            print("def : format - xls_common - get_signal - EACH SIG GROUP : {} - {} - {}".format(each,sig.name,each.by_name(sig.name)))
+            if each.by_name(sig.name) != None:
+                front_array.append(each.name)
+            else:
+                front_array.append('/')
+
+        #front_array.append('HELLO')
+    else:
+        front_array.append('/')
 
     # Message Segment
     front_array.append('/')

@@ -427,3 +427,6 @@ VAL_ 1794 Cluster_DistLong_rms 31 "Invalid" 30 "<10.000 m" 29 "<7.762 m" 28 "<6.
 VAL_ 1794 Cluster_VrelLong_rms 31 "Invalid" 30 "<10.000 m/s" 29 "<7.762 m/s" 28 "<6.025 m/s" 27 "<4.676 m/s" 26 "<3.630 m/s" 25 "<2.817 m/s" 24 "<2.187 m/s" 23 "<1.697 m/s" 22 "<1.317 m/s" 21 "<1.023 m/s" 20 "<0.794 m/s" 19 "<0.616 m/s" 18 "<0.478 m/s" 17 "<0.371 m/s" 16 "<0.288 m/s" 15 "<0.224 m/s" 14 "<0.174 m/s" 13 "<0.135 m/s" 12 "<0.105 m/s" 11 "<0.081 m/s" 10 "<0.063 m/s" 9 "<0.049 m/s" 8 "<0.038 m/s" 7 "<0.029 m/s" 6 "<0.023 m/s" 5 "<0.018 m/s" 4 "<0.014 m/s" 3 "<0.011 m/s" 2 "<0.008 m/s" 1 "<0.006 m/s" 0 "<0.005 m/s";
 VAL_ 1794 Cluster_PdH0 7 "<=100%" 6 "<99.9%" 5 "<99%" 4 "<90%" 3 "<75%" 2 "<50%" 1 "<25%" 0 "invalid";
 VAL_ 1794 Cluster_AmbigState 4 "Stationary candidate" 3 "Unambiguous" 2 "Staggered ramp" 1 "Ambiguous" 0 "Invalid";
+SIG_GROUP_ 1548 Obj_2_Quality_SigGroup 1 : Obj_ArelLong_rms Obj_ArelLat_rms Obj_VrelLong_rms Obj_VrelLat_rms Obj_DistLong_rms Obj_DistLat_rms Obj_ID_Quality;
+SIG_GROUP_ 1549 Obj_3_Extended_SigGroup 1 : Obj_Class Obj_ID_extended;
+SIG_GROUP_ 1547 Obj_1_General_SigGroup 1 : Obj_ID Obj_RCS Obj_VrelLat Obj_ID Obj_DistLong Obj_VrelLong Obj_DistLat;
