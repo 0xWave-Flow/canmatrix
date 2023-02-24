@@ -234,7 +234,10 @@ def dump(db, filename, **options):
     head_top = [
         'DEF TYPE',
         'VALUE',
-        'TYPE'
+        'TYPE',
+        'MIN',
+        'MAX',
+        'DEFAULT'
     ]
     worksheet_def = workbook.add_worksheet('DEF')
 
@@ -244,33 +247,45 @@ def dump(db, filename, **options):
     row = 1
     for ENV_Define in db.env_defines:
         #print("def : format - xls_common - get_signal - ENV DEF : ",type(ENV_Define),type((db.env_defines.get(ENV_Define).type)))
-        frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type]
+        frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type,'/','/','/']
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
     for GLO_Define in db.global_defines:
         #print("def : format - xls_common - get_signal - GLO DEF : {} - {} ".format(GLO_Define,db.global_defines.get(GLO_Define).type))
-        frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type]
+        frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type,'/','/',db.global_defines.get(GLO_Define).defaultValue]
+        if db.global_defines.get(GLO_Define).defaultValue == '':
+            frontRow[5] = '/'
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
     for ECU_Define in db.ecu_defines:
-        #print("def : format - xls_common - get_signal - ECU DEF : {} - {} ".format(ECU_Define,db.ecu_defines.get(ECU_Define).type))
-        frontRow = ["ECU DEF",ECU_Define,db.ecu_defines.get(ECU_Define).type]
+        print("def : format - xls_common - get_signal - ECU DEF : {}".format(db.ecu_defines.get(ECU_Define).defaultValue))
+        #print("def : format - xls_common - get_signal - DEFAULT : ",db.signal_defines)
+        frontRow = ["ECU DEF",ECU_Define,db.ecu_defines.get(ECU_Define).type,db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max,db.ecu_defines.get(ECU_Define).defaultValue]
+
+        if db.ecu_defines.get(ECU_Define).min == None:
+            frontRow[3] = '/'
+        if db.ecu_defines.get(ECU_Define).max == None:
+            frontRow[4] = '/'
+        if db.ecu_defines.get(ECU_Define).defaultValue == '':
+            frontRow[5] = '/'
+
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
     for FRM_Define in db.frame_defines:
         #print("def : format - xls_common - get_signal - FRM DEF : {} - {} ".format(FRM_Define,db.frame_defines.get(FRM_Define).type))
-        frontRow = ["FRM DEF",FRM_Define,db.frame_defines.get(FRM_Define).type]
+        frontRow = ["FRM DEF",FRM_Define,db.frame_defines.get(FRM_Define).type,'/','/','/']
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
     for SIG_Define in db.signal_defines:
         #print("def : format - xls_common - get_signal - SIG DEF : {} - {} ".format(SIG_Define,db.signal_defines.get(SIG_Define).type))
-        frontRow = ["SIG DEF",SIG_Define,db.signal_defines.get(SIG_Define).type]
+        frontRow = ["SIG DEF",SIG_Define,db.signal_defines.get(SIG_Define).type,'/','/','/']
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
+
 
     # add filter and freeze head_top
     worksheet.autofilter(0, 0, row, len(head_top) - 1)

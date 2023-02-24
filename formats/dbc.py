@@ -447,9 +447,14 @@ def dump(in_db, f, **options):
 
         print("def : format - dbc - dump - DEFINE : {}".format(define_name))
 
-        f.write(('BA_DEF_DEF_ "' + define_name + '" ').encode(dbc_export_encoding, ignore_encoding_errors) +
-                defaults[define_name].encode(dbc_export_encoding, 'replace') + ';\n'.encode(dbc_export_encoding,
-                                                                                            ignore_encoding_errors))
+        if isinstance(defaults[define_name],int):
+            f.write(('BA_DEF_DEF_ "' + define_name + '" ').encode(dbc_export_encoding, ignore_encoding_errors) +
+                    str(defaults[define_name]).encode(dbc_export_encoding, 'replace') + ';\n'.encode(dbc_export_encoding,
+                                                                                              ignore_encoding_errors))
+        else:
+            f.write(('BA_DEF_DEF_ "' + define_name + '" ').encode(dbc_export_encoding, ignore_encoding_errors) +
+                    defaults[define_name].encode(dbc_export_encoding, 'replace') + ';\n'.encode(dbc_export_encoding,
+                                                                                                ignore_encoding_errors))
     # ecu-attributes:
     for ecu in db.ecus:
         for attrib, val in sorted(ecu.attributes.items()):
@@ -1122,9 +1127,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                         print("def : format - dbc - load - BA_DEF_ BU_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_ecu_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
 
-                        for e in db.ecu_defines:
-
-                            print("def : format - dbc - load - BA_DEF_ BU_- ITEM : {} - {}".format(e,db.ecu_defines.get(e).type))
+                        # for e in db.ecu_defines:
+                        #
+                        #     print("def : format - dbc - load - BA_DEF_ BU_- ITEM : {} - {}".format(e,db.ecu_defines.get(e).type))
 
                     elif define_type == "EV_":
                         print("def : format - dbc - load - BA_DEF_ EV_: {} - {}".format(temp.group(1), temp_raw.group(2)))
@@ -1258,14 +1263,13 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
             # decode attribute default value definitions
             elif decoded.startswith("BA_DEF_DEF_ "):
 
-                print("def : format - dbc - load - BA_DEF_DEF_ : {}".format(decoded))
-
                 pattern = r"^BA_DEF_DEF_ +\"(.+?)\" +(.+?) *;"
                 regexp = re.compile(pattern)
                 regexp_raw = re.compile(pattern.encode(dbc_import_encoding))
                 temp = regexp.match(decoded)
                 temp_raw = regexp_raw.match(l)
                 if temp:
+                    print("def : format - dbc - load - BA_DEF_DEF_ : {} - {} ".format(temp.group(1), temp_raw.group(2)))
                     db.add_define_default(temp.group(1),
                                           temp_raw.group(2).decode(dbc_import_encoding))
 

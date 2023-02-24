@@ -2134,11 +2134,13 @@ class CanMatrix(object):
         :param str definition: BU definition as string
         """
         if name not in self.ecu_defines:
+            #print("def : canmatrix - CanMatrix - add_ecu_defines - {} - {}".format(name, definition))
             self.ecu_defines[name] = Define(definition)
+            #print("def : canmatrix - CanMatrix - add_ecu_defines - CHECK - {}".format(self.ecu_defines[name].min))
 
     def add_env_defines(self, name, definition):  # type: (str, str) -> None
 
-        print("def : canmatrix - CanMatrix - add_env_defines")
+        print("def : canmatrix - CanMatrix - add_env_defines - {} - {}".format(name,definition))
 
         """
         Add enviroment variable-attribute definition to canmatrix.
@@ -2164,7 +2166,7 @@ class CanMatrix(object):
 
     def add_define_default(self, name, value):  # type: (str, typing.Any) -> None
 
-        print("def : canmatrix - CanMatrix - add_define_default")
+        print("def : canmatrix - CanMatrix - add_define_default - ",type(value))
 
         if name in self.signal_defines:
             self.signal_defines[name].set_default(value)

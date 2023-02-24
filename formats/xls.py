@@ -682,4 +682,61 @@ def load(file, **options):
             #print("def : format - xls - load - SIGNAL GROUP - {}".format(each_frame))
             #each_frame.add_signal_group("A",1,["Hello"])
 
+
+    #WRITE DEF
+    sh_def = wb.sheet_by_index(1)
+
+    # eval search for correct columns:
+    index = {}
+    for i in range(sh_def.ncols):
+        value = sh_def.cell(0, i).value
+        if value == "DEF TYPE":
+            index['DEFTYPE'] = i
+        elif "VALUE" in value:
+            index['VALUE'] = i
+        elif "TYPE" in value:
+            index['TYPE'] = i
+        elif "MIN" in value:
+            index['MIN'] = i
+        elif "MAX" in value:
+            index['MAX'] = i
+        elif "DEFAULT" in value:
+            index['DEFAULT'] = i
+
+    for row_num in range(1, sh_def.nrows):
+
+        #print("DEF ROW : {} - {} - {}".format(sh_def.cell(row_num, index['DEFTYPE']).value,sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
+
+        if sh_def.cell(row_num, index['DEFTYPE']).value == "GLO DEF":
+            db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+            if sh_def.cell(row_num, index['DEFAULT']).value != '/':
+                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
+            else:
+                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+        elif sh_def.cell(row_num, index['DEFTYPE']).value == "ECU DEF":
+
+            if sh_def.cell(row_num, index['TYPE']).value == "INT":
+                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+                # if sh_def.cell(row_num, index['DEFAULT']).value != '/':
+                #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"0")
+                # else:
+                #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+            else:
+                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+            if sh_def.cell(row_num, index['DEFAULT']).value != '/':
+
+                #print("DEBUG : {}".format(sh_def.cell(row_num, index['DEFAULT']).value))
+                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,str(int(sh_def.cell(row_num, index['DEFAULT']).value)))
+            else:
+                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+
+        elif sh_def.cell(row_num, index['DEFTYPE']).value == "ENV DEF":
+            db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+
+        elif sh_def.cell(row_num, index['DEFTYPE']).value == "FRM DEF":
+            db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+
+        elif sh_def.cell(row_num, index['DEFTYPE']).value == "SIG DEF":
+            db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+
     return db
