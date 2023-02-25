@@ -708,11 +708,27 @@ def load(file, **options):
         #print("DEF ROW : {} - {} - {}".format(sh_def.cell(row_num, index['DEFTYPE']).value,sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
 
         if sh_def.cell(row_num, index['DEFTYPE']).value == "GLO DEF":
-            db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+            #print("DEF ROW - G : {} {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
+
+            if sh_def.cell(row_num, index['TYPE']).value == "HEX":
+
+                #print("DEF ROW - G : {} {} {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "INT":
+                print("DEF ROW - G - INT : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['DEFAULT']).value)))
+                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,str(int(sh_def.cell(row_num, index['DEFAULT']).value)))
+            else:
+                print("DEF ROW - G - STRING : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
+                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['DEFAULT']).value)
+
             if sh_def.cell(row_num, index['DEFAULT']).value != '/':
-                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
+                print("DEF ROW - TRACE : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
+                #db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
             else:
                 db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+
+
         elif sh_def.cell(row_num, index['DEFTYPE']).value == "ECU DEF":
 
             if sh_def.cell(row_num, index['TYPE']).value == "INT":
@@ -721,8 +737,19 @@ def load(file, **options):
                 #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"0")
                 # else:
                 #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
+
+                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+
+                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['MIN']).value)
+
             else:
                 db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+
+
             if sh_def.cell(row_num, index['DEFAULT']).value != '/':
 
                 #print("DEBUG : {}".format(sh_def.cell(row_num, index['DEFAULT']).value))
@@ -731,12 +758,51 @@ def load(file, **options):
                 db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
 
         elif sh_def.cell(row_num, index['DEFTYPE']).value == "ENV DEF":
-            db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
-
+            if sh_def.cell(row_num, index['TYPE']).value != "ENUM":
+                print("DEBUG : {}".format(sh_def.cell(row_num, index['VALUE']).value))
+                #db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+            else:
+                print("DEBUG : {}".format(sh_def.cell(row_num, index['MIN']).value))
+                #db.add_env_defines("{} {}".format(sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num,index['VALUE']).value,sh_def.cell(row_num, index['TYPE'].value)))
         elif sh_def.cell(row_num, index['DEFTYPE']).value == "FRM DEF":
-            db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+
+            if sh_def.cell(row_num, index['TYPE']).value == "INT":
+
+                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num, index['MAX']).value))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
+                pass
+            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+
+                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
+                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,
+                                     "{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,
+                                                       sh_def.cell(row_num, index['MIN']).value,
+                                                       sh_def.cell(row_num, index['MAX']).value))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+
+                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
 
         elif sh_def.cell(row_num, index['DEFTYPE']).value == "SIG DEF":
-            db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+
+            if sh_def.cell(row_num, index['TYPE']).value == "INT":
+
+                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num, index['MAX']).value))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
+                pass
+            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+
+                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
+                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num, index['MAX']).value))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+                #print("DEBUG : SIG STRING ENUM : {}".format(sh_def.cell(row_num, index['MIN']).value))
+                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
 
     return db
