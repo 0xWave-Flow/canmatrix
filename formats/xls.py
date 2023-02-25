@@ -377,6 +377,8 @@ def load(file, **options):
     SignalGroupTemp = []
     FrameTemp = []
 
+    FrameWithSignal = []
+
     # eval search for correct columns:
     index = {}
     for i in range(sh.ncols):
@@ -661,6 +663,10 @@ def load(file, **options):
             # add frame information to signal
             new_signal.frames = new_frame
             FrameTemp.append(new_frame)
+
+            if signal_name != '/':
+                FrameWithSignal.append(new_frame)
+
     # read rows values loop end
 
     # add vframeformat
@@ -804,5 +810,112 @@ def load(file, **options):
             elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
                 #print("DEBUG : SIG STRING ENUM : {}".format(sh_def.cell(row_num, index['MIN']).value))
                 db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
+
+
+    #WRITE ATTR
+    sh_attr = wb.sheet_by_index(2)
+
+    # eval search for correct columns:
+    index = {}
+    for i in range(sh_attr.ncols):
+        value = sh_attr.cell(0, i).value
+        if value == "P1":
+            index['P1'] = i
+        elif "P2" in value:
+            index['P2'] = i
+        elif "P3" in value:
+            index['P3'] = i
+        elif "P4" in value:
+            index['P4'] = i
+        elif "P5" in value:
+            index['P5'] = i
+
+    for row_num in range(1, sh_attr.nrows):
+
+        if sh_attr.cell(row_num, index['P2']).value == "BU_":
+            db.ecu_by_name(sh_attr.cell(row_num, index['P3']).value).add_attribute(
+                sh_attr.cell(row_num, index['P1']).value,
+                sh_attr.cell(row_num, index['P4']).value)
+
+        elif sh_attr.cell(row_num, index['P2']).value == "BO_":
+
+            #for each in FrameTemp:
+            #for each in FrameWithSignal:
+            for each in FrameTemp:
+                # print("DEBUG : ADD FRAME ATTR - {} - {}".format(each.arbitration_id.id,
+                #                                                 sh_attr.cell(row_num, index['P3']).value))
+                if str(each.arbitration_id.id) == sh_attr.cell(row_num, index['P3']).value:
+                    # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
+
+                        print("DEBUG : ADD FRAME ATTR - {} - {} - {}".format(each.name,sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
+                        if sh_attr.cell(row_num, index['P4']).value == "/":
+                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value,"")
+                        else:
+                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
+
+            # get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(sh_attr.cell(row_num, index['P3']).value)).add_attribute(
+            #     sh_attr.cell(row_num, index['P1']).value,
+            #     sh_attr.cell(row_num, index['P4']).value)
+
+
+    # ecu-attributes:
+    # for ecu in db.ecus:
+    #     for attrib, val in sorted(ecu.attributes.items()):
+    #
+    #         print("def : format - dbc - dump - ECU ATTRIBUTE : [{} , {}]".format(attrib, val))
+
+            # f.write(
+            #     create_attribute_string(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING").encode(
+            #         dbc_export_encoding, ignore_encoding_errors))
+
+    # # global-attributes:
+    # for attrib, val in sorted(db.attributes.items()):
+    #
+    #     print("def : format - dbc - dump - GLOBAL ATTRIBUTE : [{} , {}]".format(attrib, val))
+    #
+    #     f.write(create_attribute_string(attrib, "", "", val, db.global_defines[attrib].type == "STRING").encode(
+    #         dbc_export_encoding, ignore_encoding_errors))
+    #
+    # # messages-attributes:
+    # curr_frame = None
+    # for signal in db.signals:
+    #     frame = signal.frames
+    #     if frame.name != curr_frame:
+    #         for attrib, val in sorted(frame.attributes.items()):
+    #
+    #             print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {}]".format(attrib,val))
+    #
+    #             f.write(create_attribute_string(attrib, "BO_", str(frame.arbitration_id.to_compound_integer()), val,
+    #                                             db.frame_defines[attrib].type == "STRING").encode(dbc_export_encoding,
+    #                                                                                               ignore_encoding_errors))
+    #         curr_frame = frame.name
+    #
+    # # signal-attributes:
+    # for signal in db.signals:
+    #     frame = signal.frames
+    #     for attrib, val in sorted(signal.attributes.items()):
+    #         name = output_names[frame][signal]
+    #         if isinstance(val, float):
+    #             val = format_float(val)
+    #         if attrib in db.signal_defines:
+    #
+    #             print("def : format - dbc - dump - SIGNAL ATTRIBUTE : {}".format(attrib))
+    #
+    #             f.write(create_attribute_string(
+    #                 attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
+    #                                db.signal_defines[attrib].type == "STRING").encode(dbc_export_encoding,
+    #                                                                                   ignore_encoding_errors))
+    #
+    # # environment-attributes:
+    # for env_var_name, env_var in db.env_vars.items():
+    #     if "attributes" in env_var:
+    #         for attribute, value in env_var["attributes"].items():
+    #
+    #             print("def : format - dbc - dump - ENVIRONMENT ATTRIBUTE : [{} , {}]".format(attrib, val))
+    #
+    #             f.write(create_attribute_string(attribute, "EV_", "", value,
+    #                                             db.env_defines[attribute].type == "STRING")
+    #                     .encode(dbc_export_encoding, ignore_encoding_errors))
+
 
     return db

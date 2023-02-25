@@ -2765,27 +2765,35 @@ class CanMatrix(object):
 
     def enum_attribs_to_keys(self):  # type: () -> None
 
-        #print("def : canmatrix - CanMatrix - enum_attribs_to_keys")
-
         for define in self.ecu_defines:
             if self.ecu_defines[define].type == "ENUM":
                 for bu in self.ecus:
+                    print("def : canmatrix - CanMatrix - enum_attribs_to_keys - ECU - BU")
                     if define in bu.attributes:
                         if len(bu.attributes[define]) > 0:
                             bu.attributes[define] = self.ecu_defines[define].values.index(bu.attributes[define])
                             bu.attributes[define] = str(bu.attributes[define])
         for define in self.frame_defines:
             if self.frame_defines[define].type == "ENUM":
+                print("def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - {}".format(self.frame_defines[define].type))
                 for signal in self.signals:
+
                     frame = signal.frames
                     if define in frame.attributes:
-                        if len(frame.attributes[define]) > 0:
-                            frame.attributes[define] = self.frame_defines[define].values.index(frame.attributes[define])
-                            frame.attributes[define] = str(frame.attributes[define])
+                        print("def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM - {}".format(define))
+                        #if len(frame.attributes[define]) > 0:
+                            #print("def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM - {}".format(frame.attributes[define]))
+                            #print("def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE - ",type(self.frame_defines[define].values))
+                            #frame.attributes[define] = self.frame_defines[define].values.index(frame.attributes[define])
+                            #print("def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM -END")
+                            #frame.attributes[define] = str(frame.attributes[define])
+                            #frame.attributes[define] = "0"
+
         for define in self.signal_defines:
             if self.signal_defines[define].type == "ENUM":
                 for frame in self.frames:
                     for signal in frame.signals:
+                        print("def : canmatrix - CanMatrix - enum_attribs_to_keys - SIG - ")
                         if define in signal.attributes:
                             signal.attributes[define] = self.signal_defines[define].values.index(
                                 signal.attributes[define])

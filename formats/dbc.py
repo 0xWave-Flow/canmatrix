@@ -459,7 +459,7 @@ def dump(in_db, f, **options):
     for ecu in db.ecus:
         for attrib, val in sorted(ecu.attributes.items()):
 
-            print("def : format - dbc - dump - ECU ATTRIBUTE : [{} , {}]".format(attrib, val))
+            print("def : format - dbc - dump - ECU ATTRIBUTE : [{} , {} , {} , {}]".format(attrib,ecu.name,val,db.ecu_defines[attrib].type))
 
             f.write(
                 create_attribute_string(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING").encode(
@@ -479,12 +479,15 @@ def dump(in_db, f, **options):
         frame = signal.frames
         if frame.name != curr_frame:
             for attrib, val in sorted(frame.attributes.items()):
+                #print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {} , {}]".format(attrib, val,db.frame_defines))
+                #print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {} , {}]".format(attrib,val,db.frame_defines[attrib].type))
 
-                print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {}]".format(attrib,val))
+                try:
+                    f.write(create_attribute_string(attrib, "BO_", str(frame.arbitration_id.to_compound_integer()), val,
+                                                db.frame_defines[attrib].type == "STRING").encode(dbc_export_encoding,ignore_encoding_errors))
+                except KeyError:
+                    print("def : format - dbc - dump - MESSAGE ATTRIBUTE - LOST AND DEBUG")
 
-                f.write(create_attribute_string(attrib, "BO_", str(frame.arbitration_id.to_compound_integer()), val,
-                                                db.frame_defines[attrib].type == "STRING").encode(dbc_export_encoding,
-                                                                                                  ignore_encoding_errors))
             curr_frame = frame.name
 
     # signal-attributes:
@@ -496,7 +499,8 @@ def dump(in_db, f, **options):
                 val = format_float(val)
             if attrib in db.signal_defines:
 
-                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : {}".format(attrib))
+                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : {} , {} , {} , {} , {}".format(attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
+                                   db.signal_defines[attrib].type == "STRING"))
 
                 f.write(create_attribute_string(
                     attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
@@ -1160,13 +1164,16 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 if tempba.group(1).strip().startswith("BO_ "):
                     regexp = re.compile(r"^BA_ +\"(.+?)\" +BO_ +(\d+) +(.+) *; *")
                     temp = regexp.match(decoded)
+
+                    print("def : format - dbc - load - FIND ATTR - BA_ BO_ - {} ; {}".format(temp.group(1), temp.group(3)))
                     get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))).add_attribute(
                         temp.group(1), temp.group(3))
+
                 elif tempba.group(1).strip().startswith("SG_ "):
                     regexp = re.compile(r"^BA_ +\"(.+?)\" +SG_ +(\d+) +(\w+) +(.+) *; *")
                     temp = regexp.match(decoded)
 
-                    print("def : format - dbc - load - BA_ OF SG : {} - {} - {} - {}".format(temp.group(1),temp.group(2),temp.group(3),temp.group(4)))
+                    #print("def : format - dbc - load - BA_ OF SG : {} - {} - {} - {}".format(temp.group(1),temp.group(2),temp.group(3),temp.group(4)))
 
                     if temp is not None:
 
@@ -1174,8 +1181,9 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                             #print("def : format - dbc - load - LOOP SIG - {}".format(signal.name))
                             if signal.name == temp.group(3):
                                 #print("def : format - dbc - load - FIND- {}".format(signal.name))
+                                print("def : format - dbc - load - FIND ATTR - BA_ SG_ - {} ; {}".format(temp.group(1),temp.group(4)))
                                 signal.add_attribute(temp.group(1),temp.group(4))
-                                print("def : format - dbc - load - ATTR- {}".format(signal.attributes))
+                                #print("def : format - dbc - load - ATTR- {}".format(signal.attributes))
 
                         # FrameTemp = get_frame_by_id(
                         #     canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))).signal_by_name(
@@ -1208,10 +1216,15 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     regexp = re.compile(r"^BA_ +\"(.+?)\" +EV_ +(\w+) +(.*) *; *")
                     temp = regexp.match(decoded)
                     if temp is not None:
+                        print("def : format - dbc - load - FIND ATTR - BA_ EV_ - {} ; {} ; {}".format(temp.group(2), temp.group(1), temp.group(3)))
                         db.add_env_attribute(temp.group(2), temp.group(1), temp.group(3))
+
+
                 elif tempba.group(1).strip().startswith("BU_ "):
                     regexp = re.compile(r"^BA_ +\"(.*?)\" +BU_ +(\w+) +(.+) *; *")
                     temp = regexp.match(decoded)
+
+                    print("def : format - dbc - load - FIND ATTR - BA_ BU_ - {} ; {}".format(temp.group(1),temp.group(3)))
                     db.ecu_by_name(
                         temp.group(2)).add_attribute(
                         temp.group(1),
@@ -1223,6 +1236,7 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                     #print("def : format - dbc - load - BA_ OF INIT VALUE: {} - {}".format(temp.group(1),temp.group(2)))
                     if temp:
+                        print("def : format - dbc - load - FIND ATTR - BA_ ELSE - {} ; {}".format(temp.group(1), temp.group(2)))
                         db.add_attribute(temp.group(1), temp.group(2))
 
             # decode signal group
