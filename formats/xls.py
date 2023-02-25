@@ -764,12 +764,22 @@ def load(file, **options):
                 db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
 
         elif sh_def.cell(row_num, index['DEFTYPE']).value == "ENV DEF":
-            if sh_def.cell(row_num, index['TYPE']).value != "ENUM":
-                print("DEBUG : {}".format(sh_def.cell(row_num, index['VALUE']).value))
-                #db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
-            else:
-                print("DEBUG : {}".format(sh_def.cell(row_num, index['MIN']).value))
-                #db.add_env_defines("{} {}".format(sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num,index['VALUE']).value,sh_def.cell(row_num, index['TYPE'].value)))
+
+            if sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+
+                db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "INT":
+
+                db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,
+                                   "{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,
+                                                  int(sh_def.cell(row_num, index['MIN']).value),
+                                                     int(sh_def.cell(row_num, index['MAX']).value)))
+
+            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+
+                db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+
         elif sh_def.cell(row_num, index['DEFTYPE']).value == "FRM DEF":
 
             if sh_def.cell(row_num, index['TYPE']).value == "INT":
@@ -857,6 +867,13 @@ def load(file, **options):
             #     sh_attr.cell(row_num, index['P1']).value,
             #     sh_attr.cell(row_num, index['P4']).value)
 
+        elif sh_attr.cell(row_num, index['P2']).value == "SG_":
+            FrameIdandSignal = (sh_attr.cell(row_num, index['P3']).value).split(" ")
+            print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} - {}".format(FrameIdandSignal[0],FrameIdandSignal[1]))
+            for signal in db.signals:
+                if signal.name == FrameIdandSignal[1] and signal.frames.arbitration_id.id == int(FrameIdandSignal[0]):
+                    print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} ; {}".format(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
+                    signal.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
 
     # ecu-attributes:
     # for ecu in db.ecus:

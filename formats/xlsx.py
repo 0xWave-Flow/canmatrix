@@ -248,6 +248,13 @@ def dump(db, filename, **options):
     for ENV_Define in db.env_defines:
         #print("def : format - xls_common - get_signal - ENV DEF : ",type(ENV_Define),type((db.env_defines.get(ENV_Define).type)))
         frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type,'/','/','/']
+
+        if db.env_defines.get(ENV_Define).type == "ENUM":
+            frontRow[3] = ",".join(db.env_defines.get(ENV_Define).values)
+        elif db.env_defines.get(ENV_Define).type == "INT":
+            frontRow[3] = int(db.env_defines.get(ENV_Define).min)
+            frontRow[4] = int(db.env_defines.get(ENV_Define).max)
+
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
