@@ -123,7 +123,12 @@ def get_signal(db, frame, sig, motorola_bit_format):
         front_array.append("0x%3X" % frame.header_id)
 
     # Message Type
-    front_array.append('/')
+
+    if frame.arbitration_id.extended == False:
+        front_array.append('STD')
+    else:
+        front_array.append('EXT')
+
     # Signal Type
     front_array.append('/')
     # Detailed description of E/M Message sending behavior Tx

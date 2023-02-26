@@ -1,0 +1,1156 @@
+def : _version - get_versions
+def : cli - convert - get_formats
+INPUT : dbc
+xls
+xlsx
+
+OUTPUT : dbc
+xls
+xlsx
+
+def : cli - convert - get_formats
+INPUT : dbc
+xls
+xlsx
+
+OUTPUT : dbc
+xls
+xlsx
+
+def : cli - convert - cli_convert
+def : log - setup_logger
+def : log - set_log_level
+def : convert - convert
+def : format - xlsx - load
+def : format - xls - load
+def : format - xls - load - BYTE ORDER INDEX: 21 
+def : format - xls - load - UNIT INDEX: 34 
+def : format - xls - load - MULTIPLEXER INDEX: 40 
+def : format - xls - load - ECU : Engine
+def : canmatrix - CanMatrix - add_ecu - Ecu(name='Engine', comment=None)
+def : format - xls - load - ECU : Gateway
+def : canmatrix - CanMatrix - add_ecu - Ecu(name='Gateway', comment=None)
+def : format - xls - load - unit : 1 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngInjectionVol - {}
+def : format - xls - load - unit : 2 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - New_Signal_51 - {}
+def : format - xls - load - unit : 3 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - New_Signal_50 - {}
+def : format - xls - load - unit : 4 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - New_Signal_49 - {}
+def : format - xls - load - unit : 5 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - New_Signal_48 - {}
+def : format - xls - load - unit : 6 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FallbackMessage_Byte_06_10 - {}
+def : format - xls - load - unit : 7 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - FallbackMessage_Byte_00_05 - {}
+def : format - xls - load - unit : 8 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - DropOutMessage_Byte_06_10 - {}
+def : format - xls - load - unit : 9 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - DropOutMessage_Byte_00_05 - {}
+def : format - xls - load - unit : 10 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_signal_Byte_56_62 - {}
+def : format - xls - load - unit : 11 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_signal_Byte_49_55 - {}
+def : format - xls - load - unit : 12 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_63 - {}
+def : format - xls - load - unit : 13 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_06_09 - {}
+def : format - xls - load - unit : 14 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_03_05 - {}
+def : format - xls - load - unit : 15 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_signal_Byte_42_48 - {}
+def : format - xls - load - unit : 16 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_35_41 - {}
+def : format - xls - load - unit : 17 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_28_34 - {}
+def : format - xls - load - unit : 18 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_21_27 - {}
+def : format - xls - load - unit : 19 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_15_20 - {}
+def : format - xls - load - unit : 20 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_10_14 - {}
+def : format - xls - load - unit : 21 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_01_02 - {}
+def : format - xls - load - unit : 22 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Test_Signal_Byte_00 - {}
+def : format - xls - load - unit : 23 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - StarterKey - {}
+def : format - xls - load - unit : 24 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - SleepInd - {}
+def : format - xls - load - unit : 25 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Gear - {0: 'Idle', 1: 'Gear_1', 2: 'Gear_2', 3: 'Gear_3', 4: 'Gear_4', 5: 'Gear_5'}
+def : format - xls - load - unit : 26 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngStatusFD_FillByte4 - {}
+def : format - xls - load - unit : 27 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngStatusFD_FillByte3 - {}
+def : format - xls - load - unit : 28 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngStatusFD_FillByte2 - {}
+def : format - xls - load - unit : 29 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngStatusFD_FillByte1 - {}
+def : format - xls - load - unit : 30 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - ErrorCode - {}
+def : format - xls - load - unit : 31 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Status - {0: 'WakeUp', 1: 'Running', 2: 'GoSleep', 3: 'Error'}
+def : format - xls - load - unit : 32 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngKnocking - {}
+def : format - xls - load - unit : 33 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngIgnitionAngle - {}
+def : format - xls - load - unit : 34 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngStates - {}
+def : format - xls - load - unit : 35 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngValvePos - {}
+def : format - xls - load - unit : 36 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngTubePressure - {}
+def : format - xls - load - unit : 37 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - SleepInd - {}
+def : format - xls - load - unit : 38 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - ShiftRequest - {0: 'Shift_Request_Off', 1: 'Shift_Request_On'}
+def : format - xls - load - unit : 39 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Gear - {0: 'Idle', 1: 'Gear_1', 2: 'Gear_2', 3: 'Gear_3', 4: 'Gear_4', 5: 'Gear_5'}
+def : format - xls - load - unit : 40 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EcoMode - {}
+def : format - xls - load - unit : 41 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngTorque - {}
+def : format - xls - load - unit : 42 - rpm - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngSpeed - {}
+def : format - xls - load - unit : 43 - N - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngForce - {}
+def : format - xls - load - unit : 44 - l - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - PetrolLevel - {}
+def : format - xls - load - unit : 45 - kW - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngPower - {}
+def : format - xls - load - unit : 46 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - IdleRunning - {0: 'Running', 1: 'Idle'}
+def : format - xls - load - unit : 47 - degC - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - EngTemp - {}
+def : format - xls - load - unit : 48 - N - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - AccelarationForce - {}
+def : format - xls - load - unit : 49 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - Diagnostics - {}
+def : format - xls - load - unit : 50 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - GearLock - {0: 'Gear_Lock_Off', 1: 'Gear_Lock_On'}
+def : format - xls - load - unit : 51 - mph - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - CarSpeed - {}
+def : format - xls - load - unit : 52 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - / - {}
+def : format - xls - load - unit : 53 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - / - {}
+def : format - xls - load - unit : 54 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - / - {}
+def : format - xls - load - unit : 55 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - / - {}
+def : format - xls - load - unit : 56 - / - 34
+def : canmatrix - Signal - add_comment - /
+def : format - xls - load - SIGNAL - / - {}
+def : canmatrix - CanMatrix - add_global_defines - [NmBaseAddress,HEX 1024 1087]
+DEF ROW - TRACE : NmBaseAddress - 1024.0 
+DEF ROW - G - STRING : DBName - /
+def : canmatrix - CanMatrix - add_global_defines - [DBName,/]
+def : canmatrix - CanMatrix - add_define_default - DBName - 
+def : canmatrix - CanMatrix - add_define_default - GLO BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+DEF ROW - G - STRING : BusType - /
+def : canmatrix - CanMatrix - add_global_defines - [BusType,/]
+def : canmatrix - CanMatrix - add_define_default - BusType - 
+def : canmatrix - CanMatrix - add_define_default - GLO BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [NmStationAddress,INT 0 63]
+def : canmatrix - CanMatrix - add_define_default - NmStationAddress - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [NmNode,no,yes]
+def : canmatrix - CanMatrix - add_define_default - NmNode - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [NodeLayerModules,STRING]
+def : canmatrix - CanMatrix - add_define_default - NodeLayerModules - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [ECU,STRING]
+def : canmatrix - CanMatrix - add_define_default - ECU - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [CANoeJitterMax,INT 0 0]
+def : canmatrix - CanMatrix - add_define_default - CANoeJitterMax - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [CANoeJitterMin,INT 0 0]
+def : canmatrix - CanMatrix - add_define_default - CANoeJitterMin - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [CANoeDrift,INT 0 0]
+def : canmatrix - CanMatrix - add_define_default - CANoeDrift - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_ecu_defines - [CANoeStartDelay,INT 0 0]
+def : canmatrix - CanMatrix - add_define_default - CANoeStartDelay - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgSendType,ENUM Cyclic,NotUsed,NotUsed,NotUsed,NotUsed,Cyclic,NotUsed,IfActive,NoMsgSendType,NotUsed,]
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgNrOfRepetition,INT 0 999999]
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgDelayTime,INT 0 1000]
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgCycleTime,INT 0 50000]
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgCycleTimeFast,INT 0 50000]
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgILSupport,ENUM No,Yes]
+def : canmatrix - CanMatrix - add_frame_defines - [[],NmMessage,ENUM no,yes]
+def : canmatrix - CanMatrix - add_frame_defines - [[],GenMsgStartDelayTime,INT 0 65535]
+def : canmatrix - CanMatrix - add_frame_defines - [[],CANFD_BRS,ENUM 0,1]
+def : canmatrix - CanMatrix - add_frame_defines - [[],VFrameFormat,ENUM StandardCAN,ExtendedCAN,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,StandardCAN_FD,ExtendedCAN_FD]
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigStartValue,FLOAT 0.0 100000000000.0]
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigSendType,ENUM Cyclic,OnWrite,OnWriteWithRepetition,OnChange,OnChangeWithRepetition,IfActive,IfActiveWithRepetition,NoSigSendType,NotUsed,NotUsed,NotUsed,NotUsed,NotUsed]
+def : canmatrix - CanMatrix - add_signal_defines - [GenSigInactiveValue,INT 0 100000]
+def : canmatrix - CanMatrix - add_signal_defines - [NWM-WakeupAllowed,ENUM No,Yes]
+def : format - xls - load - BA_DEF_DEF_ : NmBaseAddress - 1024.0 
+def : canmatrix - CanMatrix - add_define_default - NmBaseAddress - 1024.0
+def : canmatrix - CanMatrix - add_define_default - GLO BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : DBName - / 
+def : canmatrix - CanMatrix - add_define_default - DBName - 
+def : canmatrix - CanMatrix - add_define_default - GLO BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : BusType - / 
+def : canmatrix - CanMatrix - add_define_default - BusType - 
+def : canmatrix - CanMatrix - add_define_default - GLO BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : NmStationAddress - 0.0 
+def : canmatrix - CanMatrix - add_define_default - NmStationAddress - 0.0
+def : canmatrix - CanMatrix - add_define_default - ECU BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : NmNode - no 
+def : canmatrix - CanMatrix - add_define_default - NmNode - no
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : NodeLayerModules - / 
+def : canmatrix - CanMatrix - add_define_default - NodeLayerModules - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : ECU - / 
+def : canmatrix - CanMatrix - add_define_default - ECU - 
+def : canmatrix - CanMatrix - add_define_default - ECU BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : CANoeJitterMax - 0.0 
+def : canmatrix - CanMatrix - add_define_default - CANoeJitterMax - 0.0
+def : canmatrix - CanMatrix - add_define_default - ECU BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : CANoeJitterMin - 0.0 
+def : canmatrix - CanMatrix - add_define_default - CANoeJitterMin - 0.0
+def : canmatrix - CanMatrix - add_define_default - ECU BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : CANoeDrift - 0.0 
+def : canmatrix - CanMatrix - add_define_default - CANoeDrift - 0.0
+def : canmatrix - CanMatrix - add_define_default - ECU BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : CANoeStartDelay - 0.0 
+def : canmatrix - CanMatrix - add_define_default - CANoeStartDelay - 0.0
+def : canmatrix - CanMatrix - add_define_default - ECU BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgSendType - NoMsgSendType 
+def : canmatrix - CanMatrix - add_define_default - GenMsgSendType - NoMsgSendType
+def : canmatrix - CanMatrix - add_define_default - FRM BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgNrOfRepetition - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenMsgNrOfRepetition - 0.0
+def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgDelayTime - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenMsgDelayTime - 0.0
+def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgCycleTime - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenMsgCycleTime - 0.0
+def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgCycleTimeFast - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenMsgCycleTimeFast - 0.0
+def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgILSupport - Yes 
+def : canmatrix - CanMatrix - add_define_default - GenMsgILSupport - Yes
+def : canmatrix - CanMatrix - add_define_default - FRM BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : NmMessage - no 
+def : canmatrix - CanMatrix - add_define_default - NmMessage - no
+def : canmatrix - CanMatrix - add_define_default - FRM BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenMsgStartDelayTime - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenMsgStartDelayTime - 0.0
+def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : CANFD_BRS - 1 
+def : canmatrix - CanMatrix - add_define_default - CANFD_BRS - 1
+def : canmatrix - CanMatrix - add_define_default - FRM BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : VFrameFormat - StandardCAN 
+def : canmatrix - CanMatrix - add_define_default - VFrameFormat - StandardCAN
+def : canmatrix - CanMatrix - add_define_default - FRM BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenSigStartValue - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenSigStartValue - 0.0
+def : canmatrix - CanMatrix - add_define_default - SIG BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenSigSendType - Cyclic 
+def : canmatrix - CanMatrix - add_define_default - GenSigSendType - Cyclic
+def : canmatrix - CanMatrix - add_define_default - SIG BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : GenSigInactiveValue - 0.0 
+def : canmatrix - CanMatrix - add_define_default - GenSigInactiveValue - 0.0
+def : canmatrix - CanMatrix - add_define_default - SIG BUG - FLOAT -  <class 'str'> <class 'float'>
+def : canmatrix - Define - set_default
+def : format - xls - load - BA_DEF_DEF_ : NWM-WakeupAllowed - / 
+def : canmatrix - CanMatrix - add_define_default - NWM-WakeupAllowed - 
+def : canmatrix - CanMatrix - add_define_default - SIG BUG -  <class 'str'> <class 'str'>
+def : canmatrix - Define - set_default
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : canmatrix - CanMatrix - ecu_by_name
+def : canmatrix - Ecu - add_attribute
+def : canmatrix - CanMatrix - add_attribute - [DBName,CAN_FD_Powertrain]
+DEBUG : ADD STD FRAME ATTR - FallbackMessage - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [FallbackMessage,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - FallbackMessage - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [FallbackMessage,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - DropOutMessage - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [DropOutMessage,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - DropOutMessage - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [DropOutMessage,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Test_Message_CAN_FD - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Test_Message_CAN_FD,VFrameFormat,14]
+DEBUG : ADD EXT FRAME ATTR - Ignition_Info - GenMsgCycleTime - 50
+def : canmatrix - Frame - add_attribute - [Ignition_Info,GenMsgCycleTime,50]
+DEBUG : ADD EXT FRAME ATTR - Ignition_Info - VFrameFormat - 15
+def : canmatrix - Frame - add_attribute - [Ignition_Info,VFrameFormat,15]
+DEBUG : ADD STD FRAME ATTR - NM_Engine - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [NM_Engine,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - NM_Engine - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [NM_Engine,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - GearBoxInfo - GenMsgCycleTime - 50
+def : canmatrix - Frame - add_attribute - [GearBoxInfo,GenMsgCycleTime,50]
+DEBUG : ADD STD FRAME ATTR - GearBoxInfo - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [GearBoxInfo,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - GenMsgCycleTime - 10
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgCycleTime,10]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - GenMsgCycleTime - 10
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgCycleTime,10]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - GenMsgCycleTime - 10
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgCycleTime,10]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - GenMsgCycleTime - 10
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgCycleTime,10]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - GenMsgCycleTime - 10
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgCycleTime,10]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - GenMsgCycleTime - 10
+def : canmatrix - Frame - add_attribute - [EngineStatus,GenMsgCycleTime,10]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineStatus,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineStatus,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineStatus,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineStatus,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineStatus,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineStatus - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineStatus,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - GenMsgCycleTime - 100
+def : canmatrix - Frame - add_attribute - [EngineData,GenMsgCycleTime,100]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - EngineData - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [EngineData,VFrameFormat,14]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - GenMsgCycleTime - 50
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgCycleTime,50]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - GenMsgCycleTime - 50
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgCycleTime,50]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - GenMsgCycleTime - 50
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgCycleTime,50]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - GenMsgCycleTime - 50
+def : canmatrix - Frame - add_attribute - [ABSdata,GenMsgCycleTime,50]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - VFrameFormat - 15
+def : canmatrix - Frame - add_attribute - [ABSdata,VFrameFormat,15]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - VFrameFormat - 15
+def : canmatrix - Frame - add_attribute - [ABSdata,VFrameFormat,15]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - VFrameFormat - 15
+def : canmatrix - Frame - add_attribute - [ABSdata,VFrameFormat,15]
+DEBUG : ADD EXT FRAME ATTR - ABSdata - VFrameFormat - 15
+def : canmatrix - Frame - add_attribute - [ABSdata,VFrameFormat,15]
+DEBUG : ADD STD FRAME ATTR - Diag_Request - GenMsgSendType - 0
+def : canmatrix - Frame - add_attribute - [Diag_Request,GenMsgSendType,0]
+DEBUG : ADD STD FRAME ATTR - Diag_Request - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Diag_Request,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - Diag_Response - GenMsgSendType - 0
+def : canmatrix - Frame - add_attribute - [Diag_Response,GenMsgSendType,0]
+DEBUG : ADD STD FRAME ATTR - Diag_Response - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [Diag_Response,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - DiagResponse_Motor - GenMsgSendType - 1
+def : canmatrix - Frame - add_attribute - [DiagResponse_Motor,GenMsgSendType,1]
+DEBUG : ADD STD FRAME ATTR - DiagResponse_Motor - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [DiagResponse_Motor,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - DiagRequest_Motor - GenMsgSendType - 1
+def : canmatrix - Frame - add_attribute - [DiagRequest_Motor,GenMsgSendType,1]
+DEBUG : ADD STD FRAME ATTR - DiagRequest_Motor - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [DiagRequest_Motor,VFrameFormat,14]
+DEBUG : ADD STD FRAME ATTR - NM_Gateway_PowerTrain - GenMsgSendType - 1
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,GenMsgSendType,1]
+DEBUG : ADD STD FRAME ATTR - NM_Gateway_PowerTrain - VFrameFormat - 14
+def : canmatrix - Frame - add_attribute - [NM_Gateway_PowerTrain,VFrameFormat,14]
+DEBUG : ADD SIGNAL ATTR - BA_ SG_ - 1307 - SleepInd
+DEBUG : ADD SIGNAL ATTR - BA_ SG_ - GenSigSendType ; 1
+def : canmatrix - Signal - add_attribute
+DEBUG : ADD SIGNAL ATTR - BA_ SG_ - 100 - SleepInd
+DEBUG : ADD SIGNAL ATTR - BA_ SG_ - GenSigSendType ; 1
+def : canmatrix - Signal - add_attribute
+def : format - __init__ - dumpp
+def : format - __init__ - dumpp - here []
+def : format - __init__ - dump
+def : format - dbc - dump
+def : canmatrix - CanMatrix - contains_fd
+def : canmatrix - CanMatrix - contains_j1939
+def : canmatrix - CanMatrix - contains_fd
+def : canmatrix - CanMatrix - add_global_defines - [BusType,STRING]
+def : canmatrix - CanMatrix - add_attribute - [BusType,CAN FD]
+def : canmatrix - CanMatrix - add_frame_defines - [[],VFrameFormat,ENUM  "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD"]
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - ENUM
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 0
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 0
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 1
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 1
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 1
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - ENUM
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - ENUM
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - ENUM
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - ENUM
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 15
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 15
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 15
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 15
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 15
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM VALUE -  <class 'list'> 14
+def : format - dbc - dump - HEADER : b'VERSION "TOOL OF INVENTEC AND KOSTAL"\n\n\nNS_ : \r\n\tNS_DESC_\r\n\tCM_\r\n\tBA_DEF_\r\n\tBA_\r\n\tVAL_\r\n\tCAT_DEF_\r\n\tCAT_\r\n\tFILTER\r\n\tBA_DEF_DEF_\r\n\tEV_DATA_\r\n\tENVVAR_DATA_\r\n\tSGTYPE_\r\n\tSGTYPE_VAL_\r\n\tBA_DEF_SGTYPE_\r\n\tBA_SGTYPE_\r\n\tSIG_TYPE_REF_\r\n\tVAL_TABLE_\r\n\tSIG_GROUP_\r\n\tSIG_VALTYPE_\r\n\tSIGTYPE_VALTYPE_\r\n\tBO_TX_BU_\r\n\tBA_DEF_REL_\r\n\tBA_REL_\r\n\tBA_DEF_DEF_REL_\r\n\tBU_SG_REL_\r\n\tBU_EV_REL_\r\n\tBU_BO_REL_\r\n\tSG_MUL_VAL_\r\n\r\nBS_:\n\n'
+def : format - dbc - dump - ECU : Engine
+def : format - dbc - dump - ECU : Gateway
+def : format - dbc - dump - EVAL : EngInjectionVol
+def : canmatrix - Signal - phys2raw - EngInjectionVol,0
+def : format - dbc - dump - EVAL : New_Signal_51
+def : canmatrix - Signal - phys2raw - New_Signal_51,0
+def : format - dbc - dump - EVAL : New_Signal_50
+def : canmatrix - Signal - phys2raw - New_Signal_50,0
+def : format - dbc - dump - EVAL : New_Signal_49
+def : canmatrix - Signal - phys2raw - New_Signal_49,0
+def : format - dbc - dump - EVAL : New_Signal_48
+def : canmatrix - Signal - phys2raw - New_Signal_48,0
+def : format - dbc - dump - EVAL : FallbackMessage_Byte_06_10
+def : canmatrix - Signal - phys2raw - FallbackMessage_Byte_06_10,0
+def : format - dbc - dump - EVAL : FallbackMessage_Byte_00_05
+def : canmatrix - Signal - phys2raw - FallbackMessage_Byte_00_05,0
+def : format - dbc - dump - EVAL : DropOutMessage_Byte_06_10
+def : canmatrix - Signal - phys2raw - DropOutMessage_Byte_06_10,0
+def : format - dbc - dump - EVAL : DropOutMessage_Byte_00_05
+def : canmatrix - Signal - phys2raw - DropOutMessage_Byte_00_05,0
+def : format - dbc - dump - EVAL : Test_signal_Byte_56_62
+def : canmatrix - Signal - phys2raw - Test_signal_Byte_56_62,0
+def : format - dbc - dump - EVAL : Test_signal_Byte_49_55
+def : canmatrix - Signal - phys2raw - Test_signal_Byte_49_55,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_63
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_63,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_06_09
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_06_09,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_03_05
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_03_05,0
+def : format - dbc - dump - EVAL : Test_signal_Byte_42_48
+def : canmatrix - Signal - phys2raw - Test_signal_Byte_42_48,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_35_41
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_35_41,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_28_34
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_28_34,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_21_27
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_21_27,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_15_20
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_15_20,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_10_14
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_10_14,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_01_02
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_01_02,0
+def : format - dbc - dump - EVAL : Test_Signal_Byte_00
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_00,0
+def : format - dbc - dump - EVAL : StarterKey
+def : canmatrix - Signal - phys2raw - StarterKey,0
+def : format - dbc - dump - EVAL : SleepInd
+def : canmatrix - Signal - phys2raw - SleepInd,0
+def : format - dbc - dump - EVAL : Gear
+def : canmatrix - Signal - phys2raw - Gear,0
+def : format - dbc - dump - EVAL : EngStatusFD_FillByte4
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte4,0
+def : format - dbc - dump - EVAL : EngStatusFD_FillByte3
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte3,0
+def : format - dbc - dump - EVAL : EngStatusFD_FillByte2
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte2,0
+def : format - dbc - dump - EVAL : EngStatusFD_FillByte1
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte1,0
+def : format - dbc - dump - EVAL : ErrorCode
+def : canmatrix - Signal - phys2raw - ErrorCode,0
+def : format - dbc - dump - EVAL : Status
+def : canmatrix - Signal - phys2raw - Status,0
+def : format - dbc - dump - EVAL : EngKnocking
+def : canmatrix - Signal - phys2raw - EngKnocking,0
+def : format - dbc - dump - EVAL : EngIgnitionAngle
+def : canmatrix - Signal - phys2raw - EngIgnitionAngle,0
+def : format - dbc - dump - EVAL : EngStates
+def : canmatrix - Signal - phys2raw - EngStates,0
+def : format - dbc - dump - EVAL : EngValvePos
+def : canmatrix - Signal - phys2raw - EngValvePos,0
+def : format - dbc - dump - EVAL : EngTubePressure
+def : canmatrix - Signal - phys2raw - EngTubePressure,0
+def : format - dbc - dump - EVAL : SleepInd
+def : canmatrix - Signal - phys2raw - SleepInd,0
+def : format - dbc - dump - EVAL : ShiftRequest
+def : canmatrix - Signal - phys2raw - ShiftRequest,0
+def : format - dbc - dump - EVAL : Gear
+def : canmatrix - Signal - phys2raw - Gear,0
+def : format - dbc - dump - EVAL : EcoMode
+def : canmatrix - Signal - phys2raw - EcoMode,0
+def : format - dbc - dump - EVAL : EngTorque
+def : canmatrix - Signal - phys2raw - EngTorque,0
+def : format - dbc - dump - EVAL : EngSpeed
+def : canmatrix - Signal - phys2raw - EngSpeed,0
+def : format - dbc - dump - EVAL : EngForce
+def : canmatrix - Signal - phys2raw - EngForce,0
+def : format - dbc - dump - EVAL : PetrolLevel
+def : canmatrix - Signal - phys2raw - PetrolLevel,0
+def : format - dbc - dump - EVAL : EngPower
+def : canmatrix - Signal - phys2raw - EngPower,0
+def : format - dbc - dump - EVAL : IdleRunning
+def : canmatrix - Signal - phys2raw - IdleRunning,0
+def : format - dbc - dump - EVAL : EngTemp
+def : canmatrix - Signal - phys2raw - EngTemp,25
+def : format - dbc - dump - EVAL : AccelarationForce
+def : canmatrix - Signal - phys2raw - AccelarationForce,10000
+def : format - dbc - dump - EVAL : Diagnostics
+def : canmatrix - Signal - phys2raw - Diagnostics,0
+def : format - dbc - dump - EVAL : GearLock
+def : canmatrix - Signal - phys2raw - GearLock,0
+def : format - dbc - dump - EVAL : CarSpeed
+def : canmatrix - Signal - phys2raw - CarSpeed,0
+def : format - dbc - dump - EVAL : /
+def : format - dbc - dump - EVAL : /
+def : format - dbc - dump - EVAL : /
+def : format - dbc - dump - EVAL : /
+def : format - dbc - dump - EVAL : /
+def : canmatrix - Signal - phys2raw - EngInjectionVol,0
+def : canmatrix - Signal - phys2raw - New_Signal_51,0
+def : canmatrix - Signal - phys2raw - New_Signal_50,0
+def : canmatrix - Signal - phys2raw - New_Signal_49,0
+def : canmatrix - Signal - phys2raw - New_Signal_48,0
+def : canmatrix - Signal - phys2raw - FallbackMessage_Byte_06_10,0
+def : canmatrix - Signal - phys2raw - FallbackMessage_Byte_00_05,0
+def : canmatrix - Signal - phys2raw - DropOutMessage_Byte_06_10,0
+def : canmatrix - Signal - phys2raw - DropOutMessage_Byte_00_05,0
+def : canmatrix - Signal - phys2raw - Test_signal_Byte_56_62,0
+def : canmatrix - Signal - phys2raw - Test_signal_Byte_49_55,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_63,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_06_09,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_03_05,0
+def : canmatrix - Signal - phys2raw - Test_signal_Byte_42_48,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_35_41,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_28_34,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_21_27,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_15_20,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_10_14,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_01_02,0
+def : canmatrix - Signal - phys2raw - Test_Signal_Byte_00,0
+def : canmatrix - Signal - phys2raw - StarterKey,0
+def : canmatrix - Signal - phys2raw - SleepInd,0
+def : canmatrix - Signal - phys2raw - Gear,0
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte4,0
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte3,0
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte2,0
+def : canmatrix - Signal - phys2raw - EngStatusFD_FillByte1,0
+def : canmatrix - Signal - phys2raw - ErrorCode,0
+def : canmatrix - Signal - phys2raw - Status,0
+def : canmatrix - Signal - phys2raw - EngKnocking,0
+def : canmatrix - Signal - phys2raw - EngIgnitionAngle,0
+def : canmatrix - Signal - phys2raw - EngStates,0
+def : canmatrix - Signal - phys2raw - EngValvePos,0
+def : canmatrix - Signal - phys2raw - EngTubePressure,0
+def : canmatrix - Signal - phys2raw - SleepInd,0
+def : canmatrix - Signal - phys2raw - ShiftRequest,0
+def : canmatrix - Signal - phys2raw - Gear,0
+def : canmatrix - Signal - phys2raw - EcoMode,0
+def : canmatrix - Signal - phys2raw - EngTorque,0
+def : canmatrix - Signal - phys2raw - EngSpeed,0
+def : canmatrix - Signal - phys2raw - EngForce,0
+def : canmatrix - Signal - phys2raw - PetrolLevel,0
+def : canmatrix - Signal - phys2raw - EngPower,0
+def : canmatrix - Signal - phys2raw - IdleRunning,0
+def : canmatrix - Signal - phys2raw - EngTemp,25
+def : canmatrix - Signal - phys2raw - AccelarationForce,10000
+def : canmatrix - Signal - phys2raw - Diagnostics,0
+def : canmatrix - Signal - phys2raw - GearLock,0
+def : canmatrix - Signal - phys2raw - CarSpeed,0
+def : format - dbc - dump - FRAME : ArbitrationId(id=1073741824, extended=True) , VECTOR__INDEPENDENT_SIG_MSG , 0 , ['Vector__XXX']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngInjectionVol : 0|64@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=3, extended=False) , New_Message_18 , 8 , ['Vector__XXX']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ New_Signal_51 : 48|8@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=2, extended=False) , New_Message_17 , 8 , ['Vector__XXX']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ New_Signal_50 : 0|8@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1, extended=False) , New_Message_16 , 8 , ['Vector__XXX']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ New_Signal_49 : 48|8@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=0, extended=False) , New_Message_15 , 8 , ['Vector__XXX']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ New_Signal_48 : 0|8@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1793, extended=False) , FallbackMessage , 12 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FallbackMessage_Byte_06_10 : 55|48@0- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ FallbackMessage_Byte_00_05 : 7|48@0- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1792, extended=False) , DropOutMessage , 32 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ DropOutMessage_Byte_06_10 : 55|48@0- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ DropOutMessage_Byte_00_05 : 7|48@0- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=2047, extended=False) , Test_Message_CAN_FD , 64 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_signal_Byte_56_62 : 448|52@1- (1,0) [-2251799813685250|2251799813685250] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_signal_Byte_49_55 : 392|52@1- (1,0) [-2251799813685250|2251799813685250] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_63 : 504|8@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_06_09 : 48|32@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_03_05 : 24|24@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_signal_Byte_42_48 : 336|52@1- (1,0) [-2251799813685250|2251799813685250] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_35_41 : 280|52@1- (1,0) [-2251799813685250|2251799813685250] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_28_34 : 224|52@1- (1,0) [-2251799813685250|2251799813685250] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_21_27 : 168|52@1- (1,0) [-2251799813685250|2251799813685250] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_15_20 : 120|48@1- (1,0) [-140737488355328|140737488355327] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_10_14 : 80|40@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_01_02 : 8|16@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Test_Signal_Byte_00 : 0|8@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=72048, extended=True) , Ignition_Info , 48 , ['Gateway']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ StarterKey : 0|1@1+ (1,0) [0|1] ""  Engine\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1307, extended=False) , NM_Engine , 4 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SleepInd : 0|1@1+ (1,0) [0|1] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=1020, extended=False) , GearBoxInfo , 32 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Gear : 0|3@1+ (1,0) [0|5] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=101, extended=False) , EngineStatus , 24 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngStatusFD_FillByte4 : 64|16@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngStatusFD_FillByte3 : 32|24@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngStatusFD_FillByte2 : 16|8@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngStatusFD_FillByte1 : 8|8@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ ErrorCode : 2|6@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Status : 0|2@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=100, extended=False) , EngineData , 64 , ['Engine']
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngKnocking : 464|48@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngIgnitionAngle : 400|64@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngStates : 336|64@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngValvePos : 272|64@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngTubePressure : 208|64@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ SleepInd : 201|1@1+ (1,0) [0|1] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ ShiftRequest : 200|1@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Gear : 44|3@1+ (1,0) [0|5] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EcoMode : 42|2@1+ (1,0) [0|1] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngTorque : 128|64@1- (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : rpm
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngSpeed : 96|16@1- (1,0) [-32768|32767] "rpm"  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : N
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngForce : 64|32@1- (1,0) [0|0] "N"  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : l
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ PetrolLevel : 24|8@1+ (1,0) [0|255] "l"  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : kW
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngPower : 48|16@1+ (0.01,0) [0|150] "kW"  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ IdleRunning : 15|1@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : degC
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ EngTemp : 16|7@1+ (2,-50) [-50|150] "degC"  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=51525, extended=True) , ABSdata , 12 , ['Engine']
+def : format - dbc - dump - SIGNAL : N
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ AccelarationForce : 32|16@1+ (1,-10000) [0|0] "N"  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Diagnostics : 16|8@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : 
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ GearLock : 15|1@1+ (1,0) [0|0] ""  Vector__XXX\n'
+def : format - dbc - dump - SIGNAL : mph
+def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ CarSpeed : 0|10@1+ (0.5,0) [0|300] "mph"  Vector__XXX\n'
+def : format - dbc - dump - FRAME : ArbitrationId(id=512, extended=False) , Diag_Request , 8 , ['Vector__XXX']
+def : format - dbc - dump - FRAME : ArbitrationId(id=1024, extended=False) , Diag_Response , 8 , ['Vector__XXX']
+def : format - dbc - dump - FRAME : ArbitrationId(id=1544, extended=False) , DiagResponse_Motor , 8 , ['Engine']
+def : format - dbc - dump - FRAME : ArbitrationId(id=1537, extended=False) , DiagRequest_Motor , 8 , ['Gateway']
+def : format - dbc - dump - FRAME : ArbitrationId(id=1306, extended=False) , NM_Gateway_PowerTrain , 4 , ['Gateway']
+def : format - dbc - dump - BO_ DEFINE : [CANFD_BRS , <canmatrix.canmatrix.Define object at 0x7fe656bdc358>]
+def : format - dbc - create_define - BUG - ENUM - 1
+def : format - dbc - create_define - BA_DEF_ BO_ "CANFD_BRS" ENUM 0,1;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgCycleTime , <canmatrix.canmatrix.Define object at 0x7fe656bdc128>]
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgCycleTime" INT 0 50000;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgCycleTimeFast , <canmatrix.canmatrix.Define object at 0x7fe656bdc198>]
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgCycleTimeFast" INT 0 50000;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgDelayTime , <canmatrix.canmatrix.Define object at 0x7fe656bdc0b8>]
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgDelayTime" INT 0 1000;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgILSupport , <canmatrix.canmatrix.Define object at 0x7fe656bdc208>]
+def : format - dbc - create_define - BUG - ENUM - Yes
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgILSupport" ENUM No,Yes;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgNrOfRepetition , <canmatrix.canmatrix.Define object at 0x7fe656bdc048>]
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgNrOfRepetition" INT 0 999999;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgSendType , <canmatrix.canmatrix.Define object at 0x7fe656bd4f98>]
+def : format - dbc - create_define - BUG - ENUM - NoMsgSendType
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgSendType" ENUM Cyclic,NotUsed,NotUsed,NotUsed,NotUsed,Cyclic,NotUsed,IfActive,NoMsgSendType,NotUsed,;
+
+def : format - dbc - dump - BO_ DEFINE : [GenMsgStartDelayTime , <canmatrix.canmatrix.Define object at 0x7fe656bdc2e8>]
+def : format - dbc - create_define - BA_DEF_ BO_ "GenMsgStartDelayTime" INT 0 65535;
+
+def : format - dbc - dump - BO_ DEFINE : [NmMessage , <canmatrix.canmatrix.Define object at 0x7fe656bdc278>]
+def : format - dbc - create_define - BUG - ENUM - no
+def : format - dbc - create_define - BA_DEF_ BO_ "NmMessage" ENUM no,yes;
+
+def : format - dbc - dump - BO_ DEFINE : [VFrameFormat , <canmatrix.canmatrix.Define object at 0x7fe656bdc3c8>]
+def : format - dbc - create_define - BUG - ENUM - StandardCAN
+def : format - dbc - create_define - BA_DEF_ BO_ "VFrameFormat" ENUM StandardCAN,ExtendedCAN,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,StandardCAN_FD,ExtendedCAN_FD;
+
+def : format - dbc - dump - SG_ DEFINE : [GenSigInactiveValue , <canmatrix.canmatrix.Define object at 0x7fe656bd4eb8>]
+def : format - dbc - create_define - BA_DEF_ SG_ "GenSigInactiveValue" INT 0 100000;
+
+def : format - dbc - dump - SG_ DEFINE : [GenSigSendType , <canmatrix.canmatrix.Define object at 0x7fe656bd4e48>]
+def : format - dbc - create_define - BUG - ENUM - Cyclic
+def : format - dbc - create_define - BA_DEF_ SG_ "GenSigSendType" ENUM Cyclic,OnWrite,OnWriteWithRepetition,OnChange,OnChangeWithRepetition,IfActive,IfActiveWithRepetition,NoSigSendType,NotUsed,NotUsed,NotUsed,NotUsed,NotUsed;
+
+def : format - dbc - dump - SG_ DEFINE : [GenSigStartValue , <canmatrix.canmatrix.Define object at 0x7fe656bd4dd8>]
+def : format - dbc - create_define - BA_DEF_ SG_ "GenSigStartValue" FLOAT 0.0 100000000000.0;
+
+def : format - dbc - dump - SG_ DEFINE : [NWM-WakeupAllowed , <canmatrix.canmatrix.Define object at 0x7fe656bd4f28>]
+def : format - dbc - create_define - BUG - ENUM - 
+def : format - dbc - create_define - BA_DEF_ SG_ "NWM-WakeupAllowed" ENUM No,Yes;
+
+def : format - dbc - dump - BU_ DEFINE : [CANoeDrift , <canmatrix.canmatrix.Define object at 0x7fe656bdc828>]
+def : format - dbc - create_define - BA_DEF_ BU_ "CANoeDrift" INT 0 0;
+
+def : format - dbc - dump - BU_ DEFINE : [CANoeJitterMax , <canmatrix.canmatrix.Define object at 0x7fe656bdc748>]
+def : format - dbc - create_define - BA_DEF_ BU_ "CANoeJitterMax" INT 0 0;
+
+def : format - dbc - dump - BU_ DEFINE : [CANoeJitterMin , <canmatrix.canmatrix.Define object at 0x7fe656bdc7b8>]
+def : format - dbc - create_define - BA_DEF_ BU_ "CANoeJitterMin" INT 0 0;
+
+def : format - dbc - dump - BU_ DEFINE : [CANoeStartDelay , <canmatrix.canmatrix.Define object at 0x7fe656bdc898>]
+def : format - dbc - create_define - BA_DEF_ BU_ "CANoeStartDelay" INT 0 0;
+
+def : format - dbc - dump - BU_ DEFINE : [ECU , <canmatrix.canmatrix.Define object at 0x7fe656bdc6d8>]
+def : format - dbc - create_define - BUG - STRING - 
+def : format - dbc - create_define - BA_DEF_ BU_ "ECU" STRING;
+
+def : format - dbc - dump - BU_ DEFINE : [NmNode , <canmatrix.canmatrix.Define object at 0x7fe656bdc5f8>]
+def : format - dbc - create_define - BUG - STRING - no
+def : format - dbc - create_define - BA_DEF_ BU_ "NmNode" STRING;
+
+def : format - dbc - dump - BU_ DEFINE : [NmStationAddress , <canmatrix.canmatrix.Define object at 0x7fe656bdc588>]
+def : format - dbc - create_define - BA_DEF_ BU_ "NmStationAddress" INT 0 63;
+
+def : format - dbc - dump - BU_ DEFINE : [NodeLayerModules , <canmatrix.canmatrix.Define object at 0x7fe656bdc668>]
+def : format - dbc - create_define - BUG - STRING - 
+def : format - dbc - create_define - BA_DEF_ BU_ "NodeLayerModules" STRING;
+
+def : format - dbc - dump - GLOBAL_ DEFINE : [BusType , <canmatrix.canmatrix.Define object at 0x7fe656bdc518>]
+def : format - dbc - create_define - BUG - STRING - 
+def : format - dbc - create_define - BA_DEF_  "BusType" STRING;
+
+def : format - dbc - dump - GLOBAL_ DEFINE : [DBName , <canmatrix.canmatrix.Define object at 0x7fe656bdc4a8>]
+def : format - dbc - create_define - BUG - STRING - 
+def : format - dbc - create_define - BA_DEF_  "DBName" STRING;
+
+def : format - dbc - dump - GLOBAL_ DEFINE : [NmBaseAddress , <canmatrix.canmatrix.Define object at 0x7fe656bdc438>]
+def : format - dbc - create_define - BA_DEF_  "NmBaseAddress" HEX 1024 1087;
+
+def : format - dbc - dump - DEFINE : BusType
+def : format - dbc - dump - DEFINE : CANFD_BRS
+def : format - dbc - dump - DEFINE : CANoeDrift
+def : format - dbc - dump - DEFINE : CANoeJitterMax
+def : format - dbc - dump - DEFINE : CANoeJitterMin
+def : format - dbc - dump - DEFINE : CANoeStartDelay
+def : format - dbc - dump - DEFINE : DBName
+def : format - dbc - dump - DEFINE : ECU
+def : format - dbc - dump - DEFINE : GenMsgCycleTime
+def : format - dbc - dump - DEFINE : GenMsgCycleTimeFast
+def : format - dbc - dump - DEFINE : GenMsgDelayTime
+def : format - dbc - dump - DEFINE : GenMsgILSupport
+def : format - dbc - dump - DEFINE : GenMsgNrOfRepetition
+def : format - dbc - dump - DEFINE : GenMsgSendType
+def : format - dbc - dump - DEFINE : GenMsgStartDelayTime
+def : format - dbc - dump - DEFINE : GenSigInactiveValue
+def : format - dbc - dump - DEFINE : GenSigSendType
+def : format - dbc - dump - DEFINE : GenSigStartValue
+def : format - dbc - dump - DEFINE : NWM-WakeupAllowed
+def : format - dbc - dump - DEFINE : NmBaseAddress
+def : format - dbc - dump - DEFINE : NmMessage
+def : format - dbc - dump - DEFINE : NmNode
+def : format - dbc - dump - DEFINE : NmStationAddress
+def : format - dbc - dump - DEFINE : NodeLayerModules
+def : format - dbc - dump - DEFINE : VFrameFormat
+def : format - dbc - dump - ECU ATTRIBUTE : [NodeLayerModules , Engine , CANoeILNLVector.dll , STRING]
+def : format - dbc - create_attribute_string - BA_ "NodeLayerModules" BU_ Engine "CANoeILNLVector.dll";
+
+def : format - dbc - dump - ECU ATTRIBUTE : [NodeLayerModules , Gateway , CANoeILNLVector.dll , STRING]
+def : format - dbc - create_attribute_string - BA_ "NodeLayerModules" BU_ Gateway "CANoeILNLVector.dll";
+
+def : format - dbc - dump - GLOBAL ATTRIBUTE : [BusType , CAN FD]
+def : format - dbc - create_attribute_string - BA_ "BusType"   "CAN FD";
+
+def : format - dbc - dump - GLOBAL ATTRIBUTE : [DBName , CAN_FD_Powertrain]
+def : format - dbc - create_attribute_string - BA_ "DBName"   "CAN_FD_Powertrain";
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1793 14;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1792 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 2047 100;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 2047 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 2147555696 50;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 2147555696 15;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 1307 100;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1307 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 1020 50;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1020 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 101 10;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 101 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 100 100;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 100 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgCycleTime" BO_ 2147535173 50;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 2147535173 15;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgSendType" BO_ 512 0;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 512 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgSendType" BO_ 1024 0;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1024 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgSendType" BO_ 1544 1;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1544 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgSendType" BO_ 1537 1;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1537 14;
+
+def : format - dbc - create_attribute_string - BA_ "GenMsgSendType" BO_ 1306 1;
+
+def : format - dbc - create_attribute_string - BA_ "VFrameFormat" BO_ 1306 14;
+
+def : format - dbc - dump - SIGNAL ATTRIBUTE : GenSigSendType , SG_ , 1307 SleepInd , 1 , False
+def : format - dbc - create_attribute_string - BA_ "GenSigSendType" SG_ 1307 SleepInd 1;
+
+def : format - dbc - dump - SIGNAL ATTRIBUTE : GenSigSendType , SG_ , 100 SleepInd , 1 , False
+def : format - dbc - create_attribute_string - BA_ "GenSigSendType" SG_ 100 SleepInd 1;
+
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Idle', 1: 'Gear_1', 2: 'Gear_2', 3: 'Gear_3', 4: 'Gear_4', 5: 'Gear_5'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'WakeUp', 1: 'Running', 2: 'GoSleep', 3: 'Error'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Shift_Request_Off', 1: 'Shift_Request_On'}
+def : format - dbc - dump - VAL : {0: 'Idle', 1: 'Gear_1', 2: 'Gear_2', 3: 'Gear_3', 4: 'Gear_4', 5: 'Gear_5'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Running', 1: 'Idle'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {0: 'Gear_Lock_Off', 1: 'Gear_Lock_On'}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}
+def : format - dbc - dump - VAL : {}

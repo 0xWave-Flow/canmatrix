@@ -393,6 +393,8 @@ def load(file, **options):
             index['MessageName'] = i
         elif "Message ID" in value:
             index['MessageID'] = i
+        elif "Message Type" in value:
+            index['MessageType'] = i
         elif "Period [ms]" in value:
             index['Period'] = i
         elif "DLC [Byte]" in value:
@@ -660,6 +662,10 @@ def load(file, **options):
             else:
                 new_frame.arbitration_id = canmatrix.ArbitrationId(int(frame_id[2:], 16), extended=False)
 
+            if sh.cell(row_num, index['MessageType']).value == "EXT":
+                #frame.arbitration_id.id = (int(temp.group(1)) - 0x80000000)
+                new_frame.arbitration_id.extended = True
+
             # add frame information to signal
             new_signal.frames = new_frame
             FrameTemp.append(new_frame)
@@ -863,15 +869,30 @@ def load(file, **options):
             #for each in FrameWithSignal:
             for each in FrameTemp:
                 # print("DEBUG : ADD FRAME ATTR - {} - {}".format(each.arbitration_id.id,
-                #                                                 sh_attr.cell(row_num, index['P3']).value))
-                if str(each.arbitration_id.id) == sh_attr.cell(row_num, index['P3']).value:
-                    # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
+                #
+                #
+                #                                                sh_attr.cell(row_num, index['P3']).value))
+                if each.arbitration_id.extended == False:
+                    if str(each.arbitration_id.id) == sh_attr.cell(row_num, index['P3']).value:
+                        # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
 
-                        print("DEBUG : ADD FRAME ATTR - {} - {} - {}".format(each.name,sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
+                        print("DEBUG : ADD STD FRAME ATTR - {} - {} - {}".format(each.name,sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
                         if sh_attr.cell(row_num, index['P4']).value == "/":
                             each.add_attribute(sh_attr.cell(row_num, index['P1']).value,"")
                         else:
                             each.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
+                else:
+                    if str(each.arbitration_id.id + 0x80000000) == sh_attr.cell(row_num, index['P3']).value:
+                        # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
+
+                        print("DEBUG : ADD EXT FRAME ATTR - {} - {} - {}".format(each.name,
+                                                                             sh_attr.cell(row_num, index['P1']).value,
+                                                                             sh_attr.cell(row_num, index['P4']).value))
+                        if sh_attr.cell(row_num, index['P4']).value == "/":
+                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value, "")
+                        else:
+                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value,
+                                               sh_attr.cell(row_num, index['P4']).value)
 
             # get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(sh_attr.cell(row_num, index['P3']).value)).add_attribute(
             #     sh_attr.cell(row_num, index['P1']).value,
@@ -884,6 +905,9 @@ def load(file, **options):
                 if signal.name == FrameIdandSignal[1] and signal.frames.arbitration_id.id == int(FrameIdandSignal[0]):
                     print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} ; {}".format(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
                     signal.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
+
+        elif sh_attr.cell(row_num, index['P2']).value == "GLO":
+            db.add_attribute(sh_attr.cell(row_num, index['P1']).value, sh_attr.cell(row_num, index['P4']).value)
 
     # ecu-attributes:
     # for ecu in db.ecus:

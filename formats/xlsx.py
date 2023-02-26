@@ -204,32 +204,32 @@ def dump(db, filename, **options):
         frame = signal.frames[0]
 
         #if (frame.arbitration_id.extended == False) or (signal.is_multiplexed == False):
-        if frame.arbitration_id.extended == False:
+        #if frame.arbitration_id.extended == False:
 
-            # get data from xls_common.py
+        # get data from xls_common.py
 
-            print("def : format - xlsx - dump - TOTAL SIGNAL DUMP : {}".format(signal))
+        print("def : format - xlsx - dump - TOTAL SIGNAL DUMP : {}".format(signal))
 
-            frontRow = canmatrix.formats.xls_common.get_signal(db, frame, signal, motorola_bit_format)
+        frontRow = canmatrix.formats.xls_common.get_signal(db, frame, signal, motorola_bit_format)
 
-            print("def : format - xlsx - dump - FRAME STRUCT : {}".format(frontRow[9]))
+        print("def : format - xlsx - dump - FRAME STRUCT : {}".format(frontRow[9]))
 
-            #if not (int(frontRow[9],16) >= 0x80000000):
+        #if not (int(frontRow[9],16) >= 0x80000000):
 
-            # write excel lines and return col
-            print("def : format - xlsx - dump - ROW : {}".format(frontRow))
-            col = write_excel_line(worksheet, row, 0, frontRow, signal_style)
+        # write excel lines and return col
+        print("def : format - xlsx - dump - ROW : {}".format(frontRow))
+        col = write_excel_line(worksheet, row, 0, frontRow, signal_style)
 
-            # add ecu receivers
-            for receiver in signal.receivers:
-                for [idx, name] in enumerate(ecu_list):
-                    if name == receiver:
-                        write_excel_line(worksheet, row, col + idx, "X", signal_style)
-                    else:
-                        write_excel_line(worksheet, row, col + idx, " ", signal_style)
-            row += 1
-            signal_style = sty_norm
-            # loop over values ends here
+        # add ecu receivers
+        for receiver in signal.receivers:
+            for [idx, name] in enumerate(ecu_list):
+                if name == receiver:
+                    write_excel_line(worksheet, row, col + idx, "X", signal_style)
+                else:
+                    write_excel_line(worksheet, row, col + idx, " ", signal_style)
+        row += 1
+        signal_style = sty_norm
+        # loop over values ends here
 
     head_top = [
         'DEF TYPE',
@@ -429,7 +429,7 @@ def dump(db, filename, **options):
     # global-attributes:
     for attrib, val in sorted(db.attributes.items()):
         print("def : format - dbc - dump - GLOBAL ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "", "", val, db.global_defines[attrib].type == "STRING"))
-        frontRow = [attrib, "", "", val, db.global_defines[attrib].type == "STRING"]
+        frontRow = [attrib, "GLO", "/", val, db.global_defines[attrib].type == "STRING"]
         col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
         row += 1
         # f.write(create_attribute_string(attrib, "", "", val, db.global_defines[attrib].type == "STRING").encode(

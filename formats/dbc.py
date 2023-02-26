@@ -181,21 +181,21 @@ def dump(in_db, f, **options):
         db.add_attribute("ProtocolType", "J1939")
         db.add_frame_defines("VFrameFormat", 'ENUM  "StandardCAN","ExtendedCAN","reserved","J1939PG"')
 
-    if db.contains_fd or db.contains_j1939:
-        for signal in db.signals:
-            frame = signal.frames
-            if frame.is_fd:
-                if frame.arbitration_id.extended:
-                    frame.add_attribute("VFrameFormat", "ExtendedCAN_FD")
-                else:
-                    frame.add_attribute("VFrameFormat", "StandardCAN_FD")
-            elif frame.is_j1939:
-                frame.add_attribute("VFrameFormat", "J1939PG")
-            else:
-                if frame.arbitration_id.extended:
-                    frame.add_attribute("VFrameFormat", "ExtendedCAN")
-                else:
-                    frame.add_attribute("VFrameFormat", "StandardCAN")
+    # if db.contains_fd or db.contains_j1939:
+    #     for signal in db.signals:
+    #         frame = signal.frames
+    #         if frame.is_fd:
+    #             if frame.arbitration_id.extended:
+    #                 frame.add_attribute("VFrameFormat", "ExtendedCAN_FD")
+    #             else:
+    #                 frame.add_attribute("VFrameFormat", "StandardCAN_FD")
+    #         elif frame.is_j1939:
+    #             frame.add_attribute("VFrameFormat", "J1939PG")
+    #         else:
+    #             if frame.arbitration_id.extended:
+    #                 frame.add_attribute("VFrameFormat", "ExtendedCAN")
+    #             else:
+    #                 frame.add_attribute("VFrameFormat", "StandardCAN")
 
     # keys into enum values
     db.enum_attribs_to_keys()
