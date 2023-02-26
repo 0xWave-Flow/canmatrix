@@ -126,20 +126,20 @@ BO_ 1537 DiagRequest_Motor: 8 Gateway
 BO_ 1306 NM_Gateway_PowerTrain: 4 Gateway
 
 
-BA_DEF_ BO_ "CANFD_BRS" ENUM 0,1;
+BA_DEF_ BO_ "CANFD_BRS" ENUM "0","1";
 BA_DEF_ BO_ "GenMsgCycleTime" INT 0 50000;
 BA_DEF_ BO_ "GenMsgCycleTimeFast" INT 0 50000;
 BA_DEF_ BO_ "GenMsgDelayTime" INT 0 1000;
-BA_DEF_ BO_ "GenMsgILSupport" ENUM No,Yes;
+BA_DEF_ BO_ "GenMsgILSupport" ENUM "No","Yes";
 BA_DEF_ BO_ "GenMsgNrOfRepetition" INT 0 999999;
-BA_DEF_ BO_ "GenMsgSendType" ENUM Cyclic,NotUsed,NotUsed,NotUsed,NotUsed,Cyclic,NotUsed,IfActive,NoMsgSendType,NotUsed,;
+BA_DEF_ BO_ "GenMsgSendType" ENUM "Cyclic","NotUsed","NotUsed","NotUsed","NotUsed","Cyclic","NotUsed","IfActive","NoMsgSendType","NotUsed","";
 BA_DEF_ BO_ "GenMsgStartDelayTime" INT 0 65535;
-BA_DEF_ BO_ "NmMessage" ENUM no,yes;
-BA_DEF_ BO_ "VFrameFormat" ENUM StandardCAN,ExtendedCAN,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,reserved,StandardCAN_FD,ExtendedCAN_FD;
+BA_DEF_ BO_ "NmMessage" ENUM "no","yes";
+BA_DEF_ BO_ "VFrameFormat" ENUM "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
 BA_DEF_ SG_ "GenSigInactiveValue" INT 0 100000;
-BA_DEF_ SG_ "GenSigSendType" ENUM Cyclic,OnWrite,OnWriteWithRepetition,OnChange,OnChangeWithRepetition,IfActive,IfActiveWithRepetition,NoSigSendType,NotUsed,NotUsed,NotUsed,NotUsed,NotUsed;
+BA_DEF_ SG_ "GenSigSendType" ENUM "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed";
 BA_DEF_ SG_ "GenSigStartValue" FLOAT 0.0 100000000000.0;
-BA_DEF_ SG_ "NWM-WakeupAllowed" ENUM No,Yes;
+BA_DEF_ SG_ "NWM-WakeupAllowed" ENUM "No","Yes";
 BA_DEF_ BU_ "CANoeDrift" INT 0 0;
 BA_DEF_ BU_ "CANoeJitterMax" INT 0 0;
 BA_DEF_ BU_ "CANoeJitterMin" INT 0 0;

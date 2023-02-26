@@ -250,6 +250,8 @@ def dump(db, filename, **options):
         frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type,'/','/','/']
 
         if db.env_defines.get(ENV_Define).type == "ENUM":
+            print("def : format - xls_common - get_signal - ENV DEF : ",db.env_defines.get(ENV_Define).values)
+            db.env_defines.get(ENV_Define).values = map(lambda x: "\"" + x + "\"" , db.env_defines.get(ENV_Define).values)
             frontRow[3] = ",".join(db.env_defines.get(ENV_Define).values)
         elif db.env_defines.get(ENV_Define).type == "INT":
             frontRow[3] = int(db.env_defines.get(ENV_Define).min)
@@ -308,7 +310,8 @@ def dump(db, filename, **options):
             else:
                 db.ecu_defines.get(ECU_Define).defaultValue
         else:
-            #print("def : format - xls_common - get_signal - ECU DEF ENUM : {} ".format(db.ecu_defines.get(ECU_Define).values))
+            db.ecu_defines.get(ECU_Define).values = map(lambda x: "\"" + x + "\"" , db.ecu_defines.get(ECU_Define).values)
+            print("def : format - xls_common - get_signal - ECU DEF ENUM : {} ".format(db.ecu_defines.get(ECU_Define).values))
             frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, ",".join(db.ecu_defines.get(ECU_Define).values),'/','/']
             print("def : format - xls_common - get_signal - ECU DEF ENUM - ",frontRow)
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
@@ -329,11 +332,8 @@ def dump(db, filename, **options):
 
         elif db.frame_defines.get(FRM_Define).type == "ENUM":
 
-            print("def : format - xls_common - get_signal - FRM DEF ENUM : {} ".format(",".join(db.frame_defines.get(
-                FRM_Define).values)))
-
-            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type,",".join(db.frame_defines.get(
-                FRM_Define).values), '/', '/']
+            db.frame_defines.get(FRM_Define).values = map(lambda x: "\"" + x + "\"",db.frame_defines.get(FRM_Define).values)
+            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type,",".join(db.frame_defines.get(FRM_Define).values), '/', '/']
             # print("def : format - xls_common - get_signal - FRM DEF ENUM : {} - {} ".format(FRM_Define, db.frame_defines.get(
             #     FRM_Define).defaultValue))
 
@@ -364,6 +364,9 @@ def dump(db, filename, **options):
                         int(db.signal_defines.get(SIG_Define).min), int(db.signal_defines.get(SIG_Define).max), '/']
 
         elif db.signal_defines.get(SIG_Define).type == "ENUM":
+
+            db.signal_defines.get(SIG_Define).values = map(lambda x: "\"" + x + "\"",db.signal_defines.get(SIG_Define).values)
+
             frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, ",".join(db.signal_defines.get(SIG_Define).values), '/', '/']
 
         # elif db.signal_defines.get(SIG_Define).type == "HEX":
