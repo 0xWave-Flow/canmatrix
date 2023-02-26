@@ -498,7 +498,15 @@ def dump(db, filename, **options):
                 # f.write(create_attribute_string(
                 #     attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
                 #                    db.signal_defines[attrib].type == "STRING").encode(dbc_export_encoding,
+                #
                 #                                                                       ignore_encoding_errors))
+
+        if signal.is_float == True:
+            print("def : format - xlsx - dump - FIND FLOAT - {} - {} ".format(frame[0].arbitration_id.to_compound_integer(),signal.name))
+            frontRow = ['/', "SIG_VALTYPE_",frame[0].arbitration_id.to_compound_integer(),signal.name,'/']
+            col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+            row += 1
+
     # environment-attributes:
     for env_var_name, env_var in db.env_vars.items():
         if "attributes" in env_var:

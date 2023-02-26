@@ -909,6 +909,11 @@ def load(file, **options):
         elif sh_attr.cell(row_num, index['P2']).value == "GLO":
             db.add_attribute(sh_attr.cell(row_num, index['P1']).value, sh_attr.cell(row_num, index['P4']).value)
 
+        elif sh_attr.cell(row_num, index['P2']).value == "SIG_VALTYPE_":
+            for signal in db.signals:
+                if signal.name == sh_attr.cell(row_num, index['P4']).value and signal.frames.arbitration_id.id == int(sh_attr.cell(row_num, index['P3']).value):
+                    signal.is_float = True
+
     # ecu-attributes:
     # for ecu in db.ecus:
     #     for attrib, val in sorted(ecu.attributes.items()):

@@ -554,13 +554,23 @@ def dump(in_db, f, **options):
     # SIG_VALTYPE
     for signal in db.signals:
         if signal.is_float:
+
+            #print("def : format - dbc - dump - SIG_VALTYPE_ : {}".format(signal.frame.name,signal.name))
+
             if int(signal.size) > 32:
+
+                # f.write(('SIG_VALTYPE_ %d %s : 2;\n' % (
+                #     signal.frames.arbitration_id.to_compound_integer(), output_names[signal.frames][signal])).encode(
+                #     dbc_export_encoding, ignore_encoding_errors))
                 f.write(('SIG_VALTYPE_ %d %s : 2;\n' % (
-                    signal.frames.arbitration_id.to_compound_integer(), output_names[signal.frames][signal])).encode(
+                    signal.frames.arbitration_id.to_compound_integer(), signal.name)).encode(
                     dbc_export_encoding, ignore_encoding_errors))
             else:
+                # f.write(('SIG_VALTYPE_ %d %s : 1;\n' % (
+                #     signal.frames.arbitration_id.to_compound_integer(), output_names[signal.frames][signal])).encode(
+                #     dbc_export_encoding, ignore_encoding_errors))
                 f.write(('SIG_VALTYPE_ %d %s : 1;\n' % (
-                    signal.frames.arbitration_id.to_compound_integer(), output_names[signal.framesme][signal])).encode(
+                    signal.frames.arbitration_id.to_compound_integer(), signal.name)).encode(
                     dbc_export_encoding, ignore_encoding_errors))
 
     # signal-groups:
@@ -1283,10 +1293,19 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
 
                 regexp = re.compile(r"^SIG_VALTYPE_ +(\w+) +(\w+)\s*\:(.*) *; *")
                 temp = regexp.match(decoded)
-                frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
-                if frame:
-                    signal = frame.signal_by_name(temp.group(2))
-                    signal.is_float = True
+
+                for each_signal in db.signals:
+                    for each_frame in each_signal.frames:
+                        if each_signal.name == temp.group(2) and each_frame.arbitration_id.id == int(temp.group(1)):
+                            print("def : format - dbc - load - SIG_VALTYPE_- PAIR : {} AND {}".format(each_signal.name,each_frame.arbitration_id.id))
+                            each_signal.is_float = True
+
+                # frame = get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(int(temp.group(1))))
+                # if frame:
+                #     print("def : format - dbc - load - SIG_VALTYPE_ - {} ".format(temp.group(2)))
+                #     signal = frame.signal_by_name(temp.group(2))
+                #     print("def : format - dbc - load - SIG_VALTYPE_ - 3")
+                #     signal.is_float = True
 
             # decode attribute default value definitions
             elif decoded.startswith("BA_DEF_DEF_ "):
