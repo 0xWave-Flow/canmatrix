@@ -2166,16 +2166,54 @@ class CanMatrix(object):
 
     def add_define_default(self, name, value):  # type: (str, typing.Any) -> None
 
-        print("def : canmatrix - CanMatrix - add_define_default - ",type(value))
+        print("def : canmatrix - CanMatrix - add_define_default - {} - {}".format(name,value))
 
         if name in self.signal_defines:
-            self.signal_defines[name].set_default(value)
-        if name in self.frame_defines:
-            self.frame_defines[name].set_default(value)
-        if name in self.ecu_defines:
-            self.ecu_defines[name].set_default(value)
-        if name in self.global_defines:
-            self.global_defines[name].set_default(value)
+
+            if isinstance(value, float):
+                print("def : canmatrix - CanMatrix - add_define_default - SIG BUG - FLOAT - ", type(name), type(value))
+                self.signal_defines[name].set_default(str(int(value)))
+            else:
+                print("def : canmatrix - CanMatrix - add_define_default - SIG BUG - ", type(name), type(value))
+                self.signal_defines[name].set_default(value)
+
+        elif name in self.frame_defines:
+
+            if isinstance(value, float):
+                print("def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT - ", type(name), type(value))
+                self.frame_defines[name].set_default(str(int(value)))
+            else:
+                print("def : canmatrix - CanMatrix - add_define_default - FRM BUG - ", type(name), type(value))
+                self.frame_defines[name].set_default(value)
+
+        elif name in self.ecu_defines:
+
+            if isinstance(value, float):
+                print("def : canmatrix - CanMatrix - add_define_default - ECU BUG - FLOAT - ", type(name), type(value))
+                self.ecu_defines[name].set_default(str(int(value)))
+            else:
+                print("def : canmatrix - CanMatrix - add_define_default - ECU BUG - ", type(name), type(value))
+                self.ecu_defines[name].set_default(value)
+
+        elif name in self.global_defines:
+
+            if isinstance(value, float):
+                print("def : canmatrix - CanMatrix - add_define_default - GLO BUG - FLOAT - ", type(name), type(value))
+                self.global_defines[name].set_default(str(int(value)))
+            else:
+                print("def : canmatrix - CanMatrix - add_define_default - GLO BUG - ", type(name), type(value))
+                self.global_defines[name].set_default(value)
+
+        elif name in self.env_defines:
+
+            if isinstance(value,float):
+                print("def : canmatrix - CanMatrix - add_define_default - ENV BUG - FLOAT - ", type(name), type(value))
+                self.env_defines[name].set_default(str(int(value)))
+            else:
+                print("def : canmatrix - CanMatrix - add_define_default - ENV BUG - ", type(name), type(value))
+                self.env_defines[name].set_default(value)
+        else:
+            print("def : canmatrix - CanMatrix - add_define_default - CANNOT FIND - ", type(name), type(value))
 
     def delete_obsolete_ecus(self):  # type: () -> None
 

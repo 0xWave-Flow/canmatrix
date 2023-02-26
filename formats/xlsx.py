@@ -258,6 +258,14 @@ def dump(db, filename, **options):
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
+        if db.env_defines.get(ENV_Define).defaultValue == "":
+            frontRow = ["BA_DEF_DEF_", ENV_Define, '/', '/', '/', '/']
+        else:
+            frontRow = ["BA_DEF_DEF_", ENV_Define, '/', '/' , '/', db.env_defines.get(ENV_Define).defaultValue]
+        print("def : format - xls_common - get_signal - ENV DEF DEFAULT : ", frontRow)
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+
     for GLO_Define in db.global_defines:
 
         if db.global_defines.get(GLO_Define).type != "HEX":
@@ -269,6 +277,13 @@ def dump(db, filename, **options):
             frontRow = ["GLO DEF", GLO_Define, db.global_defines.get(GLO_Define).type,db.global_defines.get(GLO_Define).min,db.global_defines.get(GLO_Define).max,db.global_defines.get(GLO_Define).defaultValue]
             if db.global_defines.get(GLO_Define).defaultValue == '':
                 frontRow[5] = '/'
+
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+        if db.global_defines.get(GLO_Define).defaultValue == "":
+            frontRow = ["BA_DEF_DEF_", GLO_Define, '/', '/', '/', '/']
+        else:
+            frontRow = ["BA_DEF_DEF_", GLO_Define, '/', '/' , '/', db.global_defines.get(GLO_Define).defaultValue]
 
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
@@ -298,13 +313,19 @@ def dump(db, filename, **options):
             print("def : format - xls_common - get_signal - ECU DEF ENUM - ",frontRow)
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
+        if db.ecu_defines.get(ECU_Define).defaultValue == "":
+            frontRow = ["BA_DEF_DEF_", ECU_Define, '/', '/', '/', '/']
+        else:
+            frontRow = ["BA_DEF_DEF_", ECU_Define, '/', '/' , '/', db.ecu_defines.get(ECU_Define).defaultValue]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
 
     for FRM_Define in db.frame_defines:
-        #print("def : format - xls_common - get_signal - FRM DEF : {} - {} ".format(FRM_Define,db.frame_defines.get(FRM_Define).type))
+        print("def : format - xls_common - get_signal - FRM DEF : {} - {} ".format(FRM_Define,db.frame_defines.get(FRM_Define).type))
 
         if db.frame_defines.get(FRM_Define).type == "INT":
 
-            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, db.frame_defines.get(FRM_Define).min, db.frame_defines.get(FRM_Define).max, '/']
+            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, int(db.frame_defines.get(FRM_Define).min), int(db.frame_defines.get(FRM_Define).max), '/']
 
         elif db.frame_defines.get(FRM_Define).type == "ENUM":
 
@@ -317,9 +338,20 @@ def dump(db, filename, **options):
             #     FRM_Define).defaultValue))
 
 
-        # elif db.frame_defines.get(FRM_Define).type == "STRING":
+        elif db.frame_defines.get(FRM_Define).type == "STRING":
+
+            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, '/', '/', '/']
+
+        else:
+            print("def : format - xls_common - get_signal - FRM DEF LOST MORE CODE ")
 
 
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+        if db.frame_defines.get(FRM_Define).defaultValue == "":
+            frontRow = ["BA_DEF_DEF_", FRM_Define, '/', '/', '/', '/']
+        else:
+            frontRow = ["BA_DEF_DEF_", FRM_Define, '/', '/' , '/', db.frame_defines.get(FRM_Define).defaultValue]
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
 
@@ -328,21 +360,40 @@ def dump(db, filename, **options):
         #frontRow = ["SIG DEF",SIG_Define,db.signal_defines.get(SIG_Define).type,'/','/','/']
 
         if db.signal_defines.get(SIG_Define).type == "INT":
-            pass
+            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type,
+                        int(db.signal_defines.get(SIG_Define).min), int(db.signal_defines.get(SIG_Define).max), '/']
 
         elif db.signal_defines.get(SIG_Define).type == "ENUM":
             frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, ",".join(db.signal_defines.get(SIG_Define).values), '/', '/']
 
-        elif db.signal_defines.get(SIG_Define).type == "HEX":
-            pass
+        # elif db.signal_defines.get(SIG_Define).type == "HEX":
+        #     pass
+
         elif db.signal_defines.get(SIG_Define).type == "FLOAT":
             frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, db.signal_defines.get(SIG_Define).min, db.signal_defines.get(SIG_Define).max, '/']
 
         elif db.signal_defines.get(SIG_Define).type == "STRING":
             frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, '/', '/', '/']
 
+        else:
+            print("def : format - xls_common - get_signal - SIG DEF LOST MORE CODE ")
+
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
+        if db.signal_defines.get(SIG_Define).defaultValue == "":
+            frontRow = ["BA_DEF_DEF_", SIG_Define, '/', '/', '/', '/']
+        else:
+            frontRow = ["BA_DEF_DEF_", SIG_Define, '/', '/' , '/', db.signal_defines.get(SIG_Define).defaultValue]
+        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+        row += 1
+
+    # for SIG_Define in db.signal_defines:
+    #
+    #
+    #     if db.signal_defines.get(SIG_Define).type == "INT":
+    #         pass
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
 
 
     #ecu-attributes:

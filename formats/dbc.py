@@ -88,7 +88,8 @@ def check_define(define):  # type: (canmatrix.Define) -> None
 
 def create_define(data_type, define, define_type, defaults):
 
-    #print("def : format - dbc - create_define")
+    #print("def : format - dbc - create_define - {} - {} - {} - {}".format(data_type,define,define_type,defaults))
+    #print("def : format - dbc - create_define - {} - {}".format(define.type,define.defaultValue))
 
     # type: (str, canmatrix.Define, str, typing.MutableMapping[str, str]) -> str
     check_define(define)
@@ -98,7 +99,11 @@ def create_define(data_type, define, define_type, defaults):
 
     if data_type not in defaults and define.defaultValue is not None:
         if define.type == "ENUM" or define.type == "STRING":
-            defaults[data_type] = '"' + define.defaultValue + '"'
+            print("def : format - dbc - create_define - BUG - {} - {}".format(define.type, define.defaultValue))
+            if isinstance(define.defaultValue,int):
+                defaults[data_type] = '"' + str(define.defaultValue) + '"'
+            else:
+                defaults[data_type] = '"' + define.defaultValue + '"'
         else:
             defaults[data_type] = define.defaultValue
 
@@ -441,6 +446,7 @@ def dump(in_db, f, **options):
         f.write(create_define(data_type, define, "EV_", defaults).encode(dbc_export_encoding, 'replace'))
 
     for (data_type, define) in sorted(list(db.global_defines.items())):
+        print("def : format - dbc - dump - GLOBAL_ DEFINE : [{} , {}]".format(data_type, define))
         f.write(create_define(data_type, define, "", defaults).encode(dbc_export_encoding, 'replace'))
 
     for define_name in sorted(defaults):
@@ -1283,9 +1289,11 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                 temp = regexp.match(decoded)
                 temp_raw = regexp_raw.match(l)
                 if temp:
+                    #if temp.group(1) == "GenEnvIsGeneratedDsp":
                     print("def : format - dbc - load - BA_DEF_DEF_ : {} - {} ".format(temp.group(1), temp_raw.group(2)))
                     db.add_define_default(temp.group(1),
                                           temp_raw.group(2).decode(dbc_import_encoding))
+
 
             # decode signal multiplex value
             elif decoded.startswith("SG_MUL_VAL_ "):

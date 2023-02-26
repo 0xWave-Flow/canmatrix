@@ -784,7 +784,7 @@ def load(file, **options):
 
             if sh_def.cell(row_num, index['TYPE']).value == "INT":
 
-                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num, index['MAX']).value))
+                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
 
             elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
                 pass
@@ -806,7 +806,7 @@ def load(file, **options):
 
             if sh_def.cell(row_num, index['TYPE']).value == "INT":
 
-                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num, index['MAX']).value))
+                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
 
             elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
                 pass
@@ -821,6 +821,16 @@ def load(file, **options):
                 #print("DEBUG : SIG STRING ENUM : {}".format(sh_def.cell(row_num, index['MIN']).value))
                 db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
 
+    #WRITE BA_DEF_DEF_
+
+    for row_num in range(1, sh_def.nrows):
+        if sh_def.cell(row_num, index['DEFTYPE']).value == "BA_DEF_DEF_":
+            print("def : format - xls - load - BA_DEF_DEF_ : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
+            if sh_def.cell(row_num, index['DEFAULT']).value == "/":
+                #print("def : format - dbc - load - BA_DEF_DEF_ : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,''))
+                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+            else:
+                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
 
     #WRITE ATTR
     sh_attr = wb.sheet_by_index(2)
