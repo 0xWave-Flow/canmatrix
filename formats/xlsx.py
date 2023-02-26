@@ -476,11 +476,16 @@ def dump(db, filename, **options):
     for signal in db.signals:
         frame = signal.frames
         for attrib, val in sorted(signal.attributes.items()):
+
+            print("def : format - xlsx - dump - SIGNAL ATTRIBUTE - FIND BUG - ",frame,signal.attributes)
+
             #name = output_names[frame][signal]
             if isinstance(val, float):
                 val = format_float(val)
             if attrib in db.signal_defines:
-                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : [{} - {} - {} - {} - {}]".format(attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,
+
+                #print("def : format - dbc - dump - SIGNAL ATTRIBUTE : ROW - {}".format(row))
+                print("def : format - xlsx - dump - SIGNAL ATTRIBUTE : ROW - {} - [{} - {} - {} - {} - {}]".format(row,attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,
                                     db.signal_defines[attrib].type == "STRING"))
 
                 frontRow = [attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,

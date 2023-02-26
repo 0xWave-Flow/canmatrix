@@ -499,17 +499,20 @@ def dump(in_db, f, **options):
     # signal-attributes:
     for signal in db.signals:
         frame = signal.frames
+
+        print("def : format - dbc - dump - SIGNAL ATTRIBUTE - FIND BUG - ", frame, signal.attributes)
+
         for attrib, val in sorted(signal.attributes.items()):
-            name = output_names[frame][signal]
+            #name = output_names[frame][signal]
             if isinstance(val, float):
                 val = format_float(val)
             if attrib in db.signal_defines:
 
-                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : {} , {} , {} , {} , {}".format(attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
+                print("def : format - dbc - dump - SIGNAL ATTRIBUTE : {} , {} , {} , {} , {}".format(attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + signal.name, val,
                                    db.signal_defines[attrib].type == "STRING"))
 
                 f.write(create_attribute_string(
-                    attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
+                    attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + signal.name, val,
                                    db.signal_defines[attrib].type == "STRING").encode(dbc_export_encoding,
                                                                                       ignore_encoding_errors))
     # environment-attributes:
@@ -1186,10 +1189,15 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                         for signal in db.signals:
                             #print("def : format - dbc - load - LOOP SIG - {}".format(signal.name))
                             if signal.name == temp.group(3):
-                                #print("def : format - dbc - load - FIND- {}".format(signal.name))
-                                print("def : format - dbc - load - FIND ATTR - BA_ SG_ - {} ; {}".format(temp.group(1),temp.group(4)))
-                                signal.add_attribute(temp.group(1),temp.group(4))
-                                #print("def : format - dbc - load - ATTR- {}".format(signal.attributes))
+
+                                for each in signal.frames:
+                                    #print("def : format - dbc - load - FIND ATTR - BA_ SG_ CMP - {} - {} - {} ".format(signal.name,each.arbitration_id.id,temp.group(2)))
+                                    if each.arbitration_id.id == int(temp.group(2)):
+
+                                        #print("def : format - dbc - load - FIND- {}".format(signal.name))
+                                        print("def : format - dbc - load - FIND ATTR - BA_ SG_ - {} - {} ; {}".format(signal.frames,temp.group(1),temp.group(4)))
+                                        signal.add_attribute(temp.group(1),temp.group(4))
+                                        #print("def : format - dbc - load - ATTR- {}".format(signal.attributes))
 
                         # FrameTemp = get_frame_by_id(
                         #     canmatrix.ArbitrationId.from_compound_integer(int(temp.group(2)))).signal_by_name(
