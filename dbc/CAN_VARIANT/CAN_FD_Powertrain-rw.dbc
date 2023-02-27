@@ -214,3 +214,4 @@ VAL_ 100 ShiftRequest 1 "Shift_Request_On" 0 "Shift_Request_Off";
 VAL_ 100 Gear 5 "Gear_5" 4 "Gear_4" 3 "Gear_3" 2 "Gear_2" 1 "Gear_1" 0 "Idle";
 VAL_ 100 IdleRunning 1 "Idle" 0 "Running";
 VAL_ 2147535173 GearLock 1 "Gear_Lock_On" 0 "Gear_Lock_Off";
+SIG_VALTYPE_ 100 EngForce : 1;

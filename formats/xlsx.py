@@ -270,13 +270,14 @@ def dump(db, filename, **options):
 
     for GLO_Define in db.global_defines:
 
-        if db.global_defines.get(GLO_Define).type != "HEX":
-            #print("def : format - xls_common - get_signal - GLO DEF : {} - {} ".format(GLO_Define,db.global_defines.get(GLO_Define).type))
-            frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type,'/','/',db.global_defines.get(GLO_Define).defaultValue]
+        if db.global_defines.get(GLO_Define).type == "HEX" or db.global_defines.get(GLO_Define).type == "INT":
+            frontRow = ["GLO DEF", GLO_Define, db.global_defines.get(GLO_Define).type,db.global_defines.get(GLO_Define).min,db.global_defines.get(GLO_Define).max,db.global_defines.get(GLO_Define).defaultValue]
             if db.global_defines.get(GLO_Define).defaultValue == '':
                 frontRow[5] = '/'
-        else:
-            frontRow = ["GLO DEF", GLO_Define, db.global_defines.get(GLO_Define).type,db.global_defines.get(GLO_Define).min,db.global_defines.get(GLO_Define).max,db.global_defines.get(GLO_Define).defaultValue]
+
+        elif db.global_defines.get(GLO_Define).type == "STRING":
+            #print("def : format - xls_common - get_signal - GLO DEF : {} - {} ".format(GLO_Define,db.global_defines.get(GLO_Define).type))
+            frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type,'/','/',db.global_defines.get(GLO_Define).defaultValue]
             if db.global_defines.get(GLO_Define).defaultValue == '':
                 frontRow[5] = '/'
 
@@ -296,24 +297,21 @@ def dump(db, filename, **options):
 
         frontRow = ["ECU DEF",ECU_Define,db.ecu_defines.get(ECU_Define).type,'/','/','/']
 
-        if db.ecu_defines.get(ECU_Define).type != "ENUM":
-            if db.ecu_defines.get(ECU_Define).min == None:
-                frontRow[3] = '/'
-            else:
-                frontRow[3] = db.ecu_defines.get(ECU_Define).min
-            if db.ecu_defines.get(ECU_Define).max == None:
-                frontRow[4] = '/'
-            else:
-                frontRow[4] = db.ecu_defines.get(ECU_Define).max
-            if db.ecu_defines.get(ECU_Define).defaultValue == '':
-                frontRow[5] = '/'
-            else:
-                db.ecu_defines.get(ECU_Define).defaultValue
-        else:
+        if db.ecu_defines.get(ECU_Define).type == "ENUM":
             db.ecu_defines.get(ECU_Define).values = map(lambda x: "\"" + x + "\"" , db.ecu_defines.get(ECU_Define).values)
             print("def : format - xls_common - get_signal - ECU DEF ENUM : {} ".format(db.ecu_defines.get(ECU_Define).values))
             frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, ",".join(db.ecu_defines.get(ECU_Define).values),'/','/']
             print("def : format - xls_common - get_signal - ECU DEF ENUM - ",frontRow)
+
+        elif db.ecu_defines.get(ECU_Define).type == "HEX":
+            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type,db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max,'/']
+
+        elif db.ecu_defines.get(ECU_Define).type == "INT":
+            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max, '/']
+
+        elif db.ecu_defines.get(ECU_Define).type == "STRING":
+            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, '/', '/', '/']
+
         col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
         row += 1
         if db.ecu_defines.get(ECU_Define).defaultValue == "":

@@ -89,13 +89,17 @@ def check_define(define):  # type: (canmatrix.Define) -> None
 def create_define(data_type, define, define_type, defaults):
 
     #print("def : format - dbc - create_define - {} - {} - {} - {}".format(data_type,define,define_type,defaults))
-    #print("def : format - dbc - create_define - {} - {}".format(define.type,define.defaultValue))
+    #print("def : format - dbc - create_define - SPACE OF DEF : {}".format(define.definition))
 
     # type: (str, canmatrix.Define, str, typing.MutableMapping[str, str]) -> str
     check_define(define)
     define_string = "BA_DEF_ " + define_type
-    define_string += ' "' + data_type + '" '
-    define_string += define.definition + ';\n'
+    define_string += '  "' + data_type + '" '
+    if "ENUM" in define.definition:
+
+        define_string += "ENUM  " + define.definition[4:] + ';\n'
+    else:
+        define_string += define.definition + ';\n'
 
     if data_type not in defaults and define.defaultValue is not None:
         if define.type == "ENUM" or define.type == "STRING":

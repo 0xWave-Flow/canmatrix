@@ -2809,8 +2809,9 @@ class CanMatrix(object):
                     print("def : canmatrix - CanMatrix - enum_attribs_to_keys - ECU - BU ATTR - {}".format(bu.attributes))
                     if define in bu.attributes:
                         if len(bu.attributes[define]) > 0:
-                            bu.attributes[define] = self.ecu_defines[define].values.index(bu.attributes[define])
+                            #bu.attributes[define] = self.ecu_defines[define].values.index(bu.attributes[define])
                             bu.attributes[define] = str(bu.attributes[define])
+
         for define in self.frame_defines:
             if self.frame_defines[define].type == "ENUM":
                 print("def : canmatrix - CanMatrix - enum_attribs_to_keys - FRM IS ENUM - {}".format(self.frame_defines[define].type))

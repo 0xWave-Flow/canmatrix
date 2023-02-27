@@ -728,11 +728,11 @@ def load(file, **options):
                 db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
 
             elif sh_def.cell(row_num, index['TYPE']).value == "INT":
-                print("DEF ROW - G - INT : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['DEFAULT']).value)))
-                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,str(int(sh_def.cell(row_num, index['DEFAULT']).value)))
-            else:
+                #print("DEF ROW - G - INT : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['DEFAULT']).value)))
+                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
+            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
                 print("DEF ROW - G - STRING : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
-                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['DEFAULT']).value)
+                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
 
             if sh_def.cell(row_num, index['DEFAULT']).value != '/':
                 print("DEF ROW - TRACE : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
@@ -756,7 +756,7 @@ def load(file, **options):
 
             elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
 
-                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['MIN']).value)
+                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
 
             else:
                 db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
@@ -821,7 +821,7 @@ def load(file, **options):
                 db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
 
             elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
-                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value,sh_def.cell(row_num, index['MAX']).value))
+                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
 
             elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
                 #print("DEBUG : SIG STRING ENUM : {}".format(sh_def.cell(row_num, index['MIN']).value))
