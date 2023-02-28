@@ -25,7 +25,6 @@ def : format - xlsx - load
 def : format - xls - load
 def : format - xls - load - BYTE ORDER INDEX: 21 
 def : format - xls - load - UNIT INDEX: 34 
-def : format - xls - load - MULTIPLEXER INDEX: 40 
 def : format - xls - load - ECU : Stress
 def : canmatrix - CanMatrix - add_ecu - Ecu(name='Stress', comment=None)
 def : format - xls - load - unit : 1 - / - 34
@@ -253,17 +252,6 @@ def : format - xls - load - SIGNAL - Data - {}
 def : format - xls - load - unit : 75 - / - 34
 def : canmatrix - Signal - add_comment - /
 def : format - xls - load - SIGNAL - Counter - {}
-def : canmatrix - CanMatrix - add_frame_defines - [[],CycleTime,INT 5 1000]
-def : format - xls - load - BA_DEF_DEF_ : CycleTime - 100.0 
-def : canmatrix - CanMatrix - add_define_default - CycleTime - 100.0
-def : canmatrix - CanMatrix - add_define_default - FRM BUG - FLOAT -  <class 'str'> <class 'float'>
-def : canmatrix - Define - set_default
-DEBUG : ADD STD FRAME ATTR - Stress1 - CycleTime - 5
-def : canmatrix - Frame - add_attribute - START - 5
-def : canmatrix - Frame - add_attribute - END - 5 - 5
-DEBUG : ADD STD FRAME ATTR - Stress1 - CycleTime - 5
-def : canmatrix - Frame - add_attribute - START - 5
-def : canmatrix - Frame - add_attribute - END - 5 - 5
 def : format - __init__ - dumpp
 def : format - __init__ - dumpp - here []
 def : format - __init__ - dump
@@ -683,13 +671,6 @@ def : format - dbc - dump - SIGNAL :
 def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Data : 16|8@1+ (1,0) [0|0] ""  Vector__XXX\n'
 def : format - dbc - dump - SIGNAL : 
 def : format - dbc - dump - SIGNAL - BUG : {} b' SG_ Counter : 0|16@1+ (1,0) [0|0] ""  Vector__XXX\n'
-def : format - dbc - dump - BO_ DEFINE : [CycleTime , <canmatrix.canmatrix.Define object at 0x7f8aab9d44e0>]
-def : format - dbc - create_define - BA_DEF_ BO_  "CycleTime" INT 5 1000;
-
-def : format - dbc - dump - DEFINE : CycleTime
-def : format - dbc - create_attribute_string - 5
-def : format - dbc - create_attribute_string - BA_ "CycleTime" BO_ 13 5;
-
 def : format - dbc - dump - SIGNAL ATTRIBUTE - FIND BUG -  StressExtended1 {}
 def : format - dbc - dump - SIGNAL ATTRIBUTE - FIND BUG -  Info5 {}
 def : format - dbc - dump - SIGNAL ATTRIBUTE - FIND BUG -  Info5 {}

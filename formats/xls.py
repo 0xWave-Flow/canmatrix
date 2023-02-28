@@ -429,11 +429,11 @@ def load(file, **options):
             index['Signal Group'] = i
         elif "Comment" in value:
             index['Comment'] = i
-        elif "Multiplexer" in value:
-            print("def : format - xls - load - MULTIPLEXER INDEX: {} ".format(i))
-            index['Multiplexer'] = i
+        # elif "Multiplexer" in value:
+        #     print("def : format - xls - load - MULTIPLEXER INDEX: {} ".format(i))
+        #     index['Multiplexer'] = i
 
-    index['ECUstart'] = index['Multiplexer'] + 1
+    index['ECUstart'] = index['Comment'] + 1
     index['ECUend'] = sh.ncols
 
     # ECUs:
@@ -540,8 +540,9 @@ def load(file, **options):
             # comment
             signal_comment = sh.cell(row_num, index['Comment']).value.strip()
 
-            signal_multiplexer = sh.cell(row_num, index['Multiplexer']).value
+            # signal_multiplexer = sh.cell(row_num, index['Multiplexer']).value
 
+            signal_multiplexer = '/'
             if signal_multiplexer == '/':
 
                 # create Canmatrix signal and add to db
@@ -696,223 +697,223 @@ def load(file, **options):
 
 
     #WRITE DEF
-    sh_def = wb.sheet_by_index(1)
-
-    # eval search for correct columns:
-    index = {}
-    for i in range(sh_def.ncols):
-        value = sh_def.cell(0, i).value
-        if value == "DEF TYPE":
-            index['DEFTYPE'] = i
-        elif "VALUE" in value:
-            index['VALUE'] = i
-        elif "TYPE" in value:
-            index['TYPE'] = i
-        elif "MIN" in value:
-            index['MIN'] = i
-        elif "MAX" in value:
-            index['MAX'] = i
-        elif "DEFAULT" in value:
-            index['DEFAULT'] = i
-
-    for row_num in range(1, sh_def.nrows):
-
-        #print("DEF ROW : {} - {} - {}".format(sh_def.cell(row_num, index['DEFTYPE']).value,sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
-
-        if sh_def.cell(row_num, index['DEFTYPE']).value == "GLO DEF":
-            #print("DEF ROW - G : {} {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
-
-            if sh_def.cell(row_num, index['TYPE']).value == "HEX":
-
-                #print("DEF ROW - G : {} {} {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
-                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "INT":
-                #print("DEF ROW - G - INT : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['DEFAULT']).value)))
-                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
-            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
-                print("DEF ROW - G - STRING : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
-                db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
-
-            if sh_def.cell(row_num, index['DEFAULT']).value != '/':
-                print("DEF ROW - TRACE : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
-                #db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
-            else:
-                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
-
-
-        elif sh_def.cell(row_num, index['DEFTYPE']).value == "ECU DEF":
-
-            if sh_def.cell(row_num, index['TYPE']).value == "INT":
-                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
-                # if sh_def.cell(row_num, index['DEFAULT']).value != '/':
-                #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"0")
-                # else:
-                #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
-
-                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
-
-                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
-
-            else:
-                db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
-
-
-            if sh_def.cell(row_num, index['DEFAULT']).value != '/':
-
-                #print("DEBUG : {}".format(sh_def.cell(row_num, index['DEFAULT']).value))
-                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,str(int(sh_def.cell(row_num, index['DEFAULT']).value)))
-            else:
-                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
-
-        elif sh_def.cell(row_num, index['DEFTYPE']).value == "ENV DEF":
-
-            if sh_def.cell(row_num, index['TYPE']).value == "ENUM":
-
-                db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "INT":
-
-                db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,
-                                   "{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,
-                                                  int(sh_def.cell(row_num, index['MIN']).value),
-                                                     int(sh_def.cell(row_num, index['MAX']).value)))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
-
-                db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
-
-        elif sh_def.cell(row_num, index['DEFTYPE']).value == "FRM DEF":
-
-            if sh_def.cell(row_num, index['TYPE']).value == "INT":
-
-                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
-                pass
-            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
-
-                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
-                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,
-                                     "{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,
-                                                       sh_def.cell(row_num, index['MIN']).value,
-                                                       sh_def.cell(row_num, index['MAX']).value))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
-
-                db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
-
-        elif sh_def.cell(row_num, index['DEFTYPE']).value == "SIG DEF":
-
-            if sh_def.cell(row_num, index['TYPE']).value == "INT":
-
-                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
-                pass
-            elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
-
-                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
-                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
-
-            elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
-                #print("DEBUG : SIG STRING ENUM : {}".format(sh_def.cell(row_num, index['MIN']).value))
-                db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
-
-    #WRITE BA_DEF_DEF_
-
-    for row_num in range(1, sh_def.nrows):
-        if sh_def.cell(row_num, index['DEFTYPE']).value == "BA_DEF_DEF_":
-            print("def : format - xls - load - BA_DEF_DEF_ : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
-            if sh_def.cell(row_num, index['DEFAULT']).value == "/":
-                #print("def : format - dbc - load - BA_DEF_DEF_ : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,''))
-                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
-            else:
-                db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
-
-    #WRITE ATTR
-    sh_attr = wb.sheet_by_index(2)
-
-    # eval search for correct columns:
-    index = {}
-    for i in range(sh_attr.ncols):
-        value = sh_attr.cell(0, i).value
-        if value == "P1":
-            index['P1'] = i
-        elif "P2" in value:
-            index['P2'] = i
-        elif "P3" in value:
-            index['P3'] = i
-        elif "P4" in value:
-            index['P4'] = i
-        elif "P5" in value:
-            index['P5'] = i
-
-    for row_num in range(1, sh_attr.nrows):
-
-        if sh_attr.cell(row_num, index['P2']).value == "BU_":
-            db.ecu_by_name(sh_attr.cell(row_num, index['P3']).value).add_attribute(
-                sh_attr.cell(row_num, index['P1']).value,
-                sh_attr.cell(row_num, index['P4']).value)
-
-        elif sh_attr.cell(row_num, index['P2']).value == "BO_":
-
-            #for each in FrameTemp:
-            #for each in FrameWithSignal:
-            for each in FrameTemp:
-                # print("DEBUG : ADD FRAME ATTR - {} - {}".format(each.arbitration_id.id,
-                #
-                #
-                #                                                sh_attr.cell(row_num, index['P3']).value))
-                if each.arbitration_id.extended == False:
-                    if str(each.arbitration_id.id) == sh_attr.cell(row_num, index['P3']).value:
-                        # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
-
-                        print("DEBUG : ADD STD FRAME ATTR - {} - {} - {}".format(each.name,sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
-                        if sh_attr.cell(row_num, index['P4']).value == "/":
-                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value,"")
-                        else:
-                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
-                else:
-                    if str(each.arbitration_id.id + 0x80000000) == sh_attr.cell(row_num, index['P3']).value:
-                        # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
-
-                        print("DEBUG : ADD EXT FRAME ATTR - {} - {} - {}".format(each.name,
-                                                                             sh_attr.cell(row_num, index['P1']).value,
-                                                                             sh_attr.cell(row_num, index['P4']).value))
-                        if sh_attr.cell(row_num, index['P4']).value == "/":
-                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value, "")
-                        else:
-                            each.add_attribute(sh_attr.cell(row_num, index['P1']).value,
-                                               sh_attr.cell(row_num, index['P4']).value)
-
-            # get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(sh_attr.cell(row_num, index['P3']).value)).add_attribute(
-            #     sh_attr.cell(row_num, index['P1']).value,
-            #     sh_attr.cell(row_num, index['P4']).value)
-
-        elif sh_attr.cell(row_num, index['P2']).value == "SG_":
-            FrameIdandSignal = (sh_attr.cell(row_num, index['P3']).value).split(" ")
-            print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} - {}".format(FrameIdandSignal[0],FrameIdandSignal[1]))
-            for signal in db.signals:
-                if signal.name == FrameIdandSignal[1] and signal.frames.arbitration_id.id == int(FrameIdandSignal[0]):
-                    print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} ; {}".format(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
-                    signal.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
-
-        elif sh_attr.cell(row_num, index['P2']).value == "GLO":
-            db.add_attribute(sh_attr.cell(row_num, index['P1']).value, sh_attr.cell(row_num, index['P4']).value)
-
-        elif sh_attr.cell(row_num, index['P2']).value == "SIG_VALTYPE_":
-            for signal in db.signals:
-                if signal.name == sh_attr.cell(row_num, index['P4']).value and signal.frames.arbitration_id.id == int(sh_attr.cell(row_num, index['P3']).value):
-                    signal.is_float = True
+    # sh_def = wb.sheet_by_index(1)
+    #
+    # # eval search for correct columns:
+    # index = {}
+    # for i in range(sh_def.ncols):
+    #     value = sh_def.cell(0, i).value
+    #     if value == "DEF TYPE":
+    #         index['DEFTYPE'] = i
+    #     elif "VALUE" in value:
+    #         index['VALUE'] = i
+    #     elif "TYPE" in value:
+    #         index['TYPE'] = i
+    #     elif "MIN" in value:
+    #         index['MIN'] = i
+    #     elif "MAX" in value:
+    #         index['MAX'] = i
+    #     elif "DEFAULT" in value:
+    #         index['DEFAULT'] = i
+    #
+    # for row_num in range(1, sh_def.nrows):
+    #
+    #     #print("DEF ROW : {} - {} - {}".format(sh_def.cell(row_num, index['DEFTYPE']).value,sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
+    #
+    #     if sh_def.cell(row_num, index['DEFTYPE']).value == "GLO DEF":
+    #         #print("DEF ROW - G : {} {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value))
+    #
+    #         if sh_def.cell(row_num, index['TYPE']).value == "HEX":
+    #
+    #             #print("DEF ROW - G : {} {} {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+    #             db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "INT":
+    #             #print("DEF ROW - G - INT : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,int(sh_def.cell(row_num, index['DEFAULT']).value)))
+    #             db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,str(int(sh_def.cell(row_num, index['MIN']).value)),str(int(sh_def.cell(row_num, index['MAX']).value))))
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+    #             print("DEF ROW - G - STRING : {} - {}".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
+    #             db.add_global_defines(sh_def.cell(row_num, index['VALUE']).value, sh_def.cell(row_num, index['TYPE']).value)
+    #
+    #         if sh_def.cell(row_num, index['DEFAULT']).value != '/':
+    #             print("DEF ROW - TRACE : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
+    #             #db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
+    #         else:
+    #             db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+    #
+    #
+    #     elif sh_def.cell(row_num, index['DEFTYPE']).value == "ECU DEF":
+    #
+    #         if sh_def.cell(row_num, index['TYPE']).value == "INT":
+    #             db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+    #             # if sh_def.cell(row_num, index['DEFAULT']).value != '/':
+    #             #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"0")
+    #             # else:
+    #             #     db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
+    #
+    #             db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+    #
+    #             db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
+    #
+    #         else:
+    #             db.add_ecu_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+    #
+    #
+    #         if sh_def.cell(row_num, index['DEFAULT']).value != '/':
+    #
+    #             #print("DEBUG : {}".format(sh_def.cell(row_num, index['DEFAULT']).value))
+    #             db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,str(int(sh_def.cell(row_num, index['DEFAULT']).value)))
+    #         else:
+    #             db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+    #
+    #     elif sh_def.cell(row_num, index['DEFTYPE']).value == "ENV DEF":
+    #
+    #         if sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+    #
+    #             db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "INT":
+    #
+    #             db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,
+    #                                "{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,
+    #                                               int(sh_def.cell(row_num, index['MIN']).value),
+    #                                                  int(sh_def.cell(row_num, index['MAX']).value)))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+    #
+    #             db.add_env_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+    #
+    #     elif sh_def.cell(row_num, index['DEFTYPE']).value == "FRM DEF":
+    #
+    #         if sh_def.cell(row_num, index['TYPE']).value == "INT":
+    #
+    #             db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
+    #             pass
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+    #
+    #             db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
+    #             db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,
+    #                                  "{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,
+    #                                                    sh_def.cell(row_num, index['MIN']).value,
+    #                                                    sh_def.cell(row_num, index['MAX']).value))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+    #
+    #             db.add_frame_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
+    #
+    #     elif sh_def.cell(row_num, index['DEFTYPE']).value == "SIG DEF":
+    #
+    #         if sh_def.cell(row_num, index['TYPE']).value == "INT":
+    #
+    #             db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "HEX":
+    #             pass
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "STRING":
+    #
+    #             db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['TYPE']).value)
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "FLOAT":
+    #             db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {} {}".format(sh_def.cell(row_num, index['TYPE']).value,int(sh_def.cell(row_num, index['MIN']).value),int(sh_def.cell(row_num, index['MAX']).value)))
+    #
+    #         elif sh_def.cell(row_num, index['TYPE']).value == "ENUM":
+    #             #print("DEBUG : SIG STRING ENUM : {}".format(sh_def.cell(row_num, index['MIN']).value))
+    #             db.add_signal_defines(sh_def.cell(row_num, index['VALUE']).value,"{} {}".format(sh_def.cell(row_num, index['TYPE']).value,sh_def.cell(row_num, index['MIN']).value))
+    #
+    # #WRITE BA_DEF_DEF_
+    #
+    # for row_num in range(1, sh_def.nrows):
+    #     if sh_def.cell(row_num, index['DEFTYPE']).value == "BA_DEF_DEF_":
+    #         print("def : format - xls - load - BA_DEF_DEF_ : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value))
+    #         if sh_def.cell(row_num, index['DEFAULT']).value == "/":
+    #             #print("def : format - dbc - load - BA_DEF_DEF_ : {} - {} ".format(sh_def.cell(row_num, index['VALUE']).value,''))
+    #             db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,"")
+    #         else:
+    #             db.add_define_default(sh_def.cell(row_num, index['VALUE']).value,sh_def.cell(row_num, index['DEFAULT']).value)
+    #
+    # #WRITE ATTR
+    # sh_attr = wb.sheet_by_index(2)
+    #
+    # # eval search for correct columns:
+    # index = {}
+    # for i in range(sh_attr.ncols):
+    #     value = sh_attr.cell(0, i).value
+    #     if value == "P1":
+    #         index['P1'] = i
+    #     elif "P2" in value:
+    #         index['P2'] = i
+    #     elif "P3" in value:
+    #         index['P3'] = i
+    #     elif "P4" in value:
+    #         index['P4'] = i
+    #     elif "P5" in value:
+    #         index['P5'] = i
+    #
+    # for row_num in range(1, sh_attr.nrows):
+    #
+    #     if sh_attr.cell(row_num, index['P2']).value == "BU_":
+    #         db.ecu_by_name(sh_attr.cell(row_num, index['P3']).value).add_attribute(
+    #             sh_attr.cell(row_num, index['P1']).value,
+    #             sh_attr.cell(row_num, index['P4']).value)
+    #
+    #     elif sh_attr.cell(row_num, index['P2']).value == "BO_":
+    #
+    #         #for each in FrameTemp:
+    #         #for each in FrameWithSignal:
+    #         for each in FrameTemp:
+    #             # print("DEBUG : ADD FRAME ATTR - {} - {}".format(each.arbitration_id.id,
+    #             #
+    #             #
+    #             #                                                sh_attr.cell(row_num, index['P3']).value))
+    #             if each.arbitration_id.extended == False:
+    #                 if str(each.arbitration_id.id) == sh_attr.cell(row_num, index['P3']).value:
+    #                     # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
+    #
+    #                     print("DEBUG : ADD STD FRAME ATTR - {} - {} - {}".format(each.name,sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
+    #                     if sh_attr.cell(row_num, index['P4']).value == "/":
+    #                         each.add_attribute(sh_attr.cell(row_num, index['P1']).value,"")
+    #                     else:
+    #                         each.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
+    #             else:
+    #                 if str(each.arbitration_id.id + 0x80000000) == sh_attr.cell(row_num, index['P3']).value:
+    #                     # if sh_attr.cell(row_num, index['P1']).value != "GenMsgILSupport" or sh_attr.cell(row_num, index['P1']).value != "Diag_Response":
+    #
+    #                     print("DEBUG : ADD EXT FRAME ATTR - {} - {} - {}".format(each.name,
+    #                                                                          sh_attr.cell(row_num, index['P1']).value,
+    #                                                                          sh_attr.cell(row_num, index['P4']).value))
+    #                     if sh_attr.cell(row_num, index['P4']).value == "/":
+    #                         each.add_attribute(sh_attr.cell(row_num, index['P1']).value, "")
+    #                     else:
+    #                         each.add_attribute(sh_attr.cell(row_num, index['P1']).value,
+    #                                            sh_attr.cell(row_num, index['P4']).value)
+    #
+    #         # get_frame_by_id(canmatrix.ArbitrationId.from_compound_integer(sh_attr.cell(row_num, index['P3']).value)).add_attribute(
+    #         #     sh_attr.cell(row_num, index['P1']).value,
+    #         #     sh_attr.cell(row_num, index['P4']).value)
+    #
+    #     elif sh_attr.cell(row_num, index['P2']).value == "SG_":
+    #         FrameIdandSignal = (sh_attr.cell(row_num, index['P3']).value).split(" ")
+    #         print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} - {}".format(FrameIdandSignal[0],FrameIdandSignal[1]))
+    #         for signal in db.signals:
+    #             if signal.name == FrameIdandSignal[1] and signal.frames.arbitration_id.id == int(FrameIdandSignal[0]):
+    #                 print("DEBUG : ADD SIGNAL ATTR - BA_ SG_ - {} ; {}".format(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value))
+    #                 signal.add_attribute(sh_attr.cell(row_num, index['P1']).value,sh_attr.cell(row_num, index['P4']).value)
+    #
+    #     elif sh_attr.cell(row_num, index['P2']).value == "GLO":
+    #         db.add_attribute(sh_attr.cell(row_num, index['P1']).value, sh_attr.cell(row_num, index['P4']).value)
+    #
+    #     elif sh_attr.cell(row_num, index['P2']).value == "SIG_VALTYPE_":
+    #         for signal in db.signals:
+    #             if signal.name == sh_attr.cell(row_num, index['P4']).value and signal.frames.arbitration_id.id == int(sh_attr.cell(row_num, index['P3']).value):
+    #                 signal.is_float = True
 
     # ecu-attributes:
     # for ecu in db.ecus:

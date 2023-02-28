@@ -182,6 +182,3 @@ BO_ 0 StressData1: 8 Stress
  SG_ Counter : 0|16@1+ (1,0) [0|0] ""  Vector__XXX
 
 
-BA_DEF_ BO_  "CycleTime" INT 5 1000;
-BA_DEF_DEF_ "CycleTime" 100;
-BA_ "CycleTime" BO_ 13 5;

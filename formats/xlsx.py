@@ -112,8 +112,8 @@ def dump(db, filename, **options):
         'Signal Group',
         'Message Segment',
         'Variant and options',
-        'Comment',
-        'Multiplexer'
+        'Comment'
+        # 'Multiplexer'
     ]
 
     workbook = xlsxwriter.Workbook(filename)
@@ -231,162 +231,162 @@ def dump(db, filename, **options):
         signal_style = sty_norm
         # loop over values ends here
 
-    head_top = [
-        'DEF TYPE',
-        'VALUE',
-        'TYPE',
-        'MIN',
-        'MAX',
-        'DEFAULT'
-    ]
-    worksheet_def = workbook.add_worksheet('DEF')
-
-    write_excel_line(worksheet_def, 0, 0, head_top, sty_header)
-
-    # WRITE DEFINE
-    row = 1
-    for ENV_Define in db.env_defines:
-        #print("def : format - xls_common - get_signal - ENV DEF : ",type(ENV_Define),type((db.env_defines.get(ENV_Define).type)))
-        frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type,'/','/','/']
-
-        if db.env_defines.get(ENV_Define).type == "ENUM":
-            print("def : format - xls_common - get_signal - ENV DEF : ",db.env_defines.get(ENV_Define).values)
-            db.env_defines.get(ENV_Define).values = map(lambda x: "\"" + x + "\"" , db.env_defines.get(ENV_Define).values)
-            frontRow[3] = ",".join(db.env_defines.get(ENV_Define).values)
-        elif db.env_defines.get(ENV_Define).type == "INT":
-            frontRow[3] = int(db.env_defines.get(ENV_Define).min)
-            frontRow[4] = int(db.env_defines.get(ENV_Define).max)
-
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-
-        if db.env_defines.get(ENV_Define).defaultValue == "":
-            frontRow = ["BA_DEF_DEF_", ENV_Define, '/', '/', '/', '/']
-        else:
-            frontRow = ["BA_DEF_DEF_", ENV_Define, '/', '/' , '/', db.env_defines.get(ENV_Define).defaultValue]
-        print("def : format - xls_common - get_signal - ENV DEF DEFAULT : ", frontRow)
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-
-    for GLO_Define in db.global_defines:
-
-        if db.global_defines.get(GLO_Define).type == "HEX" or db.global_defines.get(GLO_Define).type == "INT":
-            frontRow = ["GLO DEF", GLO_Define, db.global_defines.get(GLO_Define).type,db.global_defines.get(GLO_Define).min,db.global_defines.get(GLO_Define).max,db.global_defines.get(GLO_Define).defaultValue]
-            if db.global_defines.get(GLO_Define).defaultValue == '':
-                frontRow[5] = '/'
-
-        elif db.global_defines.get(GLO_Define).type == "STRING":
-            #print("def : format - xls_common - get_signal - GLO DEF : {} - {} ".format(GLO_Define,db.global_defines.get(GLO_Define).type))
-            frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type,'/','/',db.global_defines.get(GLO_Define).defaultValue]
-            if db.global_defines.get(GLO_Define).defaultValue == '':
-                frontRow[5] = '/'
-
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-        if db.global_defines.get(GLO_Define).defaultValue == "":
-            frontRow = ["BA_DEF_DEF_", GLO_Define, '/', '/', '/', '/']
-        else:
-            frontRow = ["BA_DEF_DEF_", GLO_Define, '/', '/' , '/', db.global_defines.get(GLO_Define).defaultValue]
-
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-
-    for ECU_Define in db.ecu_defines:
-        print("def : format - xls_common - get_signal - ECU DEF : {}".format(db.ecu_defines.get(ECU_Define).defaultValue))
-        #print("def : format - xls_common - get_signal - DEFAULT : ",db.signal_defines)
-
-        frontRow = ["ECU DEF",ECU_Define,db.ecu_defines.get(ECU_Define).type,'/','/','/']
-
-        if db.ecu_defines.get(ECU_Define).type == "ENUM":
-            db.ecu_defines.get(ECU_Define).values = map(lambda x: "\"" + x + "\"" , db.ecu_defines.get(ECU_Define).values)
-            print("def : format - xls_common - get_signal - ECU DEF ENUM : {} ".format(db.ecu_defines.get(ECU_Define).values))
-            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, ",".join(db.ecu_defines.get(ECU_Define).values),'/','/']
-            print("def : format - xls_common - get_signal - ECU DEF ENUM - ",frontRow)
-
-        elif db.ecu_defines.get(ECU_Define).type == "HEX":
-            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type,db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max,'/']
-
-        elif db.ecu_defines.get(ECU_Define).type == "INT":
-            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max, '/']
-
-        elif db.ecu_defines.get(ECU_Define).type == "STRING":
-            frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, '/', '/', '/']
-
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-        if db.ecu_defines.get(ECU_Define).defaultValue == "":
-            frontRow = ["BA_DEF_DEF_", ECU_Define, '/', '/', '/', '/']
-        else:
-            frontRow = ["BA_DEF_DEF_", ECU_Define, '/', '/' , '/', db.ecu_defines.get(ECU_Define).defaultValue]
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-
-    for FRM_Define in db.frame_defines:
-        print("def : format - xls_common - get_signal - FRM DEF : {} - {} ".format(FRM_Define,db.frame_defines.get(FRM_Define).type))
-
-        if db.frame_defines.get(FRM_Define).type == "INT":
-
-            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, int(db.frame_defines.get(FRM_Define).min), int(db.frame_defines.get(FRM_Define).max), '/']
-
-        elif db.frame_defines.get(FRM_Define).type == "ENUM":
-
-            db.frame_defines.get(FRM_Define).values = map(lambda x: "\"" + x + "\"",db.frame_defines.get(FRM_Define).values)
-            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type,",".join(db.frame_defines.get(FRM_Define).values), '/', '/']
-            # print("def : format - xls_common - get_signal - FRM DEF ENUM : {} - {} ".format(FRM_Define, db.frame_defines.get(
-            #     FRM_Define).defaultValue))
-
-
-        elif db.frame_defines.get(FRM_Define).type == "STRING":
-
-            frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, '/', '/', '/']
-
-        else:
-            print("def : format - xls_common - get_signal - FRM DEF LOST MORE CODE ")
-
-
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-        if db.frame_defines.get(FRM_Define).defaultValue == "":
-            frontRow = ["BA_DEF_DEF_", FRM_Define, '/', '/', '/', '/']
-        else:
-            frontRow = ["BA_DEF_DEF_", FRM_Define, '/', '/' , '/', db.frame_defines.get(FRM_Define).defaultValue]
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-
-    for SIG_Define in db.signal_defines:
-        #print("def : format - xls_common - get_signal - SIG DEF : {} - {} ".format(SIG_Define,db.signal_defines.get(SIG_Define).type))
-        #frontRow = ["SIG DEF",SIG_Define,db.signal_defines.get(SIG_Define).type,'/','/','/']
-
-        if db.signal_defines.get(SIG_Define).type == "INT":
-            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type,
-                        int(db.signal_defines.get(SIG_Define).min), int(db.signal_defines.get(SIG_Define).max), '/']
-
-        elif db.signal_defines.get(SIG_Define).type == "ENUM":
-
-            db.signal_defines.get(SIG_Define).values = map(lambda x: "\"" + x + "\"",db.signal_defines.get(SIG_Define).values)
-
-            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, ",".join(db.signal_defines.get(SIG_Define).values), '/', '/']
-
-        # elif db.signal_defines.get(SIG_Define).type == "HEX":
-        #     pass
-
-        elif db.signal_defines.get(SIG_Define).type == "FLOAT":
-            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, db.signal_defines.get(SIG_Define).min,db.signal_defines.get(SIG_Define).max, '/']
-
-        elif db.signal_defines.get(SIG_Define).type == "STRING":
-            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, '/', '/', '/']
-
-        else:
-            print("def : format - xls_common - get_signal - SIG DEF LOST MORE CODE ")
-
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
-        if db.signal_defines.get(SIG_Define).defaultValue == "":
-            frontRow = ["BA_DEF_DEF_", SIG_Define, '/', '/', '/', '/']
-        else:
-            frontRow = ["BA_DEF_DEF_", SIG_Define, '/', '/' , '/', db.signal_defines.get(SIG_Define).defaultValue]
-        col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
-        row += 1
+    # head_top = [
+    #     'DEF TYPE',
+    #     'VALUE',
+    #     'TYPE',
+    #     'MIN',
+    #     'MAX',
+    #     'DEFAULT'
+    # ]
+    # worksheet_def = workbook.add_worksheet('DEF')
+    #
+    # write_excel_line(worksheet_def, 0, 0, head_top, sty_header)
+    #
+    # # WRITE DEFINE
+    # row = 1
+    # for ENV_Define in db.env_defines:
+    #     #print("def : format - xls_common - get_signal - ENV DEF : ",type(ENV_Define),type((db.env_defines.get(ENV_Define).type)))
+    #     frontRow = ["ENV DEF",ENV_Define,db.env_defines.get(ENV_Define).type,'/','/','/']
+    #
+    #     if db.env_defines.get(ENV_Define).type == "ENUM":
+    #         print("def : format - xls_common - get_signal - ENV DEF : ",db.env_defines.get(ENV_Define).values)
+    #         db.env_defines.get(ENV_Define).values = map(lambda x: "\"" + x + "\"" , db.env_defines.get(ENV_Define).values)
+    #         frontRow[3] = ",".join(db.env_defines.get(ENV_Define).values)
+    #     elif db.env_defines.get(ENV_Define).type == "INT":
+    #         frontRow[3] = int(db.env_defines.get(ENV_Define).min)
+    #         frontRow[4] = int(db.env_defines.get(ENV_Define).max)
+    #
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #
+    #     if db.env_defines.get(ENV_Define).defaultValue == "":
+    #         frontRow = ["BA_DEF_DEF_", ENV_Define, '/', '/', '/', '/']
+    #     else:
+    #         frontRow = ["BA_DEF_DEF_", ENV_Define, '/', '/' , '/', db.env_defines.get(ENV_Define).defaultValue]
+    #     print("def : format - xls_common - get_signal - ENV DEF DEFAULT : ", frontRow)
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #
+    # for GLO_Define in db.global_defines:
+    #
+    #     if db.global_defines.get(GLO_Define).type == "HEX" or db.global_defines.get(GLO_Define).type == "INT":
+    #         frontRow = ["GLO DEF", GLO_Define, db.global_defines.get(GLO_Define).type,db.global_defines.get(GLO_Define).min,db.global_defines.get(GLO_Define).max,db.global_defines.get(GLO_Define).defaultValue]
+    #         if db.global_defines.get(GLO_Define).defaultValue == '':
+    #             frontRow[5] = '/'
+    #
+    #     elif db.global_defines.get(GLO_Define).type == "STRING":
+    #         #print("def : format - xls_common - get_signal - GLO DEF : {} - {} ".format(GLO_Define,db.global_defines.get(GLO_Define).type))
+    #         frontRow = ["GLO DEF",GLO_Define,db.global_defines.get(GLO_Define).type,'/','/',db.global_defines.get(GLO_Define).defaultValue]
+    #         if db.global_defines.get(GLO_Define).defaultValue == '':
+    #             frontRow[5] = '/'
+    #
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #     if db.global_defines.get(GLO_Define).defaultValue == "":
+    #         frontRow = ["BA_DEF_DEF_", GLO_Define, '/', '/', '/', '/']
+    #     else:
+    #         frontRow = ["BA_DEF_DEF_", GLO_Define, '/', '/' , '/', db.global_defines.get(GLO_Define).defaultValue]
+    #
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #
+    # for ECU_Define in db.ecu_defines:
+    #     print("def : format - xls_common - get_signal - ECU DEF : {}".format(db.ecu_defines.get(ECU_Define).defaultValue))
+    #     #print("def : format - xls_common - get_signal - DEFAULT : ",db.signal_defines)
+    #
+    #     frontRow = ["ECU DEF",ECU_Define,db.ecu_defines.get(ECU_Define).type,'/','/','/']
+    #
+    #     if db.ecu_defines.get(ECU_Define).type == "ENUM":
+    #         db.ecu_defines.get(ECU_Define).values = map(lambda x: "\"" + x + "\"" , db.ecu_defines.get(ECU_Define).values)
+    #         print("def : format - xls_common - get_signal - ECU DEF ENUM : {} ".format(db.ecu_defines.get(ECU_Define).values))
+    #         frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, ",".join(db.ecu_defines.get(ECU_Define).values),'/','/']
+    #         print("def : format - xls_common - get_signal - ECU DEF ENUM - ",frontRow)
+    #
+    #     elif db.ecu_defines.get(ECU_Define).type == "HEX":
+    #         frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type,db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max,'/']
+    #
+    #     elif db.ecu_defines.get(ECU_Define).type == "INT":
+    #         frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, db.ecu_defines.get(ECU_Define).min,db.ecu_defines.get(ECU_Define).max, '/']
+    #
+    #     elif db.ecu_defines.get(ECU_Define).type == "STRING":
+    #         frontRow = ["ECU DEF", ECU_Define, db.ecu_defines.get(ECU_Define).type, '/', '/', '/']
+    #
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #     if db.ecu_defines.get(ECU_Define).defaultValue == "":
+    #         frontRow = ["BA_DEF_DEF_", ECU_Define, '/', '/', '/', '/']
+    #     else:
+    #         frontRow = ["BA_DEF_DEF_", ECU_Define, '/', '/' , '/', db.ecu_defines.get(ECU_Define).defaultValue]
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #
+    # for FRM_Define in db.frame_defines:
+    #     print("def : format - xls_common - get_signal - FRM DEF : {} - {} ".format(FRM_Define,db.frame_defines.get(FRM_Define).type))
+    #
+    #     if db.frame_defines.get(FRM_Define).type == "INT":
+    #
+    #         frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, int(db.frame_defines.get(FRM_Define).min), int(db.frame_defines.get(FRM_Define).max), '/']
+    #
+    #     elif db.frame_defines.get(FRM_Define).type == "ENUM":
+    #
+    #         db.frame_defines.get(FRM_Define).values = map(lambda x: "\"" + x + "\"",db.frame_defines.get(FRM_Define).values)
+    #         frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type,",".join(db.frame_defines.get(FRM_Define).values), '/', '/']
+    #         # print("def : format - xls_common - get_signal - FRM DEF ENUM : {} - {} ".format(FRM_Define, db.frame_defines.get(
+    #         #     FRM_Define).defaultValue))
+    #
+    #
+    #     elif db.frame_defines.get(FRM_Define).type == "STRING":
+    #
+    #         frontRow = ["FRM DEF", FRM_Define, db.frame_defines.get(FRM_Define).type, '/', '/', '/']
+    #
+    #     else:
+    #         print("def : format - xls_common - get_signal - FRM DEF LOST MORE CODE ")
+    #
+    #
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #     if db.frame_defines.get(FRM_Define).defaultValue == "":
+    #         frontRow = ["BA_DEF_DEF_", FRM_Define, '/', '/', '/', '/']
+    #     else:
+    #         frontRow = ["BA_DEF_DEF_", FRM_Define, '/', '/' , '/', db.frame_defines.get(FRM_Define).defaultValue]
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #
+    # for SIG_Define in db.signal_defines:
+    #     #print("def : format - xls_common - get_signal - SIG DEF : {} - {} ".format(SIG_Define,db.signal_defines.get(SIG_Define).type))
+    #     #frontRow = ["SIG DEF",SIG_Define,db.signal_defines.get(SIG_Define).type,'/','/','/']
+    #
+    #     if db.signal_defines.get(SIG_Define).type == "INT":
+    #         frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type,
+    #                     int(db.signal_defines.get(SIG_Define).min), int(db.signal_defines.get(SIG_Define).max), '/']
+    #
+    #     elif db.signal_defines.get(SIG_Define).type == "ENUM":
+    #
+    #         db.signal_defines.get(SIG_Define).values = map(lambda x: "\"" + x + "\"",db.signal_defines.get(SIG_Define).values)
+    #
+    #         frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, ",".join(db.signal_defines.get(SIG_Define).values), '/', '/']
+    #
+    #     # elif db.signal_defines.get(SIG_Define).type == "HEX":
+    #     #     pass
+    #
+    #     elif db.signal_defines.get(SIG_Define).type == "FLOAT":
+    #         frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, db.signal_defines.get(SIG_Define).min,db.signal_defines.get(SIG_Define).max, '/']
+    #
+    #     elif db.signal_defines.get(SIG_Define).type == "STRING":
+    #         frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, '/', '/', '/']
+    #
+    #     else:
+    #         print("def : format - xls_common - get_signal - SIG DEF LOST MORE CODE ")
+    #
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
+    #     if db.signal_defines.get(SIG_Define).defaultValue == "":
+    #         frontRow = ["BA_DEF_DEF_", SIG_Define, '/', '/', '/', '/']
+    #     else:
+    #         frontRow = ["BA_DEF_DEF_", SIG_Define, '/', '/' , '/', db.signal_defines.get(SIG_Define).defaultValue]
+    #     col = write_excel_line(worksheet_def, row, 0, frontRow, signal_style)
+    #     row += 1
 
     # for SIG_Define in db.signal_defines:
     #
@@ -404,119 +404,119 @@ def dump(db, filename, **options):
     #         print("def : format - xls_common - get_signal - ECU ATTR : [{} , {} , {}]".format(ecu.name,attrib, val))
     #
 
-    head_top = [
-        'P1',
-        'P2',
-        'P3',
-        'P4',
-        'P5'
-    ]
-    worksheet_attr = workbook.add_worksheet('ATTR')
-    write_excel_line(worksheet_attr, 0, 0, head_top, sty_header)
-
-    row = 1
-    # ecu-attributes:
-    for ecu in db.ecus:
-        for attrib, val in sorted(ecu.attributes.items()):
-
-            print("def : format - xls_common - get_signal - ECU ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING"))
-            frontRow = [attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING"]
-            col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
-            row += 1
-            # f.write(
-            #     create_attribute_string(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING").encode(
-            #         dbc_export_encoding, ignore_encoding_errors))
-
-    # global-attributes:
-    for attrib, val in sorted(db.attributes.items()):
-        print("def : format - dbc - dump - GLOBAL ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "", "", val, db.global_defines[attrib].type == "STRING"))
-        frontRow = [attrib, "GLO", "/", val, db.global_defines[attrib].type == "STRING"]
-        col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
-        row += 1
-        # f.write(create_attribute_string(attrib, "", "", val, db.global_defines[attrib].type == "STRING").encode(
-        #     dbc_export_encoding, ignore_encoding_errors))
-
-    #messages-attributes:
-    Unique_Frame = []
-
-    for signal in db.signals:
-        frame = signal.frames
-        #print("def : format - dbc - dump - MESSAGE ATTRIBUTE : LEN : {}".format(len(frame)))
-        if len(Unique_Frame) == 0:
-            Unique_Frame.append(frame[0])
-            #print("def : format - dbc - dump - MESSAGE ATTRIBUTE : TYPE - ",type(frame[0]))
-        else:
-            IS_SAME = False
-            for each in Unique_Frame:
-                if frame[0].name == each.name:
-                    IS_SAME = True
-                    break
-            if IS_SAME == False:
-                Unique_Frame.append(frame[0])
-
-    for Each_Frame in Unique_Frame:
-        for attrib, val in sorted(Each_Frame.attributes.items()):
-            print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "BO_",str(Each_Frame.arbitration_id.to_compound_integer()),
-                                                                                                        val,
-                                                                                                        db.frame_defines[
-                                                                                                            attrib].type == "STRING"))
-
-            frontRow = [attrib,"BO_",str(Each_Frame.arbitration_id.to_compound_integer()),val,db.frame_defines[attrib].type == "STRING"]
-
-            if val == None or val == "":
-                frontRow[3] = '/'
-
-            col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
-            row += 1
-
-                # f.write(create_attribute_string(attrib, "BO_", str(frame.arbitration_id.to_compound_integer()), val,
-                #                                 db.frame_defines[attrib].type == "STRING").encode(dbc_export_encoding,
-                #                                                                                   ignore_encoding_errors))
-
-    #signal-attributes:
-    for signal in db.signals:
-        frame = signal.frames
-        for attrib, val in sorted(signal.attributes.items()):
-
-            print("def : format - xlsx - dump - SIGNAL ATTRIBUTE - FIND BUG - ",frame,signal.attributes)
-
-            #name = output_names[frame][signal]
-            if isinstance(val, float):
-                val = format_float(val)
-            if attrib in db.signal_defines:
-
-                #print("def : format - dbc - dump - SIGNAL ATTRIBUTE : ROW - {}".format(row))
-                print("def : format - xlsx - dump - SIGNAL ATTRIBUTE : ROW - {} - [{} - {} - {} - {} - {}]".format(row,attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,
-                                    db.signal_defines[attrib].type == "STRING"))
-
-                frontRow = [attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,
-                                    db.signal_defines[attrib].type == "STRING"]
-                col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
-                row += 1
-                # f.write(create_attribute_string(
-                #     attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
-                #                    db.signal_defines[attrib].type == "STRING").encode(dbc_export_encoding,
-                #
-                #                                                                       ignore_encoding_errors))
-
-        if signal.is_float == True:
-            print("def : format - xlsx - dump - FIND FLOAT - {} - {} ".format(frame[0].arbitration_id.to_compound_integer(),signal.name))
-            frontRow = ['/', "SIG_VALTYPE_",frame[0].arbitration_id.to_compound_integer(),signal.name,'/']
-            col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
-            row += 1
-
-    # environment-attributes:
-    for env_var_name, env_var in db.env_vars.items():
-        if "attributes" in env_var:
-            for attribute, value in env_var["attributes"].items():
-                print("def : format - dbc - dump - ENVIRONMENT ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attribute, "EV_", "", value,
-                                                 db.env_defines[attribute].type == "STRING"))
-                frontRow = [attribute, "EV_", "", value,db.env_defines[attribute].type == "STRING"]
-                col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
-                row += 1
-                # f.write(create_attribute_string(attribute, "EV_", "", value,
-                #                                 db.env_defines[attribute].type == "STRING")
-                #         .encode(dbc_export_encoding, ignore_encoding_errors))
+    # head_top = [
+    #     'P1',
+    #     'P2',
+    #     'P3',
+    #     'P4',
+    #     'P5'
+    # ]
+    # worksheet_attr = workbook.add_worksheet('ATTR')
+    # write_excel_line(worksheet_attr, 0, 0, head_top, sty_header)
+    #
+    # row = 1
+    # # ecu-attributes:
+    # for ecu in db.ecus:
+    #     for attrib, val in sorted(ecu.attributes.items()):
+    #
+    #         print("def : format - xls_common - get_signal - ECU ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING"))
+    #         frontRow = [attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING"]
+    #         col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+    #         row += 1
+    #         # f.write(
+    #         #     create_attribute_string(attrib, "BU_", ecu.name, val, db.ecu_defines[attrib].type == "STRING").encode(
+    #         #         dbc_export_encoding, ignore_encoding_errors))
+    #
+    # # global-attributes:
+    # for attrib, val in sorted(db.attributes.items()):
+    #     print("def : format - dbc - dump - GLOBAL ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "", "", val, db.global_defines[attrib].type == "STRING"))
+    #     frontRow = [attrib, "GLO", "/", val, db.global_defines[attrib].type == "STRING"]
+    #     col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+    #     row += 1
+    #     # f.write(create_attribute_string(attrib, "", "", val, db.global_defines[attrib].type == "STRING").encode(
+    #     #     dbc_export_encoding, ignore_encoding_errors))
+    #
+    # #messages-attributes:
+    # Unique_Frame = []
+    #
+    # for signal in db.signals:
+    #     frame = signal.frames
+    #     #print("def : format - dbc - dump - MESSAGE ATTRIBUTE : LEN : {}".format(len(frame)))
+    #     if len(Unique_Frame) == 0:
+    #         Unique_Frame.append(frame[0])
+    #         #print("def : format - dbc - dump - MESSAGE ATTRIBUTE : TYPE - ",type(frame[0]))
+    #     else:
+    #         IS_SAME = False
+    #         for each in Unique_Frame:
+    #             if frame[0].name == each.name:
+    #                 IS_SAME = True
+    #                 break
+    #         if IS_SAME == False:
+    #             Unique_Frame.append(frame[0])
+    #
+    # for Each_Frame in Unique_Frame:
+    #     for attrib, val in sorted(Each_Frame.attributes.items()):
+    #         print("def : format - dbc - dump - MESSAGE ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attrib, "BO_",str(Each_Frame.arbitration_id.to_compound_integer()),
+    #                                                                                                     val,
+    #                                                                                                     db.frame_defines[
+    #                                                                                                         attrib].type == "STRING"))
+    #
+    #         frontRow = [attrib,"BO_",str(Each_Frame.arbitration_id.to_compound_integer()),val,db.frame_defines[attrib].type == "STRING"]
+    #
+    #         if val == None or val == "":
+    #             frontRow[3] = '/'
+    #
+    #         col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+    #         row += 1
+    #
+    #             # f.write(create_attribute_string(attrib, "BO_", str(frame.arbitration_id.to_compound_integer()), val,
+    #             #                                 db.frame_defines[attrib].type == "STRING").encode(dbc_export_encoding,
+    #             #                                                                                   ignore_encoding_errors))
+    #
+    # #signal-attributes:
+    # for signal in db.signals:
+    #     frame = signal.frames
+    #     for attrib, val in sorted(signal.attributes.items()):
+    #
+    #         print("def : format - xlsx - dump - SIGNAL ATTRIBUTE - FIND BUG - ",frame,signal.attributes)
+    #
+    #         #name = output_names[frame][signal]
+    #         if isinstance(val, float):
+    #             val = format_float(val)
+    #         if attrib in db.signal_defines:
+    #
+    #             #print("def : format - dbc - dump - SIGNAL ATTRIBUTE : ROW - {}".format(row))
+    #             print("def : format - xlsx - dump - SIGNAL ATTRIBUTE : ROW - {} - [{} - {} - {} - {} - {}]".format(row,attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,
+    #                                 db.signal_defines[attrib].type == "STRING"))
+    #
+    #             frontRow = [attrib, "SG_", '%d ' % frame[0].arbitration_id.to_compound_integer() + signal.name, val,
+    #                                 db.signal_defines[attrib].type == "STRING"]
+    #             col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+    #             row += 1
+    #             # f.write(create_attribute_string(
+    #             #     attrib, "SG_", '%d ' % frame.arbitration_id.to_compound_integer() + name, val,
+    #             #                    db.signal_defines[attrib].type == "STRING").encode(dbc_export_encoding,
+    #             #
+    #             #                                                                       ignore_encoding_errors))
+    #
+    #     if signal.is_float == True:
+    #         print("def : format - xlsx - dump - FIND FLOAT - {} - {} ".format(frame[0].arbitration_id.to_compound_integer(),signal.name))
+    #         frontRow = ['/', "SIG_VALTYPE_",frame[0].arbitration_id.to_compound_integer(),signal.name,'/']
+    #         col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+    #         row += 1
+    #
+    # # environment-attributes:
+    # for env_var_name, env_var in db.env_vars.items():
+    #     if "attributes" in env_var:
+    #         for attribute, value in env_var["attributes"].items():
+    #             print("def : format - dbc - dump - ENVIRONMENT ATTRIBUTE : [{} , {} , {} , {} , {}]".format(attribute, "EV_", "", value,
+    #                                              db.env_defines[attribute].type == "STRING"))
+    #             frontRow = [attribute, "EV_", "", value,db.env_defines[attribute].type == "STRING"]
+    #             col = write_excel_line(worksheet_attr, row, 0, frontRow, signal_style)
+    #             row += 1
+    #             # f.write(create_attribute_string(attribute, "EV_", "", value,
+    #             #                                 db.env_defines[attribute].type == "STRING")
+    #             #         .encode(dbc_export_encoding, ignore_encoding_errors))
 
     # add filter and freeze head_top
     worksheet.autofilter(0, 0, row, len(head_top) - 1)

@@ -257,10 +257,10 @@ def get_signal(db, frame, sig, motorola_bit_format):
 
     print("def : format - xls_common - get_signal - M : {} - {}".format(sig.is_multiplexer,sig.multiplex))
 
-    if sig.is_multiplexer == True:
-        front_array.append(sig.multiplex)
-    else:
-        front_array.append('/')
+    # if sig.is_multiplexer == True:
+    #     front_array.append(sig.multiplex)
+    # else:
+    #     front_array.append('/')
     # Receiver ECU list
 
     #print("def : format - xls_common - get_signal - {}".format(front_array))
