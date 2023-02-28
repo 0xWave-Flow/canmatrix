@@ -97,7 +97,21 @@ def create_define(data_type, define, define_type, defaults):
     define_string += '  "' + data_type + '" '
     if "ENUM" in define.definition:
 
-        define_string += "ENUM  " + define.definition[4:] + ';\n'
+        define_string += "ENUM " + define.definition[4:] + ';\n'
+
+        if "\"\"" in define_string:
+            define_string = define_string.replace("\"\"","\"vector_leerstring\"")
+
+    elif "STRING" in define.definition:
+
+        define_string += define.definition + ';\n'
+        define_string = define_string.replace("STRING;", "STRING ;")
+
+    # elif "FLOAT" in define.definition:
+    #
+    #     Temp = (define.definition).split(" ")
+    #     define_string += "FLOAT {:E} {:E}".format(int(Temp[1]),int(Temp[2])) + ';\n'
+
     else:
         define_string += define.definition + ';\n'
 
@@ -118,7 +132,7 @@ def create_define(data_type, define, define_type, defaults):
 
 def create_attribute_string(attribute, attribute_class, name, value, is_string):
 
-    #print("def : format - dbc - create_attribute_string")
+    print("def : format - dbc - create_attribute_string - {}".format(value))
 
     # type: (str, str, str, typing.Any, bool) -> str
     if is_string:
@@ -1142,6 +1156,18 @@ def load(f, **options):  # type: (typing.IO, **typing.Any) -> canmatrix.CanMatri
                     if define_type == "SG_":
                         print("def : format - dbc - load - BA_DEF_ SG_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_signal_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))
+
+                        # for signal in db.signals:
+                        #     if signal.name == temp.group(3):
+                        #
+                        #         for each in signal.frames:
+                        #             # print("def : format - dbc - load - FIND ATTR - BA_ SG_ CMP - {} - {} - {} ".format(signal.name,each.arbitration_id.id,temp.group(2)))
+                        #             if each.arbitration_id.id == int(temp.group(2)):
+                        #                 # print("def : format - dbc - load - FIND- {}".format(signal.name))
+                        #                 print("def : format - dbc - load - FIND ATTR - BA_ SG_ - {} - {} ; {}".format(
+                        #                     signal.frames, temp.group(1), temp.group(4)))
+                        #                 signal.add_attribute(temp.group(1), temp.group(4))
+
                     elif define_type == "BO_":
                         print("def : format - dbc - load - BA_DEF_ BO_: {} - {}".format(temp.group(1), temp_raw.group(2)))
                         db.add_frame_defines(temp.group(1), temp_raw.group(2).decode(dbc_import_encoding))

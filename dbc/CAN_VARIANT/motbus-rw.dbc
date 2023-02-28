@@ -74,17 +74,17 @@ BO_ 1544 DiagResponse_Motor: 8 Engine
 BO_ 1537 DiagRequest_Motor: 8 Gateway
 
 
-BA_DEF_ BO_ "GenMsgConditionalSend" STRING;
-BA_DEF_ BO_ "GenMsgCycleTime" INT 2 50000;
-BA_DEF_ BO_ "GenMsgDelayTime" INT 1 1000;
-BA_DEF_ BO_ "GenMsgNrOfRepetitions" INT 1 999999;
-BA_DEF_ BO_ "GenMsgSendType" ENUM "cyclic","spontan","cyclicIfActive","spontanWithDelay","cyclicAndSpontan","cyclicAndSpontanWithDelay","spontanWithRepetition","cyclicIfActiveAndSpontanWD";
-BA_DEF_ SG_ "GenSigConditionalSend" STRING;
-BA_DEF_ SG_ "GenSigEnvVarType" ENUM "int","float","undef";
-BA_DEF_ SG_ "GenSigInactiveValue" INT 0 100000;
-BA_DEF_ SG_ "GenSigSendType" ENUM "spontan";
-BA_DEF_ SG_ "GenSigStartValue" FLOAT -100000000000.0 100000000000.0;
-BA_DEF_ BU_ "NodeLayerModules" STRING;
+BA_DEF_ BO_  "GenMsgConditionalSend" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 2 50000;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 1 1000;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 1 999999;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","spontan","cyclicIfActive","spontanWithDelay","cyclicAndSpontan","cyclicAndSpontanWithDelay","spontanWithRepetition","cyclicIfActiveAndSpontanWD";
+BA_DEF_ SG_  "GenSigConditionalSend" STRING ;
+BA_DEF_ SG_  "GenSigEnvVarType" ENUM  "int","float","undef";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "spontan";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT -100000000000 100000000000;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
 BA_DEF_DEF_ "GenMsgConditionalSend" "";
 BA_DEF_DEF_ "GenMsgCycleTime" 2;
 BA_DEF_DEF_ "GenMsgDelayTime" 1;

@@ -371,7 +371,7 @@ def dump(db, filename, **options):
         #     pass
 
         elif db.signal_defines.get(SIG_Define).type == "FLOAT":
-            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, db.signal_defines.get(SIG_Define).min, db.signal_defines.get(SIG_Define).max, '/']
+            frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, db.signal_defines.get(SIG_Define).min,db.signal_defines.get(SIG_Define).max, '/']
 
         elif db.signal_defines.get(SIG_Define).type == "STRING":
             frontRow = ["SIG DEF", SIG_Define, db.signal_defines.get(SIG_Define).type, '/', '/', '/']

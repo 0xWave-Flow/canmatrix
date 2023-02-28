@@ -47,13 +47,13 @@ BO_ 1280 NMMessage: 6 NM_Tester
  SG_ NM_CAN : 23|1@1+ (1,0) [0|1] ""  Vector__XXX
 
 
-BA_DEF_ BU_ "CANoeDrift" INT 0 0;
-BA_DEF_ BU_ "CANoeJitterMax" INT 0 0;
-BA_DEF_ BU_ "CANoeJitterMin" INT 0 0;
-BA_DEF_ BU_ "CANoeStartDelay" INT 0 0;
-BA_DEF_ BU_ "ECU" STRING;
-BA_DEF_ BU_ "NodeLayerModules" STRING;
-BA_DEF_  "BusType" STRING;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_   "BusType" STRING ;
 BA_DEF_DEF_ "BusType" "";
 BA_DEF_DEF_ "CANoeDrift" 0;
 BA_DEF_DEF_ "CANoeJitterMax" 0;

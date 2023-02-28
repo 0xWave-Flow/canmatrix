@@ -364,7 +364,7 @@ class Signal(object):
 
     def add_attribute(self, attribute, value):
 
-        print("def : canmatrix - Signal - add_attribute")
+        print("def : canmatrix - Signal - add_attribute - {}".format(value))
 
         """
         Add user defined attribute to the Signal. Update the value if the attribute already exists.
@@ -1219,6 +1219,7 @@ class Frame(object):
             return self.attributes[attribute_name]
         elif db is not None and attribute_name in db.frame_defines:
             define = db.frame_defines[attribute_name]
+            print("def : canmatrix - Frame - attribute - RETURN - {}".format(define.defaultValue))
             return define.defaultValue
         return default
 
@@ -1412,7 +1413,7 @@ class Frame(object):
 
     def add_attribute(self, attribute, value):
 
-        print("def : canmatrix - Frame - add_attribute - [{},{},{}]".format(self.name,attribute,value))
+        print("def : canmatrix - Frame - add_attribute - START - {}".format(value))
 
         # type: (str, typing.Any) -> None
         """
@@ -1420,12 +1421,19 @@ class Frame(object):
         :param str attribute: Attribute name
         :param any value: attribute value
         """
+
+        # self.attributes[attribute] = value
+        #
+        # print("def : canmatrix - Frame - add_attribute - END - {} - {}".format(self.attributes[attribute],value))
+
         try:
             self.attributes[attribute] = str(value)
         except UnicodeDecodeError:
             self.attributes[attribute] = value
         if type(self.attributes[attribute]) == str:
             self.attributes[attribute] = self.attributes[attribute].strip()
+
+        print("def : canmatrix - Frame - add_attribute - END - {} - {}".format(self.attributes[attribute], value))
 
     def del_attribute(self, attribute):
 
